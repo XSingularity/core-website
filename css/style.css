@@ -2,7 +2,10 @@
     --primary-color: #edf2fc;
     --secondary-color: #181818;
 }
-
+/* Cursor */
+.typed-cursor {
+    color: var(--secondary-color);
+}
 .dark-theme{
     --primary-color: #0f0f0f;
     --secondary-color: #ffffff;
