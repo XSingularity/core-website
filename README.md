@@ -7,4 +7,4 @@ Coming Soon is a simplistic, animated and responsive "coming soon" page.
 - Responsive Design
 
 By:
-<img src="./img/logo.png" width="525" height="128" />
+<img src="./img/logo.png" />
