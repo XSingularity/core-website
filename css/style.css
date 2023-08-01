@@ -1,3 +1,24 @@
+:root {
+    --primary-color: #edf2fc;
+    --secondary-color: #212121; 
+}
+
+.dark-theme{
+    --primary-color: #2c2c2c;
+    --secondary-color: #ffffff;
+}
+.light{
+    color: var(--secondary-color);
+}
+
+#icon{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 32px;
+}
+
+
 body { margin: 0; padding: 0; }
 html { height: 100%; cursor: default; }
 body {
@@ -20,6 +41,7 @@ img {
 #main {
     vertical-align: middle;
     display: table-cell;
+    background-color: var(--primary-color);
 }
 
 /* Fades in animation */
