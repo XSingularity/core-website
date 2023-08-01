@@ -1,16 +1,20 @@
 :root {
     --primary-color: #edf2fc;
-    --secondary-color: #212121; 
+    --secondary-color: #181818;
 }
 
 .dark-theme{
-    --primary-color: #2c2c2c;
+    --primary-color: #0f0f0f;
     --secondary-color: #ffffff;
 }
 .light{
     color: var(--secondary-color);
 }
-
+#toggle{
+    position: absolute; 
+    top: 0px; 
+    right: 0px; 
+}
 #icon{
     width: 30px;
     height: 30px;
@@ -40,6 +44,11 @@ img {
 }
 #main {
     vertical-align: middle;
+    display: table-cell;
+    background-color: var(--primary-color);
+}
+#main2 {
+    
     display: table-cell;
     background-color: var(--primary-color);
 }

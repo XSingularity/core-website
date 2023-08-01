@@ -18,10 +18,10 @@ var icon = document.getElementById("icon");
             icon.src="./img/moon.png";
         }
           if (document.body.classList.contains("dark-theme")) {
-    icon2.src = "./img/logo_dark.png";
-  } else {
-    icon2.src = "./img/logo.png";
-  }
+            icon2.src = "./img/logo_dark.png";
+        } else {
+        icon2.src = "./img/logo.png";
+     }
 };
     
  
