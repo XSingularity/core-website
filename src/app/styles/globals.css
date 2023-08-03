@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .test{
-  max-width: 220px;
+  max-width: 150px;
   display: flex;
   align-items: center;
 
