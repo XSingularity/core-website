@@ -1,11 +1,15 @@
 import Image from 'next/image'
-import Page1 from "./components/page1";
-import Content from "./components/content"
+import Intro from "./components/intro";
+import Team from "./components/team";
+import Timeline from "./components/timeline";
+import Contact from "./components/contact";
 export default function Home() {
   return (
 <main>
-<Page1/>
-<Content/>
+<Intro/>
+<Team/>
+<Timeline/>
+<Contact/>
 </main>
   )
 }

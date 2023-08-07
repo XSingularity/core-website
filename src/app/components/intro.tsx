@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Page1 = () => {
+const Intro = () => {
   return (
-    <section className="text-gray-600 font-sans font-light">
+    <section className="text-gray-600 font-sans font-light ">
   <div className="container mx-auto flex px-5 py-29 md:flex-row flex-col items-center">
     <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
       <h1 className="title-font sm:text-5xl text-3xl mb-4 font-medium text-gray-900">We Create & Optimize_
@@ -40,14 +40,14 @@ const Page1 = () => {
       
       <div className="flex justify-center py-8">
         
-        <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-500 rounded text-lg">Contact</button>
+      <button className="ease-in duration-500 inline-flex text-white bg-gray-900 border-1 py-2 px-6 focus:outline-none hover:bg-gray-300 hover:text-black rounded text-lg font-medium ">Contact</button>
       </div>
     </div>
-    <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+    <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 ease-in duration-300">
     <img src="/xsing.png" alt="xSingularity" />
     </div>
   </div>
 </section>
   )
 }
-export default Page1
+export default Intro
