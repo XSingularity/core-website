@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
   return (
-<header className="text-gray-600 body-font">
+<header className="text-gray-900 font-sans font-light ">
   <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
     
     <img className="test" src="/logo1.png" alt="" />

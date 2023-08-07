@@ -2,7 +2,7 @@ import React from 'react'
 
 const Page1 = () => {
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 font-sans font-light">
   <div className="container mx-auto flex px-5 py-29 md:flex-row flex-col items-center">
     <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
       <h1 className="title-font sm:text-5xl text-3xl mb-4 font-medium text-gray-900">We Create & Optimize_
@@ -16,7 +16,7 @@ const Page1 = () => {
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" className="w-3 h-3" viewBox="0 0 24 24">
                 <path d="M20 6L9 17l-5-5"></path>
               </svg>
-            </span>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
+            </span>There are many variations of passages of Lorem Ipsum available.
           </a>
           <a>
             <span className="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
@@ -30,15 +30,9 @@ const Page1 = () => {
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" className="w-3 h-3" viewBox="0 0 24 24">
                 <path d="M20 6L9 17l-5-5"></path>
               </svg>
-            </span>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            </span>The standard chunk of Lorem Ipsum used since the 1500s.
           </a>
-          <a>
-            <span className="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" className="w-3 h-3" viewBox="0 0 24 24">
-                <path d="M20 6L9 17l-5-5"></path>
-              </svg>
-            </span>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-          </a>
+   
           
         </nav>
 </ul>
