@@ -40,7 +40,7 @@ const Intro = () => {
       
       <div className="flex justify-center py-8">
         
-      <button className="ease-in duration-500 inline-flex text-white bg-gray-900 border-1 py-2 px-6 focus:outline-none hover:bg-gray-300 hover:text-black rounded text-lg font-medium ">Contact</button>
+      <button className="ease-in duration-500 inline-flex text-white bg-gray-900 border-1 py-2 px-6 focus:outline-none hover:bg-blue-500 hover:text-white rounded text-lg font-medium ">Contact</button>
       </div>
     </div>
     <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 ease-in duration-300">
