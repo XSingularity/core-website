@@ -3,7 +3,7 @@ import React from 'react'
 const Timeline = () => {
   return (
     
-    <div className="min-h-screen bg-blue-500 py-6 flex flex-col justify-center sm:py-12 font-sans">
+    <div className="min-h-seditcreen bg-blue-500 py-6 flex flex-col justify-center sm:py-12 font-sans">
         <h1 className="text-3xl font-bold mb-4 py-10 text-gray-100 text-center">HOW WE WORK</h1>
   <div className="py-3 sm:max-w-xl sm:mx-auto w-full px-2 sm:px-0">
 
