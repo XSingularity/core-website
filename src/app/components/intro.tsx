@@ -3,7 +3,7 @@ import React from 'react'
 const Intro = () => {
   return (
     <section className="text-gray-600 font-sans font-light ">
-  <div className="container mx-auto flex px-5 py-29 md:flex-row flex-col items-center">
+  <div className=" container mx-auto flex flex-wrap p-20 flex-col md:flex-row items-center">
     <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
       <h1 className="title-font sm:text-5xl text-3xl mb-4 font-medium text-gray-900">We Create & Optimize_
       </h1>
@@ -38,13 +38,14 @@ const Intro = () => {
 </ul>
       </div>
       
+      
       <div className="flex justify-center py-8">
         
       <button className="ease-in duration-500 inline-flex text-white bg-gray-900 border-1 py-2 px-6 focus:outline-none hover:bg-blue-500 hover:text-white rounded text-lg font-medium ">Contact</button>
       </div>
     </div>
     <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 ease-in duration-300">
-    <img src="/xsing.png" alt="xSingularity" />
+    <img className=" sm:content-center " src="/xsing.png" alt="xSingularity" />
     </div>
   </div>
 </section>
