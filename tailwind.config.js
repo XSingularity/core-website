@@ -25,6 +25,6 @@ module.exports = {
     },
   },
   plugins: [],
-  darkMode: ['class', '[data-mode="dark"]'],
+  darkMode: "class",
   mode: 'jit',
 }

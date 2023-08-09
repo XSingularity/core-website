@@ -5,10 +5,13 @@ import Contact from "./components/contact";
 export default function Home() {
   return (
 <main>
+  
+    
 <Intro/>
 <Timeline/>
 <Team/>
 <Contact/>
+
 </main>
   )
 }

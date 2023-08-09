@@ -7,7 +7,7 @@ const Timeline = () => {
         <h1 className="text-3xl font-bold mb-4 py-10 text-gray-100 text-center">HOW WE WORK</h1>
   <div className="py-3 sm:max-w-xl sm:mx-auto w-full px-2 sm:px-0">
 
-    <div className="relative text-gray-700 antialiased text-sm font-semibold">
+    <div className="relative text-gray-700 antialiased text-sm font-normal font-sans">
 
       <div className="hidden sm:block w-1 bg-blue-300 absolute h-full left-1/2 transform -translate-x-1/2"></div>
 

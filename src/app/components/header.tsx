@@ -14,7 +14,7 @@ const Header = () => {
       <a className="ease-in duration-300 mr-5 hover:text-blue-500">Contact</a>
     </nav>
     <br />
-    <img className="lg:w-8" src="/moon.png" alt="" />
+    <img className="lg:w-8 w-7" src="/moon.png" alt="" />
 
   </div>
 </header>
