@@ -60,7 +60,8 @@ const Contact = () => {
                 </div>
               </div>
               <div className="p-2 w-full">
-              <button className="ease-in mx-auto duration-500 flex mx-auto text-white bg-gray-900 border-1 py-2 px-6 focus:outline-none hover:bg-gray-300 hover:text-black rounded text-lg font-medium text-center ">
+              <button className="ease-in duration-500 mx-auto flex text-white bg-gray-900 border-1 py-2 px-6 focus:outline-none hover:bg-blue-500 hover:text-white rounded text-lg font-medium  text-center ">
+               
                 Send</button>
 
               </div>
