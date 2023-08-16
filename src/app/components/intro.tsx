@@ -3,7 +3,7 @@ import React from 'react'
 const Intro = () => {
   return (
     <section className="text-gray-600 font-sans font-light ">
-  <div className=" container mx-auto flex flex-wrap p-7 flex-col md:flex-row items-center">
+  <div className=" container mx-auto flex flex-wrap p-7 px-40 flex-col md:flex-row items-center">
     <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
       <h1 className="title-font sm:text-5xl text-3xl mb-4 font-medium text-gray-900">We Create & Optimize_
       </h1>

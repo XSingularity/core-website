@@ -3,7 +3,7 @@ import React from 'react'
 const Header = () => {
   return (
 <header className="text-gray-900 font-sans font-light ">
-  <div className=" container mx-auto flex flex-wrap p-6 flex-col md:flex-row items-center ">
+  <div className=" container mx-auto flex flex-wrap p-6 px-40 flex-col md:flex-row items-center ">
   
     <img className="test" src="/logo1.png" alt="" />
     <br />
