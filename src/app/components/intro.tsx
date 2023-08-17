@@ -38,16 +38,36 @@ const Intro = () => {
 </ul>
       </div>
       
-      
-      <div className="flex justify-center py-8">
+
+      <div className="flex justify-center py-12 ">
         
       <button className="ease-in duration-500 inline-flex text-white bg-gray-900 border-1 py-2 px-6 focus:outline-none hover:bg-blue-500 hover:text-white rounded text-lg font-medium ">Contact</button>
       </div>
-    </div>
-    <div className="sm:content-center sm:w-1/2 md:w-1/2 lg:w-1/2">
+     </div>
+    <div className="sm:content-center w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2">
+    
     <img className="" src="/xsing.png" alt="xSingularity" />
     </div>
+ 
   </div>
+    <div className="content-center flex justify-center text-center place-items-center text-sans text-lg ">
+      <h1 className="" >Tecnologías</h1>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+      <div>10</div>
+      <div>11</div>
+      <div>12</div>
+      <div>13</div>
+    </div>
+ 
+  
 </section>
   )
 }
