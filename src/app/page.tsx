@@ -5,18 +5,18 @@ import Contact from "./components/contact";
 import Tech from "./components/tech";
 export default function Home() {
   return (
-<main>
-  
-    
-<Intro/>
-<Tech/>
-<Timeline/>
-<Team/>
-<Contact/>
+    <main>
+
+
+      <Intro />
+      <Tech />
+      <Timeline />
+      <Team />
+      <Contact />
 
 
 
-</main>
+    </main>
   )
 }
 
