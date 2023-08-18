@@ -9,10 +9,11 @@ export default function Home() {
   
     
 <Intro/>
-
+<Tech/>
 <Timeline/>
 <Team/>
 <Contact/>
+
 
 
 </main>

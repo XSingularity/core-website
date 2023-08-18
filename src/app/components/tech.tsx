@@ -1,89 +1,46 @@
 import React from 'react'
-//dfdfdfdfdf
+
+const LOGOS = [
+ (<div className="w-40 sm:w-20"><img src="/python.png" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="/react.png" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="/docker.png" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="/kubernetes.png" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="/aws.png" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="/gcp.png" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="/solidity.png" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="/nextjs.png" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="/javascript.png" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="/django.png" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="/fastapi.png" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="" alt="" /></div>),
+ (<div className="w-40 sm:w-20"><img src="" alt="" /></div>)
+  ];
+
+
 const Tech = () => {
   return (
-    <section className="text-gray-600 body-font">
-  <div className="container px-5 py-24 mx-auto">
-    <div className="flex flex-wrap -m-4">
-      <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260"/>
-        </a>
-   
+    <div className="relative m-auto w-[500px] overflow-hidden bg-white before:absolute before:left-0 before:top-0 before:z-[2] before:h-full before:w-[100px] before:bg-[linear-gradient(to_right,white_0%,rgba(255,255,255,0)_100%)] before:content-[''] after:absolute after:right-0 after:top-0 after:z-[2] after:h-full after:w-[100px] after:-scale-x-100 after:bg-[linear-gradient(to_right,white_0%,rgba(255,255,255,0)_100%)] after:content-['']">
+      <div className="animate-infinite-slider flex w-[calc(250px*10)]">
+        {LOGOS.map((logo, index) => (
+          <div
+            className="slide flex w-[125px] items-center justify-center"
+            key={index}
+          >
+            {logo}
+          </div>
+        ))}
+        {LOGOS.map((logo, index) => (
+          <div
+            className="slide flex w-[125px] items-center justify-center"
+            key={index}
+          >
+            {logo}
+          </div>
+        ))}
       </div>
-      <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/421x261"/>
-        </a>
-        <div className="mt-4">
-          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">Shooting Stars</h2>
-          <p className="mt-1">$21.15</p>
-        </div>
-      </div>
-      <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/422x262"/>
-        </a>
-        <div className="mt-4">
-          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">Neptune</h2>
-          <p className="mt-1">$12.00</p>
-        </div>
-      </div>
-      <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/423x263"/>
-        </a>
-        <div className="mt-4">
-          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-          <p className="mt-1">$18.40</p>
-        </div>
-      </div>
-      <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/424x264"/>
-        </a>
-        <div className="mt-4">
-          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-          <p className="mt-1">$16.00</p>
-        </div>
-      </div>
-      <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/425x265"/>
-        </a>
-        <div className="mt-4">
-          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">Shooting Stars</h2>
-          <p className="mt-1">$21.15</p>
-        </div>
-      </div>
-      <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/427x267"/>
-        </a>
-        <div className="mt-4">
-          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">Neptune</h2>
-          <p className="mt-1">$12.00</p>
-        </div>
-      </div>
-      <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268"/>
-        </a>
-        <div className="mt-4">
-          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-          <p className="mt-1">$18.40</p>
-        </div>
-      </div>
+      <br />
     </div>
-  </div>
-</section>
+    
   )
 }
 
