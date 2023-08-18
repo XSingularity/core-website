@@ -12,8 +12,7 @@ const LOGOS = [
  (<div className="w-40 sm:w-20"><img src="/javascript.png" alt="" /></div>),
  (<div className="w-40 sm:w-20"><img src="/django.png" alt="" /></div>),
  (<div className="w-40 sm:w-20"><img src="/fastapi.png" alt="" /></div>),
- (<div className="w-40 sm:w-20"><img src="" alt="" /></div>),
- (<div className="w-40 sm:w-20"><img src="" alt="" /></div>)
+
   ];
 
 
