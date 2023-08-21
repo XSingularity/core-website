@@ -40,8 +40,9 @@ const Intro = () => {
 
 
           <div className="flex justify-center py-12 ">
-
+          
             <button className="ease-in duration-500 inline-flex text-white bg-gray-900 border-1 py-2 px-6 focus:outline-none hover:bg-blue-500 hover:text-white rounded text-lg font-medium ">Contact</button>
+           
           </div>
         </div>
         <div className="sm:content-center w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2">
