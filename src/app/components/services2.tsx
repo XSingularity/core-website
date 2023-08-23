@@ -10,6 +10,7 @@ const Services2 = () => {
           <h1 className="text-3xl font-bold mb-4 text-gray-900">SERVICES</h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify.</p>
         </div> 
+
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
           <div className="relative overflow-hidden rounded-xl">

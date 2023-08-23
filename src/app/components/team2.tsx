@@ -6,7 +6,8 @@ const Team2 = () => {
     <div className="py-20 text-gray-600 font-sans ">
     <div className="container mx-auto px-6 md:px-12">
     <div className="flex flex-col text-center w-full mb-20">
-      
+    <img src="/c9.png" className='absolute opacity-20 -z-10 right-0 left-0 pt-[450px] m-auto w-[1100px] ' alt="" />
+    {/* PLANO 3D */}
           <h1 className="text-3xl font-bold mb-4 text-gray-900">OUR TEAM</h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them.</p>
         </div>
