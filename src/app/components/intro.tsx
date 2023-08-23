@@ -4,12 +4,9 @@ const Intro = () => {
   return (
     <section className="text-gray-600 font-sans  ">
       <div className=" container flex flex-wrap p-7 mx-auto xl:px-40 2xl:px-40 lg:px-7 md:px-7  flex-col md:flex-row items-center">
-        <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-         <img src="/c1.png" className='absolute -z-10 top-20 right-40 blur-sm w-[80px]' alt="" />
-         <img src="/c1.png" className='absolute -z-10 top-1/2 right-20 rotate-45 w-[100px]' alt="" />
-         <img src="/c3.png" className='absolute -z-10 top-1/2 left-20 rotate-45 w-[100px]' alt="" />
-         <img src="/c3.png" className='absolute -z-10 top-80 blur-sm left-1/2 rotate-45 w-[70px]' alt="" />
-         <img src="/c4.png" className='absolute top-10 right-1/2 rotate-45  w-[100px]' alt="" />
+        <div className="lg:flex-grow md:w-1/2 lg:pr-24 my-28 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+        
+
 
           <h1 className="title-font sm:text-5xl lg:text-4xl text-3xl mb-4 font-semibold bg-gradient-to-r from-gray-600 to-gray-900 text-transparent bg-clip-text">We Create & Optimize_
           </h1>
@@ -18,7 +15,7 @@ const Intro = () => {
             <ul className="pl-1 pt-6 market-text-lg list-disc text-gray-900">
               <nav className="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
                 <a>
-                  <span className="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
+                  <span className="bg-indigo-100 text-blue-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" className="w-3 h-3" viewBox="0 0 24 24">
                       <path d="M20 6L9 17l-5-5"></path>
                     </svg>
@@ -26,14 +23,14 @@ const Intro = () => {
                 </a>
                 
                 <a>
-                  <span className="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
+                  <span className="bg-indigo-100 text-blue-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" className="w-3 h-3" viewBox="0 0 24 24">
                       <path d="M20 6L9 17l-5-5"></path>
                     </svg>
                   </span>Contrary to popular belief, Lorem Ipsum is not simply random text.
                 </a>
                 <a>
-                  <span className="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
+                  <span className="bg-indigo-100 text-blue-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" className="w-3 h-3" viewBox="0 0 24 24">
                       <path d="M20 6L9 17l-5-5"></path>
                     </svg>
