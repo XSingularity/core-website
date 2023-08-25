@@ -1,4 +1,5 @@
 import SvgBlackhole from './svg/Blackhole'
+import SvgDust from './svg/Dust'
 
 const Intro = () => {
   return (
@@ -45,7 +46,8 @@ const Intro = () => {
           </div>
         </div>
         <div className="sm:content-center w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2">
-          <SvgBlackhole/>
+         <SvgDust className='absolute rotate-180 top-0'/>
+         <SvgBlackhole/>
         </div>
       </div>
     </section>
