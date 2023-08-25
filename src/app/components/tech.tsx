@@ -1,17 +1,17 @@
 import React from 'react'
 
 const LOGOS = [
-  (<div className="w-40 sm:w-20"><img src="/python.png" alt="Pythone" /></div>),
+  (<div className="w-40 sm:w-20"><img src="/python.png" alt="Python" /></div>),
   (<div className="w-40 sm:w-20"><img src="/react.png" alt="React" /></div>),
   (<div className="w-40 sm:w-20"><img src="/docker.png" alt="Docker" /></div>),
   (<div className="w-40 sm:w-20"><img src="/kubernetes.png" alt="Kubernetes" /></div>),
   (<div className="w-40 sm:w-20"><img src="/aws.png" alt="AWS" /></div>),
   (<div className="w-40 sm:w-20"><img src="/gcp.png" alt="Google Cloud" /></div>),
-  (<div className="w-40 sm:w-20"><img src="/solidity.png" alt="" /></div>),
-  (<div className="w-40 sm:w-20"><img src="/nextjs.png" alt="" /></div>),
-  (<div className="w-40 sm:w-20"><img src="/javascript.png" alt="" /></div>),
-  (<div className="w-40 sm:w-20"><img src="/django.png" alt="" /></div>),
-  (<div className="w-40 sm:w-20"><img src="/fastapi.png" alt="" /></div>),
+  (<div className="w-40 sm:w-20"><img src="/solidity.png" alt="Solidity" /></div>),
+  (<div className="w-40 sm:w-20"><img src="/nextjs.png" alt="NextJS" /></div>),
+  (<div className="w-40 sm:w-20"><img src="/javascript.png" alt="Javascript" /></div>),
+  (<div className="w-40 sm:w-20"><img src="/django.png" alt="Django" /></div>),
+  (<div className="w-40 sm:w-20"><img src="/fastapi.png" alt="FastAPI" /></div>),
 ];
 
 const slideFlexClassName = "slide flex w-[125px] items-center justify-center";

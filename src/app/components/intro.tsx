@@ -45,7 +45,7 @@ const Intro = () => {
           </div>
         </div>
         <div className="sm:content-center w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2">
-          <img className="" src="/xsing.png" alt="xSingularity" />
+          <img className="" src="/xsing.png" alt="XSingularity" />
           <Blackhole/>
         </div>
       </div>
