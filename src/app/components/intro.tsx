@@ -11,7 +11,7 @@ const Intro = () => {
           </h1>
           {/* Texto animado */}
           <div>
-            <ul className="pl-1 pt-6 text-2xl market-text-lg list-disc text-gray-900">
+            <ul className="pl-1 pt-6 text-xl market-text-lg list-disc text-gray-900">
               {/* edit puntos, tamano letra etc*/}
               <nav className="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
                 <a>
@@ -46,7 +46,7 @@ const Intro = () => {
           </div>
         </div>
         <div className="sm:content-center w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2">
-         <SvgDust className='absolute rotate-180 top-0'/>
+         <SvgDust className='absolute rotate-180 w-[1015px] sm:opacity-0 lg:opacity-100 right-0 top-0 -z-10'/>
          <SvgBlackhole/>
         </div>
       </div>
