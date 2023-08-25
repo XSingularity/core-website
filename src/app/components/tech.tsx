@@ -1,7 +1,7 @@
 import React from 'react'
 
 const LOGOS = [
-  (<div className="w-40 sm:w-20"><img src="/python.png" alt="Python" /></div>),
+  (<div className="w-40 sm:w-20"><img src="/python.png" alt="Pythone" /></div>),
   (<div className="w-40 sm:w-20"><img src="/react.png" alt="React" /></div>),
   (<div className="w-40 sm:w-20"><img src="/docker.png" alt="Docker" /></div>),
   (<div className="w-40 sm:w-20"><img src="/kubernetes.png" alt="Kubernetes" /></div>),
