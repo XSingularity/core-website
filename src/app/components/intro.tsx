@@ -4,6 +4,7 @@ import {useTypewriter, Cursor} from 'react-simple-typewriter';
 
 
 
+
 const Intro = () => {
   
 
@@ -62,6 +63,7 @@ const Intro = () => {
         <div className="sm:content-center w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2">
 
           <img className="" src="/xsing.png" alt="xSingularity" />
+         
         </div>
 
       </div>
