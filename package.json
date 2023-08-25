@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build:svg": "svgr -d svg/ src/app/components/",
+    "build:svg": "svgr --out-dir src/app/components/svg/ -- public/svg/",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

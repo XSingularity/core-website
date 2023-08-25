@@ -1,4 +1,4 @@
-import Blackhole from './img/blackhole.js'
+import SvgBlackhole from './svg/Blackhole'
 
 const Intro = () => {
   return (
@@ -46,7 +46,7 @@ const Intro = () => {
         </div>
         <div className="sm:content-center w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2">
           <img className="" src="/xsing.png" alt="XSingularity" />
-          <Blackhole/>
+          <SvgBlackhole/>
         </div>
       </div>
     </section>
