@@ -1,4 +1,4 @@
-import Blackhole from './icons/blackhole.js'
+import Blackhole from './img/blackhole.js'
 
 const Intro = () => {
   return (
