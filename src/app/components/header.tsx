@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
-import {Link} from 'react-scroll'
-import {BrowserRouter} from 'react-router-dom'
-import {useRef} from 'react'
+
 
 
 const Header = () => {
+
   return (
     <header className="text-gray-900 font-sans font-light ">
       <div className=" container mx-auto flex flex-wrap p-6 xl:px-40 2xl:px-40 lg:px-7 md:px-7 flex-col md:flex-row items-center ">

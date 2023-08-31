@@ -3,47 +3,71 @@ import React from 'react';
 
 const Services = () => {
   return (
-    <div className="py-16 bg-white text-gray-600 font-sans"> 
-    
+                                   
+    <div  className="py-12 text-gray-600 font-sans">
+    <div className="xl:container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
     <div className="flex flex-col text-center w-full mb-20">
           <h1 className="text-3xl font-bold mb-4 text-gray-900">SERVICES</h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify.</p>
         </div> 
-    <div className="container m-auto px-6 text-gray-500 md:px-12 xl:px-0">
-        <div className="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3">
-            <div className="bg-gray-100 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8">
-                <div className="mb-12 space-y-4">
-                    <h3 className="text-2xl font-semibold text-gray-900">Project Management</h3>
-                    <p className="mb-6">Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.</p>
-                    <a href="#" className="block font-medium text-purple-600">Know more</a>
-                </div>
-                <img src="https://tailus.io/sources/blocks/end-image/preview/images/ux-design.svg" className="w-2/3 ml-auto " alt="illustration" loading="lazy" width="900" height="600"/>
-            </div>
-            <div className="bg-gray-100  rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8">
-                <div className="mb-12 space-y-4">
-                    <h3 className="text-2xl font-semibold text-gray-900">UX/UI Design</h3>
-                    <p className="mb-6">Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.</p>
-                    <a href="#" className="block font-medium text-blue-400">Know more</a>
-                </div>
-                <img src="https://tailus.io/sources/blocks/end-image/preview/images/ui-design.svg" className="w-2/3 ml-auto" alt="illustration" loading="lazy" width="900" height="600"/>
-            </div>
-            <div className="bg-gray-100  rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8">
-                <div className="mb-12 space-y-4">
-                    <h3 className="text-2xl font-semibold text-gray-900">Technical Support</h3>
-                    <p className="mb-6">For up to 3 months. Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.</p>
-                    <a href="#" className="block font-medium text-blue-400">Know more</a>
-                </div>
-                <img src="https://tailus.io/sources/blocks/end-image/preview/images/ux-design.svg" className="w-2/3 ml-auto " alt="illustration" loading="lazy" width="900" height="600"/>
-            </div>
-            
-           
-            
+
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+          <div className="relative overflow-hidden rounded-xl">
+            <img src="https://images.unsplash.com/photo-1661749711934-492cd19a25c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80"
+            alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
+          </div>
+          <div className="mt-6 relative">
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+            Project Management
+            </h3>
+            <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
+              Voluptates harum aliquam totam, doloribus eum impedit atque! Temporibus...
+            </p>
+            <a className="inline-block" href="#">
+              <span className="text-primary text-blue-500">Read more</span>
+            </a>
+          </div>
+          
         </div>
-        
-        
+        <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+          <div className="relative overflow-hidden rounded-xl">
+            <img src="https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80"
+            alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
+          </div>
+          <div className="mt-6 relative">
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+            UX/UI Design
+            </h3>
+            <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
+              Voluptates harum aliquam totam, doloribus eum impedit atque! Temporibus...
+            </p>
+            <a className="inline-block" href="#">
+              <span className="text-primary text-blue-500">Read more</span>
+            </a>
+          </div>
+          
+        </div>
+        <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+          <div className="relative overflow-hidden rounded-xl">
+            <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+            alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
+          </div>
+          <div className="mt-6 relative">
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+            Technical Support            </h3>
+            <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
+              Voluptates harum aliquam totam, doloribus eum impedit atque! Temporibus...
+            </p>
+            <a className="inline-block" href="#">
+              <span className="text-primary text-blue-500">Read more</span>
+            </a>
+          </div>
+          
+        </div>
+      </div>
     </div>
-    
-</div>
+  </div>
 
   )
 }
