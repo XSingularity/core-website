@@ -6,7 +6,7 @@ import Contact from "./components/contact";
 import Tech from "./components/tech";
 import Services from "./components/services";
 // import { BrowserRouter } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import {Link}  from 'react-scroll'
 
 export default function Home() {
 
@@ -48,8 +48,12 @@ export default function Home() {
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 font-normal md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
           <ul className="flex text-sm">
             {menuItems.map(menu => (
-              <li className="ease-in duration-300 mr-5 hover:text-blue-500 "><a href={`#${menu.title}`}>{menu.title}</a></li>
-            ))}
+              <li className="ease-in duration-300 mr-5 hover:text-blue-500 ">
+              <a href={`#${menu.title}`}>{menu.title}</a>
+              {/* <Link to={menu.title} smooth={true} offset={200} duration={500} > {menu.title} </Link> */}
+              </li>
+              
+           ))}
           </ul>
           </nav>
 
@@ -59,9 +63,7 @@ export default function Home() {
           <img className="lg:w-8 w-7 cursor-pointer" src="/moon.png" alt="" />
         </div>
       </header>
-      {/* {menuItems.map(menu => (
-        <div id={menu.title}>{menu.title}</div>
-      ))} */}
+   
       <div><Intro/></div>
       <Tech />
       <div id="How we work"><Timeline /></div>
