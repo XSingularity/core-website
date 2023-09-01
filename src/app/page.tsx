@@ -50,7 +50,12 @@ export default function Home() {
             {menuItems.map(menu => (
               <li className="ease-in duration-300 mr-5 hover:text-blue-500 ">
               <a href={`#${menu.title}`}>{menu.title}</a>
-              {/* <Link to={menu.title} smooth={true} offset={200} duration={500} > {menu.title} </Link> */}
+              {/* <Link to={menu.title} 
+                smooth={true} 
+                offset={200} 
+                duration={500}> 
+                {menu.title} 
+              </Link> */}
               </li>
               
            ))}
