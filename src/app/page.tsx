@@ -1,14 +1,20 @@
-import { useEffect, useState } from "react";
+"use client";
+import { useState } from "react";
+import React from "react";
 import Intro from "./components/intro";
 import Team from "./components/team";
 import Timeline from "./components/timeline";
 import Contact from "./components/contact";
 import Tech from "./components/tech";
 import Services from "./components/services";
+import Modal from "./components/modal";
+import Faq from './components/svg/Faq'
 // import { BrowserRouter } from "react-router-dom";
 import {Link}  from 'react-scroll'
 
+
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
 
   const menuItems =
     [
@@ -42,7 +48,9 @@ export default function Home() {
 
     <main>
       <header className="text-gray-900 font-sans font-light ">
+        
         <div className=" container mx-auto flex flex-wrap p-6 xl:px-40 2xl:px-40 lg:px-7 md:px-7 flex-col md:flex-row items-center ">
+         
           <a href="/"><img className="w-32" src="/logo1.png" alt="" /></a>
           <br />
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 font-normal md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
@@ -56,17 +64,24 @@ export default function Home() {
                 duration={500}> 
                 {menu.title} 
               </Link> */}
+          
               </li>
               
+              
            ))}
+          
           </ul>
-          </nav>
-
         
-
+          </nav>
+         <button onClick={()=> 
+        setShowModal(true)}>
+          <img className='w-10' src="./faq.png" alt="" /></button> 
+          <Modal isVisible={showModal} />
+         
+        
           <br />
-          <img className="lg:w-8 w-7 cursor-pointer" src="/moon.png" alt="" />
-        </div>
+          
+       </div>
       </header>
    
       <div><Intro/></div>
