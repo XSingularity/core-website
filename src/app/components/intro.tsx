@@ -1,6 +1,6 @@
 import SvgBlackhole from './svg/Blackhole'
 import SvgDust from './svg/Dust'
-import {Link} from 'react-scroll'
+import {Link} from 'react-scroll';
 
 const Intro = () => {
   const menuItems =
