@@ -25,7 +25,7 @@ const Services = () => {
             We coordinate every detail to ensure that your vision is realized efficiently.
             </p>
             <a className="inline-block" href="#">
-              <span className="text-primary text-blue-500">Read more</span>
+              
             </a>
           </div>
           
@@ -43,7 +43,7 @@ const Services = () => {
             We merge beauty with functionality to craft captivating interfaces.
             </p>
             <a className="inline-block" href="#">
-              <span className="text-primary text-blue-500">Read more</span>
+              
             </a>
           </div>
           
@@ -60,7 +60,7 @@ const Services = () => {
             We ensure to keep your operation running smoothly.
             </p>
             <a className="inline-block" href="#">
-              <span className="text-primary text-blue-500">Read more</span>
+              
             </a>
           </div>
           
@@ -81,7 +81,7 @@ const Services = () => {
             We develop visually appealing and functional interfaces that reflect your company's essence.
             </p>
             <a className="inline-block" href="#">
-              <span className="text-primary text-blue-500">Read more</span>
+              
             </a>
           </div>
           
@@ -99,7 +99,7 @@ const Services = () => {
             We ensure a solid and secure foundation for your application.
             </p>
             <a className="inline-block" href="#">
-              <span className="text-primary text-blue-500">Read more</span>
+              
             </a>
           </div>
           

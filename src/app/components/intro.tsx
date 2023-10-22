@@ -15,7 +15,7 @@ const Intro = () => {
       <div className=" container flex flex-wrap p-7 mx-auto xl:px-40 2xl:px-40 lg:px-7 md:px-7 sm:p-0  flex-col md:flex-row items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 my-28 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1 className="title-font sm:text-4xl lg:text-5xl md:text-4xl text-3xl mb-4 font-semibold bg-gradient-to-r from-gray-600 drop-shadow-lg to-gray-900 text-transparent bg-clip-text">
-            We Create & Optimize
+            We Create & Optimize_
           </h1>
           {/* Texto animado */}
           <div>
@@ -51,8 +51,8 @@ const Intro = () => {
 
           <div className="flex justify-center py-12 ">
        
-            <button className="ease-in duration-500 inline-flex text-white bg-gray-900 border-1 py-2 px-6 focus:outline-none hover:bg-blue-500 hover:text-white rounded text-lg font-medium ">
-              Contact</button>
+            <button className="ease-in duration-200 hover:scale-[1.1] inline-flex text-white bg-blue-500 border-1 py-2 px-6 focus:outline-none hover:bg-gray-900 hover:text-white rounded text-lg font-medium ">
+              Talk with us</button>
           </div>
         </div>
       
