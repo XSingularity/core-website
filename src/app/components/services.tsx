@@ -22,7 +22,7 @@ const Services = () => {
             Project Management
             </h3>
             <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-              Voluptates harum aliquam totam, doloribus eum impedit atque! Temporibus...
+            We coordinate every detail to ensure that your vision is realized efficiently.
             </p>
             <a className="inline-block" href="#">
               <span className="text-primary text-blue-500">Read more</span>
@@ -40,7 +40,7 @@ const Services = () => {
             UX/UI Design
             </h3>
             <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-              Voluptates harum aliquam totam, doloribus eum impedit atque! Temporibus...
+            We merge beauty with functionality to craft captivating interfaces.
             </p>
             <a className="inline-block" href="#">
               <span className="text-primary text-blue-500">Read more</span>
@@ -57,7 +57,7 @@ const Services = () => {
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
             Technical Support            </h3>
             <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-              Voluptates harum aliquam totam, doloribus eum impedit atque! Temporibus...
+            We ensure to keep your operation running smoothly.
             </p>
             <a className="inline-block" href="#">
               <span className="text-primary text-blue-500">Read more</span>
@@ -65,7 +65,48 @@ const Services = () => {
           </div>
           
         </div>
+      </div> {/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
+
+      <div className="grid gap-8 my-16 md:grid-cols-2 lg:grid-cols-2">
+        <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+          <div className="relative overflow-hidden rounded-xl">
+            <img src="https://www.gradhermetic.com/sites/default/files/inline-images/Noticias%20Gradhermetic.%20Edificios%20de%20cristal%20y%20acero.%20Son%20realmente%20eficientes.JPG"
+            alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
+          </div>
+          <div className="mt-6 relative">
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+            Frontend Design
+            </h3>
+            <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
+            We develop visually appealing and functional interfaces that reflect your company's essence.
+            </p>
+            <a className="inline-block" href="#">
+              <span className="text-primary text-blue-500">Read more</span>
+            </a>
+          </div>
+          
+        </div>
+        <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+          <div className="relative overflow-hidden rounded-xl">
+            <img src="https://wallpapers.com/images/featured/sky-mvehfqz6w2ges2dj.jpg"
+            alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
+          </div>
+          <div className="mt-6 relative">
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+            Backend Development
+            </h3>
+            <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
+            We ensure a solid and secure foundation for your application.
+            </p>
+            <a className="inline-block" href="#">
+              <span className="text-primary text-blue-500">Read more</span>
+            </a>
+          </div>
+          
+        </div>
+        
       </div>
+      
     </div>
   </div>
 

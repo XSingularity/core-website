@@ -31,8 +31,9 @@ const Tech = () => {
       <div className="animate-infinite-slider flex w-[calc(250px*11)]">
         {LogosSlide}
         {LogosSlide}
+  
       </div>
-      <br />
+      
     </div>
     </div>
     

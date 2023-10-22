@@ -14,8 +14,7 @@ const Contact = () => {
             <h1 className="text-3xl font-bold mb-4 py-10 text-center text-gray-900">TELL US ABOUT YOU</h1>
 
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-              Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-              gentrify.
+            <strong className="drop-shadow-3xl"> Get in touch with us.</strong> Fill out the form below to reach our team. Whether you have questions, feedback, or interest in our solutions, we're here to assist you. We look forward to working with you.
             </p>
           </div>
           <div className="lg:w-1/2 md:w-2/3 mx-auto">
