@@ -77,7 +77,8 @@ export default function Home() {
          <button onClick={()=> 
         setShowModal(true)}>
           <img className=' hover:opacity-30 lg:w-8 md:w-8 sm:w-5 sm:m-10' src="./faq.png" alt="" /></button> 
-          <Modal isVisible={showModal} />
+          <Modal isVisible={showModal} onClose={() => 
+          setShowModal(false)} />
          
         
           <br />

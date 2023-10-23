@@ -24,7 +24,7 @@ const Intro = () => {
      <TypeAnimation 
       sequence={[
        
-        'We Create & Optimize',
+        'We Create & Optimize', // Para editar el pointer ve a hoja de estilos global.css y edita "type"
         1000
       ]}
       wrapper="span"
