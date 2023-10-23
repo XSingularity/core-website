@@ -35,11 +35,11 @@ const Intro = () => {
     />
 
           </div>
-          {/* Texto animado */}
+          
           <div>
             <ul className="pl-1 pt-6 text-md market-text-lg list-disc text-gray-900">
               {/* edit puntos, tamano letra etc*/}
-              <nav className="flex flex-col sm:items-start sm:text-left text-center items-center -mb-5 space-y-2.5">
+              <nav className="flex text-base font-sans text-gray-600 flex-col sm:items-start sm:text-left text-center items-center -mb-5 space-y-2.5">
                 <a>
                   <span className="bg-indigo-100 text-blue-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center ">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" className="w-3 h-3 " viewBox="0 0 24 24">
