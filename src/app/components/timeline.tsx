@@ -1,110 +1,53 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 
 const Timeline = () => {
+  const [tooltips, setTooltips] = useState([
+    "Texto 1",
+    "Texto 2",
+    "Texto 3",
+    "Texto 4",
+    "Texto 5",
+  ]);
+
+  const handleMouseEnter = (index: number) => {
+    // Aquí puedes agregar la lógica para mostrar los tooltips.
+  };
+
+  const handleMouseLeave = () => {
+    // Aquí puedes agregar la lógica para ocultar los tooltips.
+  };
   return (
 
-    <div className="min-h-seditcreen bg-gradient-to-r from-blue-500 to-blue-700 py-6 flex flex-col justify-center sm:py-12 font-sans">
-      <h1 className="text-3xl font-bold mb-4 py-10 text-gray-100 text-center">HOW WE WORK</h1>
-      <div className="py-3 sm:max-w-xl sm:mx-auto w-full px-2 sm:px-0">
-
-        <div className="relative text-gray-700 antialiased text-sm font-normal font-sans">
-
-          <div className="hidden sm:block w-1 bg-blue-300 absolute h-full left-1/2 transform -translate-x-1/2"></div>
-
-          <div className="mt-6 sm:mt-0 sm:mb-12">
-            <div className="flex flex-col sm:flex-row items-center">
-              <div className="flex justify-start w-full mx-auto items-center">
-                <div className="w-full sm:w-1/2 sm:pr-8">
-                  <div className="p-4 bg-white rounded shadow text-center">
-                    Research & Analysis
-                  </div>
-                </div>
+    <div className="min-h-seditcreen h-[700px] bg-gradient-to-r from-blue-500 to-blue-700 py-20 justify-center sm:py-12 font-sans">
+     <div className=" text-center w-full mb-40 mt-10 text-white">
+          <h1 className="text-3xl font-bold mb-4 ">SERVICES</h1>
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">We offer a comprehensive range of services, from project management to design and development, to ensure the success of your projects and applications.</p>
+        </div> 
+  <div className="w-[900px] items-center justify-center mx-auto">
+  <div className="relative">
+      <div className="h-2 bg-white w-full absolute top-1/2 transform -translate-y-1/2"></div>
+      <div className="flex justify-between">
+        {tooltips.map((text, index) => (
+          <div
+            key={index}
+            className="relative"
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="w-[90px] h-[90px] bg-white rounded-full"></div>
+            {tooltips[index] && (
+              <div className="hidden absolute -top-8 -left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg shadow">
+                {tooltips[index]}
+                {/* Agrega el icono aquí */}
               </div>
-              <div className="rounded-full bg-blue-500 border-white border-4 w-8 h-8 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-            </div>
+            )}
           </div>
-
-          <div className="mt-6 sm:mt-0 sm:mb-12">
-            <div className="flex flex-col sm:flex-row items-center">
-              <div className="flex justify-end w-full mx-auto items-center">
-                <div className="w-full sm:w-1/2 sm:pl-8">
-                  <div className="p-4 bg-white rounded shadow text-center">
-                    Design
-                  </div>
-                </div>
-              </div>
-              <div className="rounded-full bg-blue-500 border-white border-4 w-8 h-8 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-
-          <div className="mt-6 sm:mt-0 sm:mb-12">
-            <div className="flex flex-col sm:flex-row items-center">
-              <div className="flex justify-start w-full mx-auto items-center">
-                <div className="w-full sm:w-1/2 sm:pr-8">
-                  <div className="p-4 bg-white rounded shadow text-center">
-                    Development
-                  </div>
-                </div>
-              </div>
-              <div className="rounded-full bg-blue-500 border-white border-4 w-8 h-8 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-
-          <div className="mt-6 sm:mt-0">
-            <div className="flex flex-col sm:flex-row items-center">
-              <div className="flex justify-end w-full mx-auto items-center">
-                <div className="w-full sm:w-1/2 sm:pl-8">
-                  <div className="p-4 bg-white rounded shadow text-center">
-                    Platform Setup
-                  </div>
-                </div>
-              </div>
-              <div className="rounded-full bg-blue-500 border-white border-4 w-8 h-8 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-
-          <div className="mt-6 sm:mt-0 sm:mb-12">
-            <div className="flex flex-col sm:flex-row items-center">
-              <div className="flex justify-start w-full mx-auto items-center">
-                <div className="w-full sm:w-1/2 sm:pr-8">
-                  <div className="p-4 bg-white rounded shadow text-center">
-                    Ongoing Improvements
-                  </div>
-                </div>
-              </div>
-              <div className="rounded-full bg-blue-500 border-white border-4 w-8 h-8 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-
-
+        ))}
       </div>
     </div>
-  )
-}
+    </div>
+    </div>
+  );
+} 
 export default Timeline

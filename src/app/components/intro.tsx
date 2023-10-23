@@ -69,8 +69,8 @@ const Intro = () => {
 
           <div className="flex justify-center py-12 ">
        
-            <button className="ease-in duration-200 hover:scale-[1.1] inline-flex text-white bg-blue-500 border-1 py-2 px-6 focus:outline-none hover:bg-gray-900 hover:text-white rounded text-lg font-medium ">
-              Talk with us</button>
+           <a target="_blank" href="https://calendly.com/xsingularity/meet-us"> <button className="ease-in duration-200 hover:scale-[1.1] inline-flex text-white bg-blue-500 border-1 py-2 px-6 focus:outline-none hover:bg-gray-900 hover:text-white rounded text-lg font-medium ">
+              Meet us</button></a>
           </div>
         </div>
       
