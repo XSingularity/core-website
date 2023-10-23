@@ -11,11 +11,11 @@ const Timeline = () => {
   ]);
 
   const handleMouseEnter = (index: number) => {
-    // Aquí puedes agregar la lógica para mostrar los tooltips.
+    // Aquí puedes agregar la lógica para mostrar 
   };
 
   const handleMouseLeave = () => {
-    // Aquí puedes agregar la lógica para ocultar los tooltips.
+    // Aquí puedes agregar la lógica para ocultar 
   };
   return (
 
