@@ -1,6 +1,9 @@
 import SvgBlackhole from './svg/Blackhole'
 import SvgDust from './svg/Dust'
 import {Link} from 'react-scroll';
+import { TypeAnimation } from 'react-type-animation';
+
+
 
 const Intro = () => {
   const menuItems =
@@ -14,9 +17,24 @@ const Intro = () => {
     <section className="text-gray-600 font-sans  ">
       <div className=" container flex flex-wrap p-7 mx-auto xl:px-40 2xl:px-40 lg:px-7 md:px-7 sm:p-0  flex-col md:flex-row items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 my-28 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-          <h1 className="title-font sm:text-4xl lg:text-5xl md:text-4xl text-3xl mb-4 font-semibold bg-gradient-to-r from-gray-600 drop-shadow-lg to-gray-900 text-transparent bg-clip-text">
-            We Create & Optimize_
-          </h1>
+          
+          <div>
+
+ 
+     <TypeAnimation 
+      sequence={[
+       
+        'We Create & Optimize',
+        1000
+      ]}
+      wrapper="span"
+      speed={30}
+      className={'type title-font sm:text-4xl lg:text-5xl md:text-4xl text-3xl font-semibold'}
+      cursor={false}
+      repeat={Infinity}
+    />
+
+          </div>
           {/* Texto animado */}
           <div>
             <ul className="pl-1 pt-6 text-md market-text-lg list-disc text-gray-900">
