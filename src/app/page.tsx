@@ -55,23 +55,14 @@ export default function Home() {
           <br />
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 font-normal md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
           <ul className="flex text-sm">
-            {menuItems.map(menu => (
-              <li className="ease-in duration-200 mr-5 hover:scale-[1.05] hover:text-blue-500 ">
-              {/* <a href={`#${menu.title}`}>{menu.title}</a> */}
-              
-             <Link className="cursor-pointer" to={menu.title} 
-                smooth={true} 
-                offset={50} 
-                duration={500}> 
-                {menu.title} 
-              </Link> 
-          
-              </li>
-              
-              
-           ))}
-          
-          </ul>
+  {menuItems.map((menu, index) => (
+    <li key={index} className="ease-in duration-200 mr-5 hover:scale-[1.05] hover:text-blue-500">
+      <Link className="cursor-pointer" to={menu.title} smooth={true} offset={50} duration={500}>
+        {menu.title}
+      </Link>
+    </li>
+  ))}
+</ul>
         
           </nav>
          <button onClick={()=> 
