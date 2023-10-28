@@ -24,7 +24,7 @@ const Workflow = () => {
           <h1 className="text-3xl font-bold mb-4 ">WORKFLOW</h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">We offer a comprehensive range of services, from project management to design and development, to ensure the success of your projects and applications.</p>
         </div> 
-  <div className="w-[900px] items-center justify-center mx-auto drop-shadow-md">
+  <div className="w-[900px] items-center justify-center mx-auto drop-shadow-lg">
   <div className="relative">
       <div className="h-2 bg-white w-full absolute top-1/2 transform -translate-y-1/2"></div>
       <div className="flex justify-between">

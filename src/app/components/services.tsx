@@ -22,7 +22,7 @@ const Services = () => {
             Project Management
             </h3>
             <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-            We coordinate every detail to ensure that your vision is realized efficiently.
+            Our meticulous dedication to every detail ensures that your project is executed accurately to transform your ideas into tangible results. 
             </p>
             <a className="inline-block" href="#">
               
@@ -40,7 +40,7 @@ const Services = () => {
             UX/UI Design
             </h3>
             <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-            We merge beauty with functionality to craft captivating interfaces.
+            We take care of conducting the necessary studies, covering every important detail to create an interface that provides a satisfactory response to the users' needs.
             </p>
             <a className="inline-block" href="#">
               
@@ -57,7 +57,7 @@ const Services = () => {
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
             Technical Support            </h3>
             <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-            We ensure to keep your operation running smoothly.
+            Our highly skilled team is always ready to provide assistance, ensuring continuous and uninterrupted operation of your software.
             </p>
             <a className="inline-block" href="#">
               
@@ -78,7 +78,7 @@ const Services = () => {
             Frontend Design
             </h3>
             <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-            We develop visually appealing and functional interfaces that reflect your company's essence.
+            We transform concepts into attractive and functional interfaces to connect with your audience from the very first click.
             </p>
             <a className="inline-block" href="#">
               
@@ -96,7 +96,8 @@ const Services = () => {
             Backend Development
             </h3>
             <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-            We ensure a solid and secure foundation for your application.
+            We empower your applications with secure, robust, and scalable development. Ensuring that your software runs smoothly and is capable of scaling with your business.
+
             </p>
             <a className="inline-block" href="#">
               

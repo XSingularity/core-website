@@ -9,7 +9,7 @@ const Team = () => {
     <img src="/c9.png" className='absolute opacity-10 -z-10 right-0 left-0 pt-[850px] m-auto w-[1300px] ' alt="" />
     {/* PLANO 3D */}
           <h1 className="text-3xl font-bold mb-4 text-gray-900">OUR TEAM</h1>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Meet our skilled team behind our tech solutions. We're a dedicated group of professionals with expertise in web development, design, and strategy. We're here to turn your ideas into reality and take your projects to the next level.</p>
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Our team consists of professionals specialized in cutting-edge technologies, design, and visionary strategies. We are dedicated to guiding your ideas and projects on the path to success. </p>
         </div>
         
       <div className="grid gap-12 md:grid-cols-3">
