@@ -3,7 +3,7 @@ import { useState } from "react";
 import React from "react";
 import Intro from "./components/intro";
 import Team from "./components/team";
-import Timeline from "./components/timeline";
+import Workflow from "./components/workflow";
 import Contact from "./components/contact";
 import Tech from "./components/tech";
 import Services from "./components/services";
@@ -54,15 +54,16 @@ export default function Home() {
           <a href="/"><img className="w-32" src="/logo1.png" alt="" /></a>
           <br />
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 font-normal md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+          
           <ul className="flex text-sm">
-  {menuItems.map((menu, index) => (
-    <li key={index} className="ease-in duration-200 mr-5 hover:scale-[1.05] hover:text-blue-500">
-      <Link className="cursor-pointer" to={menu.title} smooth={true} offset={50} duration={500}>
+        {menuItems.map((menu, index) => (
+        <li key={index} className="ease-in duration-200 mr-5 hover:scale-[1.05] hover:text-blue-500">
+        <Link className="cursor-pointer" to={menu.title} smooth={true} offset={50} duration={500}>
         {menu.title}
-      </Link>
-    </li>
-  ))}
-</ul>
+        </Link>
+        </li>
+        ))}
+          </ul>
         
           </nav>
          <button onClick={()=> 
@@ -79,7 +80,7 @@ export default function Home() {
    
       <div><Intro/></div>
       <Tech />
-      <div id="Workflow"><Timeline /></div>
+      <div id="Workflow"><Workflow /></div>
       <div id="Our team"><Team /></div>
       <div id="Services"><Services /></div>
       <div id="Contact"><Contact /></div>

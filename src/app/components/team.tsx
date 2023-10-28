@@ -16,7 +16,7 @@ const Team = () => {
         <div className="space-y-6 text-center">
           <img
             className="mx-auto h-64 w-64 rounded-full object-cover md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-            src="https://img.freepik.com/foto-gratis/chico-guapo-seguro-posando-contra-pared-blanca_176420-32936.jpg?w=360"
+            src="/omar.png"
             alt="woman"
             loading="lazy"
             width="640"
@@ -24,7 +24,7 @@ const Team = () => {
           />
           <div>
             <h4 className="text-2xl text-gray-700 dark:text-white">Omar Pérez</h4>
-            <span className="block text-sm text-gray-500">Backend developer</span>
+            <span className="block text-sm text-gray-500">CEO </span>
           </div>
           <div className="flex justify-center space-x-4 text-gray-500">
           
@@ -48,7 +48,7 @@ const Team = () => {
         <div className="space-y-6 text-center">
           <img
             className="mx-auto h-64 w-64 rounded-full object-cover md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-            src="https://c8.alamy.com/compes/2ht8h93/confianza-corporativa-retrato-recortado-de-un-joven-hombre-de-negocios-sentado-en-su-oficina-2ht8h93.jpg"
+            src="/doug.png"
             alt="woman"
             loading="lazy"
             width="1000"
@@ -56,7 +56,8 @@ const Team = () => {
           />
           <div>
             <h4 className="text-2xl text-gray-700 dark:text-white">Douglas Márquez</h4>
-            <span className="block text-sm text-gray-500">Frontend developer</span>
+            <span className="block text-sm text-gray-500">COO</span>
+
           </div>
           <div className="flex justify-center space-x-4 text-gray-500">
             <a href="#" target="_blank" aria-label="facebook">
@@ -116,7 +117,7 @@ const Team = () => {
         <div className="space-y-6 text-center">
           <img
             className="mx-auto h-64 w-64 rounded-full object-cover md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-            src="https://img.freepik.com/fotos-premium/joven-barba-sobre-azul-aislado-manteniendo-brazos-cruzados-posicion-frontal_1368-45021.jpg?w=740"
+            src="samu.png"
             alt="man"
             loading="lazy"
             width="1000"
@@ -124,7 +125,7 @@ const Team = () => {
           />
           <div>
             <h4 className="text-2xl text-gray-700 dark:text-white">Samuel Goncalves</h4>
-            <span className="block text-sm text-gray-500">Python developer</span>
+            <span className="block text-sm text-gray-500">IT Coordinator</span>
           </div>
           <div className="flex justify-center space-x-4 text-gray-500">
             <a href="#" target="_blank" aria-label="facebook">
@@ -205,7 +206,7 @@ const Team = () => {
           />
           <div>
             <h4 className="text-2xl text-gray-700 dark:text-white">Daniel Lara</h4>
-            <span className="block text-sm text-gray-500">Graphic Design</span>
+            <span className="block text-sm text-gray-500">Creative Director</span>
           </div>
           <div className="flex justify-center space-x-4 text-gray-500">
             <a href="#" target="_blank" aria-label="facebook">
@@ -272,8 +273,8 @@ const Team = () => {
             height="667"
           />
           <div>
-            <h4 className="text-2xl text-gray-700 dark:text-white">Maria Victoria Sanchez</h4>
-            <span className="block text-sm text-gray-500">Marketing Coordinator</span>
+            <h4 className="text-2xl text-gray-700 dark:text-white">Maria Victoria Sánchez</h4>
+            <span className="block text-sm text-gray-500">Marketing Director</span>
           </div>
           <div className="flex justify-center space-x-4 text-gray-500">
             <a href="#" target="_blank" aria-label="facebook">
@@ -341,7 +342,7 @@ const Team = () => {
           />
           <div>
             <h4 className="text-2xl text-gray-700 dark:text-white">Ricardo Maceiras</h4>
-            <span className="block text-sm text-gray-500">Finance Specialist</span>
+            <span className="block text-sm text-gray-500">CFO</span>
           </div>
           <div className="flex justify-center space-x-4 text-gray-500">
             <a href="#" target="_blank" aria-label="facebook">

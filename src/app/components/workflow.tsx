@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
-const Timeline = () => {
+const Workflow = () => {
   const [tooltips, setTooltips] = useState([
     "Texto 1",
     "Texto 2",
@@ -21,10 +21,10 @@ const Timeline = () => {
 
     <div className="min-h-seditcreen h-[700px] bg-gradient-to-r from-blue-500 to-blue-700 py-20 justify-center sm:py-12 font-sans">
      <div className=" text-center w-full mb-40 mt-10 text-white">
-          <h1 className="text-3xl font-bold mb-4 ">SERVICES</h1>
+          <h1 className="text-3xl font-bold mb-4 ">WORKFLOW</h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">We offer a comprehensive range of services, from project management to design and development, to ensure the success of your projects and applications.</p>
         </div> 
-  <div className="w-[900px] items-center justify-center mx-auto">
+  <div className="w-[900px] items-center justify-center mx-auto drop-shadow-md">
   <div className="relative">
       <div className="h-2 bg-white w-full absolute top-1/2 transform -translate-y-1/2"></div>
       <div className="flex justify-between">
@@ -50,4 +50,4 @@ const Timeline = () => {
     </div>
   );
 } 
-export default Timeline
+export default Workflow
