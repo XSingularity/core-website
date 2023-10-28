@@ -23,7 +23,7 @@ const Team = () => {
             height="805"
           />
           <div>
-            <h4 className="text-2xl text-gray-700 dark:text-white">Omar Pérez</h4>
+            <h4 className="text-2xl text-gray-700 dark:text-white">Omar A. Pérez</h4>
             <span className="block text-sm text-gray-500">CEO </span>
           </div>
           <div className="flex justify-center space-x-4 text-gray-500">
@@ -55,7 +55,7 @@ const Team = () => {
             height="667"
           />
           <div>
-            <h4 className="text-2xl text-gray-700 dark:text-white">Douglas Márquez</h4>
+            <h4 className="text-2xl text-gray-700 dark:text-white">Douglas M. Svizzero</h4>
             <span className="block text-sm text-gray-500">COO</span>
 
           </div>
@@ -124,7 +124,7 @@ const Team = () => {
             height="667"
           />
           <div>
-            <h4 className="text-2xl text-gray-700 dark:text-white">Samuel Goncalves</h4>
+            <h4 className="text-2xl text-gray-700 dark:text-white">Samuel A. Goncalves</h4>
             <span className="block text-sm text-gray-500">IT Coordinator</span>
           </div>
           <div className="flex justify-center space-x-4 text-gray-500">
