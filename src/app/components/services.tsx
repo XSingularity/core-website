@@ -14,7 +14,7 @@ const Services = () => {
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
           <div className="relative overflow-hidden rounded-xl">
-            <img src="https://images.unsplash.com/photo-1661749711934-492cd19a25c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80"
+            <img src="/project_m.jpg"
             alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
           </div>
           <div className="mt-6 relative">
@@ -32,7 +32,7 @@ const Services = () => {
         </div>
         <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
           <div className="relative overflow-hidden rounded-xl">
-            <img src="https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80"
+            <img src="/ux.jpg"
             alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
           </div>
           <div className="mt-6 relative">
@@ -50,7 +50,7 @@ const Services = () => {
         </div>
         <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
           <div className="relative overflow-hidden rounded-xl">
-            <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+            <img src="/tech_s.jpg"
             alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
           </div>
           <div className="mt-6 relative">
@@ -70,7 +70,7 @@ const Services = () => {
       <div className="grid gap-8 my-16 md:grid-cols-2 lg:grid-cols-2">
         <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
           <div className="relative overflow-hidden rounded-xl">
-            <img src="https://www.gradhermetic.com/sites/default/files/inline-images/Noticias%20Gradhermetic.%20Edificios%20de%20cristal%20y%20acero.%20Son%20realmente%20eficientes.JPG"
+            <img src="frontend.jpg"
             alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
           </div>
           <div className="mt-6 relative">
@@ -88,7 +88,7 @@ const Services = () => {
         </div>
         <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
           <div className="relative overflow-hidden rounded-xl">
-            <img src="https://wallpapers.com/images/featured/sky-mvehfqz6w2ges2dj.jpg"
+            <img src="/backend.jpg"
             alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
           </div>
           <div className="mt-6 relative">

@@ -198,7 +198,7 @@ const Team = () => {
         <div className="space-y-6 text-center">
           <img
             className="mx-auto h-64 w-64 rounded-full object-cover md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-            src="https://www.elinformador.com.co/images/stories/redes_sociales/2022/11-noviembre/05General_3.jpg"
+            src="/lara.png"
             alt="woman"
             loading="lazy"
             width="640"
@@ -266,7 +266,7 @@ const Team = () => {
         <div className="space-y-6 text-center">
           <img
             className="mx-auto h-64 w-64 rounded-full object-cover md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-            src="https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?w=740&t=st=1692729105~exp=1692729705~hmac=a2fd19f864b5b1b82fcd605117f9f0992e6c296ef4f0e4286ba3f2fcf9453ca4"
+            src="/maria.png"
             alt="woman"
             loading="lazy"
             width="1000"
@@ -334,7 +334,7 @@ const Team = () => {
         <div className="space-y-6 text-center">
           <img
             className="mx-auto h-64 w-64 rounded-full object-cover md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-            src="https://media.istockphoto.com/id/1370020940/es/foto/retrato-de-empresario-de-%C3%A9xito.jpg?s=612x612&w=0&k=20&c=r2-oFzMTgIo1CYKN_oSu-CJZztfSGKj6ylIt--nwXRA="
+            src="/rick.png"
             alt="man"
             loading="lazy"
             width="1000"
