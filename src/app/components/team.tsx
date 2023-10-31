@@ -55,7 +55,7 @@ const Team = () => {
             height="667"
           />
           <div>
-            <h4 className="text-2xl text-gray-700 dark:text-white">Douglas M. Svizzero</h4>
+            <h4 className="text-2xl text-gray-700 dark:text-white">Douglas Márquez</h4>
             <span className="block text-sm text-gray-500">COO</span>
 
           </div>
