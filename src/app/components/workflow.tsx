@@ -51,17 +51,17 @@ const Workflow = () => {
             {tooltips.map((text, index) => (
               <div
                 key={index}
-                className="relative"
+                className="relative hover:scale-[1.2] transition duration-1000"
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="w-[90px] h-[90px] bg-white rounded-full cursor-pointer hover:scale-[1.5] transition duration-1000"></div>
+                <div className="w-[90px] h-[90px] bg-white rounded-full cursor-pointer"></div>
                 {activeTooltip === index && (
-                  <div className="absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg shadow text-center mt-10">
-                    <div className="w-[200px]">{tooltips[index]}</div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg shadow text-center mt-10 w-[200px]">
+                    {tooltips[index]}
                   </div>
                 )}
-                <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%]">
+                <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
                   {icons[index]}
                 </div>
               </div>
