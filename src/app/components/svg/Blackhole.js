@@ -11,7 +11,7 @@ const SvgBlackhole = (props) => (
   >
     <style>
       {
-        ".blackhole_svg__prefix__st0{fill:none;stroke:#000;stroke-width:1.5;stroke-miterlimit:10}.blackhole_svg__prefix__st1{enable-background:new}"
+        ".blackhole_svg__prefix__st0{fill:none;stroke:#000;strokeWidth:1.5;stroke-miterlimit:10}.blackhole_svg__prefix__st1{enable-background:new}"
       }
     </style>
     <path

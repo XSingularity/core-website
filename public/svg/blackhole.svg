@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="prefix__Layer_1" x="0" y="0" version="1.1" viewBox="0 0 1080 1080">
   <style>
-    .prefix__st0{fill:none;stroke:#000;stroke-width:1.5;stroke-miterlimit:10}.prefix__st1{enable-background:new}
+    .prefix__st0{fill:none;stroke:#000;strokeWidth:1.5;stroke-miterlimit:10}.prefix__st1{enable-background:new}
   </style>
   <path d="M816 597c2-13 3-26 3-40 0-129-95-214-213-190S393 514 393 643c41 7 82 17 123 28 0-86 64-168 142-183 67-14 123 26 137 93m5 52c0-12-2-42-5-52" class="prefix__st0"/>
   <g class="prefix__st1">
