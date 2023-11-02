@@ -76,7 +76,7 @@ const Intro = () => {
 
         <div className="sm:content-center w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2">
           <SvgDust className='absolute rotate-180 w-[1015px] sm:opacity-0 lg:opacity-100 right-0 top-0 -z-10' />
-          <SvgBlackhole />
+          <SvgBlackhole className="" />
         </div>
       </div>
     </section>

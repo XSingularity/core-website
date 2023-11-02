@@ -8,8 +8,19 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        
+      },
       animation: {
         ["infinite-slider"]: "infiniteSlider 50s linear infinite",
+
+        'bounce-slow1': 'bounce 8.2s linear infinite',
+        'bounce-slow2': 'bounce 8.4s linear infinite',
+        'bounce-slow3': 'bounce 8.6s linear infinite',
+        'bounce-slow4': 'bounce 8.8s linear infinite',
+        'bounce-slow5': 'bounce 9s linear infinite',
+        
+
       },
       keyframes: {
         infiniteSlider: {
