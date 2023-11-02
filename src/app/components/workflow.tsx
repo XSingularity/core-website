@@ -28,7 +28,7 @@ const Workflow = () => {
   };
 
   return (
-    <div className="min-h-screen h-[700px] bg-gradient-to-r from-blue-500 to-blue-700 py-20 justify-center sm:py-12 font-sans  ">
+    <div className="h-[700px] bg-gradient-to-r from-blue-500 to-blue-700 py-40 justify-center sm:py-12 font-sans drop-shadow-2xl ">
       <div className="text-center w-full mb-40 mt-10 text-white">
         <h1 className="text-3xl font-bold mb-4">WORKFLOW</h1>
         <p className="lg:w-2/3 mx-auto leading-relaxed text-base">

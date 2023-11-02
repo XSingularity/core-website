@@ -78,7 +78,7 @@ export default function Home() {
       <div><Intro /></div>
       <Tech />
       <div id="Workflow"><Workflow /></div>
-      <div id="Our team"><Team /></div>
+      <div id="Team"><Team /></div>
       <div id="Services"><Services /></div>
       <div id="Contact"><Contact /></div>
     </main>
