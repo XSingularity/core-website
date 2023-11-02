@@ -24,6 +24,14 @@ const Workflow = () => {
     <Support />
   ];
 
+  const titles = [
+    "Planning",
+    "Code Implementation",
+    "Testing & QA",
+    "Deployment",
+    "Support"
+  ];
+
   const handleMouseEnter = (index: number) => {
     if (typeof index === 'number') {
       setActiveTooltip(index);
@@ -63,6 +71,9 @@ const Workflow = () => {
                 )}
                 <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
                   {icons[index]}
+                </div>
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center w-[200px] -mt-12">
+                  {titles[index]}
                 </div>
               </div>
             ))}
