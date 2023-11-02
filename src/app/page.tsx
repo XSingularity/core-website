@@ -8,9 +8,8 @@ import Contact from "./components/contact";
 import Tech from "./components/tech";
 import Services from "./components/services";
 import Modal from "./components/modal";
-import Faq from './components/svg/Faq'
-// import { BrowserRouter } from "react-router-dom";
-import {Link}  from 'react-scroll'
+import { SvgFaq } from './components/svg/Faq'
+import { Link } from 'react-scroll'
 
 
 export default function Home() {
@@ -30,7 +29,7 @@ export default function Home() {
 
       {
         id: 3,
-        title: "Our team"
+        title: "Team"
       },
 
       {
@@ -47,38 +46,36 @@ export default function Home() {
   return (
 
     <main>
-      <header className="text-gray-900 font-sans font-light  ">
-        
+      <header className="text-gray-900 font-sans mt-10">
+
         <div className="container mx-auto flex flex-wrap p-0 xl:px-40 2xl:px-40 lg:px-7 md:px-7 flex-col md:flex-row items-center justify-center ">
-         
+
           <a href="/"><img className="w-32" src="/logo1.png" alt="" /></a>
           <br />
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 font-normal md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-          
-          <ul className="flex text-sm">
-        {menuItems.map((menu, index) => (
-        <li key={index} className="ease-in duration-200 mr-5 hover:scale-[1.05] hover:text-blue-500">
-        <Link className="cursor-pointer" to={menu.title} smooth={true} offset={50} duration={500}>
-        {menu.title}
-        </Link>
-        </li>
-        ))}
-          </ul>
-        
+
+            <ul className="flex text-sm">
+              {menuItems.map((menu, index) => (
+                <li key={index} className="ease-in duration-200 mr-5 hover:scale-[1.05] hover:text-blue-500 text-md">
+                  <Link className="cursor-pointer" to={menu.title} smooth={true} offset={50} duration={500}>
+                    {menu.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
           </nav>
-         <button onClick={()=> 
-        setShowModal(true)}>
-          <img className=' hover:opacity-30 lg:w-8 md:w-8 sm:w-5 sm:m-10' src="./faq.png" alt="" /></button> 
-          <Modal isVisible={showModal} onClose={() => 
-          setShowModal(false)} />
-         
-        
+          <button onClick={() =>
+            setShowModal(true)}>
+            <SvgFaq />
+          </button>
+          < Modal isVisible={showModal} onClose={() =>
+            setShowModal(false)} />
           <br />
-          
-       </div>
+        </div>
       </header>
-   
-      <div><Intro/></div>
+
+      <div><Intro /></div>
       <Tech />
       <div id="Workflow"><Workflow /></div>
       <div id="Our team"><Team /></div>

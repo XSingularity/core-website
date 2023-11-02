@@ -6,15 +6,15 @@ const Contact = () => {
       <section className="text-gray-700 font-sans relative">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
-          <img src="/c1.png" className='absolute -z-10 top-20 right-40 blur-sm w-[80px]' alt="" />
-         <img src="/c1.png" className='absolute -z-10 bottom-3 right-20 rotate-45 w-[100px]' alt="" />
-         <img src="/c3.png" className='absolute -z-10 top-1/2 left-20 rotate-45 w-[100px]' alt="" />
-         <img src="/c3.png" className='absolute -z-10 top-1 blur-sm left-1/2 rotate-45 w-[70px]' alt="" />
-         <img src="/c3.png" className='absolute -z-10 top-30 blur-sm left-80 rotate-180 w-[90px]' alt="" />
+            <img src="/c1.png" className='absolute -z-10 top-20 right-40 blur-sm w-[80px]' alt="" />
+            <img src="/c1.png" className='absolute -z-10 bottom-3 right-20 rotate-45 w-[100px]' alt="" />
+            <img src="/c3.png" className='absolute -z-10 top-1/2 left-20 rotate-45 w-[100px]' alt="" />
+            <img src="/c3.png" className='absolute -z-10 top-1 blur-sm left-1/2 rotate-45 w-[70px]' alt="" />
+            <img src="/c3.png" className='absolute -z-10 top-30 blur-sm left-80 rotate-180 w-[90px]' alt="" />
             <h1 className="text-3xl font-bold mb-4 py-10 text-center text-gray-900">TELL US ABOUT YOU</h1>
 
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            <strong className="drop-shadow-3xl"> Get in touch with us.</strong> Fill out the form below to reach our team. Whether you have questions, feedback, or interest in our solutions, we're here to assist you. We look forward to working with you.
+              <strong className="drop-shadow-3xl"> Get in touch with us.</strong> Fill out the form below to reach our team. Whether you have questions, feedback, or interest in our solutions, we're here to assist you. We look forward to working with you.
             </p>
           </div>
           <div className="lg:w-1/2 md:w-2/3 mx-auto">

@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { TablerCheckupList } from './svg/TableReqs'
+import { TablerTerminal2 } from './svg/Terminal'
+import { FontistoLaboratory } from './svg/Testing'
+import { TablerRocket } from './svg/Rocket'
+import { Support } from './svg/Support'
 
 const Workflow = () => {
   const [tooltips, setTooltips] = useState([
@@ -43,15 +48,18 @@ const Workflow = () => {
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="w-[90px] h-[90px] bg-white rounded-full cursor-pointer "></div>
+                <div className="w-[90px] h-[90px] bg-white rounded-full cursor-pointer hover:scale-[1.5] transition duration-1000"></div>
                 {activeTooltip === index && (
                   <div className="absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg shadow text-center mt-5 ">
                     <div className="w-[200px] ">
-                    
-                    {tooltips[index]} </div>
-                    
-                    {/* Agrega el icono aquí */}
 
+                      {tooltips[index]} </div>
+
+                    <TablerCheckupList />
+                    <TablerTerminal2 />
+                    <FontistoLaboratory />
+                    <TablerRocket />
+                    <Support />
                   </div>
                 )}
               </div>
