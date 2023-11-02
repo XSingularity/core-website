@@ -1,5 +1,5 @@
 export function Support(props) {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 32 32" {...props}><path fill="currentColor" d="M28 17v5H4V6h10V4H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8v4H8v2h16v-2h-4v-4h8a2 2 0 0 0 2-2v-5ZM18 28h-4v-4h4Z" /><path fill="currentColor" d="M30 10V8h-2.101a4.968 4.968 0 0 0-.732-1.753l1.49-1.49l-1.414-1.414l-1.49 1.49A4.968 4.968 0 0 0 24 4.101V2h-2v2.101a4.968 4.968 0 0 0-1.753.732l-1.49-1.49l-1.414 1.414l1.49 1.49A4.968 4.968 0 0 0 18.101 8H16v2h2.101a4.968 4.968 0 0 0 .732 1.753l-1.49 1.49l1.414 1.414l1.49-1.49a4.968 4.968 0 0 0 1.753.732V16h2v-2.101a4.968 4.968 0 0 0 1.753-.732l1.49 1.49l1.414-1.414l-1.49-1.49A4.968 4.968 0 0 0 27.899 10Zm-7 2a3 3 0 1 1 3-3a3.003 3.003 0 0 1-3 3Z" /></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-10 hover:text-primary bi bi-faq hover:text-blue-500 ease-in duration-300" viewBox="0 0 717 709" {...props}><path fill="currentColor" d="m247 245l10-85L122 23c29-14 62-23 97-23c121 0 219 97 219 219c0 18-3 38-7 56l249 248c45 46 49 116 8 157s-112 38-158-8L287 427c-22 7-44 12-68 12C98 439 0 340 0 219c0-34 7-64 20-93l139 141z"/></svg>
     )
-}
+  }
