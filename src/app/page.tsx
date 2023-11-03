@@ -67,11 +67,11 @@ export default function Home() {
           </nav>
           <button onClick={() =>
             setShowModal(true)}>
-            <SvgFaq />
+            <div className="sm:absolute sm:top-9 sm:right-14 md:static lg:static xl:static md:p-0 lg:p-0 xl:p-0">< SvgFaq/></div>
           </button>
           < Modal isVisible={showModal} onClose={() =>
             setShowModal(false)} />
-          <br />
+          
         </div>
       </header>
 

@@ -14,9 +14,9 @@ const Intro = () => {
       }]
   return (
 
-    <section className="text-gray-600 font-sans  ">
-      <div className=" container flex flex-wrap p-7 mx-auto xl:px-40 2xl:px-40 lg:px-7 md:px-7 sm:p-0  flex-col md:flex-row items-center">
-        <div className="lg:flex-grow md:w-1/2 lg:pr-24 my-28 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+    <section className="text-gray-600 font-sans sm:py-0 md:py-0 lg:py-0 xl:py-0">
+      <div className=" container flex flex-wrap flex-col p-7 mx-auto md:px-7 md:flex-row xl:px-40 2xl:px-40 items-center">
+        <div className="lg:flex-grow md:w-1/2 sm:px-5 lg:pr-24 my-28 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
 
           <div>
 
@@ -75,7 +75,7 @@ const Intro = () => {
         </div>
 
         <div className="sm:content-center w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2">
-          <SvgDust className='absolute rotate-180 w-[1015px] sm:opacity-0 lg:opacity-100 right-0 top-0 -z-10' />
+          <SvgDust className='absolute rotate-180 w-[1015px] right-0 top-0 -z-10' />
           <SvgBlackhole className="" />
         </div>
       </div>
