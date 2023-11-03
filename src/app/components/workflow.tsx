@@ -4,9 +4,20 @@ import { FontistoLaboratory } from './svg/Testing'
 import { TablerRocket } from './svg/Rocket'
 import { Support } from './svg/Support'
 import React, { useState, useEffect } from "react";
+import handleViewport, { type InjectedViewportProps } from 'react-in-viewport';
 
 
-const Workflow = () => {
+const Block = (props: InjectedViewportProps<HTMLDivElement>) => {
+  const { inViewport, forwardedRef } = props;
+  return (
+    <div className="viewport-block" ref={forwardedRef}>
+    </div>
+  );
+};
+
+const ViewportBlock = handleViewport(Block, /** options: {}, config: {} **/);
+
+const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
   const [windowSize, setWindowSize] = useState<number>(0); // useState(window.innerWidth);
   useEffect(() => {
     // Función para actualizar el tamaño de la ventana
@@ -47,10 +58,10 @@ const Workflow = () => {
               <div className="flex-column justify-between ">
                 {tooltips.map((text, index) => (
                   <div
-                    key={index}
-                    className="relative transition duration-1000 items-center text-center top-5 cursor-pointer "
-                    onMouseEnter={() => handleMouseEnter(index)}
-                    onMouseLeave={handleMouseLeave}
+                  key={index}
+                  className="relative transition duration-1000 items-center text-center top-5 cursor-pointer "
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
                   >
                     {activeTooltip === index && (
                       <div className="absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg shadow w-[300px] h-[116px] z-10 flex items-center justify-center  ">
@@ -59,6 +70,7 @@ const Workflow = () => {
                     )}
                     {/* INFO */}
                     <div className="w-[90px] h-[90px] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20"></div>
+                    <ViewportBlock onEnterViewport={() => handleMouseEnter(index)} onLeaveViewport={() => handleMouseLeave} />
                     {/* CIRCULO */}
 
                     <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
