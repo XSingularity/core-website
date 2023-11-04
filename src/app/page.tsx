@@ -7,6 +7,7 @@ import Workflow from "./components/workflow";
 import Contact from "./components/contact";
 import Tech from "./components/tech";
 import Services from "./components/services";
+import Form from "./components/form";
 import Modal from "./components/modal";
 import { SvgFaq } from './components/svg/Faq'
 import { Link } from 'react-scroll'
@@ -77,7 +78,7 @@ export default function Home() {
 
       <div><Intro /></div>
       <Tech />
-      <div id="Workflow"><Workflow /></div>
+      <div id="Workflow"><Workflow/></div>
       <div id="Team"><Team /></div>
       <div id="Services"><Services /></div>
       <div id="Contact"><Contact /></div>
