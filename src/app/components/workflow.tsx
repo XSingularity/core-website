@@ -58,10 +58,10 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
               <div className="flex-column justify-between ">
                 {tooltips.map((text, index) => (
                   <div
-                  key={index}
-                  className="relative transition duration-1000 items-center text-center top-5 cursor-pointer "
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
+                    key={index}
+                    className="relative transition duration-1000 items-center text-center top-5 cursor-pointer "
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseLeave={handleMouseLeave}
                   >
                     {activeTooltip === index && (
                       <div className="absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg shadow w-[300px] h-[116px] z-10 flex items-center justify-center  ">
@@ -171,4 +171,4 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
   );
 };
 
-export default Workflow;
+export default handleViewport(Workflow);
