@@ -15,11 +15,10 @@ const Intro = () => {
   return (
 
     <section className="text-gray-600 font-sans sm:py-0 md:py-0 lg:py-0 xl:py-0">
-      <div className=" container flex flex-wrap flex-col p-7 mx-auto md:px-7 md:flex-row xl:px-40 2xl:px-40 items-center">
-        <div className="lg:flex-grow md:w-1/2 sm:px-5 lg:pr-24 my-28 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+      <div className=" container flex flex-wrap flex-col p-7 mx-auto md:px-7 xl:px-40 2xl:px-40 md:flex-row items-center">
+        <div className="lg:flex-grow md:w-1/2 sm:px-2 lg:pr-24 sm:my-10 md:my-10 lg:my-10 xl:my-10 md:pr-16 flex flex-col md:items-start md:text-left sm:mb-4 md:mb-0 lg:mb-0 xl:mb-0 items-center text-center">
 
           <div>
-
 
             <TypeAnimation
               sequence={[
