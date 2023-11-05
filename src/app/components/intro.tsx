@@ -16,7 +16,7 @@ const Intro = () => {
 
     <section className="text-gray-600 font-sans sm:py-0 md:py-0 lg:py-0 xl:py-0">
       <div className=" container flex flex-wrap flex-col p-1 mx-auto md:px-7 xl:px-40 2xl:px-40 md:flex-row items-center">
-        <div className="lg:flex-grow md:w-1/2 sm:px-2 lg:pr-24 sm:my-10 md:my-10 lg:my-10 xl:my-10 md:pr-16 flex flex-col md:items-start md:text-left sm:mb-4 md:mb-0 lg:mb-0 xl:mb-0 items-center text-center">
+        <div className="lg:flex-grow sm:pr-0 md:pr-16 lg:pr-24 xl:pr-30 md:w-1/2 sm:px-2 md:px-0 lg:px-0 xl:px-0 sm:my-10 md:my-10 lg:my-10 xl:my-10 flex flex-col md:items-start md:text-left sm:mb-4 md:mb-0 lg:mb-0 xl:mb-0 items-center text-center">
 
           <div>
 
@@ -36,7 +36,7 @@ const Intro = () => {
           </div>
 
           <div>
-            <ul className="pl-1 pt-6 text-md market-text-lg list-disc text-gray-900">
+            <ul className="pt-6 text-md market-text-lg list-disc text-gray-900">
               {/* edit puntos, tamano letra etc*/}
               <nav className="flex text-base font-sans text-gray-600 flex-col sm:items-start sm:text-left text-center items-center">
                 <a className="text-justify mb-4">
