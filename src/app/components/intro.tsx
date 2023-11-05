@@ -16,7 +16,8 @@ const Intro = () => {
 
     <section className="text-gray-600 font-sans sm:py-0 md:py-0 lg:py-0 xl:py-0">
       <div className=" container flex flex-wrap flex-col p-1 mx-auto md:px-7 xl:px-40 2xl:px-40 md:flex-row items-center">
-        <div className="lg:flex-grow md:w-1/2 sm:px-2 lg:pr-24 sm:my-10 md:my-10 lg:my-10 xl:my-10 md:pr-16 flex flex-col md:items-start md:text-left sm:mb-4 md:mb-0 lg:mb-0 xl:mb-0 items-center text-center">
+        <div className="lg:flex-grow md:w-1/2 sm:px-2 lg:pr-24 sm:my-10 md:my-20 lg:my-20 xl:my-20 md:pr-16 flex flex-col 
+        md:items-start md:text-left sm:mb-10 md:mb-0 lg:mb-0 xl:mb-0 items-center text-center">
 
           <div>
 
@@ -35,7 +36,8 @@ const Intro = () => {
 
           </div>
 
-          <div>
+          <div className='sm:my-0 md:my-0 lg:my-2 xl:my-10 '>
+           
             <ul className="pl-1 pt-6 text-md market-text-lg list-disc text-gray-900">
               {/* edit puntos, tamano letra etc*/}
               <nav className="flex text-base font-sans text-gray-600 flex-col sm:items-start sm:text-left text-center items-center">
@@ -63,9 +65,9 @@ const Intro = () => {
             </ul>
           </div>
 
-          <div className="flex justify-center py-12 ">
+          <div className="flex justify-center ">
 
-            <a target="_blank" href="https://calendly.com/xsingularity/meet-us"> <button className="ease-in duration-200 hover:scale-[1.1] inline-flex text-white bg-blue-500 border-1 py-2 px-6 focus:outline-none hover:bg-gray-900 hover:text-white rounded text-lg font-medium ">
+            <a target="_blank" href="https://calendly.com/xsingularity/meet-us"> <button className="ease-in duration-200 hover:scale-[1.1] inline-flex text-white bg-blue-500 border-1 py-2 px-6 focus:outline-none hover:bg-gray-900 hover:text-white rounded text-lg font-medium sm:mb-10 md:mb-10 lg:mb-10 xl:mb-10">
               Meet us</button></a>
           </div>
         </div>
