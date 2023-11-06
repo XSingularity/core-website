@@ -38,7 +38,7 @@ const Intro = () => {
 
           <div className='sm:my-0 md:my-0 lg:my-2 xl:my-10 '>
            
-            <ul className="pl-1 pt-6 text-md market-text-lg list-disc text-gray-900">
+            <ul className=" pt-6 text-md market-text-lg list-disc text-gray-900">
               {/* edit puntos, tamano letra etc*/}
               <nav className="flex text-base font-sans text-gray-600 flex-col sm:items-start sm:text-left text-center items-center">
                 <a className="text-justify mb-4">
