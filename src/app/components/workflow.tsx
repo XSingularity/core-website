@@ -38,6 +38,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
 
   // Define una función para renderizar el div en función del tamaño de la ventana
   const renderDivBasedOnWindowSize = () => {
+    // setActiveTooltip(0);
     if (windowSize < 1024) {
       // Para tamaños pequeños.....
       return <div className="">
@@ -104,7 +105,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                 {tooltips.map((text, index) => (
                   <div
                     key={index}
-                    className="relative hover:scale-[1.15] transition duration-1000"
+                    className="relative hover:scale-[1.1] transition duration-1000"
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -137,7 +138,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
     "We provide ongoing support to ensure your business can operate smoothly.",
   ]);
 
-  const [activeTooltip, setActiveTooltip] = useState<number | null>(null);
+  const [activeTooltip, setActiveTooltip] = useState<number | null>(0);
 
   const icons = [
     <TablerCheckupList />,

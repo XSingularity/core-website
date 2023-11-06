@@ -16,7 +16,7 @@ const Intro = () => {
 
     <section className="text-gray-600 font-sans sm:py-0 md:py-0 lg:py-0 xl:py-0">
       <div className=" container flex flex-wrap flex-col p-1 mx-auto md:px-7 xl:px-40 2xl:px-40 md:flex-row items-center">
-        <div className="lg:flex-grow md:w-1/2 sm:px-2 lg:pr-24 sm:my-10 md:my-20 lg:my-20 xl:my-20 md:pr-16 flex flex-col 
+        <div className="lg:flex-grow md:w-1/2 lg:pr-24 sm:my-10 md:my-20 lg:my-20 xl:my-20 md:pr-16 flex flex-col 
         md:items-start md:text-left sm:mb-10 md:mb-0 lg:mb-0 xl:mb-0 items-center text-center">
 
           <div>
