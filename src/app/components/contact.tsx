@@ -14,7 +14,6 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-
     e.preventDefault();
 
     fetch('/api/contact', {
@@ -25,9 +24,9 @@ const Contact = () => {
       },
       body: JSON.stringify(formData)
     }).then((res) => {
-      console.log('Response received')
       if (res.status === 200) {
         console.log('Response succeeded!')
+        alert("Thank you for your message. We will get back to you soon!")
       }
     })
   };

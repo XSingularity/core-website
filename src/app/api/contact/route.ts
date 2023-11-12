@@ -1,8 +1,10 @@
-import { Request, Response } from 'express';
+import e from 'express';
+import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { useState } from 'react';
 
-export async function POST(request: Request, response: Response): Promise<void> {
-    const { name, email, message }: Partial<Contact> = await request.body;
+export async function POST(request: Request) {
+    const { name, email, message }: Partial<Contact> = await request.json()
     require('dotenv').config();
 
     const transporter = nodemailer.createTransport({
@@ -14,45 +16,31 @@ export async function POST(request: Request, response: Response): Promise<void> 
         },
         secure: true,
     });
-    console.log(process.env.password);
 
     const mailData = {
         from: 'xsingularity.corp@gmail.com',
-        to: 'omarcorporated@gmail.com',
-        subject: `Message From ${request.body.name}`,
-        text: request.body.message + " | Sent from: " + request.body.email,
-        html: `<div>${request.body.message}</div><p>Sent from:
-      ${request.body.email}</p>`
+        to: email,
+        subject: `Message From ${name}`,
+        text: message + " | Sent from: " + email,
+        html: `<div>${message}</div><p>Sent from:
+      ${email}</p>`
     };
 
+    let emailError = 1;
     transporter.sendMail(mailData, function (err, info) {
-        if (err)
+        if (err) {
             console.log(err);
-        else
+            emailError = 1;
+        }
+        else{
             console.log(info);
+            emailError = 0;
+        }
     });
 
-    // response.send({ message: "success" });
+    if (emailError === 0) {
+        return NextResponse.json({ message: "error", status: 500});
+    } else {
+        return NextResponse.json({ message: "success", status: 200});
+    }
 }
-
-
-// export default async function POST(request: Request) {
-//     const { name, email, message }: Partial<Contact> = await request.json()
-
-//     if (!userId || !title) return NextResponse.json({ "message": "Missing required data" })
-
-//     const res = await fetch(DATA_SOURCE_URL, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'API-Key': API_KEY
-//         },
-//         body: JSON.stringify({
-//             userId, title, completed: false
-//         })
-//     })
-
-//     const newTodo: Todo = await res.json()
-
-//     return NextResponse.json(newTodo)
-// }
