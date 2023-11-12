@@ -7,7 +7,6 @@ import Workflow from "./components/workflow";
 import Contact from "./components/contact";
 import Tech from "./components/tech";
 import Services from "./components/services";
-import Form from "./components/form";
 import Modal from "./components/modal";
 import { SvgFaq } from './components/svg/Faq'
 import { Link } from 'react-scroll'
