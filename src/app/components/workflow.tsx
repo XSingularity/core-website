@@ -10,12 +10,11 @@ import handleViewport, { type InjectedViewportProps } from 'react-in-viewport';
 const Block = (props: InjectedViewportProps<HTMLDivElement>) => {
   const { inViewport, forwardedRef } = props;
   return (
-    <div className="viewport-block" ref={forwardedRef}>
-    </div>
+    <div className="viewport-block" ref={forwardedRef}></div>
   );
 };
 
-const ViewportBlock = handleViewport(Block, /** options: {}, config: {} **/);
+const ViewportBlock = handleViewport(Block, {rootMargin: '-1.0px'});
 
 const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
   const [windowSize, setWindowSize] = useState<number>(0); // useState(window.innerWidth);
@@ -38,7 +37,6 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
 
   // Define una función para renderizar el div en función del tamaño de la ventana
   const renderDivBasedOnWindowSize = () => {
-    // setActiveTooltip(0);
     if (windowSize < 1024) {
       // Para tamaños pequeños.....
       return <div className="">
@@ -71,7 +69,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                     )}
                     {/* INFO */}
                     <div className="w-[90px] h-[90px] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20"></div>
-                    <ViewportBlock onEnterViewport={() => handleMouseEnter(index)} onLeaveViewport={() => handleMouseLeave} />
+                    <ViewportBlock onEnterViewport={() => setActiveTooltip(index)} onLeaveViewport={() => setActiveTooltip(null)} />
                     {/* CIRCULO */}
 
                     <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
@@ -112,7 +110,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                     <div className="w-[90px] h-[90px] bg-white rounded-full cursor-pointer"></div>
                     {activeTooltip === index && (
                       <div className="absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg shadow text-center mt-10 w-[200px]">
-                        {tooltips[index]}
+                        {text}
                       </div>
                     )}
                     <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
@@ -157,9 +155,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
   ];
 
   const handleMouseEnter = (index: number) => {
-    if (typeof index === 'number') {
-      setActiveTooltip(index);
-    }
+    setActiveTooltip(index);
   };
 
   const handleMouseLeave = () => {
