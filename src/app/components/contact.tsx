@@ -55,7 +55,6 @@ const Contact = () => {
             </p>
           </div>
           <div className="lg:w-1/2 md:w-2/3 mx-auto ">
-
             <form className="flex flex-wrap -m-2" onSubmit={handleSubmit}>
               <div className="p-2 w-1/2 ">
                 <div className="relative">
