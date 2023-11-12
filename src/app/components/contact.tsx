@@ -14,10 +14,7 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [body, setBody] = useState('')
-    const [submitted, setSubmitted] = useState(false)
+
     e.preventDefault();
 
     fetch('/api/contact', {
@@ -31,10 +28,6 @@ const Contact = () => {
       console.log('Response received')
       if (res.status === 200) {
         console.log('Response succeeded!')
-        setSubmitted(true)
-        setName('')
-        setEmail('')
-        setBody('')
       }
     })
   };
