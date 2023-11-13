@@ -17,8 +17,8 @@ export async function POST(request: Request) {
     });
 
     const mailData = {
-        from: 'xsingularity.corp@gmail.com',
-        to: email,
+        from: email,
+        to: 'xsingularity.corp@gmail.com',
         subject: `Message From ${name}`,
         text: message + " | Sent from: " + email,
         html: `<div>${message}</div><p>Sent from:
