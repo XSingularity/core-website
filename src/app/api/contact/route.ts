@@ -1,7 +1,6 @@
 import e from 'express';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { useState } from 'react';
 
 export async function POST(request: Request) {
     const { name, email, message }: Partial<Contact> = await request.json()
@@ -26,21 +25,11 @@ export async function POST(request: Request) {
       ${email}</p>`
     };
 
-    let emailError = 1;
     transporter.sendMail(mailData, function (err, info) {
-        if (err) {
+        if (err)
             console.log(err);
-            emailError = 1;
-        }
-        else{
+        else
             console.log(info);
-            emailError = 0;
-        }
     });
-
-    if (emailError === 0) {
-        return NextResponse.json({ message: "error", status: 500});
-    } else {
-        return NextResponse.json({ message: "success", status: 200});
-    }
+    return NextResponse.json({ message: "success", status: 200});
 }
