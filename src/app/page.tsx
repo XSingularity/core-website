@@ -48,6 +48,7 @@ export default function Home() {
     <main>
       <header className="text-gray-900 font-sans mt-10">
 
+ 
         <div className="container mx-auto flex flex-wrap p-0 xl:px-40 2xl:px-40 lg:px-7 md:px-7 flex-col md:flex-row items-center justify-center ">
 
           <a href="/"><img className="w-32" src="/logo1.png" alt="" /></a>
@@ -74,8 +75,8 @@ export default function Home() {
 
         </div>
       </header>
-
-      <div><Intro /></div>
+ 
+      <div ><Intro /></div>
       <Tech />
       <div id="Workflow"><Workflow /></div>
       <div id="Team"><Team /></div>

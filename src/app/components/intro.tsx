@@ -1,6 +1,7 @@
 import SvgBlackhole from './svg/Blackhole'
 import SvgDust from './svg/Dust'
 import { TypeAnimation } from 'react-type-animation';
+import { Link } from 'react-scroll'
 
 
 
@@ -14,7 +15,7 @@ const Intro = () => {
   return (
 
     <section className="text-gray-900 font-sans sm:py-0 md:py-0 lg:py-0 xl:py-0">
-      <div className="container flex flex-wrap flex-col p-1 mx-auto md:px-7 xl:px-40 2xl:px-40 md:flex-row items-center">
+      <div id="Home" className="container flex flex-wrap flex-col p-1 mx-auto md:px-7 xl:px-40 2xl:px-40 md:flex-row items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 sm:my-10 md:my-20 lg:my-20 xl:my-20 md:pr-16 flex flex-col 
         md:items-start md:text-left sm:mb-5 md:mb-0 lg:mb-0 xl:mb-0 items-center text-center">
 
@@ -65,12 +66,16 @@ const Intro = () => {
               Meet us</button></a>
           </div>
         </div>
-
+      
         <div className="sm:content-center w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2">
           <SvgDust className='absolute rotate-180 w-[1015px] right-0 top-0 -z-10' />
           <SvgBlackhole className="" />
         </div>
       </div>
+      <Link className="fixed z-10 bottom-5 hover:opacity-70 right-6 md:p-0 lg:p-0 xl:p-0" to="Home" smooth={true} offset={-50} duration={500}>
+          <button className=''>
+<img className='w-10' src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Circle-icons-arrow-up.svg/1200px-Circle-icons-arrow-up.svg.png" alt="" />          </button>
+        </Link>
     </section>
   )
 }
