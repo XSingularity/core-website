@@ -2,16 +2,12 @@ import SvgBlackhole from './svg/Blackhole'
 import SvgDust from './svg/Dust'
 import { TypeAnimation } from 'react-type-animation';
 import { Link } from 'react-scroll'
+import {Arrow} from './svg/Arrow'
 
 
 
 const Intro = () => {
-  const menuItems =
-    [
-      {
-        id: 1,
-        title: "Home"
-      }]
+
   return (
 
     <section className="text-gray-900 font-sans sm:py-0 md:py-0 lg:py-0 xl:py-0">
@@ -72,9 +68,10 @@ const Intro = () => {
           <SvgBlackhole className="" />
         </div>
       </div>
-      <Link className="fixed z-10 bottom-5 hover:opacity-70 right-6 md:p-0 lg:p-0 xl:p-0" to="Home" smooth={true} offset={-50} duration={500}>
-          <button className=''>
-<img className='w-10' src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Circle-icons-arrow-up.svg/1200px-Circle-icons-arrow-up.svg.png" alt="" />          </button>
+      <Link className="fixed z-10 hover:opacity-70 right-6 md:p-0 lg:p-0 xl:p-0 sm:hidden md:block lg:block xl:block sm:bottom-8 md:bottom-3 lg:bottom-3 xl:bottom-3 " to="Home" smooth={true} offset={-50} duration={500}>
+          <button>
+        <Arrow/>
+        </button>
         </Link>
     </section>
   )

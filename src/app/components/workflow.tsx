@@ -1,14 +1,13 @@
-import { TablerCheckupList } from './svg/TableReqs'
-import { TablerTerminal2 } from './svg/Terminal'
-import { FontistoLaboratory } from './svg/Testing'
-import { TablerRocket } from './svg/Rocket'
-import { Support } from './svg/Support'
 import React, { useState, useEffect } from "react";
 import handleViewport, { type InjectedViewportProps } from 'react-in-viewport';
-
+import { TablerCheckupList } from './svg/TableReqs';
+import { TablerTerminal2 } from './svg/Terminal';
+import { FontistoLaboratory } from './svg/Testing';
+import { TablerRocket } from './svg/Rocket';
+import { Support } from './svg/Support';
 
 const Block = (props: InjectedViewportProps<HTMLDivElement>) => {
-  const { inViewport, forwardedRef } = props;
+  const { forwardedRef } = props;
   return (
     <div className="viewport-block" ref={forwardedRef}></div>
   );
@@ -17,29 +16,86 @@ const Block = (props: InjectedViewportProps<HTMLDivElement>) => {
 const ViewportBlock = handleViewport(Block, {rootMargin: '-1.0px'});
 
 const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
-  const [windowSize, setWindowSize] = useState<number>(0); // useState(window.innerWidth);
+  const [windowSize, setWindowSize] = useState<number>(0);
+
   useEffect(() => {
-    // Función para actualizar el tamaño de la ventana
     const handleResize = () => {
       setWindowSize(window.innerWidth);
     };
 
     handleResize();
 
-    // Registra el evento de cambio de tamaño de la ventana
     window.addEventListener("resize", handleResize);
 
-    // Limpia el evento cuando el componente se desmonta
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  // Define una función para renderizar el div en función del tamaño de la ventana
+  const tooltipsData = [
+    "This is where we analyze the requirements of your project, ensuring that we fully understand your needs and goals.",
+    "Our experts transform the requirements into solid and efficient code, using industry best practices.",
+    "The code undergoes unit testing and quality controls to ensure that your software operates flawlessly.",
+    "We set up all your infrastructure, server configuration and installation.",
+    "We provide ongoing support to ensure your business can operate smoothly.",
+  ];
+
+  const [tooltips, setTooltips] = useState<string[]>(tooltipsData);
+  const [activeTooltip, setActiveTooltip] = useState<number | null>(null);
+
+  const icons = [
+    <TablerCheckupList />,
+    <TablerTerminal2 />,
+    <FontistoLaboratory />,
+    <TablerRocket />,
+    <Support />
+  ];
+
+  const titles = [
+    "PLANNING",
+    "CODE IMPLEMENTATION",
+    "TESTING & QA",
+    "DEPLOYMENT",
+    "SUPPORT"
+  ];
+
+  const handleMouseEnter = (index: number) => {
+    setActiveTooltip(index);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveTooltip(null);
+  };
+
+  const renderTooltips = () => {
+    return tooltips.map((text, index) => (
+      <div
+        key={index}
+        className="relative transition duration-1000 items-center text-center top-5 cursor-pointer "
+        onMouseEnter={() => handleMouseEnter(index)}
+        onMouseLeave={handleMouseLeave}
+      >
+        {activeTooltip === index && (
+          <div className="absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg shadow w-[300px] h-[116px] z-10 flex items-center justify-center  ">
+            {tooltips[index]}
+          </div>
+        )}
+        <div className="w-[90px] h-[90px] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20"></div>
+        <ViewportBlock onEnterViewport={() => setActiveTooltip(index)} onLeaveViewport={() => setActiveTooltip(null)} />
+        <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
+          {icons[index]}
+        </div>
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10">
+          {titles[index]}
+        </div>
+      </div>
+    ));
+  };
+
   const renderDivBasedOnWindowSize = () => {
     if (windowSize < 1024) {
-      // Para tamaños pequeños.....
-      return <div className="">
+      return (
+        <div className="">
         <div className="h-full w-full bg-gradient-to-r from-blue-500 to-blue-700 py-40 justify-center sm:py-12 font-sans drop-shadow-xl">
           <div className="text-center w-full sm:mb-30 md:mb-30 lg:mb-40 xl:mb-40 mt-10 text-white ">
             <h1 className="text-3xl font-bold mb-4">WORKFLOW</h1>
@@ -83,10 +139,11 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
               </div>
             </div>
           </div>
-        </div></div>;
+        </div></div>
+      );
     } else {
-      // Para tamaños grandes.........
-      return <div className="">
+      return (
+       <div className="">
         <div className="h-[700px] bg-gradient-to-r from-blue-500 to-blue-700 py-40 justify-center sm:py-12 font-sans drop-shadow-xl">
           <div className="text-center w-full mb-40 mt-10 text-white">
             <h1 className="text-3xl font-bold mb-4">WORKFLOW</h1>
@@ -124,47 +181,18 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
               </div>
             </div>
           </div>
-        </div></div>;
+        </div>
+
+         
+        </div>
+      );
     }
   };
 
-  const [tooltips, setTooltips] = useState([
-    "This is where we analyze the requirements of your project, ensuring that we fully understand your needs and goals.",
-    "Our experts transform the requirements into solid and efficient code, using industry best practices.",
-    "The code undergoes unit testing and quality controls to ensure that your software operates flawlessly.",
-    "We set up all your infrastructure, server configuration and installation.",
-    "We provide ongoing support to ensure your business can operate smoothly.",
-  ]);
-
-  const [activeTooltip, setActiveTooltip] = useState<number | null>(0);
-
-  const icons = [
-    <TablerCheckupList />,
-    <TablerTerminal2 />,
-    <FontistoLaboratory />,
-    <TablerRocket />,
-    <Support />
-  ];
-
-  const titles = [
-    "PLANNING",
-    "CODE IMPLEMENTATION",
-    "TESTING & QA",
-    "DEPLOYMENT",
-    "SUPPORT"
-  ];
-
-  const handleMouseEnter = (index: number) => {
-    setActiveTooltip(index);
-  };
-
-  const handleMouseLeave = () => {
-    setActiveTooltip(null);
-  };
-
   return (
-
-    <div>{renderDivBasedOnWindowSize()}  </div>
+    <div>
+      {renderDivBasedOnWindowSize()}
+    </div>
   );
 };
 

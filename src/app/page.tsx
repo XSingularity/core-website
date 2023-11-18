@@ -12,6 +12,7 @@ import { SvgFaq } from './components/svg/Faq'
 import { Link } from 'react-scroll'
 
 
+
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
 
