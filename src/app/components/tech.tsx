@@ -11,7 +11,7 @@ const LOGOS = [
   (<div className="w-40 sm:w-20"><img src="/nextjs.png" alt="NextJS" /></div>),
   (<div className="w-40 sm:w-20"><img src="/javascript.png" alt="Javascript" /></div>),
   (<div className="w-40 sm:w-20"><img src="/django.png" alt="Django" /></div>),
-  (<div className="w-40 sm:w-20"><img src="/fastapi.png" alt="FastAPI" /></div>),
+  (<div className="w-40 sm:w-20"><img src="/fastAPI.png" alt="FastAPI" /></div>),
 ];
 
 const slideFlexClassName = "slide flex sm:h-[70px] sm:w-[70px] md:w-[125px] items-center justify-center";
