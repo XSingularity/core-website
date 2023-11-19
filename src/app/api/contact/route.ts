@@ -1,4 +1,3 @@
-import e from 'express';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
@@ -31,5 +30,5 @@ export async function POST(request: Request) {
         else
             console.log(info);
     });
-    return NextResponse.json({ message: "success", status: 200});
+    return NextResponse.json({ message: "success", status: 200 });
 }
