@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 
 const Contact = () => {
@@ -16,19 +17,12 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    }).then((res) => {
-      if (res.status === 200) {
+    axios.post('/api/contact', formData).then((response: any) => {
+      if (response.status === 200) {
         console.log('Response succeeded!')
         alert("Thank you for your message. We will get back to you soon!")
       }
-    })
+    });
   };
 
   return (

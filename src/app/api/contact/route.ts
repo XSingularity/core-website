@@ -32,3 +32,5 @@ export async function POST(request: Request) {
     });
     return NextResponse.json({ message: "success", status: 200 });
 }
+
+export const dynamic = "force-static";
