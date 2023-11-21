@@ -81,7 +81,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                 applications.
               </p>
             </div>
-            <div className=" items-center justify-center mx-auto drop-shadow-lg">
+            <div className=" items-center justify-center mx-auto ">
               <div className="relative">
                 <div className="w-2 h-full bg-white absolute top-1/2 transform -translate-y-1/2 opacity-0"></div>
                 {/* ESTOY QUITANDO LA LINEA */}
