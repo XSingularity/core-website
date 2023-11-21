@@ -23,9 +23,11 @@ const Intro = () => {
               ]}
               wrapper="span"
               speed={30}
-              className={'type title-font sm:text-4xl lg:text-5xl md:text-4xl text-3xl font-semibold'}
+              className={'type antialiased sm:text-4xl lg:text-5xl md:text-4xl text-3xl'}
               cursor={false}
               repeat={Infinity}
+              style={{ fontFamily: 'Roboto', fontWeight: 700 }}
+
             />
           </div>
 
