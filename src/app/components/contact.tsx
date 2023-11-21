@@ -17,7 +17,15 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    axios.post('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/namespaces/fn-6c237572-2d95-4c97-abd5-d538cc84ed84/actions/send-gmail-message?blocking=true&result=true', formData).then((response: any) => {
+    axios.post('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/namespaces/fn-6c237572-2d95-4c97-abd5-d538cc84ed84/actions/send-gmail-message?blocking=true&result=true', 
+    formData,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic NDBlYmMxMDItZmUxMC00ZjZmLTkxYzAtN2ZiYTIwMzM3ZjZhOjIxVFpSS0RYV3FveDlaMGVtWWFzT1pVQ2xTTVBTbkVsd3JFeDBUWnF6VzhzQXg4Q2pHNnA2RHRWMWNFWHZDZ3I='
+      }
+    }
+    ).then((response: any) => {
       if (response.status === 200) {
         console.log('Response succeeded!')
         alert("Thank you for your message. We will get back to you soon!")
