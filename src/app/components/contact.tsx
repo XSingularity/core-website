@@ -22,7 +22,7 @@ const Contact = () => {
     {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Basic NDBlYmMxMDItZmUxMC00ZjZmLTkxYzAtN2ZiYTIwMzM3ZjZhOjIxVFpSS0RYV3FveDlaMGVtWWFzT1pVQ2xTTVBTbkVsd3JFeDBUWnF6VzhzQXg4Q2pHNnA2RHRWMWNFWHZDZ3I='
+        'Authorization': process.env.DO_FUNCTION_TOKEN
       }
     }
     ).then((response: any) => {
