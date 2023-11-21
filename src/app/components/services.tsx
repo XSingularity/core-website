@@ -40,7 +40,7 @@ const Services = () => {
                 UX/UI Design
               </h3>
               <p className="mt-6 mb-0 text-gray-600 dark:text-gray-300 text-justify">
-                We take care of conducting the necessary studies, covering every important detail to create an interface that provides a satisfactory response to the users' needs.
+                We take care of conducting the necessary studies, covering every important detail to create an interface that provides a satisfactory response to the users needs.
               </p>
               <a className="inline-block" href="#">
 
