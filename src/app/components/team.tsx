@@ -7,7 +7,7 @@ const Team = () => {
     <div className="py-20 text-gray-600 font-sans ">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col text-center w-full mb-20">
-          <img src="/c9.png" className='absolute opacity-10 -z-10 right-0 left-0 pt-[850px] m-auto w-[1300px] ' alt="" />
+          <img src="/c9.png" className='absolute opacity-10 -z-10 right-0 left-0 pt-[53.125rem] m-auto w-[81.25rem] ' alt="" />
           {/* PLANO 3D */}
           <h1 className="text-3xl font-bold mb-4 text-gray-900">OUR TEAM</h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Our team consists of professionals specialized in cutting-edge technologies, design, and visionary strategies. We are dedicated to guiding your ideas and projects on the path to success. </p>
