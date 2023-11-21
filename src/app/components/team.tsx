@@ -22,7 +22,7 @@ const Team = () => {
               loading="lazy"
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 dark:text-white">Omar Pérez</h4>
+              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Omar Pérez</h4>
               <span className="block text-sm text-gray-500">CEO </span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
@@ -42,7 +42,7 @@ const Team = () => {
               loading="lazy"
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 dark:text-white">Douglas Márquez</h4>
+              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Douglas Márquez</h4>
               <span className="block text-sm text-gray-500">COO</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
@@ -62,7 +62,7 @@ const Team = () => {
               loading="lazy"
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 dark:text-white">Samuel Goncalves</h4>
+              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Samuel Goncalves</h4>
               <span className="block text-sm text-gray-500">IT Coordinator</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
@@ -89,7 +89,7 @@ const Team = () => {
               loading="lazy"
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 dark:text-white">Daniel Lara</h4>
+              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Daniel Lara</h4>
               <span className="block text-sm text-gray-500">Creative Director</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
@@ -109,7 +109,7 @@ const Team = () => {
               loading="lazy"
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 dark:text-white">Victoria Sánchez</h4>
+              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Victoria Sánchez</h4>
               <span className="block text-sm text-gray-500">Marketing Director</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
@@ -129,7 +129,7 @@ const Team = () => {
               loading="lazy"
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 dark:text-white">Ricardo Maceiras</h4>
+              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Ricardo Maceiras</h4>
               <span className="block text-sm text-gray-500">CFO</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
