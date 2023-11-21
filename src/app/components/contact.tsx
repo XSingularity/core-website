@@ -36,11 +36,11 @@ const Contact = () => {
       <section className="text-gray-700 font-sans relative">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
-            <img src="/c1.png" className='absolute -z-10 top-20 right-40 blur-sm w-[80px] animate-bounce-slow4 sm:hidden md:block lg:block xl:block' alt="" />  {/* 4 */}
-            <img src="/c1.png" className='absolute -z-10 bottom-3 right-20 rotate-45 w-[100px] animate-bounce-slow5 ' alt="" />  {/*  5 */}
-            <img src="/c3.png" className='absolute -z-10 sm:top-[45%] md:top-1/2 lg:top-1/2 xl:top-1/2 sm:left-6 md:left-20 lg:left-20 xl:left-20 sm:blur-sm md:blur-none lg:blur-none xl:blur-none rotate-45 w-[100px] animate-bounce-slow1 ' alt="" />  {/*  1 */}
-            <img src="/c3.png" className='absolute -z-10 top-1 blur-sm left-1/2 rotate-45 w-[70px] animate-bounce-slow3 ' alt="" />  {/*  3 */}
-            <img src="/c3.png" className='absolute -z-10 blur-sm left-80 rotate-180 w-[90px] animate-bounce-slow2 sm:top-20 md:top-30 lg:top-30 xl:top-30 ' alt="" /> {/*   2  */}
+            <img src="/c1.png" className='absolute -z-10 top-20 right-40 blur-sm w-[5rem] animate-bounce-slow4 sm:hidden md:block lg:block xl:block' alt="" />  {/* 4 */}
+            <img src="/c1.png" className='absolute -z-10 bottom-3 right-20 rotate-45 w-[6.25rem] animate-bounce-slow5 ' alt="" />  {/*  5 */}
+            <img src="/c3.png" className='absolute -z-10 sm:top-[45%] md:top-1/2 lg:top-1/2 xl:top-1/2 sm:left-6 md:left-20 lg:left-20 xl:left-20 sm:blur-sm md:blur-none lg:blur-none xl:blur-none rotate-45 w-[6.25rem] animate-bounce-slow1 ' alt="" />  {/*  1 */}
+            <img src="/c3.png" className='absolute -z-10 top-1 blur-sm left-1/2 rotate-45 w-[4.375rem] animate-bounce-slow3 sm:block md:hidden lg:hidden xl:block ' alt="" />  {/*  3 */}
+            <img src="/c3.png" className='absolute -z-10 blur-sm sm:left-72 md:left-80 lg:left-80 xl:left-80 rotate-180 w-[5.625rem] animate-bounce-slow2 sm:top-20 md:top-30 lg:top-30 xl:top-30 ' alt="" /> {/*   2  */}
             <h1 className="text-3xl font-bold mb-4 py-10 text-center text-gray-900">TELL US ABOUT YOU</h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
               <strong>Get in touch with us.</strong> Fill out the form below to reach our team. Whether you have questions, feedback, or interest in our solutions, we're here to assist you. We look forward to working with you.
