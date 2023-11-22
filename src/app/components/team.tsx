@@ -1,13 +1,20 @@
 import React from 'react'
 import { Github } from "./svg/Github"
 import { Linkedin } from "./svg/Linkedin"
+import Image from 'next/image'
 
 const Team = () => {
   return (
     <div className="py-20 text-gray-600 font-sans ">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col text-center w-full mb-20">
-          <img src="/c9.png" className='absolute opacity-10 -z-10 right-0 left-0 pt-[53.125rem] m-auto w-[81.25rem] ' alt="" />
+          <Image
+            className='absolute opacity-10 -z-10 right-0 left-0 pt-[53.125rem] m-auto w-[81.25rem]'
+            src="c9.png"
+            alt="software development floor"
+            width={915}
+            height={169}
+          />
           {/* PLANO 3D */}
           <h1 className="text-3xl font-bold mb-4 text-gray-900">OUR TEAM</h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Our team consists of professionals specialized in cutting-edge technologies, design, and visionary strategies. We are dedicated to guiding your ideas and projects on the path to success. </p>
@@ -15,11 +22,12 @@ const Team = () => {
 
         <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-3">
           <div className="space-y-6 text-center">
-            <img
+            <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="/omar.png"
-              alt="CEO"
-              loading="lazy"
+              src="omar.png"
+              alt="Chief Executive Officier (CEO) of software development company xsingularity"
+              width={480}
+              height={480}
             />
             <div>
               <h4 className="sm:text-md md:text-2xl text-gray-700 ">Omar Pérez</h4>
@@ -35,11 +43,12 @@ const Team = () => {
             </div>
           </div>
           <div className="space-y-6 text-center">
-            <img
+            <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="/doug.png"
-              alt="COO"
-              loading="lazy"
+              src="doug.png"
+              alt="Chief Operating Officer (COO) of software development company xsingularity"
+              width={632}
+              height={495}
             />
             <div>
               <h4 className="sm:text-md md:text-2xl text-gray-700 ">Douglas Márquez</h4>
@@ -55,11 +64,12 @@ const Team = () => {
             </div>
           </div>
           <div className="space-y-6 text-center">
-            <img
+            <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
               src="samu.png"
               alt="Python developer"
-              loading="lazy"
+              width={512}
+              height={512}
             />
             <div>
               <h4 className="sm:text-md md:text-2xl text-gray-700 ">Samuel Goncalves</h4>
@@ -82,11 +92,12 @@ const Team = () => {
           {/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
 
           <div className="space-y-6 text-center">
-            <img
+            <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="/lara.png"
-              alt="woman"
-              loading="lazy"
+              src="lara.png"
+              alt="Creative Director of software development company xsingularity"
+              width={512}
+              height={512}
             />
             <div>
               <h4 className="sm:text-md md:text-2xl text-gray-700 ">Daniel Lara</h4>
@@ -102,11 +113,12 @@ const Team = () => {
             </div>
           </div>
           <div className="space-y-6 text-center">
-            <img
+            <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="/maria.png"
-              alt="Marketing Director"
-              loading="lazy"
+              src="maria.png"
+              alt="Marketing Director of software development company xsingularity"
+              width={512}
+              height={512}
             />
             <div>
               <h4 className="sm:text-md md:text-2xl text-gray-700 ">Victoria Sánchez</h4>
@@ -122,11 +134,12 @@ const Team = () => {
             </div>
           </div>
           <div className="space-y-6 text-center">
-            <img
+            <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="/rick.png"
-              alt="man"
-              loading="lazy"
+              src="rick.png"
+              alt="Chief Financial Officer (CFO) of software development company xsingularity"
+              width={512}
+              height={512}
             />
             <div>
               <h4 className="sm:text-md md:text-2xl text-gray-700 ">Ricardo Maceiras</h4>

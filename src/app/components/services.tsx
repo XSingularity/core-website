@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image'
 
 
 const Services = () => {
@@ -14,8 +15,13 @@ const Services = () => {
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3">
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
-              <img src="/project_m.jpg"
-                alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
+              <Image 
+                className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                src="project_m.jpg"
+                alt="project management for software development"
+                width="1000"
+                height="667"
+              />
             </div>
             <div className="mt-6 relative">
               <h3 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
@@ -32,7 +38,7 @@ const Services = () => {
           </div>
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
-              <img src="/ux.jpg"
+              <Image src="ux.jpg"
                 alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
@@ -49,7 +55,7 @@ const Services = () => {
           </div>
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
-              <img src="/tech_s.jpg"
+              <Image src="tech_s.jpg"
                 alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
@@ -69,7 +75,7 @@ const Services = () => {
         <div className="grid gap-8 my-16 md:grid-cols-2 lg:grid-cols-2">
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
-              <img src="frontend.jpg"
+              <Image src="frontend.jpg"
                 alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
@@ -86,7 +92,7 @@ const Services = () => {
           </div>
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
-              <img src="/backend.jpg"
+              <Image src="backend.jpg"
                 alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
