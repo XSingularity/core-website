@@ -15,7 +15,7 @@ const Services = () => {
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3">
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
-              <Image 
+              <Image
                 className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
                 src="project_m.jpg"
                 alt="project management for software development"
@@ -65,10 +65,8 @@ const Services = () => {
                 Our highly skilled team is always ready to provide assistance, ensuring continuous and uninterrupted operation of your software.
               </p>
               <a className="inline-block" href="#">
-
               </a>
             </div>
-
           </div>
         </div> {/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
 
@@ -101,17 +99,12 @@ const Services = () => {
               </h3>
               <p className="mt-6 mb-0 text-gray-600 text-justify">
                 We empower your applications with secure, robust, and scalable development. Ensuring that your software runs smoothly and is capable of scaling with your business.
-
               </p>
               <a className="inline-block" href="#">
-
               </a>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </div>
 
