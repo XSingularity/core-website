@@ -17,7 +17,11 @@ const Intro = () => {
 
           <div>
             <h1 className='hidden'>
-              Software Development Company dedicated to solving your business needs, creating beautiful interfaces, optimizing your processes, and more.
+              Software Development Company dedicated to solving your business needs, creating beautiful interfaces, 
+              optimizing your processes, and more. We do Backend development, frontend development, mobile development, 
+              desktop development, blockchain development and more. We use the latest technologies like React, React Native,
+              Node, Express, MongoDB, PostgreSQL, Solidity, Web3, Next.js, Typescript, Javascript, HTML, CSS, Tailwind,
+              Python, Django, Go, C, C++, Flask, AWS, Google Cloud, Firebase, Docker and more
             </h1>
             <TypeAnimation
               sequence={[
