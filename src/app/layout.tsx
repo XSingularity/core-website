@@ -6,8 +6,8 @@ import Footer from "./components/footer";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'XSingularity | We Create & Optimize',
-  description: 'Software development company, we create and optimize software for your business.',
+  title: 'XSingularity | Software Development Company',
+  description: "Software development company specialized in delivering high-quality solutions in backend, frontend, and blockchain. Let's take your project to the next level."
 }
 
 export default function RootLayout({
