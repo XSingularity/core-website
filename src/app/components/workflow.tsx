@@ -7,6 +7,7 @@ import { TablerRocket } from './svg/Rocket';
 import { Support } from './svg/Support';
 import { debounce } from 'lodash';
 
+
 const Block = (props: InjectedViewportProps<HTMLDivElement>) => {
   const { forwardedRef } = props;
   return (
@@ -76,9 +77,9 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
             <div className="text-center w-full sm:mb-30 md:mb-30 lg:mb-40 xl:mb-40 mt-10 text-white ">
               <h2 className="text-3xl font-bold mb-4">WORKFLOW</h2>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                We offer a comprehensive range of services, from project management to
-                design and development, to ensure the success of your projects and
-                applications.
+                Our streamlined process is designed to meticulously address and fulfill all requirements. 
+                This structured approach not only ensures a swift and efficient delivery but also upholds a commitment 
+                to maintaining consistently high-quality standards in all our services.
               </p>
             </div>
             <div className=" items-center justify-center mx-auto ">
@@ -96,7 +97,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                     >
                       {activeTooltip === index && (
                         <div className="absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center  ">
-                          {tooltips[index]}
+                          {text}
                         </div>
                       )}
                       {/* INFO */}
@@ -124,9 +125,9 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
             <div className="text-center w-full mb-40 mt-10 text-white">
               <h2 className="text-3xl font-bold mb-4">WORKFLOW</h2>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                We offer a comprehensive range of services, from project management to
-                design and development, to ensure the success of your projects and
-                applications.
+                Our streamlined process is designed to meticulously address and fulfill all requirements. 
+                This structured approach not only ensures a swift and efficient delivery but also upholds a commitment 
+                to maintaining consistently high-quality standards in all our services.
               </p>
             </div>
             <div className="w-[56.25rem] items-center justify-center mx-auto">
@@ -138,7 +139,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                       key={index}
                       className="relative hover:scale-[1.1] transition duration-1000"
                       onMouseEnter={() => handleMouseEnter(index)}
-                      onMouseLeave={handleMouseLeave}
+                      onMouseLeave={() => setActiveTooltip(0)}
                     >
                       <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer"></div>
                       {activeTooltip === index && (

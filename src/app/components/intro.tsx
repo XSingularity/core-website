@@ -16,21 +16,21 @@ const Intro = () => {
         md:items-start md:text-left sm:mb-5 md:mb-0 lg:mb-0 xl:mb-0 items-center text-center">
 
           <div>
-            <h1>
-              <TypeAnimation
-                sequence={[
-                  'We Create & Optimize', // Para editar el pointer ve a hoja de estilos global.css y edita "type"
-                  1000
-                ]}
-                wrapper="span"
-                speed={30}
-                className={'type antialiased sm:text-4xl lg:text-5xl md:text-4xl text-3xl'}
-                cursor={false}
-                repeat={Infinity}
-                style={{ fontFamily: 'Roboto', fontWeight: 700 }}
-
-              />
+            <h1 className='hidden'>
+              Software Development Company dedicated to solving your business needs, creating beautiful interfaces, optimizing your processes, and more.
             </h1>
+            <TypeAnimation
+              sequence={[
+                'We Create & Optimize', // Para editar el pointer ve a hoja de estilos global.css y edita "type"
+                1000
+              ]}
+              wrapper="span"
+              speed={30}
+              className={'type antialiased sm:text-4xl lg:text-5xl md:text-4xl text-3xl'}
+              cursor={false}
+              repeat={Infinity}
+              style={{ fontFamily: 'Roboto', fontWeight: 700 }}
+            />
           </div>
 
           <div className='sm:my-0 md:my-0 lg:my-2 xl:my-10 '>

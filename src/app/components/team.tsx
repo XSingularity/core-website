@@ -30,7 +30,7 @@ const Team = () => {
               height={480}
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Omar Pérez</h4>
+              <h3 className="sm:text-md md:text-2xl text-gray-700 ">Omar Pérez</h3>
               <span className="block text-sm text-gray-500">CEO </span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
@@ -51,7 +51,7 @@ const Team = () => {
               height={495}
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Douglas Márquez</h4>
+              <h3 className="sm:text-md md:text-2xl text-gray-700 ">Douglas Márquez</h3>
               <span className="block text-sm text-gray-500">COO</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
@@ -72,7 +72,7 @@ const Team = () => {
               height={512}
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Samuel Goncalves</h4>
+              <h3 className="sm:text-md md:text-2xl text-gray-700 ">Samuel Goncalves</h3>
               <span className="block text-sm text-gray-500">IT Support</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
@@ -100,7 +100,7 @@ const Team = () => {
               height={512}
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Daniel Lara</h4>
+              <h3 className="sm:text-md md:text-2xl text-gray-700 ">Daniel Lara</h3>
               <span className="block text-sm text-gray-500">Creative Director</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
@@ -121,7 +121,7 @@ const Team = () => {
               height={512}
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Victoria Sánchez</h4>
+              <h3 className="sm:text-md md:text-2xl text-gray-700 ">Victoria Sánchez</h3>
               <span className="block text-sm text-gray-500">Marketing Director</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
@@ -142,7 +142,7 @@ const Team = () => {
               height={512}
             />
             <div>
-              <h4 className="sm:text-md md:text-2xl text-gray-700 ">Ricardo Maceiras</h4>
+              <h3 className="sm:text-md md:text-2xl text-gray-700 ">Ricardo Maceiras</h3>
               <span className="block text-sm text-gray-500">CFO</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
