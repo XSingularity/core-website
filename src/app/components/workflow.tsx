@@ -108,7 +108,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                       <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
                         {icons[index]}
                       </div>
-                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10">
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
                         {titles[index]}
                       </div>
                     </div>
