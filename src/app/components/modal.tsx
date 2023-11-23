@@ -13,9 +13,9 @@ const TituloDesplegable = ({ titulo, contenido }: { titulo: string, contenido: s
 
   return (
     <div>
-      <h1 className=" sm:text-lg md:text-xl lg:text-xl xl:text-xl font-bold text-gray-700 " onClick={toggleDesplegar}>
+      <h2 className=" sm:text-lg md:text-xl lg:text-xl xl:text-xl font-bold text-gray-700 " onClick={toggleDesplegar}>
         {titulo}<span className=" cursor-pointer hover:text-gray-400 absolute">{abierto ? <ArrowUp/> : <ArrowDown/> }</span>
-      </h1>
+      </h2>
       {abierto && <p>{contenido}</p>}
     </div>
   );

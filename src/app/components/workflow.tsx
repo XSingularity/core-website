@@ -74,7 +74,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
         <div className="">
           <div className="h-full w-full bg-gradient-to-r from-blue-500 to-blue-700 py-40 justify-center sm:py-12 font-sans drop-shadow-xl">
             <div className="text-center w-full sm:mb-30 md:mb-30 lg:mb-40 xl:mb-40 mt-10 text-white ">
-              <h1 className="text-3xl font-bold mb-4">WORKFLOW</h1>
+              <h2 className="text-3xl font-bold mb-4">WORKFLOW</h2>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
                 We offer a comprehensive range of services, from project management to
                 design and development, to ensure the success of your projects and
@@ -122,7 +122,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
         <div className="">
           <div className="h-[43.75rem] bg-gradient-to-r from-blue-500 to-blue-700 py-40 justify-center sm:py-12 font-sans">
             <div className="text-center w-full mb-40 mt-10 text-white">
-              <h1 className="text-3xl font-bold mb-4">WORKFLOW</h1>
+              <h2 className="text-3xl font-bold mb-4">WORKFLOW</h2>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
                 We offer a comprehensive range of services, from project management to
                 design and development, to ensure the success of your projects and

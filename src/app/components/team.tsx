@@ -16,7 +16,7 @@ const Team = () => {
             height={169}
           />
           {/* PLANO 3D */}
-          <h1 className="text-3xl font-bold mb-4 text-gray-900">OUR TEAM</h1>
+          <h2 className="text-3xl font-bold mb-4 text-gray-900">OUR TEAM</h2>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Our team consists of professionals specialized in cutting-edge technologies, design, and visionary strategies. We are dedicated to guiding your ideas and projects on the path to success. </p>
         </div>
 
