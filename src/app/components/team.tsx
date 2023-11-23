@@ -73,7 +73,7 @@ const Team = () => {
             />
             <div>
               <h4 className="sm:text-md md:text-2xl text-gray-700 ">Samuel Goncalves</h4>
-              <span className="block text-sm text-gray-500">IT Coordinator</span>
+              <span className="block text-sm text-gray-500">IT Support</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
               <a href="https://github.com/TheCRIZIZ" target="_blank" aria-label="Github">

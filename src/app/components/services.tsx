@@ -24,9 +24,9 @@ const Services = () => {
               />
             </div>
             <div className="mt-6 relative">
-              <h3 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
+              <h2 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
                 Project Management
-              </h3>
+              </h2>
               <p className="mt-6 mb-0 text-gray-600 text-justify ">
                 Our meticulous dedication to every detail ensures that your project is executed accurately to transform your ideas into tangible results.
               </p>
@@ -42,9 +42,9 @@ const Services = () => {
                 alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
-              <h3 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
+              <h2 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
                 UX/UI Design
-              </h3>
+              </h2>
               <p className="mt-6 mb-0 text-gray-600 text-justify">
                 We take care of conducting the necessary studies, covering every important detail to create an interface that provides a satisfactory response to the users needs.
               </p>
@@ -59,8 +59,8 @@ const Services = () => {
                 alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
-              <h3 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
-                Technical Support            </h3>
+              <h2 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
+                Technical Support            </h2>
               <p className="mt-6 mb-0 text-gray-600 text-justify">
                 Our highly skilled team is always ready to provide assistance, ensuring continuous and uninterrupted operation of your software.
               </p>
@@ -77,9 +77,9 @@ const Services = () => {
                 alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
-              <h3 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
+              <h2 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
                 Frontend Design
-              </h3>
+              </h2>
               <p className="mt-6 mb-0 text-gray-600 text-justify">
                 We transform concepts into attractive and functional interfaces to connect with your audience from the very first click.
               </p>
@@ -94,9 +94,9 @@ const Services = () => {
                 alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
-              <h3 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
+              <h2 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
                 Backend Development
-              </h3>
+              </h2>
               <p className="mt-6 mb-0 text-gray-600 text-justify">
                 We empower your applications with secure, robust, and scalable development. Ensuring that your software runs smoothly and is capable of scaling with your business.
               </p>
