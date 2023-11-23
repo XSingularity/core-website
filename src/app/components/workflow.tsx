@@ -96,7 +96,9 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                       onMouseLeave={() => setActiveTooltip(index)}
                     >
                       {activeTooltip === index && (
-                        <div className="absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center  ">
+                       <div className={`absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-0 transition-opacity duration-500 ${
+                        activeTooltip === index ? 'opacity-100' : ''
+                      }`}>
                           {text}
                         </div>
                       )}
