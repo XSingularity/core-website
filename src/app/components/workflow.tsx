@@ -93,7 +93,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                       key={index}
                       className="relative transition duration-1000 items-center text-center top-5 cursor-pointer "
                       onMouseEnter={() => handleMouseEnter(index)}
-                      onMouseLeave={handleMouseLeave}
+                      onMouseLeave={() => setActiveTooltip(index)}
                     >
                       {activeTooltip === index && (
                         <div className="absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center  ">
@@ -102,7 +102,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                       )}
                       {/* INFO */}
                       <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20"></div>
-                      <ViewportBlock onEnterViewport={() => setActiveTooltip(index)} onLeaveViewport={() => setActiveTooltip(null)} />
+                      <ViewportBlock onEnterViewport={() => setActiveTooltip(index)} />
                       {/* CIRCULO */}
 
                       <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
@@ -139,7 +139,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                       key={index}
                       className="relative hover:scale-[1.1] transition duration-1000"
                       onMouseEnter={() => handleMouseEnter(index)}
-                      onMouseLeave={() => setActiveTooltip(0)}
+                      onMouseLeave={() => setActiveTooltip(index)}
                     >
                       <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer"></div>
                       {activeTooltip === index && (
