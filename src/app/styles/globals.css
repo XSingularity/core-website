@@ -14,13 +14,9 @@
   }
 }
 
-.tooltip {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
-}
-
-.fresa:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
+::selection {
+  background-color: #161616;
+  /* Cambia el color de fondo al seleccionar */
+  color: #ffffff;
+  /* Cambia el color del texto al seleccionar */
 }

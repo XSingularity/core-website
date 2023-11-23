@@ -16,6 +16,9 @@ const Intro = () => {
         md:items-start md:text-left sm:mb-5 md:mb-0 lg:mb-0 xl:mb-0 items-center text-center">
 
           <div>
+            <h1 className='hidden'>
+              Software development company for backend and frontend
+            </h1>
             <TypeAnimation
               sequence={[
                 'We Create & Optimize', // Para editar el pointer ve a hoja de estilos global.css y edita "type"
@@ -23,9 +26,10 @@ const Intro = () => {
               ]}
               wrapper="span"
               speed={30}
-              className={'type title-font sm:text-4xl lg:text-5xl md:text-4xl text-3xl font-semibold'}
+              className={'type antialiased sm:text-4xl lg:text-5xl md:text-4xl text-3xl'}
               cursor={false}
               repeat={Infinity}
+              style={{ fontFamily: 'Roboto', fontWeight: 700 }}
             />
           </div>
 
@@ -64,11 +68,11 @@ const Intro = () => {
         </div>
 
         <div className="sm:content-center w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2">
-          <SvgDust className='absolute rotate-180 w-[1015px] right-0 top-0 -z-10' />
+          <SvgDust className='absolute rotate-180 w-[63.438rem] right-0 top-0 -z-10' />
           <SvgBlackhole className="" />
         </div>
       </div>
-      <Link className="fixed z-10 hover:opacity-70 right-6 md:p-0 lg:p-0 xl:p-0 sm:hidden md:block lg:block xl:block sm:bottom-8 md:bottom-3 lg:bottom-3 xl:bottom-10 " to="Home" smooth={true} offset={-100} duration={500}>
+      <Link className="fixed z-10 hover:opacity-70 right-6 md:p-0 lg:p-0 xl:p-0 sm:hidden md:block lg:block xl:block sm:bottom-8 md:bottom-3 lg:bottom-3 xl:bottom-6 2xl:bottom-4 3xl:bottom-10 " to="Home" smooth={true} offset={-100} duration={500}>
         <button>
           <Arrow />
         </button>
