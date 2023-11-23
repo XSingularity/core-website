@@ -19,8 +19,8 @@ const Services = () => {
                 className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
                 src="project_m.jpg"
                 alt="project management for software development"
-                width="1000"
-                height="667"
+                width={1080}
+                height={716}
               />
             </div>
             <div className="mt-6 relative">
@@ -39,7 +39,7 @@ const Services = () => {
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
               <Image src="ux.jpg"
-                alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
+                alt="UI UX design software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
               <h2 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
@@ -56,7 +56,7 @@ const Services = () => {
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
               <Image src="tech_s.jpg"
-                alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
+                alt="technical support software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
               <h2 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
@@ -74,7 +74,7 @@ const Services = () => {
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
               <Image src="frontend.jpg"
-                alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
+                alt="frontend design programming software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
               <h2 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
@@ -91,7 +91,7 @@ const Services = () => {
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
               <Image src="backend.jpg"
-                alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
+                alt="backend programming software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
               <h2 className="text-2xl font-semibold text-gray-800 sm:text-center md:text-left lg:text-left xl:text-left">
