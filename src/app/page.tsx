@@ -11,7 +11,8 @@ import Modal from "./components/modal";
 import { SvgFaq } from './components/svg/Faq'
 import { Link } from 'react-scroll'
 import Image from 'next/image'
-import Head from 'next/head'
+import Script from "next/script";
+
 
 
 
@@ -45,9 +46,7 @@ export default function Home() {
       },
     ]
 
-
   return (
-
     <main>
       <header className="text-gray-900 font-sans mt-10">
         <div className="container mx-auto flex flex-wrap p-0 xl:px-40 2xl:px-40 lg:px-7 md:px-7 flex-col md:flex-row items-center justify-center ">
@@ -76,6 +75,16 @@ export default function Home() {
 
         </div>
       </header>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-Q7L8F1MPXW" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-Q7L8F1MPXW');
+        `}
+      </Script>
       <Intro />
       <Tech />
       <div id="Workflow"><Workflow /></div>
