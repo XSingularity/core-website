@@ -11,6 +11,7 @@ import Modal from "./components/modal";
 import { SvgFaq } from './components/svg/Faq'
 import { Link } from 'react-scroll'
 import Image from 'next/image'
+import Head from 'next/head'
 
 
 
@@ -51,7 +52,7 @@ export default function Home() {
       <header className="text-gray-900 font-sans mt-10">
         <div className="container mx-auto flex flex-wrap p-0 xl:px-40 2xl:px-40 lg:px-7 md:px-7 flex-col md:flex-row items-center justify-center ">
           <a href="/">
-            <Image className="w-32" src="logo1.png" alt="software development company xsingularity logo" width={1174} height={273} />
+            <Image className="w-32" src="logo1.webp" alt="software development company xsingularity logo" width={1174} height={273} />
           </a>
           <br />
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 font-normal md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
@@ -75,8 +76,7 @@ export default function Home() {
 
         </div>
       </header>
-
-      <div ><Intro /></div>
+      <Intro />
       <Tech />
       <div id="Workflow"><Workflow /></div>
       <div id="Team"><Team /></div>

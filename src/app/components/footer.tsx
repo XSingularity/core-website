@@ -6,9 +6,9 @@ const Footer = () => {
     <footer className="text-white font-sans font-light bg-blue-500">
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <a className="flex title-font font-medium items-center md:justify-start justify-center ">
-          <Image className="w-12" width={1080} height={1080} src="logo2.png" alt="xSingularity sofware company logo" loading='lazy' />
+          <Image className="w-12" width={1080} height={1080} src="logo2.webp" alt="XSingularity sofware company logo" loading='lazy' />
         </a>
-        <p className="text-sm sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2023 xSingularity —
+        <p className="text-sm sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2023 XSingularity —
           <a href="https://instagram.com/xsingularity.dev" target="_blank" className="text-decoration-line: underline ml-1" rel="noopener noreferrer" >@xsingularity.dev</a>
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">

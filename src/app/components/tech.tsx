@@ -2,17 +2,17 @@ import React from 'react'
 import Image from 'next/image'
 
 const LOGOS = [
-  (<Image className="w-40 sm:w-20" src="python.png" alt="Python backend programming language" width={500} height={500} />),
-  (<Image className="w-40 sm:w-20" src="react.png" alt="React frontend programming framework" width={500} height={500} />),
-  (<Image className="w-40 sm:w-20" src="docker.png" alt="Docker backend Container Application Development" width={500} height={500} />),
-  (<Image className="w-40 sm:w-20" src="kubernetes.png" alt="Kubernetes open-source system for automating deployment, scaling, and management of containerized applications" width={500} height={500} />),
-  (<Image className="w-40 sm:w-20" src="aws.png" alt="AWS Cloud Computing Service" width={500} height={500} />),
-  (<Image className="w-40 sm:w-20" src="gcp.png" alt="Google Cloud Cloud Computing Service" width={500} height={500} />),
-  (<Image className="w-40 sm:w-20" src="solidity.png" alt="Solidity blockchain cryptocurrency technology development" width={500} height={500} />),
-  (<Image className="w-40 sm:w-20" src="nextjs.png" alt="NextJS frontend framework" width={500} height={500} />),
-  (<Image className="w-40 sm:w-20" src="javascript.png" alt="Javascript Frontend Backend Programming Language" width={500} height={500} />),
-  (<Image className="w-40 sm:w-20" src="django.png" alt="Django Python Framework" width={500} height={500} />),
-  (<Image className="w-40 sm:w-20" src="fastAPI.png" alt="FastAPI Python Framework" width={500} height={500} />),
+  (<Image className="w-40 sm:w-20" src="python.webp" alt="Python backend programming language" width={500} height={500} />),
+  (<Image className="w-40 sm:w-20" src="react.webp" alt="React frontend programming framework" width={500} height={500} />),
+  (<Image className="w-40 sm:w-20" src="docker.webp" alt="Docker backend Container Application Development" width={500} height={500} />),
+  (<Image className="w-40 sm:w-20" src="kubernetes.webp" alt="Kubernetes open-source system for automating deployment, scaling, and management of containerized applications" width={500} height={500} />),
+  (<Image className="w-40 sm:w-20" src="aws.webp" alt="AWS Cloud Computing Service" width={500} height={500} />),
+  (<Image className="w-40 sm:w-20" src="gcp.webp" alt="Google Cloud Cloud Computing Service" width={500} height={500} />),
+  (<Image className="w-40 sm:w-20" src="solidity.webp" alt="Solidity blockchain cryptocurrency technology development" width={500} height={500} />),
+  (<Image className="w-40 sm:w-20" src="nextjs.webp" alt="NextJS frontend framework" width={500} height={500} />),
+  (<Image className="w-40 sm:w-20" src="javascript.webp" alt="Javascript Frontend Backend Programming Language" width={500} height={500} />),
+  (<Image className="w-40 sm:w-20" src="django.webp" alt="Django Python Framework" width={500} height={500} />),
+  (<Image className="w-40 sm:w-20" src="fastAPI.webp" alt="FastAPI Python Framework" width={500} height={500} />),
 ];
 
 const slideFlexClassName = "slide flex sm:px-3 md:px-0 lg:px-0 xl:px-0 sm:w-[6rem] md:w-[7.813rem]  lg:w-[7.813rem]  xl:w-[7.813rem]  items-center justify-center";

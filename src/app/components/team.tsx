@@ -10,7 +10,7 @@ const Team = () => {
         <div className="flex flex-col text-center w-full mb-20">
           <Image
             className='absolute opacity-10 -z-10 right-0 left-0 pt-[53.125rem] m-auto w-[81.25rem]'
-            src="c9.png"
+            src="c9.webp"
             alt="software development floor"
             width={915}
             height={169}
@@ -24,7 +24,7 @@ const Team = () => {
           <div className="space-y-6 text-center">
             <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="omar.png"
+              src="omar.webp"
               alt="Chief Executive Officier (CEO) of software development company xsingularity"
               width={480}
               height={480}
@@ -45,7 +45,7 @@ const Team = () => {
           <div className="space-y-6 text-center">
             <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="doug.png"
+              src="doug.webp"
               alt="Chief Operating Officer (COO) of software development company xsingularity"
               width={632}
               height={495}
@@ -66,7 +66,7 @@ const Team = () => {
           <div className="space-y-6 text-center">
             <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="samu.png"
+              src="samu.webp"
               alt="Python developer"
               width={512}
               height={512}
@@ -94,7 +94,7 @@ const Team = () => {
           <div className="space-y-6 text-center">
             <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="lara.png"
+              src="lara.webp"
               alt="Creative Director of software development company xsingularity"
               width={512}
               height={512}
@@ -115,7 +115,7 @@ const Team = () => {
           <div className="space-y-6 text-center">
             <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="maria.png"
+              src="maria.webp"
               alt="Marketing Director of software development company xsingularity"
               width={512}
               height={512}
@@ -136,7 +136,7 @@ const Team = () => {
           <div className="space-y-6 text-center">
             <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="rick.png"
+              src="rick.webp"
               alt="Chief Financial Officer (CFO) of software development company xsingularity"
               width={512}
               height={512}

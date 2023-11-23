@@ -17,7 +17,7 @@ const Services = () => {
             <div className="relative overflow-hidden rounded-xl">
               <Image
                 className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
-                src="project_m.jpg"
+                src="project_m.webp"
                 alt="project management for software development"
                 width={1080}
                 height={716}
@@ -30,15 +30,15 @@ const Services = () => {
               <p className="mt-6 mb-0 text-gray-600 text-justify ">
                 Our meticulous dedication to every detail ensures that your project is executed accurately to transform your ideas into tangible results.
               </p>
-              <a className="inline-block" href="#">
+              {/* <a className="inline-block" href="#"> */}
 
-              </a>
+              {/* </a> */}
             </div>
 
           </div>
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
-              <Image src="ux.jpg"
+              <Image src="ux.webp"
                 alt="UI UX design software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
@@ -55,7 +55,7 @@ const Services = () => {
           </div>
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
-              <Image src="tech_s.jpg"
+              <Image src="tech_s.webp"
                 alt="technical support software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
@@ -73,7 +73,7 @@ const Services = () => {
         <div className="grid gap-8 my-16 md:grid-cols-2 lg:grid-cols-2">
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
-              <Image src="frontend.jpg"
+              <Image src="frontend.webp"
                 alt="frontend design programming software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
@@ -90,7 +90,7 @@ const Services = () => {
           </div>
           <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div className="relative overflow-hidden rounded-xl">
-              <Image src="backend.jpg"
+              <Image src="backend.webp"
                 alt="backend programming software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
