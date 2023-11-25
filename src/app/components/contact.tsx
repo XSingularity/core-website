@@ -35,7 +35,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="font-sans">
+    <div className="font-sans sm:mb-0 md:mb-10 lg:mb-10 xl:mb-20 2xl:mb-20">
       <section className="text-gray-700 font-sans relative">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
