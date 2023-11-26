@@ -74,12 +74,12 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
       return (
         <div className="">
           <div className="h-full w-full bg-gradient-to-r from-blue-500 to-blue-700 py-40 justify-center sm:py-12 font-sans drop-shadow-xl">
+          <div className="xl:container text-gray-600 sm:px-10 md:px-12 lg:px-6 xl:px-6">
             <div className="text-center w-full sm:mb-30 md:mb-30 lg:mb-40 xl:mb-40 mt-10 text-white ">
               <h2 className="text-3xl font-bold mb-4">WORKFLOW</h2>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Our streamlined process is designed to meticulously address and fulfill all requirements. 
-                This structured approach not only ensures a swift and efficient delivery but also upholds a commitment 
-                to maintaining consistently high-quality standards in all our services.
+              Our streamlined process is designed to carefully address all your requirements. This structured approach not only ensures a swift 
+              and efficient delivery but also upholds a commitment to maintaining high-quality standards in all our services.
               </p>
             </div>
             <div className=" items-center justify-center mx-auto ">
@@ -118,13 +118,13 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
                 </div>
               </div>
             </div>
-          </div></div>
+          </div></div> </div>
       );
     } else {
       return (
         <div className="">
           <div className="h-[43.75rem] bg-gradient-to-r from-blue-500 to-blue-700 py-40 justify-center sm:py-12 font-sans">
-            <div className="text-center w-full mb-40 mt-10 text-white">
+            <div className="text-center w-full mb-40 mt-10 text-white"> 
               <h2 className="text-3xl font-bold mb-4">WORKFLOW</h2>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
                 Our streamlined process is designed to meticulously address and fulfill all requirements. 

@@ -6,10 +6,10 @@ const Services = () => {
   return (
 
     <div className="sm:py-14 md:py-32 lg:py-32 xl:py-32 text-gray-600 font-sans ">
-      <div className="xl:container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+      <div className="xl:container m-auto text-gray-600 sm:px-10 md:px-12 lg:px-6 xl:px-6">
         <div className="flex flex-col text-center w-full mb-20">
           <h2 className="text-3xl font-bold mb-4 text-gray-900">SERVICES</h2>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">We offer a comprehensive range of services, from project management to design and development, to ensure the success of your projects and applications.</p>
+          <p className="">We offer a comprehensive range of services, from project management to design and development, to ensure the success of your projects and applications.</p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3">

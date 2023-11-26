@@ -6,7 +6,7 @@ import Image from 'next/image'
 const Team = () => {
   return (
     <div className="py-20 text-gray-600 font-sans ">
-      <div className="container mx-auto px-6 md:px-12">
+      <div className="xl:container text-gray-600 sm:px-10 md:px-12 lg:px-6 xl:px-6 m-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <Image
             className='absolute opacity-10 -z-10 right-0 left-0 pt-[53.125rem] m-auto w-[81.25rem]'
@@ -17,7 +17,7 @@ const Team = () => {
           />
           {/* PLANO 3D */}
           <h2 className="text-3xl font-bold mb-4 text-gray-900">OUR TEAM</h2>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Our team consists of professionals specialized in cutting-edge technologies, design, and visionary strategies. We are dedicated to guiding your ideas and projects on the path to success. </p>
+          <p className="">Our team consists of professionals specialized in cutting-edge technologies, design, and visionary strategies. We are dedicated to guiding your ideas and projects on the path to success. </p>
         </div>
 
         <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-3">
