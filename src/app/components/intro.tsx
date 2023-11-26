@@ -1,9 +1,6 @@
 import SvgBlackhole from './svg/Blackhole'
 import SvgDust from './svg/Dust'
 import { TypeAnimation } from 'react-type-animation';
-import { Link } from 'react-scroll'
-import { Arrow } from './svg/Arrow'
-
 
 
 const Intro = () => {
@@ -36,7 +33,7 @@ const Intro = () => {
           <div className='sm:my-0 md:my-0 lg:my-2 xl:my-10 '>
             <ul className=" pt-6 text-md market-text-lg list-disc text-gray-900">
               {/* edit puntos, tamano letra etc*/}
-              <nav className="flex text-base font-sans text-gray-600 flex-col sm:items-start sm:text-left text-center items-center">
+              <nav className="flex text-base font-sans text-gray-800 flex-col sm:items-start sm:text-left text-center items-center">
                 <a className="text-justify mb-4">
                   <span className="bg-indigo-100 text-blue-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center ">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" className="w-3 h-3 " viewBox="0 0 24 24">
@@ -72,11 +69,6 @@ const Intro = () => {
           <SvgBlackhole className="" />
         </div>
       </div>
-      <Link className="fixed z-10 hover:opacity-70 right-6 md:p-0 lg:p-0 xl:p-0 sm:hidden md:block lg:block xl:block sm:bottom-8 md:bottom-3 lg:bottom-3 xl:bottom-6 2xl:bottom-4 3xl:bottom-10 " to="Home" smooth={true} offset={-100} duration={500}>
-        <button>
-          <Arrow />
-        </button>
-      </Link>
     </section>
   )
 }

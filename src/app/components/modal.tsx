@@ -58,8 +58,6 @@ const Modal = ({ isVisible, onClose }: { isVisible: boolean, onClose: () => void
               contenido="We specialize in languages like Python, Javascript, Go, Solidity and technologies such as React, Docker, Node JS, AWS. However, if there's any other language that you want to work with, we can totally assist you with that." />
             <TituloDesplegable titulo="What is the minimum budget and the project size you are willing to work with?" contenido="Our minimum budget to work with is $10.000. But you can contact us and we can make an exception if you need." />
             <TituloDesplegable titulo="Will you sign an NDA?" contenido="Yes, sure. If you want to sign an NDA, we are always ready to do so." />
-
-
           </div>
         </div>
       </div>

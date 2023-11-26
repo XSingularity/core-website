@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image'
+import Modal from "../components/modal_submit";
+
 
 
 const Contact = () => {
@@ -10,14 +12,23 @@ const Contact = () => {
     message: '',
   });
 
+  const [showModal, setShowModal] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const [isMessageSent, setIsMessageSent] = useState(false);
+  const showModalAndSetMessageNotSent = () => {
+    setShowModal(true);
+    setIsMessageSent(false);
+  };
+
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setIsMessageSent(true);
     axios.post('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/namespaces/fn-6c237572-2d95-4c97-abd5-d538cc84ed84/actions/send-gmail-message?blocking=true&result=true',
       formData,
       {
@@ -29,7 +40,6 @@ const Contact = () => {
     ).then((response: any) => {
       if (response.status === 200) {
         console.log('Response succeeded!')
-        alert("Thank you for your message. We will get back to you soon!")
       }
     });
   };
@@ -99,13 +109,16 @@ const Contact = () => {
               </div>
               <div className="p-2 w-full">
                 <button
+                  onClick={() =>
+                    showModalAndSetMessageNotSent()}
                   type="submit"
-                  className="ease-in duration-500 mx-auto flex text-white bg-gray-900 border-1 py-2 px-6 focus:outline-none hover:bg-blue-500 hover:text-white rounded text-lg font-medium text-center"
+                  className="ease-in duration-500 mx-auto flex text-white bg-gray-800 border-1 py-2 px-6 focus:outline-none hover:bg-blue-500 hover:text-white rounded text-lg font-medium text-center"
                 >
                   Send
                 </button>
               </div>
             </form>
+            {isMessageSent && <Modal isVisible={showModal} onClose={() => setShowModal(false)} />}
           </div>
         </div>
       </section>
