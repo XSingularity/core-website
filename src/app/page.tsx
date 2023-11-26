@@ -58,13 +58,16 @@ export default function Home() {
             <ul className="flex text-sm">
               {menuItems.map((menu, index) => (
                 <li key={index} className="ease-in duration-200 mr-5 hover:scale-[1.05] hover:text-blue-500 text-md">
-                  <Link className="cursor-pointer" to={menu.title} smooth={true} offset={50} duration={500}>
-                    {menu.title}
-                  </Link>
+                  {menu.title === "Home" ? (
+                    <span className="cursor-pointer">{menu.title}</span>
+                  ) : (
+                    <Link className="cursor-pointer" to={menu.title} smooth={true} offset={50} duration={500}>
+                      {menu.title}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
-
           </nav>
           <button onClick={() =>
             setShowModal(true)}>
