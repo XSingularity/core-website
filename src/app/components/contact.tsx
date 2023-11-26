@@ -112,7 +112,7 @@ const Contact = () => {
                   onClick={() =>
                     showModalAndSetMessageNotSent()}
                   type="submit"
-                  className="ease-in duration-500 mx-auto flex text-white bg-gray-900 border-1 py-2 px-6 focus:outline-none hover:bg-blue-500 hover:text-white rounded text-lg font-medium text-center"
+                  className="ease-in duration-500 mx-auto flex text-white bg-gray-800 border-1 py-2 px-6 focus:outline-none hover:bg-blue-500 hover:text-white rounded text-lg font-medium text-center"
                 >
                   Send
                 </button>

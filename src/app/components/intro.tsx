@@ -8,7 +8,7 @@ const Intro = () => {
   return (
 
     <section className="text-gray-900 font-sans sm:py-0 md:py-0 lg:py-0 xl:py-0">
-      <div id="Home" className="container flex flex-wrap flex-col p-1 mx-auto md:px-7 xl:px-40 2xl:px-40 md:flex-row items-center">
+      <div id="Home" className="container flex flex-wrap flex-col p-1 mx-auto md:px-0 xl:px-40 2xl:px-40 md:flex-row items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 sm:my-10 md:my-20 lg:my-20 xl:my-20 md:pr-16 flex flex-col 
         md:items-start md:text-left sm:mb-5 md:mb-0 lg:mb-0 xl:mb-0 items-center text-center">
 
@@ -33,7 +33,7 @@ const Intro = () => {
           <div className='sm:my-0 md:my-0 lg:my-2 xl:my-10 '>
             <ul className=" pt-6 text-md market-text-lg list-disc text-gray-900">
               {/* edit puntos, tamano letra etc*/}
-              <nav className="flex text-base font-sans text-gray-600 flex-col sm:items-start sm:text-left text-center items-center">
+              <nav className="flex text-base font-sans text-gray-800 flex-col sm:items-start sm:text-left text-center items-center">
                 <a className="text-justify mb-4">
                   <span className="bg-indigo-100 text-blue-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center ">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" className="w-3 h-3 " viewBox="0 0 24 24">
