@@ -1,9 +1,6 @@
 import SvgBlackhole from './svg/Blackhole'
 import SvgDust from './svg/Dust'
 import { TypeAnimation } from 'react-type-animation';
-import { Link } from 'react-scroll'
-import { Arrow } from './svg/Arrow'
-
 
 
 const Intro = () => {
@@ -72,11 +69,6 @@ const Intro = () => {
           <SvgBlackhole className="" />
         </div>
       </div>
-      <Link className="fixed z-10 hover:opacity-70 right-6 md:p-0 lg:p-0 xl:p-0 sm:hidden md:block lg:block xl:block sm:bottom-8 md:bottom-3 lg:bottom-3 xl:bottom-6 2xl:bottom-4 3xl:bottom-10 " to="Home" smooth={true} offset={-100} duration={500}>
-        <button>
-          <Arrow />
-        </button>
-      </Link>
     </section>
   )
 }

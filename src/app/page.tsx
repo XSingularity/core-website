@@ -72,7 +72,6 @@ export default function Home() {
           </button>
           < Modal isVisible={showModal} onClose={() =>
             setShowModal(false)} />
-
         </div>
       </header>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-Q7L8F1MPXW" />
