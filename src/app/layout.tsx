@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'XSingularity | Software Development Company',
-  description: "Software development company specialized in delivering high-quality solutions in backend, frontend, and blockchain. Let's take your project to the next level."
+  description: "Software development company specialized in delivering high-quality solutions in backend and frontend. Let's take your project to the next level."
 }
 
 export default function RootLayout({
