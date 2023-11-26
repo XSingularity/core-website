@@ -74,62 +74,60 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
       return (
         <div className="">
           <div className="h-full w-full bg-gradient-to-r from-blue-500 to-blue-700 py-40 justify-center sm:py-12 font-sans drop-shadow-xl">
-          <div className="xl:container text-gray-600 sm:px-10 md:px-12 lg:px-6 xl:px-6">
-            <div className="text-center w-full sm:mb-30 md:mb-30 lg:mb-40 xl:mb-40 mt-10 text-white ">
-              <h2 className="text-3xl font-bold mb-4">WORKFLOW</h2>
-              <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-              Our streamlined process is designed to carefully address all your requirements. This structured approach not only ensures a swift 
-              and efficient delivery but also upholds a commitment to maintaining high-quality standards in all our services.
-              </p>
-            </div>
-            <div className=" items-center justify-center mx-auto ">
-              <div className="relative">
-                <div className="w-2 h-full bg-white absolute top-1/2 transform -translate-y-1/2 opacity-0"></div>
-                {/* ESTOY QUITANDO LA LINEA */}
-                {/* LINEA */}
-                <div className="flex-column justify-between ">
-                  {tooltips.map((text, index) => (
-                    <div
-                      key={index}
-                      className="relative transition duration-1000 items-center text-center top-5 cursor-pointer "
-                      onMouseEnter={() => handleMouseEnter(index)}
-                      onMouseLeave={() => setActiveTooltip(index)}
-                    >
-                      {activeTooltip === index && (
-                       <div className={`absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-0 transition-opacity duration-500 ${
-                        activeTooltip === index ? 'opacity-100' : ''
-                      }`}>
-                          {text}
-                        </div>
-                      )}
-                      {/* INFO */}
-                      <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20"></div>
-                      <ViewportBlock onEnterViewport={() => setActiveTooltip(index)} />
-                      {/* CIRCULO */}
+            <div className="xl:container text-gray-600 sm:px-10 md:px-12 lg:px-6 xl:px-6">
+              <div className="text-center w-full sm:mb-30 md:mb-30 lg:mb-40 xl:mb-40 mt-10 text-white ">
+                <h2 className="text-3xl font-bold mb-4">WORKFLOW</h2>
+                <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+                  Our streamlined process is designed to carefully address all your requirements. This structured approach not only ensures a swift
+                  and efficient delivery but also upholds a commitment to maintaining high-quality standards in all our services.
+                </p>
+              </div>
+              <div className=" items-center justify-center mx-auto ">
+                <div className="relative">
+                  <div className="w-2 h-full bg-white absolute top-1/2 transform -translate-y-1/2 opacity-0"></div>
+                  {/* ESTOY QUITANDO LA LINEA */}
+                  {/* LINEA */}
+                  <div className="flex-column justify-between ">
+                    {tooltips.map((text, index) => (
+                      <div
+                        key={index}
+                        className="relative transition duration-1000 items-center text-center top-5 cursor-pointer "
+                        onMouseEnter={() => handleMouseEnter(index)}
+                        onMouseLeave={() => setActiveTooltip(index)}
+                      >
+                        {activeTooltip === index && (
+                          <div className={`absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-0 transition-opacity duration-500 ${activeTooltip === index ? 'opacity-100' : ''
+                            }`}>
+                            {text}
+                          </div>
+                        )}
+                        {/* INFO */}
+                        <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20"></div>
+                        <ViewportBlock onEnterViewport={() => setActiveTooltip(index)} />
+                        {/* CIRCULO */}
 
-                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
-                        {icons[index]}
+                        <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
+                          {icons[index]}
+                        </div>
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
+                          {titles[index]}
+                        </div>
                       </div>
-                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
-                        {titles[index]}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          </div></div> </div>
+            </div></div> </div>
       );
     } else {
       return (
         <div className="">
           <div className="h-[43.75rem] bg-gradient-to-r from-blue-500 to-blue-700 py-40 justify-center sm:py-12 font-sans">
-            <div className="text-center w-full mb-40 mt-10 text-white"> 
+            <div className="text-center w-full mb-40 mt-10 text-white">
               <h2 className="text-3xl font-bold mb-4">WORKFLOW</h2>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Our streamlined process is designed to meticulously address and fulfill all requirements. 
-                This structured approach not only ensures a swift and efficient delivery but also upholds a commitment 
-                to maintaining consistently high-quality standards in all our services.
+                Our streamlined process is designed to carefully address all your requirements. This structured approach not only ensures a swift
+                and efficient delivery but also upholds a commitment to maintaining high-quality standards in all our services.
               </p>
             </div>
             <div className="w-[56.25rem] items-center justify-center mx-auto">
