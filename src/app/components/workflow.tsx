@@ -6,7 +6,6 @@ import { FontistoLaboratory } from './svg/Testing';
 import { TablerRocket } from './svg/Rocket';
 import { Support } from './svg/Support';
 import { debounce } from 'lodash';
-import { useInView } from 'react-intersection-observer';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
