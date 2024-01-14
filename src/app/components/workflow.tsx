@@ -113,7 +113,7 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
 
         ScrollTrigger.create({
           trigger: tooltip,
-          start: 'top 70%',
+          start: 'top 40%',
           onEnter: () => showTooltip(tooltip, index),
           onLeaveBack: () => hideTooltip(tooltip, index),
         });
