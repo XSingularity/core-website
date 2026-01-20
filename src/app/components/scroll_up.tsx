@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
-
 import ArrowUp from '../components/svg/ArrowUp.svg';
+
 
 const Up = styled.div`
   box-sizing: border-box;

@@ -6,16 +6,11 @@ import { FontistoLaboratory } from './svg/Testing';
 import { TablerRocket } from './svg/Rocket';
 import { Support } from './svg/Support';
 import { debounce } from 'lodash';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 
-const Block = (props: InjectedViewportProps<HTMLDivElement>) => {
-  const { forwardedRef } = props;
-  return (
-    <div className="viewport-block" ref={forwardedRef}></div>
-  );
-};
 
-const ViewportBlock = handleViewport(Block, { rootMargin: '-1.0px' });
 
 const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
   const [windowSize, setWindowSize] = useState<number>(0);
@@ -68,8 +63,70 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
   const handleMouseLeave = () => {
     setActiveTooltip(null);
   };
+  type TooltipElement = HTMLElement;
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const animateTooltipsOnScroll = () => {
+      const allTooltips: NodeListOf<HTMLElement> = document.querySelectorAll('.tooltip');
+      const validTooltips: TooltipElement[] = Array.from(allTooltips).filter(tooltip => tooltip !== null) as TooltipElement[];
+
+      const showTooltip = (tooltip: TooltipElement, index: number) => {
+        gsap.to(tooltip, {
+          opacity: 1,
+          y: 0,
+          duration: 0.1,
+          ease: 'power2.out',
+        });
+
+        if (index > 0) {
+          gsap.to(validTooltips[index - 1], {
+            opacity: 0,
+            y: 0,
+            duration: 0.1,
+            ease: 'power2.out',
+          });
+        }
+      };
+
+      const hideTooltip = (tooltip: TooltipElement, index: number) => {
+        gsap.to(tooltip, {
+          opacity: 0,
+          y: 0,
+          duration: 0.1,
+          ease: 'elastic',
+        });
+
+        if (index > 0) {
+          gsap.to(validTooltips[index - 1], {
+            opacity: 1,
+            y: 0,
+            duration: 0.1,
+            ease: 'power2.out',
+          });
+        }
+      };
+
+      validTooltips.forEach((tooltip, index) => {
+        gsap.set(tooltip, { opacity: 0, y: 0 });
+
+        ScrollTrigger.create({
+          trigger: tooltip,
+          start: 'top 40%',
+          onEnter: () => showTooltip(tooltip, index),
+          onLeaveBack: () => hideTooltip(tooltip, index),
+        });
+      });
+    };
+
+    animateTooltipsOnScroll();
+  }, []);
 
   const renderDivBasedOnWindowSize = () => {
+
+
+
     if (windowSize < 1024) {
       return (
         <div className="">
@@ -85,35 +142,74 @@ const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
               <div className=" items-center justify-center mx-auto ">
                 <div className="relative">
                   <div className="w-2 h-full bg-white absolute top-1/2 transform -translate-y-1/2 opacity-0"></div>
-                  {/* ESTOY QUITANDO LA LINEA */}
-                  {/* LINEA */}
                   <div className="flex-column justify-between ">
-                    {tooltips.map((text, index) => (
-                      <div
-                        key={index}
-                        className="relative transition duration-1000 items-center text-center top-5 cursor-pointer "
-                        onMouseEnter={() => handleMouseEnter(index)}
-                        onMouseLeave={() => setActiveTooltip(index)}
-                      >
-                        {activeTooltip === index && (
-                          <div className={`absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-0 transition-opacity duration-500 ${activeTooltip === index ? 'opacity-100' : ''
-                            }`}>
-                            {text}
-                          </div>
-                        )}
-                        {/* INFO */}
-                        <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20"></div>
-                        <ViewportBlock onEnterViewport={() => setActiveTooltip(index)} />
-                        {/* CIRCULO */}
-
-                        <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
-                          {icons[index]}
-                        </div>
-                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
-                          {titles[index]}
-                        </div>
+                  {/*111 PRIMERA BURBUJA 111 */}
+                  <div className={`tooltip absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-100 transition-opacity duration-500`}>
+                      This is where we analyze the requirements of your project, ensuring that we fully understand your needs and goals.
+                    </div>
+                    <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20">
+                      {/* CIRCULO */}
+                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
+                        <TablerCheckupList />
                       </div>
-                    ))}
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
+                        PLANNING
+                      </div>
+
+                    </div>
+                    {/*222 SEGUNDA BURBUJA 222 */}
+                    <div className={`tooltip absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-100 transition-opacity duration-500`}>
+                    Our experts transform the requirements into solid and efficient code, using industry best practices.
+
+                    </div>
+
+                    <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20">
+                      {/* CIRCULO */}
+
+                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
+                      <TablerTerminal2 />
+                      </div>
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
+                      CODE IMPLEMENTATION
+                      </div>
+                    </div>
+                    {/*333 TERCERA BURBUJA 333 */}
+                    <div className={`tooltip absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-100 transition-opacity duration-500`}>
+                    The code undergoes unit testing and quality controls to ensure that your software operates flawlessly.
+                    </div>
+                    <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20">
+                      {/* CIRCULO */}
+                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
+                      <FontistoLaboratory />                      </div>
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
+                        TESTING & QA
+                      </div>
+                    </div>
+                    {/*444 CUARTA BURBUJA 444 */}
+                    <div className={`tooltip absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-100 transition-opacity duration-500`}>
+                    We set up all your infrastructure, server configuration and installation.
+                    </div>
+                    <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20">
+                      {/* CIRCULO */}
+                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
+                      <TablerRocket/>
+                      </div>
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
+                      DEPLOYMENT
+                      </div>
+                    </div>
+                    {/*555 QUINTA BURBUJA 555 */}
+                    <div className={`tooltip absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-100 transition-opacity duration-500`}>
+                    We provide ongoing support to ensure your business can operate smoothly.                    </div>
+                    <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20">
+                      {/* CIRCULO */}
+                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
+                        <Support />
+                      </div>
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
+                        SUPPORT
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
