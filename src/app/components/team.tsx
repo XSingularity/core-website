@@ -66,20 +66,20 @@ const Team = () => {
           <div className="space-y-6 text-center">
             <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="samu.webp"
-              alt="Python developer"
+              src="fab.webp"
+              alt="Sales Representative of software development company xsingularity"
               width={512}
               height={512}
             />
             <div>
-              <h3 className="sm:text-md md:text-2xl text-gray-700 ">Samuel Goncalves</h3>
-              <span className="block text-sm text-gray-500">IT Support</span>
+              <h3 className="sm:text-md md:text-2xl text-gray-700 ">Fabiola Torres</h3>
+              <span className="block text-sm text-gray-500">Sales Representative</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
-              <a href="https://github.com/TheCRIZIZ" target="_blank" aria-label="Github">
+              <a href="https://www.github.com/" target="_blank" aria-label="Github">
                 <Github />
               </a>
-              <a href="https://www.linkedin.com/in/samuel-goncalves-5895b428a/" target="_blank" aria-label="Linkedin">
+              <a href="https://www.linkedin.com/" target="_blank" aria-label="Linkedin">
                 <Linkedin />
               </a>
             </div>
@@ -115,20 +115,20 @@ const Team = () => {
           <div className="space-y-6 text-center">
             <Image
               className="mx-auto rounded-full object-cover sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-64 lg:w-64 transition duration-300 hover:scale-[1.1] hover:shadow-sm"
-              src="fab.webp"
-              alt="Marketing Director of software development company xsingularity"
+              src="samu.webp"
+              alt="Python developer"
               width={512}
               height={512}
             />
             <div>
-              <h3 className="sm:text-md md:text-2xl text-gray-700 ">Fabiola Torres</h3>
-              <span className="block text-sm text-gray-500">Marketing Director</span>
+              <h3 className="sm:text-md md:text-2xl text-gray-700 ">Samuel Goncalves</h3>
+              <span className="block text-sm text-gray-500">IT Support</span>
             </div>
             <div className="flex justify-center space-x-4 text-gray-500">
-              <a href="https://www.github.com/" target="_blank" aria-label="Github">
+              <a href="https://github.com/TheCRIZIZ" target="_blank" aria-label="Github">
                 <Github />
               </a>
-              <a href="https://www.linkedin.com/" target="_blank" aria-label="Linkedin">
+              <a href="https://www.linkedin.com/in/samuel-goncalves-5895b428a/" target="_blank" aria-label="Linkedin">
                 <Linkedin />
               </a>
             </div>
