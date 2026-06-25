@@ -5,19 +5,23 @@ import Image from 'next/image'
 const Services = () => {
   return (
 
-    <div className="sm:py-14 md:py-32 lg:py-32 xl:py-32 text-gray-600 font-sans ">
-      <div className="xl:container m-auto text-gray-600 sm:px-10 md:px-12 lg:px-6 xl:px-6">
-        <div className="flex flex-col text-center w-full mb-20">
-          <h2 className="text-3xl font-bold mb-4 text-gray-900">SERVICES</h2>
-          <p className="">We offer a comprehensive range of services, from project management to design and development, to ensure the success of your projects and applications.</p>
+    <div className="relative overflow-hidden py-14 md:py-20 text-white font-sans bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600">
+      <div className="pointer-events-none absolute inset-0 grid-light opacity-60" />
+      <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-indigo-300/20 blur-3xl" />
+      <div className="relative xl:container m-auto px-6 sm:px-10 md:px-12 lg:px-6">
+        <div className="flex flex-col text-center w-full mb-12">
+          <span className="text-xs font-semibold tracking-[0.3em] text-blue-100/80 mb-3">WHAT WE DO</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">SERVICES</h2>
+          <p className="lg:w-2/3 mx-auto text-blue-50/90">End-to-end software services — from product management and UX/UI to frontend, backend and ongoing support — engineered to make your product a success.</p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3">
-          <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+          <div className="group p-6 sm:p-8 rounded-3xl bg-white shadow-2xl shadow-blue-900/30 transition duration-300 hover:-translate-y-1.5 hover:shadow-blue-900/40">
             <div className="relative overflow-hidden rounded-xl">
               <Image
                 className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
-                src="project_m.webp"
+                src="/project_m.webp"
                 alt="project management for software development"
                 width={1080}
                 height={716}
@@ -36,9 +40,9 @@ const Services = () => {
             </div>
 
           </div>
-          <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+          <div className="group p-6 sm:p-8 rounded-3xl bg-white shadow-2xl shadow-blue-900/30 transition duration-300 hover:-translate-y-1.5 hover:shadow-blue-900/40">
             <div className="relative overflow-hidden rounded-xl">
-              <Image src="ux.webp"
+              <Image src="/ux.webp"
                 alt="UI UX design software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
@@ -53,9 +57,9 @@ const Services = () => {
             </div>
 
           </div>
-          <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+          <div className="group p-6 sm:p-8 rounded-3xl bg-white shadow-2xl shadow-blue-900/30 transition duration-300 hover:-translate-y-1.5 hover:shadow-blue-900/40">
             <div className="relative overflow-hidden rounded-xl">
-              <Image src="tech_s.webp"
+              <Image src="/tech_s.webp"
                 alt="technical support software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
@@ -70,10 +74,10 @@ const Services = () => {
           </div>
         </div> {/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
 
-        <div className="grid gap-8 my-16 md:grid-cols-2 lg:grid-cols-2">
-          <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+        <div className="grid gap-8 mt-8 md:grid-cols-2 lg:grid-cols-2">
+          <div className="group p-6 sm:p-8 rounded-3xl bg-white shadow-2xl shadow-blue-900/30 transition duration-300 hover:-translate-y-1.5 hover:shadow-blue-900/40">
             <div className="relative overflow-hidden rounded-xl">
-              <Image src="frontend.webp"
+              <Image src="/frontend.webp"
                 alt="frontend design programming software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">
@@ -88,9 +92,9 @@ const Services = () => {
             </div>
 
           </div>
-          <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+          <div className="group p-6 sm:p-8 rounded-3xl bg-white shadow-2xl shadow-blue-900/30 transition duration-300 hover:-translate-y-1.5 hover:shadow-blue-900/40">
             <div className="relative overflow-hidden rounded-xl">
-              <Image src="backend.webp"
+              <Image src="/backend.webp"
                 alt="backend programming software development" loading="lazy" width={1080} height={720} className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105" />
             </div>
             <div className="mt-6 relative">

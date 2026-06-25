@@ -1,5 +1,5 @@
+"use client";
 import React, { useState } from 'react';
-import axios from 'axios';
 import Image from 'next/image'
 import Modal from "../components/modal_submit";
 
@@ -29,32 +29,33 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsMessageSent(true);
-    axios.post('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/namespaces/fn-6c237572-2d95-4c97-abd5-d538cc84ed84/actions/send-gmail-message?blocking=true&result=true',
-      formData,
-      {
+    try {
+      await fetch('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/namespaces/fn-6c237572-2d95-4c97-abd5-d538cc84ed84/actions/send-gmail-message?blocking=true&result=true', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Basic NDBlYmMxMDItZmUxMC00ZjZmLTkxYzAtN2ZiYTIwMzM3ZjZhOjIxVFpSS0RYV3FveDlaMGVtWWFzT1pVQ2xTTVBTbkVsd3JFeDBUWnF6VzhzQXg4Q2pHNnA2RHRWMWNFWHZDZ3I='
-        }
-      }
-    ).then((response: any) => {
-      if (response.status === 200) {
-        console.log('Response succeeded!')
-      }
-    });
+        },
+        body: JSON.stringify(formData),
+      });
+    } catch (err) {
+      console.error('Message send failed', err);
+    }
   };
 
   return (
-    <div className="font-sans sm:mb-0 md:mb-10 lg:mb-10 xl:mb-20 2xl:mb-20">
-      <section className="text-gray-700 font-sans relative">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-col text-center w-full mb-12">
-            <Image src="c1.webp" width={720} height={600} className='absolute -z-10 top-20 right-40 blur-sm w-[5rem] animate-bounce-slow4 sm:hidden md:block lg:block xl:block' alt="software company cube visual element no 4" loading='lazy' />
-            <Image src="c1.webp" width={720} height={600} className='absolute -z-10 bottom-3 right-20 rotate-45 w-[6.25rem] animate-bounce-slow5 ' alt="software company cube visual element no 5" loading='lazy' />
-            <Image src="c3.webp" width={720} height={600} className='absolute -z-10 sm:top-[45%] md:top-1/2 lg:top-1/2 xl:top-1/2 sm:left-6 md:left-20 lg:left-20 xl:left-20 sm:blur-sm md:blur-none lg:blur-none xl:blur-none rotate-45 w-[6.25rem] animate-bounce-slow1 ' alt="software company cube visual element no 1" loading='lazy' />
-            <Image src="c3.webp" width={720} height={600} className='absolute -z-10 top-1 blur-sm left-1/2 rotate-45 w-[4.375rem] animate-bounce-slow3 sm:block md:hidden lg:hidden xl:block ' alt="software company cube visual element no 3" loading='lazy' />
-            <Image src="c3.webp" width={720} height={600} className='absolute -z-10 blur-sm sm:left-72 md:left-80 lg:left-80 xl:left-80 rotate-180 w-[5.625rem] animate-bounce-slow2 sm:top-20 md:top-30 lg:top-30 xl:top-30 ' alt="software company cube visual element no 2" loading='lazy' />
-            <h2 className="text-3xl font-bold mb-4 py-10 text-center text-gray-900">TELL US ABOUT YOU</h2>
+    <div className="font-sans">
+      <section className="text-gray-700 font-sans relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 dots-dark opacity-70" />
+        <div className="relative container px-5 py-14 md:py-16 mx-auto">
+          <div className="flex flex-col text-center w-full mb-10">
+            <Image src="/c1.webp" width={720} height={600} className='absolute -z-10 top-20 right-40 blur-sm w-[5rem] animate-bounce-slow4 sm:hidden md:block lg:block xl:block' alt="software company cube visual element no 4" loading='lazy' />
+            <Image src="/c1.webp" width={720} height={600} className='absolute -z-10 bottom-3 right-20 rotate-45 w-[6.25rem] animate-bounce-slow5 ' alt="software company cube visual element no 5" loading='lazy' />
+            <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 sm:top-[45%] md:top-1/2 lg:top-1/2 xl:top-1/2 sm:left-6 md:left-20 lg:left-20 xl:left-20 sm:blur-sm md:blur-none lg:blur-none xl:blur-none rotate-45 w-[6.25rem] animate-bounce-slow1 ' alt="software company cube visual element no 1" loading='lazy' />
+            <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 top-1 blur-sm left-1/2 rotate-45 w-[4.375rem] animate-bounce-slow3 sm:block md:hidden lg:hidden xl:block ' alt="software company cube visual element no 3" loading='lazy' />
+            <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 blur-sm sm:left-72 md:left-80 lg:left-80 xl:left-80 rotate-180 w-[5.625rem] animate-bounce-slow2 sm:top-20 md:top-30 lg:top-30 xl:top-30 ' alt="software company cube visual element no 2" loading='lazy' />
+            <span className="text-xs font-semibold tracking-[0.3em] text-blue-500 mb-3">GET IN TOUCH</span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900">TELL US ABOUT YOU</h2>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
               <strong>Get in touch with us.</strong> Fill out the form below to reach our team. Whether you have questions, feedback, or interest in our solutions, we're here to assist you. We look forward to working with you.
             </p>

@@ -1,270 +1,183 @@
-import React, { useState, useEffect } from "react";
-import handleViewport, { type InjectedViewportProps } from 'react-in-viewport';
+"use client";
+import React, { useState } from "react";
 import { TablerCheckupList } from './svg/TableReqs';
 import { TablerTerminal2 } from './svg/Terminal';
 import { FontistoLaboratory } from './svg/Testing';
 import { TablerRocket } from './svg/Rocket';
 import { Support } from './svg/Support';
-import { debounce } from 'lodash';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+type Step = {
+  title: string;
+  text: string;
+  icon: React.ReactNode;
+};
 
+const STEPS: Step[] = [
+  {
+    title: "PLANNING",
+    text: "We analyze the requirements of your project, making sure we fully understand your needs, goals and constraints before a single line of code is written.",
+    icon: <TablerCheckupList />,
+  },
+  {
+    title: "CODE IMPLEMENTATION",
+    text: "Our engineers turn the requirements into solid, efficient and well-tested code using modern, industry best practices.",
+    icon: <TablerTerminal2 />,
+  },
+  {
+    title: "TESTING & QA",
+    text: "Every change goes through automated tests and quality controls so your software ships flawlessly and stays reliable.",
+    icon: <FontistoLaboratory />,
+  },
+  {
+    title: "DEPLOYMENT",
+    text: "We set up your entire infrastructure — servers, pipelines and configuration — and ship to production with zero drama.",
+    icon: <TablerRocket />,
+  },
+  {
+    title: "SUPPORT",
+    text: "We provide ongoing monitoring and support so your business keeps running smoothly long after launch.",
+    icon: <Support />,
+  },
+];
 
+const Header = () => (
+  <div className="text-center w-full mb-12 text-white px-6">
+    <span className="inline-block text-xs font-semibold tracking-[0.3em] text-blue-100/80 mb-3">
+      HOW WE WORK
+    </span>
+    <h2 className="text-3xl md:text-4xl font-bold mb-4">WORKFLOW</h2>
+    <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-blue-50/90">
+      A streamlined, transparent process built to cover every requirement —
+      ensuring fast, efficient delivery without ever compromising on quality.
+    </p>
+  </div>
+);
 
-const Workflow = (props: InjectedViewportProps<HTMLDivElement>) => {
-  const [windowSize, setWindowSize] = useState<number>(0);
+const Workflow = () => {
+  const [hovered, setHovered] = useState<number | null>(null);
+  const progress =
+    hovered === null || STEPS.length <= 1
+      ? 0
+      : (hovered / (STEPS.length - 1)) * 100;
 
-  useEffect(() => {
-    const handleResize = debounce(() => {
-      setWindowSize(window.innerWidth);
-    }, 300);
+  return (
+    <div className="relative overflow-hidden bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 drop-shadow-xl">
+      {/* subtle pattern + glow */}
+      <div className="pointer-events-none absolute inset-0 grid-light opacity-60" />
+      <div className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-indigo-300/20 blur-3xl" />
 
-    handleResize();
+      <div className="relative py-14 lg:py-16">
+        <Header />
 
-    window.addEventListener("resize", handleResize);
+        {/* ===== Desktop: horizontal stepper ===== */}
+        {/* pb reserves room for the tooltip that drops BELOW each node, so it never
+            overlaps the next section, the icons, or the header text. */}
+        <div className="hidden lg:block pb-48">
+          <div className="w-[58rem] mx-auto px-4">
+            <div className="relative flex justify-between">
+              {/* base track */}
+              <div className="absolute left-0 right-0 top-[2.6rem] h-1 rounded-full bg-white/25" />
+              {/* animated fill */}
+              <div
+                className="absolute left-0 top-[2.6rem] h-1 rounded-full bg-gradient-to-r from-cyan-300 to-white transition-all duration-500 ease-out"
+                style={{ width: `${progress}%` }}
+              />
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const tooltipsData = [
-    "This is where we analyze the requirements of your project, ensuring that we fully understand your needs and goals.",
-    "Our experts transform the requirements into solid and efficient code, using industry best practices.",
-    "The code undergoes unit testing and quality controls to ensure that your software operates flawlessly.",
-    "We set up all your infrastructure, server configuration and installation.",
-    "We provide ongoing support to ensure your business can operate smoothly.",
-  ];
-
-  const [tooltips, setTooltips] = useState<string[]>(tooltipsData);
-  const [activeTooltip, setActiveTooltip] = useState<number | null>(0);
-
-  const icons = [
-    <TablerCheckupList />,
-    <TablerTerminal2 />,
-    <FontistoLaboratory />,
-    <TablerRocket />,
-    <Support />
-  ];
-
-  const titles = [
-    "PLANNING",
-    "CODE IMPLEMENTATION",
-    "TESTING & QA",
-    "DEPLOYMENT",
-    "SUPPORT"
-  ];
-
-  const handleMouseEnter = (index: number) => {
-    setActiveTooltip(index);
-  };
-
-  const handleMouseLeave = () => {
-    setActiveTooltip(null);
-  };
-  type TooltipElement = HTMLElement;
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const animateTooltipsOnScroll = () => {
-      const allTooltips: NodeListOf<HTMLElement> = document.querySelectorAll('.tooltip');
-      const validTooltips: TooltipElement[] = Array.from(allTooltips).filter(tooltip => tooltip !== null) as TooltipElement[];
-
-      const showTooltip = (tooltip: TooltipElement, index: number) => {
-        gsap.to(tooltip, {
-          opacity: 1,
-          y: 0,
-          duration: 0.1,
-          ease: 'power2.out',
-        });
-
-        if (index > 0) {
-          gsap.to(validTooltips[index - 1], {
-            opacity: 0,
-            y: 0,
-            duration: 0.1,
-            ease: 'power2.out',
-          });
-        }
-      };
-
-      const hideTooltip = (tooltip: TooltipElement, index: number) => {
-        gsap.to(tooltip, {
-          opacity: 0,
-          y: 0,
-          duration: 0.1,
-          ease: 'elastic',
-        });
-
-        if (index > 0) {
-          gsap.to(validTooltips[index - 1], {
-            opacity: 1,
-            y: 0,
-            duration: 0.1,
-            ease: 'power2.out',
-          });
-        }
-      };
-
-      validTooltips.forEach((tooltip, index) => {
-        gsap.set(tooltip, { opacity: 0, y: 0 });
-
-        ScrollTrigger.create({
-          trigger: tooltip,
-          start: 'top 40%',
-          onEnter: () => showTooltip(tooltip, index),
-          onLeaveBack: () => hideTooltip(tooltip, index),
-        });
-      });
-    };
-
-    animateTooltipsOnScroll();
-  }, []);
-
-  const renderDivBasedOnWindowSize = () => {
-
-
-
-    if (windowSize < 1024) {
-      return (
-        <div className="">
-          <div className="h-full w-full bg-gradient-to-r from-blue-500 to-blue-700 py-40 justify-center sm:py-12 font-sans drop-shadow-xl">
-            <div className="xl:container text-gray-600 sm:px-10 md:px-12 lg:px-6 xl:px-6">
-              <div className="text-center w-full sm:mb-30 md:mb-30 lg:mb-40 xl:mb-40 mt-10 text-white ">
-                <h2 className="text-3xl font-bold mb-4">WORKFLOW</h2>
-                <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                  Our streamlined process is designed to carefully address all your requirements. This structured approach not only ensures a swift
-                  and efficient delivery but also upholds a commitment to maintaining high-quality standards in all our services.
-                </p>
-              </div>
-              <div className=" items-center justify-center mx-auto ">
-                <div className="relative">
-                  <div className="w-2 h-full bg-white absolute top-1/2 transform -translate-y-1/2 opacity-0"></div>
-                  <div className="flex-column justify-between ">
-                  {/*111 PRIMERA BURBUJA 111 */}
-                  <div className={`tooltip absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-100 transition-opacity duration-500`}>
-                      This is where we analyze the requirements of your project, ensuring that we fully understand your needs and goals.
-                    </div>
-                    <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20">
-                      {/* CIRCULO */}
-                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
-                        <TablerCheckupList />
+              {STEPS.map((step, index) => {
+                const isActive = index === hovered;
+                return (
+                  <div
+                    key={step.title}
+                    className="relative flex flex-col items-center w-[8rem]"
+                  >
+                    {/* node — hover target is the icon itself */}
+                    <button
+                      type="button"
+                      aria-label={step.title}
+                      onMouseEnter={() => setHovered(index)}
+                      onMouseLeave={() => setHovered(null)}
+                      onFocus={() => setHovered(index)}
+                      onBlur={() => setHovered(null)}
+                      className="relative h-[5.2rem] w-[5.2rem] flex items-center justify-center cursor-pointer focus:outline-none"
+                    >
+                      {isActive && (
+                        <span className="absolute inset-0 rounded-full bg-white/40 animate-pulse-ring" />
+                      )}
+                      <div
+                        className={`relative z-10 flex h-[4.6rem] w-[4.6rem] items-center justify-center rounded-full transition-all duration-300 ${
+                          isActive
+                            ? "bg-white scale-110 shadow-[0_0_35px_rgba(255,255,255,0.65)]"
+                            : "bg-white/85 hover:bg-white hover:scale-105"
+                        }`}
+                      >
+                        <span className={`transition-transform duration-300 ${isActive ? "scale-110" : ""}`}>
+                          {step.icon}
+                        </span>
                       </div>
-                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
-                        PLANNING
-                      </div>
+                      <span
+                        className={`absolute -top-1 -right-1 z-20 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold transition-colors duration-300 ${
+                          isActive ? "bg-cyan-300 text-blue-900" : "bg-white/80 text-blue-700"
+                        }`}
+                      >
+                        {index + 1}
+                      </span>
+                    </button>
 
-                    </div>
-                    {/*222 SEGUNDA BURBUJA 222 */}
-                    <div className={`tooltip absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-100 transition-opacity duration-500`}>
-                    Our experts transform the requirements into solid and efficient code, using industry best practices.
+                    <span
+                      className={`mt-4 text-center text-sm font-bold tracking-wide transition-colors duration-300 ${
+                        isActive ? "text-white" : "text-white/70"
+                      }`}
+                    >
+                      {step.title}
+                    </span>
 
-                    </div>
-
-                    <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20">
-                      {/* CIRCULO */}
-
-                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
-                      <TablerTerminal2 />
-                      </div>
-                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
-                      CODE IMPLEMENTATION
-                      </div>
-                    </div>
-                    {/*333 TERCERA BURBUJA 333 */}
-                    <div className={`tooltip absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-100 transition-opacity duration-500`}>
-                    The code undergoes unit testing and quality controls to ensure that your software operates flawlessly.
-                    </div>
-                    <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20">
-                      {/* CIRCULO */}
-                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
-                      <FontistoLaboratory />                      </div>
-                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
-                        TESTING & QA
-                      </div>
-                    </div>
-                    {/*444 CUARTA BURBUJA 444 */}
-                    <div className={`tooltip absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-100 transition-opacity duration-500`}>
-                    We set up all your infrastructure, server configuration and installation.
-                    </div>
-                    <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20">
-                      {/* CIRCULO */}
-                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
-                      <TablerRocket/>
-                      </div>
-                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
-                      DEPLOYMENT
-                      </div>
-                    </div>
-                    {/*555 QUINTA BURBUJA 555 */}
-                    <div className={`tooltip absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg w-[18.75rem] h-[7.25rem] z-10 flex items-center justify-center opacity-100 transition-opacity duration-500`}>
-                    We provide ongoing support to ensure your business can operate smoothly.                    </div>
-                    <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer left-[50%] transform mx-auto my-20">
-                      {/* CIRCULO */}
-                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
-                        <Support />
-                      </div>
-                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center -mt-10 whitespace-nowrap">
-                        SUPPORT
-                      </div>
+                    {/* tooltip card — drops BELOW the title, only for the hovered icon */}
+                    <div
+                      className={`absolute top-[9.5rem] left-1/2 -translate-x-1/2 w-60 rounded-2xl bg-white/95 backdrop-blur p-4 text-center text-sm text-gray-700 shadow-2xl ring-1 ring-black/5 transition-all duration-300 ${
+                        isActive
+                          ? "opacity-100 translate-y-0 pointer-events-auto"
+                          : "opacity-0 -translate-y-3 pointer-events-none"
+                      }`}
+                    >
+                      <span className="absolute left-1/2 -top-1.5 h-3 w-3 -translate-x-1/2 rotate-45 bg-white/95" />
+                      <span className="block text-xs font-bold tracking-wider text-blue-600 mb-1">
+                        STEP {index + 1}
+                      </span>
+                      {step.text}
                     </div>
                   </div>
-                </div>
-              </div>
-            </div></div> </div>
-      );
-    } else {
-      return (
-        <div className="">
-          <div className="h-[43.75rem] bg-gradient-to-r from-blue-500 to-blue-700 py-40 justify-center sm:py-12 font-sans">
-            <div className="text-center w-full mb-40 mt-10 text-white">
-              <h2 className="text-3xl font-bold mb-4">WORKFLOW</h2>
-              <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Our streamlined process is designed to carefully address all your requirements. This structured approach not only ensures a swift
-                and efficient delivery but also upholds a commitment to maintaining high-quality standards in all our services.
-              </p>
-            </div>
-            <div className="w-[56.25rem] items-center justify-center mx-auto">
-              <div className="relative">
-                <div className="h-2 bg-white w-full absolute top-1/2 transform -translate-y-1/2"></div>
-                <div className="flex justify-between">
-                  {tooltips.map((text, index) => (
-                    <div
-                      key={index}
-                      className="relative hover:scale-[1.1] transition duration-1000"
-                      onMouseEnter={() => handleMouseEnter(index)}
-                      onMouseLeave={() => setActiveTooltip(index)}
-                    >
-                      <div className="w-[5.625rem] h-[5.625rem] bg-white rounded-full cursor-pointer"></div>
-                      {activeTooltip === index && (
-                        <div className="absolute left-1/2 transform -translate-x-1/2 bg-white text-black p-2 rounded-lg shadow text-center mt-10 w-[12.5rem]">
-                          {text}
-                        </div>
-                      )}
-                      <div className="absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] cursor-pointer">
-                        {icons[index]}
-                      </div>
-                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-bold text-center w-[12.5rem] -mt-12">
-                        {titles[index]}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
-      );
-    }
-  };
 
-  return (
-    <div>
-      {renderDivBasedOnWindowSize()}
+        {/* ===== Mobile / tablet: vertical timeline ===== */}
+        <div className="lg:hidden px-6 max-w-md mx-auto">
+          <div className="relative pl-6">
+            <div className="absolute left-[1.35rem] top-2 bottom-2 w-1 rounded-full bg-white/25" />
+            {STEPS.map((step, index) => (
+              <div key={step.title} className="relative mb-8 last:mb-0 pl-12">
+                <div className="absolute left-0 top-0 flex h-[3.2rem] w-[3.2rem] items-center justify-center rounded-full bg-white shadow-lg ring-4 ring-blue-500/40">
+                  <span className="scale-90">{step.icon}</span>
+                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-cyan-300 text-[0.65rem] font-bold text-blue-900">
+                    {index + 1}
+                  </span>
+                </div>
+                <div className="rounded-2xl bg-white/95 p-4 shadow-xl">
+                  <h3 className="text-sm font-bold tracking-wide text-blue-700 mb-1">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-gray-700">{step.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default handleViewport(Workflow);
+export default Workflow;

@@ -1,7 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
 
 .type::after {
   content: '_';
@@ -15,8 +23,41 @@
 }
 
 ::selection {
-  background-color: #161616;
-  /* Cambia el color de fondo al seleccionar */
+  background-color: #3b82f6;
   color: #ffffff;
-  /* Cambia el color del texto al seleccionar */
+}
+
+/* Subtle gradient text helper for headings */
+.text-gradient {
+  background: linear-gradient(90deg, #3b82f6 0%, #1e293b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Subtle, non-invasive section patterns */
+.dots-dark {
+  background-image: radial-gradient(rgba(59, 130, 246, 0.10) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dots-light {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.grid-light {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
