@@ -18,14 +18,14 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 text-gray-900 font-sans bg-white/80 backdrop-blur-md border-b border-gray-100">
-      <div className="container mx-auto flex flex-wrap py-3 xl:px-40 2xl:px-40 lg:px-7 md:px-7 flex-col md:flex-row items-center justify-center">
-        <a href="/" aria-label="XSingularity home">
-          <Image className="w-32" src="/logo1.webp" alt="software development company xsingularity logo" width={1174} height={273} priority />
+      <div className="container mx-auto px-6 lg:px-10 xl:px-40 py-3 flex flex-col lg:flex-row items-center lg:justify-between gap-3">
+        <a href="/" aria-label="XSingularity home" className="shrink-0">
+          <Image className="w-28 md:w-32" src="/logo1.webp" alt="software development company xsingularity logo" width={1174} height={273} priority />
         </a>
-        <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 font-normal md:border-l md:border-gray-300 flex flex-wrap items-center text-base justify-center">
-          <ul className="flex text-sm">
+        <nav className="font-normal lg:mr-auto lg:ml-4 lg:pl-4 lg:border-l lg:border-gray-300">
+          <ul className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-1 text-sm">
             {menuItems.map((menu) => (
-              <li key={menu.id} className="ease-in duration-200 mr-5 hover:text-blue-500 text-md">
+              <li key={menu.id} className="ease-in duration-200 hover:text-blue-500">
                 <Link className="cursor-pointer font-medium" to={menu.title} smooth={true} offset={-70} duration={500}>
                   {menu.title}
                 </Link>
@@ -33,13 +33,13 @@ const Header = () => {
             ))}
           </ul>
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
           <a target="_blank" rel="noopener noreferrer" href="https://calendly.com/xsingularity/meet-us"
-            className="hidden md:inline-flex text-white bg-blue-500 hover:bg-blue-600 transition-colors py-2 px-5 rounded-full text-sm font-semibold shadow-sm shadow-blue-500/30">
+            className="inline-flex text-white bg-blue-500 hover:bg-blue-600 transition-colors py-2 px-5 rounded-full text-sm font-semibold shadow-sm shadow-blue-500/30">
             Book a call
           </a>
-          <button onClick={() => setShowModal(true)} aria-label="Open FAQ">
-            <div className="sm:absolute sm:top-9 sm:right-14 md:static lg:static xl:static md:p-0 lg:p-0 xl:p-0"><SvgFaq /></div>
+          <button onClick={() => setShowModal(true)} aria-label="Open FAQ" className="flex items-center">
+            <SvgFaq />
           </button>
         </div>
         <Modal isVisible={showModal} onClose={() => setShowModal(false)} />

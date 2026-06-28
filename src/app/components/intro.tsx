@@ -12,6 +12,10 @@ const VALUE_PROPS = [
 const Intro = () => {
   return (
     <section className="text-gray-900 font-sans">
+      <SvgBlackhole
+        aria-hidden
+        className="md:hidden pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[140%] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-[0.07] sm:opacity-10"
+      />
       <div id="Home" className="container flex flex-wrap flex-col p-1 mx-auto md:px-0 xl:px-40 2xl:px-40 md:flex-row items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 my-8 md:my-12 lg:my-14 md:pr-16 flex flex-col
         md:items-start md:text-left items-center text-center">
@@ -66,7 +70,7 @@ const Intro = () => {
           </div>
         </div>
 
-        <div className="content-center w-3/4 sm:w-2/3 md:w-1/2 lg:w-1/2 mt-10 md:mt-0">
+        <div className="hidden md:block content-center md:w-1/2 lg:w-1/2 mt-10 md:mt-0">
           <SvgDust className='hidden md:block absolute rotate-180 w-[63.438rem] right-0 top-0 -z-10' />
           <SvgBlackhole className="w-full h-auto" />
         </div>

@@ -46,6 +46,14 @@ body {
   background-size: 24px 24px;
 }
 
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .grid-light {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px),

@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { createPortal } from "react-dom";
 import { TypeAnimation } from 'react-type-animation';
 import { useState } from "react";
 import { ArrowUp } from './svg/ArrowUp'
@@ -23,16 +24,16 @@ const TituloDesplegable = ({ titulo, contenido }: { titulo: string, contenido: s
 };
 
 const Modal = ({ isVisible, onClose }: { isVisible: boolean, onClose: () => void }) => {
-  if (!isVisible) return null;
+  if (!isVisible || typeof document === 'undefined') return null;
 
   const handleClose = (e: React.MouseEvent<HTMLDivElement>) => { // Esto es para que cuando le de click al modal (cuadro blanco) no se cierre, pero cuando le de click al fondo negro blurred, si.
     const target = e.target as HTMLDivElement;
     if (target.id === 'wrapper') onClose();
   }
 
-  return (
-    <div className='fixed inset-0 z-10 bg-black bg-opacity-25 backdrop-blur-sm flex 
-        justify-center items-center'
+  return createPortal(
+    <div className='fixed inset-0 z-50 bg-black bg-opacity-25 backdrop-blur-sm flex
+        justify-center items-center p-4'
       id="wrapper"
       onClick={handleClose}
     //Cuando le de click al fondo negro blurred se va a cerrar el modal!
@@ -62,7 +63,8 @@ const Modal = ({ isVisible, onClose }: { isVisible: boolean, onClose: () => void
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 export default Modal;
