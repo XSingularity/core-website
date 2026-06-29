@@ -50,7 +50,7 @@ const Contact = () => {
     setError(null);
     setIsSubmitting(true);
     try {
-      const res = await fetch('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/namespaces/fn-6c237572-2d95-4c97-abd5-d538cc84ed84/actions/send-gmail-message?blocking=true&result=true', {
+      const res = await fetch('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-6c237572-2d95-4c97-abd5-d538cc84ed84/default/send-gmail-message?blocking=true&result=true', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
