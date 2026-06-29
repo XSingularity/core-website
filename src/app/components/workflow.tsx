@@ -42,10 +42,10 @@ const STEPS: Step[] = [
 
 const Header = () => (
   <div className="text-center w-full mb-12 text-white px-6">
-    <span className="inline-block text-xs font-semibold tracking-[0.3em] text-blue-100/80 mb-3">
-      HOW WE WORK
+    <span className="inline-block text-xs font-semibold tracking-[0.25em] text-blue-100/80 mb-3">
+      how we work
     </span>
-    <h2 className="text-3xl md:text-4xl font-bold mb-4">WORKFLOW</h2>
+    <h2 className="text-3xl md:text-5xl font-bold mb-4">Workflow</h2>
     <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-blue-50/90">
       A streamlined, transparent process built to cover every requirement —
       ensuring fast, efficient delivery without ever compromising on quality.
@@ -61,7 +61,7 @@ const Workflow = () => {
       : (hovered / (STEPS.length - 1)) * 100;
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 drop-shadow-xl">
+    <div className="relative overflow-hidden bg-gradient-to-br from-[#2795ff] via-[#2086f0] to-[#1668c9] drop-shadow-xl">
       {/* subtle pattern + glow */}
       <div className="pointer-events-none absolute inset-0 grid-light opacity-60" />
       <div className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" />

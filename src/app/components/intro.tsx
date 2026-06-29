@@ -11,17 +11,17 @@ const VALUE_PROPS = [
 
 const Intro = () => {
   return (
-    <section className="text-gray-900 font-sans">
+    <section className="relative overflow-x-clip text-gray-900 font-sans">
       <SvgBlackhole
         aria-hidden
-        className="md:hidden pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[140%] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-[0.07] sm:opacity-10"
+        className="md:hidden pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[120%] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-[0.07] sm:opacity-10"
       />
       <div id="Home" className="container flex flex-wrap flex-col p-1 mx-auto md:px-0 xl:px-40 2xl:px-40 md:flex-row items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 my-8 md:my-12 lg:my-14 md:pr-16 flex flex-col
         md:items-start md:text-left items-center text-center">
 
-          <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600 mb-5">
-            <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#2795ff]/10 px-3 py-1 text-xs font-semibold text-[#2795ff] mb-5">
+            <span className="h-2 w-2 rounded-full bg-[#2795ff] animate-pulse" />
             High-end software studio
           </span>
 
@@ -60,11 +60,11 @@ const Intro = () => {
 
           <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
             <a target="_blank" rel="noopener noreferrer" href="https://calendly.com/xsingularity/meet-us">
-              <button className="ease-in duration-200 hover:scale-[1.04] inline-flex text-white bg-blue-500 hover:bg-blue-600 py-3 px-8 focus:outline-none rounded-full text-lg font-semibold shadow-lg shadow-blue-500/30">
+              <button className="transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98] inline-flex text-white bg-[#2795ff] hover:bg-[#1c7fe8] py-3 px-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2795ff] rounded-full text-lg font-semibold shadow-lg shadow-[#2795ff]/30">
                 Book a free call
               </button>
             </a>
-            <a href="#Services" className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+            <a href="#Services" className="text-[#2795ff] font-semibold hover:text-[#1c7fe8] transition-colors">
               See what we build →
             </a>
           </div>

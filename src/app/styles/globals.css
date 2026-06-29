@@ -2,12 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
+  position: relative;
+  width: 100%;
   text-rendering: optimizeLegibility;
 }
 
@@ -23,13 +31,19 @@ body {
 }
 
 ::selection {
-  background-color: #3b82f6;
+  background-color: #2795ff;
   color: #ffffff;
+}
+
+/* Display headings get the geometric face + tighter optical tracking */
+h1, h2, h3 {
+  font-family: var(--font-display, 'Space Grotesk'), 'Outfit', system-ui, sans-serif;
+  letter-spacing: -0.02em;
 }
 
 /* Subtle gradient text helper for headings */
 .text-gradient {
-  background: linear-gradient(90deg, #3b82f6 0%, #1e293b 100%);
+  background: linear-gradient(100deg, #2795ff 0%, #4aa6ff 45%, #1e293b 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -44,6 +58,16 @@ body {
 .dots-light {
   background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+/* Fixed, subtle film grain to break digital flatness */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .no-scrollbar {

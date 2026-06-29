@@ -5,6 +5,30 @@ import Modal from "../components/modal_submit";
 
 
 
+const FormSkeleton = () => (
+  <div className="flex flex-wrap -m-2 animate-pulse" aria-hidden>
+    <div className="p-2 w-1/2">
+      <div className="h-4 w-16 bg-gray-200 rounded mb-2" />
+      <div className="h-11 w-full bg-gray-200 rounded-lg" />
+    </div>
+    <div className="p-2 w-1/2">
+      <div className="h-4 w-16 bg-gray-200 rounded mb-2" />
+      <div className="h-11 w-full bg-gray-200 rounded-lg" />
+    </div>
+    <div className="p-2 w-full">
+      <div className="h-4 w-20 bg-gray-200 rounded mb-2" />
+      <div className="h-32 w-full bg-gray-200 rounded-lg" />
+    </div>
+    <div className="p-2 w-full flex justify-center">
+      <div className="h-11 w-40 bg-gray-200 rounded-full" />
+    </div>
+    <div className="p-2 w-full flex items-center justify-center gap-2 text-sm text-gray-500">
+      <span className="h-4 w-4 rounded-full border-2 border-gray-300 border-t-[#2795ff] animate-spin" />
+      Sending your message…
+    </div>
+  </div>
+);
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -13,24 +37,20 @@ const Contact = () => {
   });
 
   const [showModal, setShowModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const [isMessageSent, setIsMessageSent] = useState(false);
-  const showModalAndSetMessageNotSent = () => {
-    setShowModal(true);
-    setIsMessageSent(false);
-  };
-
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsMessageSent(true);
+    setError(null);
+    setIsSubmitting(true);
     try {
-      await fetch('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/namespaces/fn-6c237572-2d95-4c97-abd5-d538cc84ed84/actions/send-gmail-message?blocking=true&result=true', {
+      const res = await fetch('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/namespaces/fn-6c237572-2d95-4c97-abd5-d538cc84ed84/actions/send-gmail-message?blocking=true&result=true', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,8 +58,14 @@ const Contact = () => {
         },
         body: JSON.stringify(formData),
       });
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      setShowModal(true);
+      setFormData({ name: '', email: '', message: '' });
     } catch (err) {
       console.error('Message send failed', err);
+      setError("We couldn't send your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -54,13 +80,16 @@ const Contact = () => {
             <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 sm:top-[45%] md:top-1/2 lg:top-1/2 xl:top-1/2 sm:left-6 md:left-20 lg:left-20 xl:left-20 sm:blur-sm md:blur-none lg:blur-none xl:blur-none rotate-45 w-[6.25rem] animate-bounce-slow1 ' alt="software company cube visual element no 1" loading='lazy' />
             <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 top-1 blur-sm left-1/2 rotate-45 w-[4.375rem] animate-bounce-slow3 sm:block md:hidden lg:hidden xl:block ' alt="software company cube visual element no 3" loading='lazy' />
             <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 blur-sm sm:left-72 md:left-80 lg:left-80 xl:left-80 rotate-180 w-[5.625rem] animate-bounce-slow2 sm:top-20 md:top-30 lg:top-30 xl:top-30 ' alt="software company cube visual element no 2" loading='lazy' />
-            <span className="text-xs font-semibold tracking-[0.3em] text-blue-500 mb-3">GET IN TOUCH</span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900">TELL US ABOUT YOU</h2>
+            <span className="text-xs font-semibold tracking-[0.25em] text-[#2795ff] mb-3">get in touch</span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center text-gray-900">Tell us about you</h2>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
               <strong>Get in touch with us.</strong> Fill out the form below to reach our team. Whether you have questions, feedback, or interest in our solutions, we're here to assist you. We look forward to working with you.
             </p>
           </div>
           <div className="lg:w-1/2 md:w-2/3 mx-auto ">
+            {isSubmitting ? (
+              <FormSkeleton />
+            ) : (
             <form className="flex flex-wrap -m-2" onSubmit={handleSubmit}>
               <div className="p-2 w-1/2 ">
                 <div className="relative">
@@ -73,7 +102,7 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-gray-100 rounded-lg border border-gray-300 focus:border-[#2795ff] focus:ring-2 focus:ring-[#2795ff]/25 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     required
                   />
                 </div>
@@ -89,7 +118,8 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-gray-100 rounded border border-gray-300 focus-border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-gray-100 rounded-lg border border-gray-300 focus:border-[#2795ff] focus:ring-2 focus:ring-[#2795ff]/25 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    required
                   />
                 </div>
               </div>
@@ -103,23 +133,27 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full bg-gray-100 rounded border border-gray-300 focus-border-indigo-500 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-gray-100 rounded-lg border border-gray-300 focus:border-[#2795ff] focus:ring-2 focus:ring-[#2795ff]/25 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                     required
                   />
                 </div>
               </div>
+              {error && (
+                <div className="p-2 w-full">
+                  <p role="alert" className="text-sm text-red-600 text-center">{error}</p>
+                </div>
+              )}
               <div className="p-2 w-full">
                 <button
-                  onClick={() =>
-                    showModalAndSetMessageNotSent()}
                   type="submit"
-                  className="ease-in duration-500 mx-auto flex text-white bg-gray-800 border-1 py-2 px-6 focus:outline-none hover:bg-blue-500 hover:text-white rounded text-lg font-medium text-center"
+                  className="mx-auto flex items-center text-white bg-[#2795ff] py-2.5 px-8 rounded-full text-lg font-semibold text-center shadow-lg shadow-[#2795ff]/25 transition-all duration-200 hover:bg-[#1c7fe8] hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2795ff]"
                 >
-                  Send
+                  Send message
                 </button>
               </div>
             </form>
-            {isMessageSent && <Modal isVisible={showModal} onClose={() => setShowModal(false)} />}
+            )}
+            {showModal && <Modal isVisible={showModal} onClose={() => setShowModal(false)} />}
           </div>
         </div>
       </section>

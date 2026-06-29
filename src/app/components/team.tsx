@@ -46,8 +46,8 @@ const Team = () => {
       <div className="pointer-events-none absolute inset-0 dots-dark opacity-70" />
       <div className="relative xl:container px-6 sm:px-10 md:px-12 lg:px-6 m-auto">
         <div className="flex flex-col text-center w-full mb-12">
-          <span className="text-xs font-semibold tracking-[0.3em] text-blue-500 mb-3">THE PEOPLE</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">OUR TEAM</h2>
+          <span className="text-xs font-semibold tracking-[0.25em] text-[#2795ff] mb-3">the people</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">Our team</h2>
           <p className="lg:w-2/3 mx-auto">A senior team specialized in cutting-edge engineering, design and strategy — dedicated to guiding your ideas and projects all the way to success.</p>
         </div>
 
