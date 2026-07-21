@@ -2,6 +2,9 @@
   "name": "core-website",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "build:svg": "svgr --out-dir src/app/components/svg/ -- public/svg/",
     "dev": "next dev",
