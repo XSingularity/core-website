@@ -135,13 +135,16 @@ const Contact = () => {
       )}
       <section className="text-gray-700 font-sans relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 dots-dark opacity-70" />
+        {/* ambient depth — soft brand glows behind the form */}
+        <div className="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full bg-[#2795ff]/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-28 -right-24 h-96 w-96 rounded-full bg-cyan-300/10 blur-3xl" />
         <div className="relative container px-5 py-14 md:py-16 mx-auto">
           <div className="flex flex-col text-center w-full mb-10">
-            <Image src="/c1.webp" width={720} height={600} className='absolute -z-10 top-20 right-40 blur-sm w-[5rem] animate-bounce-slow4 sm:hidden md:block lg:block xl:block' alt="software company cube visual element no 4" loading='lazy' />
-            <Image src="/c1.webp" width={720} height={600} className='absolute -z-10 bottom-3 right-20 rotate-45 w-[6.25rem] animate-bounce-slow5 ' alt="software company cube visual element no 5" loading='lazy' />
-            <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 sm:top-[45%] md:top-1/2 lg:top-1/2 xl:top-1/2 sm:left-6 md:left-20 lg:left-20 xl:left-20 sm:blur-sm md:blur-none lg:blur-none xl:blur-none rotate-45 w-[6.25rem] animate-bounce-slow1 ' alt="software company cube visual element no 1" loading='lazy' />
-            <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 top-1 blur-sm left-1/2 rotate-45 w-[4.375rem] animate-bounce-slow3 sm:block md:hidden lg:hidden xl:block ' alt="software company cube visual element no 3" loading='lazy' />
-            <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 blur-sm sm:left-72 md:left-80 lg:left-80 xl:left-80 rotate-180 w-[5.625rem] animate-bounce-slow2 sm:top-20 md:top-30 lg:top-30 xl:top-30 ' alt="software company cube visual element no 2" loading='lazy' />
+            <Image src="/c1.webp" width={720} height={600} className='absolute -z-10 top-20 right-40 blur-sm w-[5rem] animate-float-4 sm:hidden md:block lg:block xl:block' alt="software company cube visual element no 4" loading='lazy' />
+            <Image src="/c1.webp" width={720} height={600} className='absolute -z-10 bottom-3 right-20 rotate-45 w-[6.25rem] animate-float-5 ' alt="software company cube visual element no 5" loading='lazy' />
+            <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 sm:top-[45%] md:top-1/2 lg:top-1/2 xl:top-1/2 sm:left-6 md:left-20 lg:left-20 xl:left-20 sm:blur-sm md:blur-none lg:blur-none xl:blur-none rotate-45 w-[6.25rem] animate-float-1 ' alt="software company cube visual element no 1" loading='lazy' />
+            <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 top-1 blur-sm left-1/2 rotate-45 w-[4.375rem] animate-float-3 sm:block md:hidden lg:hidden xl:block ' alt="software company cube visual element no 3" loading='lazy' />
+            <Image src="/c3.webp" width={720} height={600} className='absolute -z-10 blur-sm sm:left-72 md:left-80 lg:left-80 xl:left-80 rotate-180 w-[5.625rem] animate-float-2 sm:top-20 md:top-30 lg:top-30 xl:top-30 ' alt="software company cube visual element no 2" loading='lazy' />
             <Reveal>
               <span className="block text-xs font-semibold tracking-[0.25em] text-[#2795ff] mb-3">{t.eyebrow}</span>
               <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center text-gray-900">{t.title}</h2>

@@ -17,7 +17,7 @@ const Intro = () => {
         aria-hidden="true"
         loading="lazy"
         decoding="async"
-        className="md:hidden pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[120%] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-[0.07] sm:opacity-10"
+        className="md:hidden pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[120%] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-[0.10] sm:opacity-[0.14]"
       />
       <div id="Home" className="container flex flex-wrap flex-col p-1 mx-auto md:px-0 xl:px-40 2xl:px-40 md:flex-row items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 my-8 md:my-12 lg:my-14 md:pr-16 flex flex-col

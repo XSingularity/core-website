@@ -27,17 +27,47 @@ module.exports = {
         ["infinite-slider"]: "infiniteSlider 50s linear infinite",
         marquee: "marquee 40s linear infinite",
 
-        'bounce-slow1': 'bounce 8.2s linear infinite',
-        'bounce-slow2': 'bounce 8.4s linear infinite',
-        'bounce-slow3': 'bounce 8.6s linear infinite',
-        'bounce-slow4': 'bounce 8.8s linear infinite',
-        'bounce-slow5': 'bounce 9s linear infinite',
+        // Weightless drift for the decorative cubes — transform-only (GPU),
+        // long staggered cycles so they never sync into a visible "bounce".
+        'float-1': 'float1 12s ease-in-out infinite',
+        'float-2': 'float2 13.5s ease-in-out infinite',
+        'float-3': 'float3 11s ease-in-out infinite',
+        'float-4': 'float4 14s ease-in-out infinite',
+        'float-5': 'float5 12.5s ease-in-out infinite',
+        // Light travelling down the mobile workflow timeline.
+        'beam': 'beam 3.4s ease-in-out infinite',
 
         'fade-up': 'fadeUp 0.7s ease-out both',
         'pulse-ring': 'pulseRing 2.4s cubic-bezier(0.4,0,0.6,1) infinite',
         'spin-slow': 'spin 14s linear infinite',
       },
       keyframes: {
+        // Each cube keeps its resting tilt and drifts on a unique path.
+        float1: {
+          '0%, 100%': { transform: 'translate3d(0, 0, 0) rotate(44deg)' },
+          '50%': { transform: 'translate3d(6px, -22px, 0) rotate(50deg)' },
+        },
+        float2: {
+          '0%, 100%': { transform: 'translate3d(0, 0, 0) rotate(178deg)' },
+          '50%': { transform: 'translate3d(-8px, -16px, 0) rotate(184deg)' },
+        },
+        float3: {
+          '0%, 100%': { transform: 'translate3d(0, 0, 0) rotate(43deg)' },
+          '50%': { transform: 'translate3d(5px, -15px, 0) rotate(36deg)' },
+        },
+        float4: {
+          '0%, 100%': { transform: 'translate3d(0, 0, 0) rotate(-4deg)' },
+          '50%': { transform: 'translate3d(-6px, -20px, 0) rotate(6deg)' },
+        },
+        float5: {
+          '0%, 100%': { transform: 'translate3d(0, 0, 0) rotate(45deg)' },
+          '50%': { transform: 'translate3d(7px, -18px, 0) rotate(52deg)' },
+        },
+        beam: {
+          '0%': { transform: 'translateY(-100%)', opacity: '0' },
+          '12%, 88%': { opacity: '1' },
+          '100%': { transform: 'translateY(260%)', opacity: '0' },
+        },
         infiniteSlider: {
           "0%": { transform: "translateX(0)" },
           "100%": {

@@ -137,17 +137,25 @@ const Workflow = () => {
         {/* ===== Mobile / tablet: vertical timeline ===== */}
         <div className="lg:hidden px-6 max-w-md mx-auto">
           <div className="relative pl-6">
-            <div className="absolute left-[1.35rem] top-2 bottom-2 w-1 rounded-full bg-white/25" />
+            {/* glowing rail + a light that travels down it */}
+            <div className="absolute left-[1.5rem] top-2 bottom-2 w-[3px] overflow-hidden rounded-full bg-gradient-to-b from-cyan-200/70 via-white/40 to-white/5">
+              <div className="absolute inset-x-0 top-0 h-[38%] rounded-full bg-gradient-to-b from-transparent via-white to-transparent animate-beam" />
+            </div>
             {STEPS.map((step, index) => (
-              <Reveal key={step.title} delay={index * 100} direction="left" className="relative mb-8 last:mb-0 pl-12">
-                <div className="absolute left-0 top-0 flex h-[3.2rem] w-[3.2rem] items-center justify-center rounded-full bg-white shadow-lg ring-4 ring-blue-500/40">
-                  <span className="scale-90">{step.icon}</span>
-                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-cyan-300 text-[0.65rem] font-bold text-blue-900">
+              <Reveal key={step.title} delay={index * 110} direction="left" className="group relative mb-8 last:mb-0 pl-12">
+                {/* node — gradient ring, white core */}
+                <div className="absolute left-0 top-0 flex h-[3.2rem] w-[3.2rem] items-center justify-center rounded-full bg-gradient-to-br from-cyan-300 to-blue-600 p-[3px] shadow-lg shadow-blue-950/30">
+                  <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
+                    <span className="scale-90">{step.icon}</span>
+                  </div>
+                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-cyan-300 text-[0.65rem] font-bold text-blue-900 ring-2 ring-white/70">
                     {index + 1}
                   </span>
                 </div>
-                <div className="rounded-2xl bg-white/95 p-4 shadow-xl">
-                  <h3 className="text-sm font-bold tracking-wide text-blue-700 mb-1">
+                {/* glass card with brand accent bar */}
+                <div className="relative overflow-hidden rounded-2xl bg-white/95 p-4 pl-5 shadow-xl ring-1 ring-white/50 backdrop-blur transition-transform duration-300 group-hover:-translate-y-0.5">
+                  <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-cyan-300 to-blue-600" />
+                  <h3 className="mb-1 text-sm font-bold tracking-wide text-blue-700">
                     {step.title}
                   </h3>
                   <p className="text-sm text-gray-700">{step.text}</p>
