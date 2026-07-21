@@ -60,6 +60,21 @@ h1, h2, h3 {
   background-size: 24px 24px;
 }
 
+/* Blackhole "accretion" — each ring flashes as an inward wave of light
+   falls toward the center. Per-path animation-delay (set on the SVG paths,
+   ranked outer→inner by radius) makes the pulse travel from the outside in. */
+@keyframes bhCharge {
+  0%, 100% {
+    stroke: #3a414d;
+  }
+  10% {
+    stroke: #2795ff;
+  }
+  32% {
+    stroke: #3a414d;
+  }
+}
+
 /* Fixed, subtle film grain to break digital flatness */
 .grain-overlay {
   position: fixed;

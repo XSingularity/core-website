@@ -1,69 +1,39 @@
+"use client";
 import React from 'react';
 import Image from 'next/image'
+import Reveal from './reveal'
+import { useDict } from '../i18n/LocaleProvider'
 
-type Service = {
-  title: string;
-  text: string;
-  img: string;
-  alt: string;
-  span: string;
-};
-
-const SERVICES: Service[] = [
-  {
-    title: "Project management",
-    text: "Our meticulous dedication to every detail ensures that your project is executed accurately to transform your ideas into tangible results.",
-    img: "/project_m.webp",
-    alt: "project management for software development",
-    span: "lg:col-span-3",
-  },
-  {
-    title: "UX/UI design",
-    text: "We conduct the necessary research, covering every important detail to create an interface that responds to your users' real needs.",
-    img: "/ux.webp",
-    alt: "UI UX design software development",
-    span: "lg:col-span-3",
-  },
-  {
-    title: "Technical support",
-    text: "Our highly skilled team is always ready to provide assistance, ensuring continuous and uninterrupted operation of your software.",
-    img: "/tech_s.webp",
-    alt: "technical support software development",
-    span: "lg:col-span-2",
-  },
-  {
-    title: "Frontend design",
-    text: "We transform concepts into attractive, functional interfaces that connect with your audience from the very first click.",
-    img: "/frontend.webp",
-    alt: "frontend design programming software development",
-    span: "lg:col-span-2",
-  },
-  {
-    title: "Backend development",
-    text: "We empower your applications with secure, robust and scalable development, so your software runs smoothly and scales with your business.",
-    img: "/backend.webp",
-    alt: "backend programming software development",
-    span: "lg:col-span-2",
-  },
+/** Non-translated per-card data; copy is merged in from the dictionary by index. */
+const SERVICE_MEDIA = [
+  { img: "/project_m.webp", alt: "project management for software development", span: "lg:col-span-3" },
+  { img: "/ux.webp", alt: "UI UX design software development", span: "lg:col-span-3" },
+  { img: "/tech_s.webp", alt: "technical support software development", span: "lg:col-span-2" },
+  { img: "/frontend.webp", alt: "frontend design programming software development", span: "lg:col-span-2" },
+  { img: "/backend.webp", alt: "backend programming software development", span: "lg:col-span-2" },
 ];
 
 const Services = () => {
+  const dict = useDict();
+  const SERVICES = dict.services.items.map((item, i) => ({ ...item, ...SERVICE_MEDIA[i] }));
   return (
     <div className="relative overflow-hidden py-14 md:py-24 text-white font-sans bg-gradient-to-br from-[#2795ff] via-[#2086f0] to-[#1668c9]">
       <div className="pointer-events-none absolute inset-0 grid-light opacity-60" />
       <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-indigo-300/20 blur-3xl" />
       <div className="relative xl:container m-auto px-6 sm:px-10 md:px-12 lg:px-6">
-        <div className="flex flex-col text-center w-full mb-12">
-          <span className="text-xs font-semibold tracking-[0.25em] text-blue-100/80 mb-3">what we do</span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Services</h2>
-          <p className="lg:w-2/3 mx-auto text-blue-50/90">End-to-end software services — from product management and UX/UI to frontend, backend and ongoing support — engineered to make your product a success.</p>
-        </div>
+        <Reveal className="flex flex-col text-center w-full mb-12">
+          <span className="text-xs font-semibold tracking-[0.25em] text-blue-100/80 mb-3">{dict.services.eyebrow}</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">{dict.services.title}</h2>
+          <p className="lg:w-2/3 mx-auto text-blue-50/90">{dict.services.lead}</p>
+        </Reveal>
 
         <div className="grid gap-6 md:gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6">
-          {SERVICES.map((service) => (
-            <article
+          {SERVICES.map((service, i) => (
+            <Reveal
               key={service.title}
+              as="article"
+              delay={(i % 3) * 120}
               className={`group flex flex-col p-6 sm:p-8 rounded-3xl bg-white shadow-2xl shadow-blue-900/30 transition duration-300 hover:-translate-y-1.5 hover:shadow-blue-900/40 ${service.span}`}
             >
               <div className="relative overflow-hidden rounded-2xl">
@@ -84,7 +54,7 @@ const Services = () => {
                   {service.text}
                 </p>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

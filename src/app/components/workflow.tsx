@@ -5,55 +5,36 @@ import { TablerTerminal2 } from './svg/Terminal';
 import { FontistoLaboratory } from './svg/Testing';
 import { TablerRocket } from './svg/Rocket';
 import { Support } from './svg/Support';
+import Reveal from './reveal';
+import { useDict } from '../i18n/LocaleProvider';
 
-type Step = {
-  title: string;
-  text: string;
-  icon: React.ReactNode;
-};
-
-const STEPS: Step[] = [
-  {
-    title: "PLANNING",
-    text: "We analyze the requirements of your project, making sure we fully understand your needs, goals and constraints before a single line of code is written.",
-    icon: <TablerCheckupList />,
-  },
-  {
-    title: "CODE IMPLEMENTATION",
-    text: "Our engineers turn the requirements into solid, efficient and well-tested code using modern, industry best practices.",
-    icon: <TablerTerminal2 />,
-  },
-  {
-    title: "TESTING & QA",
-    text: "Every change goes through automated tests and quality controls so your software ships flawlessly and stays reliable.",
-    icon: <FontistoLaboratory />,
-  },
-  {
-    title: "DEPLOYMENT",
-    text: "We set up your entire infrastructure — servers, pipelines and configuration — and ship to production with zero drama.",
-    icon: <TablerRocket />,
-  },
-  {
-    title: "SUPPORT",
-    text: "We provide ongoing monitoring and support so your business keeps running smoothly long after launch.",
-    icon: <Support />,
-  },
+/** Icons stay here; step copy comes from the dictionary and is merged by index. */
+const STEP_ICONS: React.ReactNode[] = [
+  <TablerCheckupList key="plan" />,
+  <TablerTerminal2 key="code" />,
+  <FontistoLaboratory key="qa" />,
+  <TablerRocket key="deploy" />,
+  <Support key="support" />,
 ];
 
-const Header = () => (
-  <div className="text-center w-full mb-12 text-white px-6">
-    <span className="inline-block text-xs font-semibold tracking-[0.25em] text-blue-100/80 mb-3">
-      how we work
-    </span>
-    <h2 className="text-3xl md:text-5xl font-bold mb-4">Workflow</h2>
-    <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-blue-50/90">
-      A streamlined, transparent process built to cover every requirement —
-      ensuring fast, efficient delivery without ever compromising on quality.
-    </p>
-  </div>
-);
+const Header = () => {
+  const dict = useDict();
+  return (
+    <Reveal className="text-center w-full mb-12 text-white px-6">
+      <span className="inline-block text-xs font-semibold tracking-[0.25em] text-blue-100/80 mb-3">
+        {dict.workflow.eyebrow}
+      </span>
+      <h2 className="text-3xl md:text-5xl font-bold mb-4">{dict.workflow.title}</h2>
+      <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-blue-50/90">
+        {dict.workflow.lead}
+      </p>
+    </Reveal>
+  );
+};
 
 const Workflow = () => {
+  const dict = useDict();
+  const STEPS = dict.workflow.steps.map((s, i) => ({ ...s, icon: STEP_ICONS[i] }));
   const [hovered, setHovered] = useState<number | null>(null);
   const progress =
     hovered === null || STEPS.length <= 1
@@ -74,7 +55,7 @@ const Workflow = () => {
         {/* pb reserves room for the tooltip that drops BELOW each node, so it never
             overlaps the next section, the icons, or the header text. */}
         <div className="hidden lg:block pb-48">
-          <div className="w-[58rem] mx-auto px-4">
+          <Reveal delay={150} className="w-[58rem] mx-auto px-4">
             <div className="relative flex justify-between">
               {/* base track */}
               <div className="absolute left-0 right-0 top-[2.6rem] h-1 rounded-full bg-white/25" />
@@ -142,7 +123,7 @@ const Workflow = () => {
                     >
                       <span className="absolute left-1/2 -top-1.5 h-3 w-3 -translate-x-1/2 rotate-45 bg-white/95" />
                       <span className="block text-xs font-bold tracking-wider text-blue-600 mb-1">
-                        STEP {index + 1}
+                        {dict.workflow.stepLabel} {index + 1}
                       </span>
                       {step.text}
                     </div>
@@ -150,7 +131,7 @@ const Workflow = () => {
                 );
               })}
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* ===== Mobile / tablet: vertical timeline ===== */}
@@ -158,7 +139,7 @@ const Workflow = () => {
           <div className="relative pl-6">
             <div className="absolute left-[1.35rem] top-2 bottom-2 w-1 rounded-full bg-white/25" />
             {STEPS.map((step, index) => (
-              <div key={step.title} className="relative mb-8 last:mb-0 pl-12">
+              <Reveal key={step.title} delay={index * 100} direction="left" className="relative mb-8 last:mb-0 pl-12">
                 <div className="absolute left-0 top-0 flex h-[3.2rem] w-[3.2rem] items-center justify-center rounded-full bg-white shadow-lg ring-4 ring-blue-500/40">
                   <span className="scale-90">{step.icon}</span>
                   <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-cyan-300 text-[0.65rem] font-bold text-blue-900">
@@ -171,7 +152,7 @@ const Workflow = () => {
                   </h3>
                   <p className="text-sm text-gray-700">{step.text}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

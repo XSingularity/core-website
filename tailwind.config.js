@@ -63,8 +63,8 @@ module.exports = {
         'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-      sans: ['Outfit', 'system-ui', 'sans-serif'],
-      display: ['"Space Grotesk"', 'Outfit', 'system-ui', 'sans-serif'],
+      sans: ['var(--font-outfit)', 'Outfit', 'system-ui', 'sans-serif'],
+      display: ['var(--font-space-grotesk)', 'var(--font-outfit)', 'system-ui', 'sans-serif'],
       },
       transitionTimingFunction: {
         'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',

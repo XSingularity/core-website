@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: /cgi-bin/
+
+# Demo instances are sanitized rebuilds for humans evaluating our work, not
+# content we want ranking against the real site.
+User-agent: *
+Disallow: /demo/
 
 Sitemap: https://www.xsingularity.dev/sitemap.xml

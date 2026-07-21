@@ -1,7 +1,10 @@
+"use client";
 import React from 'react'
 import { Github } from "./svg/Github"
 import { Linkedin } from "./svg/Linkedin"
 import Image from 'next/image'
+import Reveal from './reveal'
+import { useDict } from '../i18n/LocaleProvider'
 
 type Member = {
   name: string;
@@ -41,21 +44,23 @@ const MEMBERS: Member[] = [
 ];
 
 const Team = () => {
+  const dict = useDict();
   return (
     <section className="relative py-12 md:py-16 text-gray-600 font-sans">
       <div className="pointer-events-none absolute inset-0 dots-dark opacity-70" />
       <div className="relative xl:container px-6 sm:px-10 md:px-12 lg:px-6 m-auto">
-        <div className="flex flex-col text-center w-full mb-12">
-          <span className="text-xs font-semibold tracking-[0.25em] text-[#2795ff] mb-3">the people</span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">Our team</h2>
-          <p className="lg:w-2/3 mx-auto">A senior team specialized in cutting-edge engineering, design and strategy — dedicated to guiding your ideas and projects all the way to success.</p>
-        </div>
+        <Reveal className="flex flex-col text-center w-full mb-12">
+          <span className="text-xs font-semibold tracking-[0.25em] text-[#2795ff] mb-3">{dict.team.eyebrow}</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">{dict.team.title}</h2>
+          <p className="lg:w-2/3 mx-auto">{dict.team.lead}</p>
+        </Reveal>
 
         {/* flex-wrap + justify-center keeps the grid symmetric for any number of members */}
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-12">
-          {MEMBERS.map((m) => (
-            <div
+          {MEMBERS.map((m, i) => (
+            <Reveal
               key={m.name}
+              delay={i * 100}
               className="group w-44 sm:w-48 md:w-56 lg:w-64 text-center space-y-5"
             >
               <div className="relative mx-auto w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-56 lg:h-56">
@@ -71,21 +76,21 @@ const Team = () => {
               </div>
               <div>
                 <h3 className="text-lg md:text-2xl font-semibold text-gray-800">{m.name}</h3>
-                <span className="block text-sm text-blue-500 font-medium">{m.role}</span>
+                <span className="block text-sm text-blue-500 font-medium">{dict.team.roles[m.role] ?? m.role}</span>
               </div>
               <div className="flex justify-center space-x-4 text-gray-400">
                 {m.github && (
-                  <a href={m.github} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} on GitHub`} className="hover:text-gray-700 transition-colors">
+                  <a href={m.github} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} ${dict.team.onGithub}`} className="hover:text-gray-700 transition-colors">
                     <Github />
                   </a>
                 )}
                 {m.linkedin && (
-                  <a href={m.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} on LinkedIn`} className="hover:text-blue-600 transition-colors">
+                  <a href={m.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} ${dict.team.onLinkedin}`} className="hover:text-blue-600 transition-colors">
                     <Linkedin />
                   </a>
                 )}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

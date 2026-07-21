@@ -1,7 +1,9 @@
 "use client";
 import React, { FC, useEffect, useState } from 'react';
+import { useDict } from '../i18n/LocaleProvider';
 
 const ScrollToTop: FC = () => {
+  const dict = useDict();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const ScrollToTop: FC = () => {
     <button
       type="button"
       onClick={scrollUp}
-      aria-label="Back to top"
+      aria-label={dict.a11y.scrollTop}
       className={`hidden md:flex fixed right-8 bottom-6 z-40 h-11 w-11 items-center justify-center rounded-full bg-[#2795ff] text-white shadow-lg shadow-[#2795ff]/30 transition-all duration-300 hover:bg-[#1c7fe8] hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2795ff] ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
       }`}

@@ -7,7 +7,9 @@ import Workflow from "./components/workflow";
 import Contact from "./components/contact";
 import Tech from "./components/tech";
 import Services from "./components/services";
+import Portfolio from "./components/portfolio";
 
+/** Shared page body — identical structure for every locale; copy comes from the dictionary. */
 export default function Home() {
   return (
     <main>
@@ -27,6 +29,7 @@ export default function Home() {
       <div id="Workflow"><Workflow /></div>
       <div id="Team"><Team /></div>
       <div id="Services"><Services /></div>
+      <div id="Portfolio"><Portfolio /></div>
       <div id="Contact"><Contact /></div>
     </main>
   );
