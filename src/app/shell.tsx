@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Outfit, Space_Grotesk } from 'next/font/google'
 import Footer from './components/footer'
 import ScrollToTop from './components/scroll_up'
+import WhatsAppButton from './components/whatsapp'
 import LocaleSuggestion from './components/locale-suggestion'
 import { LocaleProvider } from './i18n/LocaleProvider'
 import { alternatesFor, SITE_URL, type Locale } from './i18n/config'
@@ -60,26 +61,26 @@ const COPY: Record<Locale, Copy> = {
   es: {
     title: 'XSingularity | Empresa de Desarrollo de Software a Medida — Web, Backend y Cloud',
     description:
-      'XSingularity desarrolla software web, backend y cloud a medida para empresas que necesitan hacerlo bien a la primera. Ingenieros senior, proceso transparente y soporte mucho después del lanzamiento. Agenda una llamada gratis de 30 minutos.',
+      'XSingularity desarrolla software web, backend y cloud a medida para negocios en Venezuela y Latinoamérica: páginas web, sistemas de inventario y punto de venta, bots de atención al cliente y más. Ingenieros senior, cotización gratis, pagos por Zelle, PayPal o USDT.',
     ogTitle: 'XSingularity | Empresa de Desarrollo de Software a Medida',
     ogDescription:
       'Tu producto, bien hecho y listo para escalar. Equipo senior, un solo socio responsable — estrategia, diseño, ingeniería y soporte en un mismo lugar.',
     keywords: [
       'empresa de desarrollo de software',
       'desarrollo de software a medida',
-      'contratar equipo de desarrollo',
+      'desarrollo de software Venezuela',
+      'agencia de software Venezuela',
+      'página web para negocios',
+      'sistema de inventario para negocios',
+      'punto de venta para tiendas',
+      'bot de atención al cliente',
+      'automatización para negocios',
       'desarrollo de aplicaciones web',
       'desarrollo backend',
-      'desarrollo frontend',
-      'agencia de diseño UX UI',
-      'portafolio de desarrollo de software',
-      'ingeniería de producto',
       'desarrollo de MVP',
       'React',
       'Next.js',
       'Python',
-      'cloud',
-      'DevOps',
       'XSingularity',
     ],
   },
@@ -153,7 +154,7 @@ function jsonLdFor(locale: Locale) {
     description: c.description,
     priceRange: '$$',
     inLanguage: locale,
-    areaServed: 'Worldwide',
+    areaServed: ['Venezuela', 'Latin America', 'Worldwide'],
     sameAs: [
       'https://www.linkedin.com/company/xsingularity/',
       'https://twitter.com/XSingularity_',
@@ -209,6 +210,7 @@ export default function SiteShell({
           <LocaleSuggestion />
           {children}
           <ScrollToTop />
+          <WhatsAppButton />
           <Footer />
         </LocaleProvider>
       </body>

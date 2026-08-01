@@ -92,6 +92,7 @@ export type Dictionary = {
   a11y: {
     scrollTop: string;
     languageSwitcher: string;
+    whatsapp: string;
   };
 };
 
@@ -233,7 +234,11 @@ const en: Dictionary = {
       },
       {
         q: 'What is the minimum budget and the project size you are willing to work with?',
-        a: 'Our minimum budget to work with is $10.000. But you can contact us and we can make an exception if you need.',
+        a: 'There is no hard minimum. We take on everything from a landing page, an inventory system or a customer-service bot for a small business, up to full products for companies. Tell us what you need and we quote it for free — you decide with the number in hand.',
+      },
+      {
+        q: 'How can I pay?',
+        a: 'Whatever is easiest for you: Zelle, PayPal, Payoneer, USDT (crypto) or bank transfer. For projects we usually split payments into milestones, so you never pay everything up front.',
       },
       {
         q: 'Will you sign an NDA?',
@@ -252,6 +257,7 @@ const en: Dictionary = {
   a11y: {
     scrollTop: 'Scroll back to top',
     languageSwitcher: 'Change language',
+    whatsapp: 'Chat with us on WhatsApp',
   },
 };
 
@@ -393,7 +399,11 @@ const es: Dictionary = {
       },
       {
         q: '¿Cuál es el presupuesto mínimo y el tamaño de proyecto con el que trabajan?',
-        a: 'Nuestro presupuesto mínimo es de $10.000. Aun así, puedes contactarnos y podemos hacer una excepción si lo necesitas.',
+        a: 'No hay un mínimo fijo. Trabajamos desde una página web, un sistema de inventario o un bot de atención al cliente para un negocio pequeño, hasta productos completos para empresas. Cuéntanos qué necesitas y te cotizamos gratis — decides con el número en la mano.',
+      },
+      {
+        q: '¿Cómo puedo pagar?',
+        a: 'Como te resulte más fácil: Zelle, PayPal, Payoneer, USDT (cripto) o transferencia bancaria. En los proyectos solemos dividir el pago por hitos, así nunca pagas todo por adelantado.',
       },
       {
         q: '¿Firman un acuerdo de confidencialidad (NDA)?',
@@ -412,6 +422,7 @@ const es: Dictionary = {
   a11y: {
     scrollTop: 'Volver arriba',
     languageSwitcher: 'Cambiar idioma',
+    whatsapp: 'Escríbenos por WhatsApp',
   },
 };
 

@@ -86,6 +86,26 @@ export const PROJECTS: Project[] = [
     },
   },
   {
+    id: 'marketplace-responder',
+    kind: 'open-source',
+    url: 'https://github.com/omarperezr/marketplace_responder',
+    img: '/portfolio/marketplace-responder.webp',
+    alt: 'AI customer service bot for Facebook Messenger that answers from a controlled knowledge base, built by XSingularity',
+    tags: ['Next.js', 'Supabase', 'LLM', 'Messenger'],
+    title: {
+      en: 'Messenger FAQ bot — 24/7 customer replies',
+      es: 'Bot de atención al cliente para Messenger',
+    },
+    client: {
+      en: 'Internal product',
+      es: 'Producto propio',
+    },
+    description: {
+      en: 'Answers customer questions on Facebook Messenger instantly, day and night, from a knowledge base the business controls. An LLM understands the question however it is phrased and paraphrases the official answer. Unknown questions queue in an admin panel; answer once and the bot handles that question forever after. Runs entirely on free tiers.',
+      es: 'Responde a los clientes en Facebook Messenger al instante, de día y de noche, desde una base de conocimiento que controla el negocio. Un LLM entiende la pregunta como sea que esté escrita y parafrasea la respuesta oficial. Las preguntas nuevas quedan en un panel; las respondes una vez y el bot las contesta solo desde entonces. Funciona por completo en planes gratuitos.',
+    },
+  },
+  {
     id: 'smarttybot',
     kind: 'open-source',
     url: 'https://github.com/omarperezr/SmarttyBot',
