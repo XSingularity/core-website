@@ -46,6 +46,25 @@ export type Dictionary = {
     lead: string;
     items: { title: string; text: string }[];
   };
+  packages: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    /** Prefix shown before the price, e.g. "from". */
+    from: string;
+    cta: string;
+    /** Reassurance line under the grid: milestones + payment methods. */
+    note: string;
+    items: {
+      name: string;
+      /** e.g. "$150" — rendered after `from`. */
+      price: string;
+      /** e.g. "+ $20/month" — omitted when the package has no subscription. */
+      monthly?: string;
+      timeline: string;
+      features: string[];
+    }[];
+  };
   portfolio: {
     eyebrow: string;
     title: string;
@@ -103,6 +122,7 @@ const en: Dictionary = {
       { id: 'Workflow', label: 'Workflow' },
       { id: 'Team', label: 'Team' },
       { id: 'Services', label: 'Services' },
+      { id: 'Packages', label: 'Packages' },
       { id: 'Portfolio', label: 'Portfolio' },
       { id: 'Contact', label: 'Contact' },
     ],
@@ -194,6 +214,62 @@ const en: Dictionary = {
       },
     ],
   },
+  packages: {
+    eyebrow: 'packages',
+    title: 'Fixed price, fixed scope',
+    lead: 'Pick what your business needs, book a call, and know the price and timeline before we start. Every package includes support after delivery.',
+    from: 'from',
+    cta: 'Book a call',
+    note: 'Milestone payments — never everything up front. Zelle, PayPal, Payoneer, USDT or bank transfer.',
+    items: [
+      {
+        name: 'Professional website',
+        price: '$150',
+        timeline: 'ready in 1 week',
+        features: [
+          'Landing page designed for your business',
+          'WhatsApp button and Google Maps',
+          'Hosting and domain set up',
+          'Basic SEO so customers find you',
+        ],
+      },
+      {
+        name: '24/7 customer service bot',
+        price: '$200',
+        monthly: '+ $20/month',
+        timeline: 'ready in days',
+        features: [
+          'Answers your Facebook Messenger instantly, day and night',
+          'Replies come from answers you approve',
+          'Panel to teach it new questions',
+          'Learns every question it could not answer',
+        ],
+      },
+      {
+        name: 'Inventory & point of sale',
+        price: '$300',
+        monthly: '+ $25/month',
+        timeline: 'ready in 1–2 weeks',
+        features: [
+          'Prices in USD, charge in bolívares at the rate you choose',
+          'Works offline when the internet fails',
+          'Sales, stock and projection reports',
+          'Your data loaded and staff trained',
+        ],
+      },
+      {
+        name: 'Custom system',
+        price: '$1,500',
+        timeline: 'quoted per project',
+        features: [
+          'Built around how your business works',
+          'Live progress portal — watch your project advance',
+          'Weekly demos, honest timeline',
+          'Support long after launch',
+        ],
+      },
+    ],
+  },
   portfolio: {
     eyebrow: 'our work',
     title: 'Portfolio',
@@ -268,6 +344,7 @@ const es: Dictionary = {
       { id: 'Workflow', label: 'Proceso' },
       { id: 'Team', label: 'Equipo' },
       { id: 'Services', label: 'Servicios' },
+      { id: 'Packages', label: 'Paquetes' },
       { id: 'Portfolio', label: 'Portafolio' },
       { id: 'Contact', label: 'Contacto' },
     ],
@@ -356,6 +433,62 @@ const es: Dictionary = {
       {
         title: 'Desarrollo backend',
         text: 'APIs e infraestructura seguras y probadas que soportan tu día más intenso igual de bien que el más tranquilo — y crecen contigo.',
+      },
+    ],
+  },
+  packages: {
+    eyebrow: 'paquetes',
+    title: 'Precio fijo, alcance fijo',
+    lead: 'Elige lo que tu negocio necesita, agenda una llamada y conoce el precio y el plazo antes de empezar. Todos los paquetes incluyen soporte después de la entrega.',
+    from: 'desde',
+    cta: 'Agendar llamada',
+    note: 'Pagos por hitos — nunca todo por adelantado. Zelle, PayPal, Payoneer, USDT o transferencia.',
+    items: [
+      {
+        name: 'Página web profesional',
+        price: '$150',
+        timeline: 'lista en 1 semana',
+        features: [
+          'Landing diseñada para tu negocio',
+          'Botón de WhatsApp y Google Maps',
+          'Hosting y dominio configurados',
+          'SEO básico para que te encuentren',
+        ],
+      },
+      {
+        name: 'Bot de atención 24/7',
+        price: '$200',
+        monthly: '+ $20/mes',
+        timeline: 'listo en días',
+        features: [
+          'Responde tu Messenger al instante, de día y de noche',
+          'Las respuestas salen de lo que tú apruebas',
+          'Panel para enseñarle preguntas nuevas',
+          'Aprende cada pregunta que no supo responder',
+        ],
+      },
+      {
+        name: 'Inventario y punto de venta',
+        price: '$300',
+        monthly: '+ $25/mes',
+        timeline: 'listo en 1–2 semanas',
+        features: [
+          'Precios en USD, cobra en bolívares a la tasa que elijas',
+          'Funciona sin internet cuando se cae la conexión',
+          'Reportes de ventas, inventario y proyección',
+          'Tus datos cargados y tu personal entrenado',
+        ],
+      },
+      {
+        name: 'Sistema a medida',
+        price: '$1,500',
+        timeline: 'cotizado por proyecto',
+        features: [
+          'Construido alrededor de cómo funciona tu negocio',
+          'Portal de avance en vivo — mira tu proyecto crecer',
+          'Demos semanales, plazos honestos',
+          'Soporte mucho después del lanzamiento',
+        ],
       },
     ],
   },

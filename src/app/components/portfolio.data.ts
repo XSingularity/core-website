@@ -86,6 +86,26 @@ export const PROJECTS: Project[] = [
     },
   },
   {
+    id: 'client-progress',
+    kind: 'open-source',
+    url: 'https://github.com/omarperezr/client_progress_xsingularity',
+    img: '/portfolio/client-progress.webp',
+    alt: 'real-time client project progress portal built by XSingularity',
+    tags: ['Next.js', 'Prisma', 'PostgreSQL'],
+    title: {
+      en: 'Client portal — live project progress',
+      es: 'Portal de clientes — avance del proyecto en vivo',
+    },
+    client: {
+      en: 'Internal product',
+      es: 'Producto propio',
+    },
+    description: {
+      en: 'How our clients see their project instead of waiting for a status meeting: the portal reads the project repository and turns its issues into live progress bars — plain and time-weighted — plus a task list showing who is doing what and how long each task is estimated to take. Each client signs in and sees only their own projects.',
+      es: 'Así ven nuestros clientes su proyecto en vez de esperar una reunión de estado: el portal lee el repositorio del proyecto y convierte sus issues en barras de progreso en vivo — simple y ponderada por tiempo — más una lista de tareas con quién hace qué y cuánto se estima que tome. Cada cliente inicia sesión y ve solo sus proyectos.',
+    },
+  },
+  {
     id: 'marketplace-responder',
     kind: 'open-source',
     url: 'https://github.com/omarperezr/marketplace_responder',
