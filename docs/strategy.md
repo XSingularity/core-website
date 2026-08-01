@@ -92,3 +92,83 @@ up front. Done.
    (bot, inventario) in an Instagram highlight + WhatsApp catalogue.
 4. Offer FerreAlianza the 10% referral deal.
 5. Analytics: GA (G-Q7L8F1MPXW) is already wired — look at it every Monday.
+
+---
+
+# Client acquisition plan (added 2026-08-01)
+
+Capacity truth first: 1–3 people = 2 projects in delivery + 1 in sales, max.
+This plan optimizes pipeline quality and recurring revenue, not raw volume.
+When full, raise prices instead of queueing — the queue is the signal.
+
+## Engine 1 — Venezuela (fastest closes)
+
+1. **Referral system.** 10% of first invoice, any payment rail, offered in
+   writing on every invoice. FerreAlianza first. Verticals are gossip networks:
+   one system delivered well inside a gremio reaches the whole gremio. Ask for
+   the intro; don't wait for it.
+2. **Own one phrase:** "sistemas para negocios que venden en dólares y cobran
+   en bolívares". Portfolio already proves it; SEO already targets it. Every
+   pitch opens with the pain, not the tech.
+3. **Instagram/TikTok ES — 3 posts/week, all real screens.** Before/after of
+   delivered systems; the client portal progress bars ("mira tu proyecto
+   avanzar en vivo"); public pricing answers ("¿cuánto cuesta un sistema a
+   medida?") — transparency is rare and prints engagement. CTA always WhatsApp.
+4. **Google Business Profile + reviews.** Ask on delivery day, when gratitude
+   peaks.
+5. **Vertical outreach, not spray.** Two verticals the portfolio proves
+   (ferreterías/repuestos, retail con inventario). 5 WhatsApp messages/day
+   with a 30-sec screen recording of the relevant system. Gremio/cámara
+   events when available.
+
+## Engine 2 — International (bigger tickets, slower)
+
+6. **Venezuelan diaspora — unfair advantage.** Millions abroad running
+   businesses (Miami, Bogotá, Santiago, Madrid): international rates,
+   LatAm-style needs, prefer trusting a Venezuelan builder. ES content
+   reaches them free; add explicit hooks ("atendemos venezolanos
+   emprendedores en el exterior").
+7. **Fiverr/Upwork — fastest international cash.** Rebuild profile around the
+   niche (offline-first business systems, inventory/POS, LatAm payments), not
+   generic full-stack. Goal: first 5 reviews cheap, then raise. Reviews double
+   as public social proof everywhere else.
+8. **Agency overflow partnerships — most repeatable channel.** Email 20 small
+   US/EU agencies: white-label senior dev, US-East timezone (advantage vs
+   Asia), portfolio attached. One trusting agency = recurring flow without
+   sales effort.
+9. **LinkedIn EN, founder voice, 2/week.** Engineering problems US devs never
+   face: multi-rate currencies, offline-first for unreliable grids, cash+
+   Zelle+crypto hybrid payments. DM warm commenters. Feeds #6 and #8.
+10. **xinventory as lead magnet.** Proper README + live demo → Show HN +
+    r/smallbusiness targeting unstable-currency economies (Argentina, Turkey,
+    Nigeria, Lebanon).
+
+**Pricing rule:** site floor binds Venezuela only. International: 3–5x, always
+custom-quoted.
+
+## Operating cadence
+
+- Mon: GA + WhatsApp + follow-ups. No quote unanswered 3 days — response
+  speed closes more deals in VE than price.
+- Tue–Thu: delivery + 1 content post.
+- Fri: 1 review ask, 1 referral ask, 5 outreach messages, invoices.
+- Monthly scoreboard: conversations → quotes → closes → MRR. Two flat months
+  on a channel = double down on the best one, never add a fifth.
+
+## Sequence
+
+- This week: referral offer to FerreAlianza · 3 testimonials · GBP · Calendly
+  package question · IG bio + first reel.
+- Weeks 2–4: Fiverr profile rebuilt · 20 agency emails · first LinkedIn posts
+  · case-study number on the site.
+- Month 2+: content flywheel, vertical outreach quota, xinventory Show HN,
+  diaspora hooks.
+
+## Don't
+
+Paid ads before organic proof. New products. More site features. Hourly
+pricing. Competing on cheap — compete on "we've solved exactly your problem
+and you can watch us build it live."
+
+**Bottleneck: testimonials.** Three quotes with names unlock cold outreach,
+Fiverr, LinkedIn and the site at once. Job #1.
