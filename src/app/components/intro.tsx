@@ -32,17 +32,22 @@ const Intro = () => {
 
           <Reveal delay={100}>
             <h1 className="antialiased font-bold leading-tight sm:text-4xl lg:text-5xl md:text-4xl text-3xl">
-              <TypeAnimation
-                key={t.headlineTyped}
-                sequence={[t.headlineTyped, 1000]}
-                wrapper="span"
-                speed={30}
-                className="type"
-                cursor={false}
-                repeat={Infinity}
-                style={{ fontFamily: 'inherit', fontWeight: 700 }}
-              />
-              <span className="block mt-2 text-gradient">{t.headlineRest}</span>
+              {/* Full headline as static text: the animation only fills in after
+                  hydration, so without this crawlers see half a sentence. */}
+              <span className="sr-only">{`${t.headlineTyped} ${t.headlineRest}`}</span>
+              <span aria-hidden="true">
+                <TypeAnimation
+                  key={t.headlineTyped}
+                  sequence={[t.headlineTyped, 1000]}
+                  wrapper="span"
+                  speed={30}
+                  className="type"
+                  cursor={false}
+                  repeat={Infinity}
+                  style={{ fontFamily: 'inherit', fontWeight: 700 }}
+                />
+                <span className="block mt-2 text-gradient">{t.headlineRest}</span>
+              </span>
             </h1>
           </Reveal>
 
