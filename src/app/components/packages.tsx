@@ -20,7 +20,7 @@ const Packages = () => {
           <p className="lg:w-2/3 mx-auto">{t.lead}</p>
         </Reveal>
 
-        <div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:gap-8 lg:grid-cols-3 max-w-md mx-auto lg:max-w-none">
           {t.items.map((pkg, i) => (
             <Reveal
               key={pkg.name}

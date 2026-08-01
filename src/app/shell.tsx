@@ -61,7 +61,7 @@ const COPY: Record<Locale, Copy> = {
   es: {
     title: 'XSingularity | Empresa de Desarrollo de Software a Medida — Web, Backend y Cloud',
     description:
-      'XSingularity desarrolla software web, backend y cloud a medida para negocios en Venezuela y Latinoamérica: páginas web, sistemas de inventario y punto de venta, bots de atención al cliente y más. Ingenieros senior, cotización gratis, pagos por Zelle, PayPal o USDT.',
+      'XSingularity desarrolla software a medida para negocios en Venezuela y Latinoamérica: sistemas de gestión, aplicaciones web y productos completos, con precio fijo por paquete. Ingenieros senior, cotización gratis, pagos por Zelle, PayPal, USDT o bolívares.',
     ogTitle: 'XSingularity | Empresa de Desarrollo de Software a Medida',
     ogDescription:
       'Tu producto, bien hecho y listo para escalar. Equipo senior, un solo socio responsable — estrategia, diseño, ingeniería y soporte en un mismo lugar.',

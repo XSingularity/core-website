@@ -10,17 +10,19 @@ Sell fixed-price packages, not hourly. A small business owner buys "a thing that
 solves X for $Y", never "development hours". Suggested anchors — adjust to what
 the market actually pays you:
 
+xsingularity.dev sells custom software only (decided 2026-08-01); productized
+offers (bot, xinventory, etc.) get their own websites and stay on xsingularity
+as portfolio showcase. Published tiers, sized for a 1–3 person senior team:
+
 | Package | What they get | Anchor price | Delivery |
 |---|---|---|---|
-| Página web profesional | Landing + WhatsApp + Google Maps + hosting | $150–400 | 1 week |
-| Bot de atención 24/7 | marketplace_responder deployed on their FB page | $200 setup + $20/mo | days |
-| Inventario / punto de venta | xinventory instance, their data, training | $300–800 + $25/mo | 1–2 weeks |
-| Sistema a medida | FerreAlianza-style build | $1,500+ | quoted |
-| International/remote work | Full product engineering (EN site, Fiverr, referrals) | market rate | quoted |
+| Sistema esencial | One core process digitized end to end | desde $500 | 2–3 weeks |
+| Sistema completo | Multi-module system (FerreAlianza-class), offline-tolerant | desde $1,200 | 4–6 weeks |
+| Producto a escala | Full product with integrations | desde $3,000 | 8–12 weeks |
 
-The monthly line items are the machine: every deploy of the bot or xinventory is
-recurring USD revenue with near-zero marginal cost (free tiers). 20 businesses ×
-$20–25/mo = predictable base that compounds while one-off projects come and go.
+Recurring revenue comes from the optional maintenance plan after delivery plus
+the product subscriptions sold on their own sites. Bolívares accepted; exchange
+rates are never published — agreed per invoice.
 
 ## 2. Funnel
 

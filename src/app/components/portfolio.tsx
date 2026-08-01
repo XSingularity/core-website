@@ -108,7 +108,7 @@ const Portfolio = () => {
               {PROJECTS.map((project) => (
                 <article
                   key={project.id}
-                  className="group snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[46%] lg:w-[38%] flex flex-col rounded-3xl bg-white shadow-xl shadow-blue-900/10 ring-1 ring-gray-100 transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-blue-900/15"
+                  className="group snap-center shrink-0 w-[85%] md:w-[46%] lg:w-[38%] flex flex-col rounded-3xl bg-white shadow-xl shadow-blue-900/10 ring-1 ring-gray-100 transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-blue-900/15"
                 >
                   <div className="relative overflow-hidden rounded-t-3xl">
                     <Image
