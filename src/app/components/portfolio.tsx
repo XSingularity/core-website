@@ -69,10 +69,10 @@ const Portfolio = () => {
       aria-label={dir === "prev" ? t.prev : t.next}
       disabled={!enabled}
       onClick={() => scrollToCard(active + (dir === "prev" ? -1 : 1))}
-      className={`hidden md:flex h-12 w-12 shrink-0 items-center justify-center rounded-full border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2795ff] ${
+      className={`hidden md:flex h-12 w-12 shrink-0 items-center justify-center rounded-full border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ${
         enabled
-          ? "border-gray-300 text-gray-700 hover:border-[#2795ff] hover:text-[#2795ff] hover:-translate-y-0.5 active:scale-95"
-          : "border-gray-200 text-gray-300 cursor-default"
+          ? "border-white/50 text-white hover:border-white hover:bg-white/10 hover:-translate-y-0.5 active:scale-95"
+          : "border-white/20 text-white/30 cursor-default"
       }`}
     >
       <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -86,13 +86,15 @@ const Portfolio = () => {
   );
 
   return (
-    <section className="relative py-14 md:py-24 text-gray-700 font-sans overflow-x-clip">
-      <div className="pointer-events-none absolute inset-0 dots-dark opacity-70" />
+    <section className="relative py-14 md:py-24 font-sans overflow-x-clip bg-gradient-to-br from-[#2795ff] via-[#2086f0] to-[#1668c9]">
+      <div className="pointer-events-none absolute inset-0 grid-light opacity-60" />
+      <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-indigo-300/20 blur-3xl" />
       <div className="relative xl:container px-6 sm:px-10 md:px-12 lg:px-6 m-auto">
         <Reveal className="flex flex-col text-center w-full mb-10 md:mb-14">
-          <span className="text-xs font-semibold tracking-[0.25em] text-[#2795ff] mb-3">{t.eyebrow}</span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">{t.title}</h2>
-          <p className="lg:w-2/3 mx-auto">{t.lead}</p>
+          <span className="text-xs font-semibold tracking-[0.25em] text-blue-100/80 mb-3">{t.eyebrow}</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">{t.title}</h2>
+          <p className="lg:w-2/3 mx-auto text-blue-50/90">{t.lead}</p>
         </Reveal>
 
         <Reveal delay={120}>
@@ -177,8 +179,8 @@ const Portfolio = () => {
                 type="button"
                 aria-label={`${t.goTo} ${i + 1}: ${project.title[locale]}`}
                 onClick={() => scrollToCard(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2795ff] ${
-                  i === active ? "w-8 bg-[#2795ff]" : "w-3 bg-gray-300 hover:bg-gray-400"
+                className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ${
+                  i === active ? "w-8 bg-white" : "w-3 bg-white/40 hover:bg-white/60"
                 }`}
               />
             ))}
