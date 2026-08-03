@@ -65,6 +65,15 @@ export type Dictionary = {
       features: string[];
     }[];
   };
+  transparency: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    points: { title: string; text: string }[];
+    /** Sentence before the repo link. */
+    note: string;
+    sourceLink: string;
+  };
   portfolio: {
     eyebrow: string;
     title: string;
@@ -136,11 +145,11 @@ const en: Dictionary = {
     badge: 'Software studio — taking on new projects',
     headlineTyped: 'Your product, built right',
     headlineRest: 'and built to scale.',
-    lead: "We design, build and run web, backend and cloud products for teams that can't afford to get it wrong. You bring the idea — we handle everything between it and your users.",
+    lead: "Whatever you need built, we build it — web and mobile apps, AI systems, APIs, automations, internal tools. You bring the idea; we handle everything between it and your users.",
     valueProps: [
       'Senior engineers on every project — no hand-offs to juniors.',
       'A clear plan and honest timeline before we write a line of code.',
-      'One partner from first idea to production, support included.',
+      'Total transparency: public prices, a live progress dashboard, and the repository from day one.',
     ],
     ctaPrimary: 'Book a free 30-min call',
     ctaSecondary: 'See our work →',
@@ -190,7 +199,7 @@ const en: Dictionary = {
   services: {
     eyebrow: 'what we do',
     title: 'Everything your product needs, under one roof',
-    lead: 'Strategy, design, engineering and support — one team accountable for the whole result, so nothing falls between vendors.',
+    lead: 'Strategy, design, engineering, AI and support — one team accountable for the whole result, so nothing falls between vendors. If it can be built, it is on this list.',
     items: [
       {
         title: 'Project management',
@@ -205,12 +214,12 @@ const en: Dictionary = {
         text: 'When something breaks at 2 a.m., we’re the ones awake. Monitoring, maintenance and fast response — long after launch day.',
       },
       {
-        title: 'Frontend design',
-        text: 'Fast, polished interfaces that turn visitors into customers — built to feel instant on any device.',
+        title: 'Web & mobile',
+        text: 'Fast, polished interfaces that turn visitors into customers — web apps and native Android, built to feel instant on any device.',
       },
       {
-        title: 'Backend development',
-        text: 'Secure, tested APIs and infrastructure that handle your busiest day as smoothly as your slowest — and grow with you.',
+        title: 'Backend, AI & automation',
+        text: 'Secure, tested APIs and infrastructure that handle your busiest day as smoothly as your slowest — plus LLM assistants, support bots and automations that take the repetitive work off your team.',
       },
     ],
   },
@@ -256,6 +265,27 @@ const en: Dictionary = {
         ],
       },
     ],
+  },
+  transparency: {
+    eyebrow: 'transparency',
+    title: 'Watch us build it, from day one',
+    lead: 'Most agencies show you a demo at the end. You get a login on day one — and the repository with it.',
+    points: [
+      {
+        title: 'Your own project dashboard',
+        text: 'Live progress, a projected finish date based on our real pace, who is working on what, and how long each task should take. No status meeting needed to find out.',
+      },
+      {
+        title: 'A comment box on every task',
+        text: 'Ask a question on any task and it reaches the engineer doing it — the answer comes back in the same place, and nothing gets lost in a chat thread.',
+      },
+      {
+        title: 'The repository, from day one',
+        text: 'You are added to the project on GitHub or GitLab: every commit, every issue, the full source, while we build it. The code is yours the whole time, not just at handover.',
+      },
+    ],
+    note: 'The dashboard is our own software, and its source is public:',
+    sourceLink: 'see the code →',
   },
   portfolio: {
     eyebrow: 'our work',
@@ -345,11 +375,11 @@ const es: Dictionary = {
     badge: 'Estudio de software — aceptando nuevos proyectos',
     headlineTyped: 'Tu producto, bien hecho',
     headlineRest: 'y listo para escalar.',
-    lead: 'Diseñamos, construimos y operamos productos web, backend y cloud para equipos que no se pueden permitir equivocarse. Tú traes la idea — nosotros nos encargamos de todo lo que hay entre ella y tus usuarios.',
+    lead: 'Lo que necesites construir, lo construimos — aplicaciones web y móviles, sistemas de IA, APIs, automatizaciones, herramientas internas. Tú traes la idea; nosotros nos encargamos de todo lo que hay entre ella y tus usuarios.',
     valueProps: [
       'Ingenieros senior en cada proyecto — sin delegar a juniors.',
       'Un plan claro y plazos honestos antes de escribir una línea de código.',
-      'Un solo socio desde la idea hasta producción, soporte incluido.',
+      'Transparencia total: precios públicos, panel de avance en vivo y el repositorio desde el primer día.',
     ],
     ctaPrimary: 'Agenda una llamada gratis de 30 min',
     ctaSecondary: 'Ver nuestro trabajo →',
@@ -399,7 +429,7 @@ const es: Dictionary = {
   services: {
     eyebrow: 'qué hacemos',
     title: 'Todo lo que tu producto necesita, en un solo lugar',
-    lead: 'Estrategia, diseño, ingeniería y soporte — un equipo responsable del resultado completo, para que nada se pierda entre proveedores.',
+    lead: 'Estrategia, diseño, ingeniería, IA y soporte — un equipo responsable del resultado completo, para que nada se pierda entre proveedores. Si se puede construir, está en esta lista.',
     items: [
       {
         title: 'Gestión de proyectos',
@@ -414,12 +444,12 @@ const es: Dictionary = {
         text: 'Cuando algo se rompe a las 2 de la madrugada, nosotros estamos despiertos. Monitorización, mantenimiento y respuesta rápida — mucho después del lanzamiento.',
       },
       {
-        title: 'Diseño frontend',
-        text: 'Interfaces rápidas y cuidadas que convierten visitantes en clientes — pensadas para sentirse instantáneas en cualquier dispositivo.',
+        title: 'Web y móvil',
+        text: 'Interfaces rápidas y cuidadas que convierten visitantes en clientes — aplicaciones web y Android nativo, pensadas para sentirse instantáneas en cualquier dispositivo.',
       },
       {
-        title: 'Desarrollo backend',
-        text: 'APIs e infraestructura seguras y probadas que soportan tu día más intenso igual de bien que el más tranquilo — y crecen contigo.',
+        title: 'Backend, IA y automatización',
+        text: 'APIs e infraestructura seguras y probadas que soportan tu día más intenso igual de bien que el más tranquilo — más asistentes con IA, bots de atención y automatizaciones que le quitan el trabajo repetitivo a tu equipo.',
       },
     ],
   },
@@ -465,6 +495,27 @@ const es: Dictionary = {
         ],
       },
     ],
+  },
+  transparency: {
+    eyebrow: 'transparencia',
+    title: 'Ves cómo lo construimos, desde el primer día',
+    lead: 'Casi todas las agencias te enseñan una demo al final. Tú recibes un acceso el primer día — y el repositorio con él.',
+    points: [
+      {
+        title: 'Tu propio panel del proyecto',
+        text: 'Avance en vivo, una fecha estimada de entrega calculada con nuestro ritmo real, quién está haciendo qué y cuánto debería tomar cada tarea. No hace falta una reunión para enterarte.',
+      },
+      {
+        title: 'Un espacio para comentar en cada tarea',
+        text: 'Preguntas sobre cualquier tarea y le llega al ingeniero que la está haciendo — la respuesta vuelve al mismo sitio, sin perderse en un hilo de chat.',
+      },
+      {
+        title: 'El repositorio, desde el primer día',
+        text: 'Te damos acceso al proyecto en GitHub o GitLab: cada commit, cada issue, todo el código fuente, mientras lo construimos. El código es tuyo desde el principio, no solo al entregarlo.',
+      },
+    ],
+    note: 'El panel es software nuestro y su código es público:',
+    sourceLink: 'ver el código →',
   },
   portfolio: {
     eyebrow: 'nuestro trabajo',

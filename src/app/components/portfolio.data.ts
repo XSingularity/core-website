@@ -101,8 +101,8 @@ export const PROJECTS: Project[] = [
       es: 'Producto propio',
     },
     description: {
-      en: 'How our clients see their project instead of waiting for a status meeting: the portal reads the project repository and turns its issues into live progress bars — plain and time-weighted — plus a task list showing who is doing what and how long each task is estimated to take. Each client signs in and sees only their own projects.',
-      es: 'Así ven nuestros clientes su proyecto en vez de esperar una reunión de estado: el portal lee el repositorio del proyecto y convierte sus issues en barras de progreso en vivo — simple y ponderada por tiempo — más una lista de tareas con quién hace qué y cuánto se estima que tome. Cada cliente inicia sesión y ve solo sus proyectos.',
+      en: 'Every client gets a login here on day one. The portal reads the project repository and turns its issues into live progress, a projected finish date from the team\'s real pace, weekly throughput, and a task list showing who is doing what and how long it should take. Clients comment on any task and the reply posts straight back to the issue. Kick-off call recordings are transcribed and drafted into issues for the team to review before anything is pushed.',
+      es: 'Cada cliente recibe un acceso aquí el primer día. El portal lee el repositorio del proyecto y convierte sus issues en avance en vivo, una fecha estimada de entrega calculada con el ritmo real del equipo, rendimiento semanal y una lista de tareas con quién hace qué y cuánto debería tomar. Los clientes comentan en cualquier tarea y la respuesta se publica directo en el issue. Las grabaciones de la reunión inicial se transcriben y se convierten en borradores de issues que el equipo revisa antes de publicar nada.',
     },
   },
   {

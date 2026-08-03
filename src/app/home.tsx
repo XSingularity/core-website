@@ -9,6 +9,7 @@ import Tech from "./components/tech";
 import Services from "./components/services";
 import Packages from "./components/packages";
 import Portfolio from "./components/portfolio";
+import Transparency from "./components/transparency";
 
 /** Shared page body — identical structure for every locale; copy comes from the dictionary. */
 export default function Home() {
@@ -32,6 +33,7 @@ export default function Home() {
       <div id="Services"><Services /></div>
       <div id="Packages"><Packages /></div>
       <div id="Portfolio"><Portfolio /></div>
+      <Transparency />
       <div id="Contact"><Contact /></div>
     </main>
   );
