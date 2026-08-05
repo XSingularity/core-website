@@ -1,7 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { TypeAnimation } from 'react-type-animation';
 import { ArrowUp } from './svg/ArrowUp'
 import { ArrowDown } from './svg/ArrowDown'
 import { useDict } from '../i18n/LocaleProvider'
@@ -21,10 +20,10 @@ const TituloDesplegable = ({ titulo, contenido }: { titulo: string, contenido: s
           onClick={() => setAbierto((v) => !v)}
           aria-expanded={abierto}
           aria-controls={panelId}
-          className="flex w-full items-center justify-between gap-4 py-2 text-left text-base md:text-lg font-bold text-gray-700 hover:text-gray-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2795ff] rounded"
+          className="flex w-full items-center justify-between gap-4 py-2 text-left text-base md:text-lg font-bold text-gray-700 hover:text-gray-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-text rounded"
         >
           <span>{titulo}</span>
-          <span className="shrink-0 text-gray-400">{abierto ? <ArrowUp /> : <ArrowDown />}</span>
+          <span className="shrink-0 text-gray-600">{abierto ? <ArrowUp /> : <ArrowDown />}</span>
         </button>
       </h3>
       {abierto && (
@@ -38,17 +37,47 @@ const TituloDesplegable = ({ titulo, contenido }: { titulo: string, contenido: s
 
 const Modal = ({ isVisible, onClose }: { isVisible: boolean, onClose: () => void }) => {
   const dict = useDict();
+  const panelRef = useRef<HTMLDivElement>(null);
 
-  // Escape closes, and the page behind stops scrolling while the modal is open.
+  // Escape closes, the page behind stops scrolling, focus moves in and is
+  // trapped while open, and returns to whatever opened the modal on close.
+  // Without the trap, Tab walks invisibly through the page behind the overlay.
   useEffect(() => {
     if (!isVisible) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    const opener = document.activeElement as HTMLElement | null;
+    const focusables = () =>
+      Array.from(
+        panelRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])'
+        ) ?? []
+      );
+
+    focusables()[0]?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { onClose(); return; }
+      if (e.key !== 'Tab') return;
+      const items = focusables();
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey && (active === first || !panelRef.current?.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
     document.addEventListener('keydown', onKey);
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = prev;
+      opener?.focus?.();
     };
   }, [isVisible, onClose]);
 
@@ -69,7 +98,7 @@ const Modal = ({ isVisible, onClose }: { isVisible: boolean, onClose: () => void
       onClick={handleClose}
     //Cuando le de click al fondo negro blurred se va a cerrar el modal!
     >
-      <div className='flex w-full max-w-[56.25rem] flex-col'>
+      <div ref={panelRef} className='flex w-full max-w-[56.25rem] flex-col'>
         <button
           aria-label={dict.contact.close}
           className="self-end mb-2 flex h-10 w-10 items-center justify-center rounded-full text-white text-xl hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
@@ -81,18 +110,9 @@ const Modal = ({ isVisible, onClose }: { isVisible: boolean, onClose: () => void
         {/* Fluid width with a max — the old fixed sm:w-[31.25rem] (500px) forced
             horizontal overflow on any phone narrower than that. */}
         <div className="max-h-[80vh] w-full overflow-y-auto bg-gray-100 drop-shadow-lg rounded-lg px-6 sm:px-10 md:px-16 py-8 md:py-10">
-          <TypeAnimation
-            key={dict.faq.title}
-            sequence={[
-              dict.faq.title, // Para editar el pointer ve a hoja de estilos global.css y edita "type"
-              1000
-            ]}
-            wrapper="span"
-            speed={30}
-            className={'type justify-center items-center text-2xl flex mb-10 text-sans font-semibold'}
-            cursor={false}
-            repeat={Infinity}
-          />
+          <h2 className="mb-10 flex items-center justify-center text-2xl font-semibold text-gray-900">
+            {dict.faq.title}
+          </h2>
 
           <div className="grid gap-8 sm:text-sm md:text-lg lg:text-lg xl:text-lg">
             {dict.faq.items.map((item) => (

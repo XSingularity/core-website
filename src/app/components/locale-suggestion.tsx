@@ -41,20 +41,20 @@ const LocaleSuggestion = () => {
       // eat a third of a phone screen.
       className="border-b border-blue-100 bg-blue-50"
     >
-      <div className="container mx-auto flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 py-2.5 text-sm">
+      <div className="container mx-auto flex flex-wrap items-center justify-center gap-x-4 gap-y-2 py-2.5 text-sm">
         <span className="text-gray-700">{dict.langBanner.message}</span>
         <a
           href={LOCALE_PATH[suggest]}
           hrefLang={suggest}
           onClick={() => rememberLocale(suggest)}
-          className="font-semibold text-[#2795ff] underline underline-offset-2 hover:text-[#1c7fe8]"
+          className="font-semibold text-brand-text underline underline-offset-2 hover:text-brand-hover"
         >
           {dict.langBanner.accept}
         </a>
         <button
           type="button"
           onClick={dismiss}
-          className="min-h-[2.25rem] px-2 text-gray-500 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2795ff] rounded"
+          className="min-h-[2.25rem] px-2 text-gray-500 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-text rounded"
         >
           {dict.langBanner.dismiss}
         </button>

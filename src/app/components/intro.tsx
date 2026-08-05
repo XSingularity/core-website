@@ -1,6 +1,5 @@
 "use client";
 import Image from 'next/image';
-import { TypeAnimation } from 'react-type-animation';
 import Reveal from './reveal';
 import { useDict } from '../i18n/LocaleProvider';
 
@@ -19,49 +18,39 @@ const Intro = () => {
         decoding="async"
         className="md:hidden pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[120%] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-[0.10] sm:opacity-[0.14]"
       />
-      <div id="Home" className="container flex flex-wrap flex-col p-1 mx-auto md:px-0 xl:px-40 2xl:px-40 md:flex-row items-center">
+      <div id="Home" className="container flex flex-wrap flex-col mx-auto md:flex-row items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 my-8 md:my-12 lg:my-14 md:pr-16 flex flex-col
         md:items-start md:text-left items-center text-center">
 
-          <Reveal delay={0}>
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#2795ff]/10 px-3 py-1 text-xs font-semibold text-[#2795ff] mb-5">
-              <span className="h-2 w-2 rounded-full bg-[#2795ff] animate-pulse" />
+          <Reveal skip>
+            <span className="inline-flex items-center gap-2 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand-hover mb-5">
+              <span className="h-2 w-2 rounded-full bg-brand-text animate-pulse" />
               {t.badge}
             </span>
           </Reveal>
 
-          <Reveal delay={100}>
+          <Reveal skip>
+            {/* Plain text, no typewriter. The animated version shipped an empty
+                span and only filled in after hydration, so the headline was
+                invisible on a slow connection — and it retyped itself forever,
+                which is motion the page never earns back. */}
             <h1 className="antialiased font-bold leading-tight sm:text-4xl lg:text-5xl md:text-4xl text-3xl">
-              {/* Full headline as static text: the animation only fills in after
-                  hydration, so without this crawlers see half a sentence. */}
-              <span className="sr-only">{`${t.headlineTyped} ${t.headlineRest}`}</span>
-              <span aria-hidden="true">
-                <TypeAnimation
-                  key={t.headlineTyped}
-                  sequence={[t.headlineTyped, 1000]}
-                  wrapper="span"
-                  speed={30}
-                  className="type"
-                  cursor={false}
-                  repeat={Infinity}
-                  style={{ fontFamily: 'inherit', fontWeight: 700 }}
-                />
-                <span className="block mt-2 text-gradient">{t.headlineRest}</span>
-              </span>
+              {t.headlineTyped}
+              <span className="block mt-2 text-brand-text">{t.headlineRest}</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={200}>
+          <Reveal skip>
             <p className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-gray-600">
               {t.lead}
             </p>
           </Reveal>
 
-          <ul className="mt-6 space-y-3 text-left">
-            {t.valueProps.map((item, i) => (
-              <Reveal key={item} as="li" delay={300 + i * 100} direction="left">
+          <ul className="mt-6 space-y-4 text-left">
+            {t.valueProps.map((item) => (
+              <Reveal key={item} as="li" skip>
                 <span className="flex items-start gap-3 text-gray-700">
-                  <span className="mt-1 bg-[#2795ff]/10 text-[#2795ff] w-5 h-5 rounded-full inline-flex items-center justify-center flex-shrink-0">
+                  <span className="mt-1 bg-brand/10 text-brand-text w-5 h-5 rounded-full inline-flex items-center justify-center flex-shrink-0">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" className="w-3 h-3" viewBox="0 0 24 24">
                       <path d="M20 6L9 17l-5-5"></path>
                     </svg>
@@ -72,14 +61,14 @@ const Intro = () => {
             ))}
           </ul>
 
-          <Reveal delay={650}>
+          <Reveal skip>
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
               <a target="_blank" rel="noopener noreferrer" href="https://calendly.com/xsingularity/meet-us">
-                <button className="transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98] inline-flex text-white bg-[#2795ff] hover:bg-[#1c7fe8] py-3 px-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2795ff] rounded-full text-lg font-semibold shadow-lg shadow-[#2795ff]/30">
+                <button className="transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98] inline-flex text-white bg-brand-text hover:bg-brand-hover py-3 px-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-text rounded-full text-lg font-semibold shadow-lg shadow-brand-text/30">
                   {t.ctaPrimary}
                 </button>
               </a>
-              <a href="#Portfolio" className="text-[#2795ff] font-semibold hover:text-[#1c7fe8] transition-colors">
+              <a href="#Portfolio" className="text-brand-text font-semibold hover:text-brand-hover transition-colors">
                 {t.ctaSecondary}
               </a>
             </div>
@@ -96,7 +85,7 @@ const Intro = () => {
             loading="lazy"
             className="hidden md:block absolute rotate-180 w-[63.438rem] right-0 top-0 -z-10"
           />
-          <Reveal direction="none" delay={200}>
+          <Reveal skip>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/blackhole.svg"

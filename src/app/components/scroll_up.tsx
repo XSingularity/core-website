@@ -22,7 +22,9 @@ const ScrollToTop: FC = () => {
       type="button"
       onClick={scrollUp}
       aria-label={dict.a11y.scrollTop}
-      className={`hidden md:flex fixed right-8 bottom-6 z-40 h-11 w-11 items-center justify-center rounded-full bg-[#2795ff] text-white shadow-lg shadow-[#2795ff]/30 transition-all duration-300 hover:bg-[#1c7fe8] hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2795ff] ${
+      // Stacks above the WhatsApp button, which owns the bottom-right corner.
+      // Now shown on mobile too: nine sections is a long way back up on a phone.
+      className={`flex fixed right-[1.625rem] bottom-[5.5rem] md:right-[2.375rem] md:bottom-[6.5rem] z-40 h-11 w-11 items-center justify-center rounded-full bg-brand-text text-white shadow-lg shadow-brand-text/30 transition-all duration-300 hover:bg-brand-hover hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-text ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
     >

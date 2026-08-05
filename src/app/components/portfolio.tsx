@@ -86,15 +86,12 @@ const Portfolio = () => {
   );
 
   return (
-    <section className="relative py-14 md:py-24 font-sans overflow-x-clip bg-gradient-to-br from-[#2795ff] via-[#2086f0] to-[#1668c9]">
-      <div className="pointer-events-none absolute inset-0 grid-light opacity-60" />
-      <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-indigo-300/20 blur-3xl" />
-      <div className="relative xl:container px-6 sm:px-10 md:px-12 lg:px-6 m-auto">
+    <section className="relative py-14 md:py-24 font-sans overflow-x-clip bg-gradient-to-br from-brand-text via-[#1a6ac9] to-brand-deep">
+      <div className="relative container m-auto">
         <Reveal className="flex flex-col text-center w-full mb-10 md:mb-14">
-          <span className="text-xs font-semibold tracking-[0.25em] text-blue-100/80 mb-3">{t.eyebrow}</span>
+          <span className="text-xs font-semibold tracking-[0.25em] text-white mb-3">{t.eyebrow}</span>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">{t.title}</h2>
-          <p className="lg:w-2/3 mx-auto text-blue-50/90">{t.lead}</p>
+          <p className="lg:w-2/3 mx-auto text-blue-50">{t.lead}</p>
         </Reveal>
 
         <Reveal delay={120}>
@@ -127,7 +124,7 @@ const Portfolio = () => {
                     <span
                       className={`absolute right-4 top-4 rounded-full px-3 py-1 text-xs font-semibold ${
                         project.kind === "demo"
-                          ? "bg-[#2795ff] text-white"
+                          ? "bg-brand-text text-white"
                           : project.kind === "open-source"
                           ? "bg-emerald-600 text-white"
                           : "bg-gray-900/80 text-white backdrop-blur"
@@ -144,11 +141,11 @@ const Portfolio = () => {
                     <h3 className="text-xl font-semibold text-gray-900">{project.title[locale]}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-gray-600">{project.description[locale]}</p>
                     {project.results && (
-                      <p className="mt-3 text-sm font-semibold text-[#1668c9]">{project.results[locale]}</p>
+                      <p className="mt-3 text-sm font-semibold text-brand-deep">{project.results[locale]}</p>
                     )}
                     <div className="mt-auto pt-5 flex flex-wrap items-center gap-2">
                       {project.tags.map((tag) => (
-                        <span key={tag} className="rounded-md bg-[#2795ff]/10 px-2.5 py-1 text-xs font-medium text-[#1668c9]">
+                        <span key={tag} className="rounded-md bg-brand/10 px-2.5 py-1 text-xs font-medium text-brand-deep">
                           {tag}
                         </span>
                       ))}
@@ -157,7 +154,7 @@ const Portfolio = () => {
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="ml-auto text-sm font-semibold text-[#2795ff] hover:text-[#1c7fe8] transition-colors"
+                          className="ml-auto text-sm font-semibold text-brand-text hover:text-brand-hover transition-colors"
                         >
                           {project.kind === "open-source" ? t.viewSource : t.visit}
                         </a>
@@ -171,18 +168,25 @@ const Portfolio = () => {
             <ArrowButton dir="next" enabled={canNext} />
           </div>
 
-          {/* position indicator */}
-          <div className="mt-6 flex justify-center gap-2">
+          {/* Position indicator. The bar stays 6px tall; the button around it is
+              a 24px-high target, because on mobile these dots are the only way
+              to jump between cards — the arrows are desktop-only. */}
+          <div className="mt-4 flex justify-center">
             {PROJECTS.map((project, i) => (
               <button
                 key={project.id}
                 type="button"
                 aria-label={`${t.goTo} ${i + 1}: ${project.title[locale]}`}
+                aria-current={i === active ? "true" : undefined}
                 onClick={() => scrollToCard(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ${
-                  i === active ? "w-8 bg-white" : "w-3 bg-white/40 hover:bg-white/60"
-                }`}
-              />
+                className="group flex h-11 w-8 items-center justify-center focus:outline-none"
+              >
+                <span
+                  className={`h-1.5 rounded-full transition-all duration-300 group-focus-visible:ring-2 group-focus-visible:ring-white group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-brand-deep ${
+                    i === active ? "w-8 bg-white" : "w-3 bg-white/50 group-hover:bg-white/80"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </Reveal>

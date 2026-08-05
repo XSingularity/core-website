@@ -1,7 +1,7 @@
 export function Linkedin(props) {
     return (<svg
         xmlns="http://www.w3.org/2000/svg"
-        className="w-6 hover:text-primary bi bi-linkedin hover:text-blue-500 ease-in duration-300"
+        className="w-6 bi bi-linkedin hover:text-current ease-in duration-300"
         fill="currentColor"
 
         viewBox="0 0 16 16"

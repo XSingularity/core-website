@@ -46,6 +46,28 @@ export type Project = {
 };
 
 export const PROJECTS: Project[] = [
+  // FerreAlianza leads: it is the only named client and the only case
+  // study. Leading with an internal repo made a portfolio whose job is
+  // proving client work open on a project with no client.
+  {
+    id: 'ferrealianza',
+    kind: 'case-study',
+    img: '/portfolio/ferrealianza.webp',
+    alt: 'inventory and ordering system for a hardware retailer built by XSingularity',
+    tags: ['React', 'TypeScript', 'Supabase', 'Vite'],
+    title: {
+      en: 'Inventory & ordering system',
+      es: 'Sistema de inventario y pedidos',
+    },
+    client: {
+      en: 'FerreAlianza',
+      es: 'FerreAlianza',
+    },
+    description: {
+      en: 'Catalogue and ordering for a hardware retailer. Administrators manage products by hand or by bulk Excel import; staff search the catalogue, build orders with discounts and tax, and export them to PDF, Excel or plain text for sending on.',
+      es: 'Catálogo y pedidos para un comercio ferretero. Los administradores gestionan los productos a mano o por importación masiva desde Excel; el personal busca en el catálogo, arma pedidos con descuentos e impuestos y los exporta a PDF, Excel o texto plano para enviarlos.',
+    },
+  },
   {
     id: 'xinventory',
     kind: 'open-source',
@@ -64,25 +86,6 @@ export const PROJECTS: Project[] = [
     description: {
       en: 'Point of sale for shops that price in dollars but get paid in bolívares. Prices are stored in USD and converted at a chosen reference rate, so a moving exchange rate never rewrites what a past sale earned. Reads fall back to a local cache and writes queue offline, because connectivity in a shop is not reliable.',
       es: 'Punto de venta para comercios que fijan precios en dólares pero cobran en bolívares. Los precios se guardan en USD y se convierten a la tasa de referencia elegida, de modo que una tasa cambiante nunca reescribe lo que ganó una venta pasada. Las lecturas recurren a una caché local y las escrituras se encolan sin conexión, porque la conectividad en tienda no es fiable.',
-    },
-  },
-  {
-    id: 'ferrealianza',
-    kind: 'case-study',
-    img: '/portfolio/ferrealianza.webp',
-    alt: 'inventory and ordering system for a hardware retailer built by XSingularity',
-    tags: ['React', 'TypeScript', 'Supabase', 'Vite'],
-    title: {
-      en: 'Inventory & ordering system',
-      es: 'Sistema de inventario y pedidos',
-    },
-    client: {
-      en: 'FerreAlianza',
-      es: 'FerreAlianza',
-    },
-    description: {
-      en: 'Catalogue and ordering for a hardware retailer. Administrators manage products by hand or by bulk Excel import; staff search the catalogue, build orders with discounts and tax, and export them to PDF, Excel or plain text for sending on.',
-      es: 'Catálogo y pedidos para un comercio ferretero. Los administradores gestionan los productos a mano o por importación masiva desde Excel; el personal busca en el catálogo, arma pedidos con descuentos e impuestos y los exporta a PDF, Excel o texto plano para enviarlos.',
     },
   },
   {

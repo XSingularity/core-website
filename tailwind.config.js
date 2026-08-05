@@ -9,6 +9,33 @@ module.exports = {
   theme: {
 
     extend: {
+      // Brand blue, split by contrast duty. `DEFAULT` is 3.08:1 on white — it
+      // may fill or carry large display type, never body text or a white label.
+      // `text` is 4.96:1 both on white and as a fill behind white text, so it
+      // is the only value allowed for links, eyebrows, buttons and the footer.
+      // `sm` is redefined to 360px below, which silently redefined Tailwind's
+      // container ladder too: every `.container` was pinned to max-width 360px
+      // for every viewport from 360px to 639px — the header, the hero and the
+      // contact form rendered in a 360px column on a 430px phone. Declaring the
+      // ladder explicitly decouples the two and gives the page one gutter.
+      container: {
+        center: true,
+        padding: '1.5rem',
+        // Only the breakpoints that should actually cap width are listed. A
+        // `100%` entry here is not a no-op — Tailwind emits it verbatim as
+        // `@media (min-width: 100%)`, which is not a valid media query.
+        // Omitting sm/md leaves the container fluid below 1024px, which is the
+        // point; and with no entry above xl it stays at 1280px on wide screens.
+        screens: { lg: '1024px', xl: '1280px' },
+      },
+      colors: {
+        brand: {
+          DEFAULT: '#2795ff',
+          text: '#1c6fd0',
+          hover: '#17579f',
+          deep: '#1668c9',
+        },
+      },
       screens: {
         'sm': '360px',
          // => @media (min-width: 640px) { ... }

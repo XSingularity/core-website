@@ -25,6 +25,10 @@ export type Dictionary = {
     ctaPrimary: string;
     ctaSecondary: string;
   };
+  tech: {
+    /** Labels the logo strip so it cannot read as a client logo wall. */
+    eyebrow: string;
+  };
   workflow: {
     eyebrow: string;
     title: string;
@@ -59,8 +63,6 @@ export type Dictionary = {
       name: string;
       /** e.g. "$150" — rendered after `from`. */
       price: string;
-      /** e.g. "+ $20/month" — omitted when the package has no subscription. */
-      monthly?: string;
       timeline: string;
       features: string[];
     }[];
@@ -73,6 +75,8 @@ export type Dictionary = {
     /** Sentence before the repo link. */
     note: string;
     sourceLink: string;
+    /** Button that carries the section into the conversation. */
+    cta: string;
   };
   portfolio: {
     eyebrow: string;
@@ -95,6 +99,10 @@ export type Dictionary = {
     name: string;
     email: string;
     message: string;
+    /** Field placeholders — examples, never a restatement of the label. */
+    namePlaceholder: string;
+    emailPlaceholder: string;
+    messagePlaceholder: string;
     submit: string;
     sending: string;
     errorGeneric: string;
@@ -104,13 +112,15 @@ export type Dictionary = {
     successTitle: string;
     successBody: string;
     close: string;
+    /** WhatsApp path, offered beside the form rather than as a corner icon. */
+    whatsappTitle: string;
+    whatsappBody: string;
+    whatsappCta: string;
+    or: string;
   };
   faq: {
     title: string;
     items: { q: string; a: string }[];
-  };
-  footer: {
-    rights: string;
   };
   langBanner: {
     message: string;
@@ -126,13 +136,16 @@ export type Dictionary = {
 
 const en: Dictionary = {
   nav: {
+    // `Home` is gone: the logo is the home affordance, and dropping it keeps the
+    // bar at seven items now that Transparency — the actual differentiator —
+    // finally has an entry.
     items: [
-      { id: 'Home', label: 'Home' },
       { id: 'Workflow', label: 'Workflow' },
       { id: 'Team', label: 'Team' },
       { id: 'Services', label: 'Services' },
-      { id: 'Packages', label: 'Packages' },
       { id: 'Portfolio', label: 'Portfolio' },
+      { id: 'Transparency', label: 'Transparency' },
+      { id: 'Packages', label: 'Packages' },
       { id: 'Contact', label: 'Contact' },
     ],
     bookCall: 'Book a call',
@@ -154,6 +167,9 @@ const en: Dictionary = {
     ctaPrimary: 'Book a free 30-min call',
     ctaSecondary: 'See our work →',
   },
+  tech: {
+    eyebrow: 'what we build with',
+  },
   workflow: {
     eyebrow: 'how we work',
     title: 'From idea to launch, without surprises',
@@ -170,11 +186,11 @@ const en: Dictionary = {
       },
       {
         title: 'TESTING & QA',
-        text: 'Every change goes through automated tests and quality controls so your software ships flawlessly and stays reliable.',
+        text: 'Every change goes through automated tests and quality controls before it reaches you, so problems surface here and not in front of your customers.',
       },
       {
         title: 'DEPLOYMENT',
-        text: 'We set up your entire infrastructure — servers, pipelines and configuration — and ship to production with zero drama.',
+        text: 'We set up your entire infrastructure — servers, pipelines and configuration — and take it to production ourselves.',
       },
       {
         title: 'SUPPORT',
@@ -199,7 +215,7 @@ const en: Dictionary = {
   services: {
     eyebrow: 'what we do',
     title: 'Everything your product needs, under one roof',
-    lead: 'Strategy, design, engineering, AI and support — one team accountable for the whole result, so nothing falls between vendors. If it can be built, it is on this list.',
+    lead: 'Strategy, design, engineering, AI and support — one team accountable for the whole result, so nothing falls between vendors.',
     items: [
       {
         title: 'Project management',
@@ -211,7 +227,7 @@ const en: Dictionary = {
       },
       {
         title: 'Technical support',
-        text: 'When something breaks at 2 a.m., we’re the ones awake. Monitoring, maintenance and fast response — long after launch day.',
+        text: 'Monitoring, maintenance and a named engineer who answers — long after launch day. Response windows are agreed in writing, not implied.',
       },
       {
         title: 'Web & mobile',
@@ -226,7 +242,7 @@ const en: Dictionary = {
   packages: {
     eyebrow: 'packages',
     title: 'Custom software, fixed price',
-    lead: 'Software built around how your business actually works — not a template. Pick the scale, book a call, and know the price and timeline before we start. A small senior team: you talk directly to the people who build it.',
+    lead: 'Software built around how your business actually works — not a template. Pick the scale, book a call, and know the price and timeline before we start. A small senior team: you talk directly to the people who build it. These figures are our Venezuela floor; work outside Venezuela is scoped and quoted individually.',
     from: 'from',
     cta: 'Book a call',
     note: 'Milestone payments — never everything up front. Zelle, PayPal, Payoneer, USDT, bank transfer or bolívares. Optional maintenance plan after delivery.',
@@ -286,6 +302,7 @@ const en: Dictionary = {
     ],
     note: 'The dashboard is our own software, and its source is public:',
     sourceLink: 'see the code →',
+    cta: 'Start a project and get your login',
   },
   portfolio: {
     eyebrow: 'our work',
@@ -308,18 +325,25 @@ const en: Dictionary = {
     name: 'Name',
     email: 'Email',
     message: 'Message',
+    namePlaceholder: 'Jane Smith',
+    emailPlaceholder: 'jane@company.com',
+    messagePlaceholder: 'What are you building?',
     submit: 'Send message',
     sending: 'Sending your message…',
-    errorGeneric: "We couldn't send your message. Please try again, or email us directly.",
-    errorRateLimit: 'Too many messages sent from here. Please try again in a few minutes.',
+    errorGeneric: "We couldn't send your message. Please try again, or write to us on WhatsApp — it reaches us faster anyway.",
+    errorRateLimit: 'Too many messages sent from here. Please try again in a few minutes, or write to us on WhatsApp.',
     errorCaptcha: 'Please complete the verification check and try again.',
-    errorUnconfigured: 'The contact form is not configured. Please email us directly.',
+    errorUnconfigured: 'The contact form is unavailable right now. Please write to us on WhatsApp.',
     successTitle: 'Thanks for your message.',
-    successBody: "We'll get back to you within one business day.",
+    successBody: "We'll get back to you within one business day — usually much sooner. Need an answer now? Write to us on WhatsApp.",
     close: 'Close',
+    whatsappTitle: 'Rather just write to us?',
+    whatsappBody: 'WhatsApp is where we actually answer fastest. No form, no waiting for a reply by email.',
+    whatsappCta: 'Write to us on WhatsApp',
+    or: 'or',
   },
   faq: {
-    title: "FAQ's",
+    title: 'FAQ',
     items: [
       {
         q: 'What technologies and programming languages do you utilize in your work?',
@@ -339,9 +363,6 @@ const en: Dictionary = {
       },
     ],
   },
-  footer: {
-    rights: 'XSingularity',
-  },
   langBanner: {
     message: '¿Prefieres ver este sitio en español?',
     accept: 'Ver en español',
@@ -357,12 +378,12 @@ const en: Dictionary = {
 const es: Dictionary = {
   nav: {
     items: [
-      { id: 'Home', label: 'Inicio' },
       { id: 'Workflow', label: 'Proceso' },
       { id: 'Team', label: 'Equipo' },
       { id: 'Services', label: 'Servicios' },
-      { id: 'Packages', label: 'Paquetes' },
       { id: 'Portfolio', label: 'Portafolio' },
+      { id: 'Transparency', label: 'Transparencia' },
+      { id: 'Packages', label: 'Paquetes' },
       { id: 'Contact', label: 'Contacto' },
     ],
     bookCall: 'Agendar llamada',
@@ -384,6 +405,9 @@ const es: Dictionary = {
     ctaPrimary: 'Agenda una llamada gratis de 30 min',
     ctaSecondary: 'Ver nuestro trabajo →',
   },
+  tech: {
+    eyebrow: 'con qué construimos',
+  },
   workflow: {
     eyebrow: 'cómo trabajamos',
     title: 'De la idea al lanzamiento, sin sorpresas',
@@ -400,11 +424,11 @@ const es: Dictionary = {
       },
       {
         title: 'PRUEBAS Y QA',
-        text: 'Cada cambio pasa por pruebas automatizadas y controles de calidad para que tu software salga impecable y siga siendo fiable.',
+        text: 'Cada cambio pasa por pruebas automatizadas y controles de calidad antes de llegar a ti, para que los problemas salgan aquí y no delante de tus clientes.',
       },
       {
         title: 'DESPLIEGUE',
-        text: 'Montamos toda tu infraestructura — servidores, pipelines y configuración — y desplegamos a producción sin dramas.',
+        text: 'Montamos toda tu infraestructura — servidores, pipelines y configuración — y la llevamos a producción nosotros mismos.',
       },
       {
         title: 'SOPORTE',
@@ -429,7 +453,7 @@ const es: Dictionary = {
   services: {
     eyebrow: 'qué hacemos',
     title: 'Todo lo que tu producto necesita, en un solo lugar',
-    lead: 'Estrategia, diseño, ingeniería, IA y soporte — un equipo responsable del resultado completo, para que nada se pierda entre proveedores. Si se puede construir, está en esta lista.',
+    lead: 'Estrategia, diseño, ingeniería, IA y soporte — un equipo responsable del resultado completo, para que nada se pierda entre proveedores.',
     items: [
       {
         title: 'Gestión de proyectos',
@@ -441,7 +465,7 @@ const es: Dictionary = {
       },
       {
         title: 'Soporte técnico',
-        text: 'Cuando algo se rompe a las 2 de la madrugada, nosotros estamos despiertos. Monitorización, mantenimiento y respuesta rápida — mucho después del lanzamiento.',
+        text: 'Monitorización, mantenimiento y un ingeniero con nombre que responde — mucho después del lanzamiento. Los tiempos de respuesta se acuerdan por escrito, no se insinúan.',
       },
       {
         title: 'Web y móvil',
@@ -516,6 +540,7 @@ const es: Dictionary = {
     ],
     note: 'El panel es software nuestro y su código es público:',
     sourceLink: 'ver el código →',
+    cta: 'Empieza tu proyecto y recibe tu acceso',
   },
   portfolio: {
     eyebrow: 'nuestro trabajo',
@@ -538,15 +563,22 @@ const es: Dictionary = {
     name: 'Nombre',
     email: 'Correo',
     message: 'Mensaje',
+    namePlaceholder: 'María González',
+    emailPlaceholder: 'maria@empresa.com',
+    messagePlaceholder: '¿Qué quieres construir?',
     submit: 'Enviar mensaje',
     sending: 'Enviando tu mensaje…',
-    errorGeneric: 'No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos directamente.',
-    errorRateLimit: 'Se han enviado demasiados mensajes desde aquí. Inténtalo de nuevo en unos minutos.',
+    errorGeneric: 'No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos por WhatsApp — por ahí respondemos más rápido.',
+    errorRateLimit: 'Se han enviado demasiados mensajes desde aquí. Inténtalo de nuevo en unos minutos o escríbenos por WhatsApp.',
     errorCaptcha: 'Completa la verificación e inténtalo de nuevo.',
-    errorUnconfigured: 'El formulario no está configurado. Escríbenos directamente por correo.',
+    errorUnconfigured: 'El formulario no está disponible en este momento. Escríbenos por WhatsApp.',
     successTitle: 'Gracias por tu mensaje.',
-    successBody: 'Te responderemos en un día hábil.',
+    successBody: 'Te responderemos en un día hábil, normalmente mucho antes. ¿Necesitas respuesta ya? Escríbenos por WhatsApp.',
     close: 'Cerrar',
+    whatsappTitle: '¿Prefieres escribirnos directo?',
+    whatsappBody: 'Por WhatsApp es donde más rápido respondemos. Sin formulario y sin esperar un correo.',
+    whatsappCta: 'Escríbenos por WhatsApp',
+    or: 'o',
   },
   faq: {
     title: 'Preguntas frecuentes',
@@ -568,9 +600,6 @@ const es: Dictionary = {
         a: 'Sí, por supuesto. Si quieres firmar un NDA, siempre estamos dispuestos a hacerlo.',
       },
     ],
-  },
-  footer: {
-    rights: 'XSingularity',
   },
   langBanner: {
     message: 'Would you prefer to view this site in English?',

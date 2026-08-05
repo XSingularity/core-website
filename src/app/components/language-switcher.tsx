@@ -27,10 +27,10 @@ const LanguageSwitcher = ({ className = '' }: { className?: string }) => {
             hrefLang={l}
             onClick={() => rememberLocale(l)}
             aria-current={isActive ? 'true' : undefined}
-            className={`flex min-h-[2.25rem] min-w-[2.25rem] items-center justify-center rounded-full px-3 text-xs font-semibold uppercase tracking-wide transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2795ff] ${
+            className={`flex min-h-[2.25rem] min-w-[2.25rem] items-center justify-center rounded-full px-3 text-xs font-semibold uppercase tracking-wide transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-text ${
               isActive
-                ? 'bg-[#2795ff] text-white'
-                : 'text-gray-600 hover:text-[#2795ff]'
+                ? 'bg-brand-text text-white'
+                : 'text-gray-600 hover:text-brand-text'
             }`}
           >
             <span className="sr-only">{LOCALE_LABEL[l]}</span>

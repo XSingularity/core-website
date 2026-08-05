@@ -31,9 +31,12 @@ export default function Home() {
       <div id="Workflow"><Workflow /></div>
       <div id="Team"><Team /></div>
       <div id="Services"><Services /></div>
-      <div id="Packages"><Packages /></div>
+      {/* Proof before price: Portfolio and Transparency now precede Packages,
+          so nobody is asked to judge $500–$3,000 before seeing any work or
+          learning that they get the repository on day one. */}
       <div id="Portfolio"><Portfolio /></div>
-      <Transparency />
+      <div id="Transparency"><Transparency /></div>
+      <div id="Packages"><Packages /></div>
       <div id="Contact"><Contact /></div>
     </main>
   );

@@ -1,0 +1,16 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "src/app/styles/globals.css"
+        ],
+        "createdAt": "2026-08-05T12:32:47.303Z"
+      }
+    ]
+  }
+}

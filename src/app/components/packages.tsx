@@ -11,16 +11,15 @@ const Packages = () => {
   const dict = useDict();
   const t = dict.packages;
   return (
-    <section className="relative py-14 md:py-24 text-gray-700 font-sans overflow-x-clip">
-      <div className="pointer-events-none absolute inset-0 dots-dark opacity-70" />
-      <div className="relative xl:container m-auto px-6 sm:px-10 md:px-12 lg:px-6">
+    <section className="relative bg-slate-50 py-14 md:py-24 text-gray-700 font-sans overflow-x-clip">
+      <div className="relative container m-auto">
         <Reveal className="flex flex-col text-center w-full mb-10 md:mb-14">
-          <span className="text-xs font-semibold tracking-[0.25em] text-[#2795ff] mb-3">{t.eyebrow}</span>
+          <span className="text-xs font-semibold tracking-[0.25em] text-brand-text mb-3">{t.eyebrow}</span>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">{t.title}</h2>
           <p className="lg:w-2/3 mx-auto">{t.lead}</p>
         </Reveal>
 
-        <div className="grid gap-6 md:gap-8 lg:grid-cols-3 max-w-md mx-auto lg:max-w-none">
+        <div className="grid gap-6 md:gap-8 md:grid-cols-3 max-w-md mx-auto md:max-w-none">
           {t.items.map((pkg, i) => (
             <Reveal
               key={pkg.name}
@@ -32,15 +31,14 @@ const Packages = () => {
               <p className="mt-3">
                 <span className="text-sm text-gray-500">{t.from} </span>
                 <span className="text-3xl font-bold text-gray-900">{pkg.price}</span>
-                {pkg.monthly && (
-                  <span className="block text-sm font-semibold text-[#1668c9]">{pkg.monthly}</span>
-                )}
               </p>
-              <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-400">{pkg.timeline}</p>
-              <ul className="mt-4 space-y-2.5 flex-1">
+              {/* Was gray-400 at 2.5:1 — the faintest text in the section, on a
+                  field the buyer decides with. */}
+              <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-600">{pkg.timeline}</p>
+              <ul className="mt-4 space-y-4 flex-1">
                 {pkg.features.map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
-                    <span className="mt-0.5 bg-[#2795ff]/10 text-[#2795ff] w-4 h-4 rounded-full inline-flex items-center justify-center flex-shrink-0">
+                    <span className="mt-0.5 bg-brand/10 text-brand-text w-4 h-4 rounded-full inline-flex items-center justify-center flex-shrink-0">
                       <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" className="w-2.5 h-2.5" viewBox="0 0 24 24">
                         <path d="M20 6L9 17l-5-5" />
                       </svg>
@@ -53,7 +51,7 @@ const Packages = () => {
                 href={`${CALENDLY}?a1=${encodeURIComponent(pkg.name)}&utm_source=website&utm_content=package`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex justify-center rounded-full bg-[#2795ff] py-2.5 px-6 text-sm font-semibold text-white shadow-lg shadow-[#2795ff]/25 transition-all duration-200 hover:bg-[#1c7fe8] hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2795ff]"
+                className="mt-6 inline-flex justify-center rounded-full bg-brand-text py-2.5 px-6 text-sm font-semibold text-white shadow-lg shadow-brand-text/25 transition-all duration-200 hover:bg-brand-hover hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-text"
               >
                 {t.cta}
               </a>
@@ -62,7 +60,26 @@ const Packages = () => {
         </div>
 
         <Reveal delay={200}>
-          <p className="mt-8 text-center text-sm text-gray-500">{t.note}</p>
+          {/* The line that answers "do I have to pay it all at once?" used to be
+              the smallest, faintest text on the screen, below the fold of the
+              grid. It is the reassurance, so it gets to look like one. */}
+          <p className="mx-auto mt-8 max-w-2xl rounded-2xl bg-brand/10 px-6 py-4 text-center text-base font-medium text-gray-700">
+            {t.note}
+          </p>
+        </Reveal>
+
+        {/* The budget and payment answers, inline and next to the prices they
+            explain, instead of only inside a modal that mobile could not open. */}
+        <Reveal delay={260} className="mx-auto mt-8 max-w-2xl divide-y divide-gray-200 rounded-2xl bg-white ring-1 ring-gray-100">
+          {dict.faq.items.slice(1, 3).map((item) => (
+            <details key={item.q} className="group px-5 py-4">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-sm font-semibold text-gray-900 marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text rounded">
+                {item.q}
+                <span aria-hidden className="shrink-0 text-brand-text transition-transform duration-200 group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">{item.a}</p>
+            </details>
+          ))}
         </Reveal>
       </div>
     </section>

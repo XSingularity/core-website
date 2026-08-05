@@ -19,19 +19,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.type::after {
-  content: '_';
-  animation: cursor 1.1s infinite step-start;
-}
-
-@keyframes cursor {
-  50% {
-    opacity: 0;
-  }
-}
-
 ::selection {
-  background-color: #2795ff;
+  background-color: #1c6fd0;
   color: #ffffff;
 }
 
@@ -41,22 +30,57 @@ h1, h2, h3 {
   letter-spacing: -0.02em;
 }
 
-/* Subtle gradient text helper for headings */
-.text-gradient {
-  background: linear-gradient(100deg, #2795ff 0%, #4aa6ff 45%, #1e293b 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Scroll-entry reveal.
+   The hidden state lives here instead of as an inline style on the element. A
+   static export bakes inline styles into the HTML, so the old version shipped
+   38 elements at `opacity:0` that only became visible once the bundle had
+   downloaded, hydrated and fired IntersectionObserver — a blank page on a slow
+   connection, and a permanently blank one if the JS never arrived.
+
+   `scripting: enabled` is the gate, not a class set by an inline script: adding
+   a class to <html> mutates an attribute React owns and trips a hydration
+   mismatch. Where the media feature is unsupported it simply does not match, so
+   content stays visible and skips the entrance — the safe direction to fail. */
+@media (scripting: enabled) {
+  .reveal {
+    opacity: 0;
+    transform: var(--reveal-from, translate3d(0, 32px, 0));
+  }
+
+  .reveal-in {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+  }
 }
 
-/* Subtle, non-invasive section patterns */
+/* Contact-section code chips. Bobbing uses the independent `translate`
+   property, not `transform`, so each chip keeps the resting `rotate` set
+   inline. */
+.chip {
+  animation-name: chipFloat;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes chipFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+/* Paper grain for the two human-facing sections, Team and Contact. Deliberately
+   not page-wide: texture everywhere stops being texture and becomes background.
+   The blue sections carry their gradient alone — a hairline grid over a process
+   stepper and a carousel decorated surfaces that are not canvases. */
 .dots-dark {
   background-image: radial-gradient(rgba(59, 130, 246, 0.10) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-.dots-light {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
@@ -93,18 +117,29 @@ h1, h2, h3 {
   display: none;
 }
 
-.grid-light {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.10) 1px, transparent 1px);
-  background-size: 44px 44px;
-}
-
+/* Reduced motion stops the decorative loops and lands entrance reveals
+   immediately. It deliberately leaves hover, focus and open/close transitions
+   alone: a blanket `* { transition-duration: 0.001ms }` also kills the feedback
+   that tells you a control responded, which is exactly the feedback someone
+   sensitive to motion still needs. */
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee,
+  .animate-beam,
+  .animate-pulse,
+  .animate-pulse-ring,
+  .animate-spin-slow,
+  .chip,
+  [class*='animate-float'] {
+    animation: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
