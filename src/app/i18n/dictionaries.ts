@@ -66,6 +66,7 @@ export const dict = {
   termometro: {
     title: 'Trabajar en Venezuela tiene reglas que un sistema de afuera no conoce.',
     lead: 'Un sistema hecho para otro país da por sentado que hay luz, internet y una sola moneda. Aquí no. Estos son los números, medidos por los gremios y el Banco Central, no por nosotros.',
+    swipe: 'Desliza para ver los seis',
     stats: [
       {
         value: '44%',
@@ -151,6 +152,9 @@ export const dict = {
     assumptionWhatsapp: 'Supuesto: 1 de cada 5 mensajes sin responder era una venta. Responder en 5 minutos en vez de 30 multiplica por 21 la probabilidad de cerrarla (Lead Response Management Study).',
     compare: 'Un Sistema esencial cuesta desde $299, una sola vez; empiezas con $150.',
     cta: 'Quiero recuperar ese dinero',
+    ctaShort: 'Recuperarlo',
+    barLabel: 'Pierdes al mes',
+    assumptionsLabel: 'Supuestos y fuentes',
     whatsappIntro: 'Hola, vengo de xsingularity.dev. Según la calculadora pierdo aproximadamente',
     sourcesLabel: 'Fuentes',
     sources: [
@@ -214,6 +218,7 @@ export const dict = {
     q2: { label: '¿Qué te duele más?', options: ['Se va la luz y dejo de vender', 'La tasa y los precios en Bs', 'No sé cuánto gano', 'El inventario', 'Responder a los clientes', 'Cuadrar los pagos', 'Quiero vender por internet'] },
     q3: { label: '¿Cómo cobras hoy?', options: ['Efectivo $', 'Efectivo Bs', 'Pago Móvil', 'Punto de venta', 'Zelle', 'USDT / Binance'] },
     q4: { label: '¿Tienes sistema o página hoy?', options: ['Nada, todo en papel o WhatsApp', 'Excel', 'Un sistema que no me sirve', 'Una página que nadie visita'] },
+    more: 'Dos preguntas más, si quieres',
     name: 'Tu nombre',
     namePlaceholder: 'María',
     business: 'Nombre del negocio',
@@ -232,6 +237,7 @@ export const dict = {
     once: 'una sola vez',
     monthly: 'al mes',
     cta: 'Empezar por aquí',
+    includes: 'Qué incluye',
     note: 'Pagas por hitos, nunca todo por adelantado. Zelle, PayPal, Payoneer, USDT, transferencia o bolívares.',
     ladder: [
       {

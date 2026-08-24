@@ -18,8 +18,8 @@ export default function Sintomas() {
   }
 
   return (
-    <section id="Sintomas" className="scroll-mt-20 py-10 md:py-12">
-      <div className="container grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-8">
+    <section id="Sintomas" className="scroll-mt-20 py-8 md:py-12">
+      <div className="container grid gap-5 lg:grid-cols-[1.1fr_1fr] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-8">
         <Reveal className="lg:col-start-1 lg:row-start-1">
           <SectionTitle title={t.title} lead={t.lead} />
         </Reveal>
@@ -27,13 +27,13 @@ export default function Sintomas() {
           {/* Verdict panel — the count is the argument. Reads after the list on phones. */}
           <div
             aria-live="polite"
-            className={`rounded-md border-3 p-5 transition-colors duration-300 ${
+            className={`rounded-md border-3 p-4 transition-colors duration-300 sm:p-5 ${
               hot ? 'border-amber bg-amber-tint' : 'border-navy/25 bg-paper-deep'
             }`}
           >
-            <p className="font-display text-4xl font-black tabular-nums text-navy">{t.countLabel(n)}</p>
-            <p className="mt-2 max-w-prose text-lg leading-snug">{hot ? t.verdictHigh : t.verdictLow}</p>
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <p className="font-display text-3xl font-black tabular-nums text-navy sm:text-4xl">{t.countLabel(n)}</p>
+            <p className="mt-2 max-w-prose text-base leading-snug sm:text-lg">{hot ? t.verdictHigh : t.verdictLow}</p>
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
               <button type="button" onClick={send} disabled={n === 0} className={hot ? KEY.amber : KEY.navy}>
                 {WHATSAPP_NUMBER ? t.cta : t.ctaNoWa}
               </button>
@@ -50,7 +50,7 @@ export default function Sintomas() {
               const on = checked[i]
               return (
                 <li key={item} className="border-b-2 border-navy/20">
-                  <label className="flex cursor-pointer items-start gap-4 py-4 transition-colors hover:bg-paper-deep">
+                  <label className="flex cursor-pointer items-start gap-3 py-3 transition-colors hover:bg-paper-deep sm:gap-4 sm:py-4">
                     <input
                       type="checkbox"
                       checked={on}
@@ -69,7 +69,7 @@ export default function Sintomas() {
                         </svg>
                       )}
                     </span>
-                    <span className={`text-lg leading-snug ${on ? 'font-bold text-navy' : ''}`}>{item}</span>
+                    <span className={`text-base leading-snug sm:text-lg ${on ? 'font-bold text-navy' : ''}`}>{item}</span>
                   </label>
                 </li>
               )

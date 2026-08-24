@@ -23,9 +23,9 @@ function Chips({
   onChange: (v: string[]) => void
 }) {
   return (
-    <div role="group" aria-labelledby={`${name}-label`} className="border-t-2 border-navy/20 py-3">
+    <div role="group" aria-labelledby={`${name}-label`} className="border-t-2 border-navy/20 py-2.5 md:py-3">
       <p id={`${name}-label`} className="font-display text-lg font-extrabold text-navy md:text-xl">{label}</p>
-      <div className="mt-2.5 flex flex-wrap gap-2">
+      <div className="mt-2 flex flex-wrap gap-1.5 md:mt-2.5 md:gap-2">
         {options.map((o) => {
           const on = value.includes(o)
           return (
@@ -80,20 +80,33 @@ export default function Diagnostico() {
   }
 
   return (
-    <section id="Diagnostico" className="scroll-mt-20 bg-paper-deep py-10 md:py-12">
+    <section id="Diagnostico" className="scroll-mt-20 bg-paper-deep py-8 md:py-12">
       <div className="container">
         <Reveal>
           <SectionTitle title={t.title} lead={WHATSAPP_NUMBER ? t.lead : t.leadNoWa} />
         </Reveal>
         <Reveal delay={100}>
-          <form onSubmit={submit} className="mt-5 border-b-2 border-navy/20">
+          <form onSubmit={submit} className="mt-4 border-b-2 border-navy/20 md:mt-5">
             <div className="grid gap-x-10 lg:grid-cols-2">
               <Chips name="q1" label={t.q1.label} options={t.q1.options} multi={false} value={q1} onChange={setQ1} />
               <Chips name="q2" label={t.q2.label} options={t.q2.options} multi value={q2} onChange={setQ2} />
-              <Chips name="q3" label={t.q3.label} options={t.q3.options} multi value={q3} onChange={setQ3} />
-              <Chips name="q4" label={t.q4.label} options={t.q4.options} multi={false} value={q4} onChange={setQ4} />
+              {/* The two optional questions fold away on phones; the answer only needs q1, q2 and a name. */}
+              <details className="group border-t-2 border-navy/20 lg:hidden">
+                <summary className="flex cursor-pointer list-none items-center gap-2 py-3 font-display text-base font-bold text-navy marker:content-none focus:outline-none focus-visible:ring-4 focus-visible:ring-amber/40">
+                  <svg aria-hidden className="h-4 w-4 shrink-0 text-amber transition-transform duration-200 group-open:rotate-45" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+                    <path d="M10 3v14M3 10h14" />
+                  </svg>
+                  {t.more}
+                </summary>
+                <Chips name="q3m" label={t.q3.label} options={t.q3.options} multi value={q3} onChange={setQ3} />
+                <Chips name="q4m" label={t.q4.label} options={t.q4.options} multi={false} value={q4} onChange={setQ4} />
+              </details>
+              <div className="hidden lg:contents">
+                <Chips name="q3" label={t.q3.label} options={t.q3.options} multi value={q3} onChange={setQ3} />
+                <Chips name="q4" label={t.q4.label} options={t.q4.options} multi={false} value={q4} onChange={setQ4} />
+              </div>
             </div>
-            <div className="grid items-end gap-4 border-t-2 border-navy/20 py-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]">
+            <div className="grid grid-cols-2 items-end gap-3 border-t-2 border-navy/20 py-4 sm:gap-4 lg:grid-cols-[1fr_1fr_auto]">
               <div>
                 <label htmlFor="d-name" className="font-display text-base font-bold text-navy">
                   {t.name}
@@ -119,7 +132,7 @@ export default function Diagnostico() {
                   className="mt-1.5 w-full rounded-md border-2 border-navy/40 bg-paper px-3 py-2.5 text-base placeholder:text-navy-soft focus:border-navy focus:outline-none focus-visible:ring-4 focus-visible:ring-amber/40"
                 />
               </div>
-              <div className="flex flex-col gap-3 sm:col-span-2 lg:col-span-1 lg:flex-row lg:items-center">
+              <div className="col-span-2 flex flex-col gap-3 lg:col-span-1 lg:flex-row lg:items-center">
                 <button type="submit" disabled={!ready} className={`${KEY.amber} px-8 py-3 text-lg`}>
                   {WHATSAPP_NUMBER ? t.submit : t.submitNoWa}
                 </button>

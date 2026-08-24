@@ -51,15 +51,15 @@ export default function DemoLuz() {
   const lamp = phase === 'offline' ? 'bg-red' : phase === 'syncing' ? 'bg-amber' : 'bg-green'
 
   return (
-    <section id="Demo" className="scroll-mt-20 py-10 md:py-12">
-      <div className="container grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-16">
+    <section id="Demo" className="scroll-mt-20 py-8 md:py-12">
+      <div className="container grid gap-5 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-16">
         <Reveal>
           <SectionTitle title={t.title} lead={t.lead} />
-          <button type="button" onClick={toggle} aria-pressed={!power} className={`${power ? KEY.navy : KEY.amber} mt-8`}>
+          <button type="button" onClick={toggle} aria-pressed={!power} className={`${power ? KEY.navy : KEY.amber} mt-5 md:mt-8`}>
             <span className={`h-3 w-3 rounded-full ${power ? 'bg-green' : 'bg-paper'}`} aria-hidden />
             {power ? t.powerOff : t.powerOn}
           </button>
-          <p className="mt-6 text-sm text-navy-soft">
+          <p className="mt-4 text-sm text-navy-soft md:mt-6">
             {t.sourceNote}{' '}
             <a href={t.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-navy underline decoration-2 underline-offset-4 hover:text-amber">
               {t.sourceLink}
@@ -70,7 +70,7 @@ export default function DemoLuz() {
 
         <Reveal delay={120}>
           {/* The POS panel. When the power goes, the panel stays bright: that is the point. */}
-          <div className={`rounded-md border-3 p-5 transition-colors duration-500 md:p-6 ${power ? 'border-navy bg-paper' : 'border-amber bg-amber-tint'}`}>
+          <div className={`rounded-md border-3 p-4 transition-colors duration-500 md:p-6 ${power ? 'border-navy bg-paper' : 'border-amber bg-amber-tint'}`}>
             <div className="flex flex-col gap-2 border-b-2 border-navy/20 pb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <p className="flex items-start gap-2 font-display text-base font-bold leading-snug text-navy" aria-live="polite">
                 <span className={`mt-1.5 h-3 w-3 shrink-0 rounded-full ${lamp} ${phase === 'syncing' ? 'animate-pulse2' : ''}`} aria-hidden />

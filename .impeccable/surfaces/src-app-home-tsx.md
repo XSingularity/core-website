@@ -15,7 +15,7 @@ Action: free two-minute diagnostic (#Diagnostico) → WhatsApp with the answers 
 
 Proof on the page: sourced, dated, country-labelled numbers (Termómetro, Longevidad, Calculadora sources); the live "se fue la luz" demo (labelled sample data); public prices; client portal + public repositories; named team.
 
-Direction: «Un solo punto» — user-pinned synthesis, no catalog world. Memorable moment: the hero convergence (six pains drawn into the singularity, three outcomes leaving it), horizontal on md+, vertical on phones.
+Direction: «Un solo punto» — user-pinned synthesis, no catalog world. Memorable moment: the hero convergence (six pains drawn into the singularity, three outcomes leaving it), horizontal on md+; on phones a one-pain-at-a-time strip (`ConvergenceStrip`) that keeps the first screen to headline, strip, lead and key.
 
 Constraints: static export; every string in src/app/i18n/dictionaries.ts; text ≥5:1; one amber key per section; no eyebrows; nothing fabricated (PRODUCT.md).
 

@@ -94,12 +94,12 @@ export default function Contact() {
   }
 
   return (
-    <section id="Contacto" className="scroll-mt-20 py-10 md:py-12">
+    <section id="Contacto" className="scroll-mt-20 py-8 md:py-12">
       {TURNSTILE_SITE_KEY && <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" strategy="lazyOnload" />}
-      <div className="container grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+      <div className="container grid gap-5 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
         <Reveal>
           <SectionTitle title={t.title} lead={t.lead} />
-          <div className="mt-8 flex flex-col gap-4">
+          <div className="mt-4 flex flex-col gap-4 md:mt-8">
             {WHATSAPP_NUMBER && (
               <div className="rounded-md border-3 border-green bg-green-tint p-5">
                 <h3 className="font-display text-xl font-extrabold text-navy">{t.whatsappTitle}</h3>
@@ -117,7 +117,7 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={120}>
-          <form onSubmit={submit} aria-busy={busy} className="relative rounded-md border-3 border-navy bg-paper p-6 md:p-8">
+          <form onSubmit={submit} aria-busy={busy} className="relative rounded-md border-3 border-navy bg-paper p-4 sm:p-6 md:p-8">
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label htmlFor="name" className="font-display text-base font-bold text-navy">{t.name}</label>
@@ -130,7 +130,7 @@ export default function Contact() {
             </div>
             <div className="mt-4">
               <label htmlFor="message" className="font-display text-base font-bold text-navy">{t.message}</label>
-              <textarea ref={messageRef} id="message" name="message" required rows={6} value={form.message} onChange={onChange} placeholder={t.messagePlaceholder} className={`${FIELD} mt-1.5 resize-y leading-relaxed`} />
+              <textarea ref={messageRef} id="message" name="message" required rows={5} value={form.message} onChange={onChange} placeholder={t.messagePlaceholder} className={`${FIELD} mt-1.5 resize-y leading-relaxed`} />
             </div>
             <div className="absolute left-[-9999px] top-0" aria-hidden="true">
               <label htmlFor="website">Website</label>
@@ -151,7 +151,7 @@ export default function Contact() {
                 )}
               </p>
             )}
-            <button type="submit" disabled={busy} className={`${KEY.amber} mt-6 w-full px-8 py-4 text-lg sm:w-auto`}>
+            <button type="submit" disabled={busy} className={`${KEY.amber} mt-5 w-full px-8 py-4 text-lg sm:w-auto md:mt-6`}>
               {busy && <span aria-hidden className="h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-paper/40 border-t-paper" />}
               {busy ? t.sending : t.submit}
             </button>

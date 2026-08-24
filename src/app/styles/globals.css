@@ -18,9 +18,14 @@ html {
   background: var(--paper);
 }
 
+/* Only the root clips sideways: it propagates to the viewport. Setting it on
+   body too would make body the scroll container and every `sticky` element
+   (the header, the phone calculator bar) would stop sticking. */
+html {
+  overflow-x: hidden;
+}
 html,
 body {
-  overflow-x: hidden;
   max-width: 100%;
 }
 
@@ -116,6 +121,48 @@ h3 {
   animation-delay: 0.6s;
 }
 
+/* Phone hero: six pains cycle through one slot (2.2s each, 13.2s loop).
+   A pain slides in, is pulled into the point, and its outcome comes out
+   underneath and holds while the next pain arrives. */
+.m-cycle {
+  opacity: 0;
+  animation-duration: 13.2s;
+  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+.m-pain { animation-name: m-pain; }
+.m-out { animation-name: m-out; }
+/* One slot: the pain lands (0.3s), the dash runs to the point (1.0s), the
+   outcome comes out (1.3s), both hold, the pain is pulled in (1.75s) and the
+   outcome leaves with it. Pain and its own outcome are always seen together. */
+@keyframes m-pain {
+  0% { opacity: 0; transform: translateX(-14px); }
+  2.3%, 13.3% { opacity: 1; transform: none; }
+  15.9%, 100% { opacity: 0; transform: translateX(30px) scale(0.8); }
+}
+@keyframes m-out {
+  0%, 7.6% { opacity: 0; transform: translateY(-6px); }
+  9.8%, 15.5% { opacity: 1; transform: none; }
+  16.6%, 100% { opacity: 0; transform: none; }
+}
+.m-travel {
+  stroke-dasharray: 0.18 1;
+  animation: m-travel 2.2s linear infinite;
+}
+@keyframes m-travel {
+  0%, 8% { stroke-dashoffset: 0.18; }
+  46%, 100% { stroke-dashoffset: -1; }
+}
+.m-point {
+  animation: m-point 2.2s ease-in-out infinite;
+}
+@keyframes m-point {
+  0%, 74% { transform: scale(1); }
+  84% { transform: scale(1.12); }
+  96%, 100% { transform: scale(1); }
+}
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -143,5 +190,15 @@ h3 {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .m-cycle,
+  .m-point {
+    animation: none;
+  }
+  .m-cycle[data-first] {
+    opacity: 1;
+  }
+  .m-travel {
+    display: none;
   }
 }

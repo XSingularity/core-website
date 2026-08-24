@@ -8,12 +8,12 @@ const t = dict.como
 /** Four steps along one line into the point. The sequence carries meaning, so it is numbered. */
 export default function Como() {
   return (
-    <section id="Como" className="scroll-mt-20 bg-navy py-16 text-paper md:py-24">
+    <section id="Como" className="scroll-mt-20 bg-navy py-10 text-paper md:py-24">
       <div className="container">
         <Reveal>
           <SectionTitle title={t.title} lead={t.lead} tone="paper" mark />
         </Reveal>
-        <ol className="relative mt-12 grid gap-8 md:mt-16 md:grid-cols-4 md:gap-6">
+        <ol className="relative mt-7 grid gap-5 md:mt-16 md:grid-cols-4 md:gap-6">
           <span aria-hidden className="absolute left-5 top-0 h-full w-[3px] bg-paper/30 md:left-0 md:top-5 md:h-[3px] md:w-full" />
           {t.steps.map((s, i) => (
             <Reveal key={s.title} as="li" delay={i * 120} className="relative pl-14 md:pl-0 md:pt-14">
@@ -21,11 +21,11 @@ export default function Como() {
                 {i + 1}
               </span>
               <h3 className="font-display text-2xl font-extrabold leading-tight">{s.title}</h3>
-              <p className="mt-3 text-base leading-relaxed text-paper/85">{s.text}</p>
+              <p className="mt-2 text-base leading-normal text-paper/85 md:mt-3 md:leading-relaxed">{s.text}</p>
             </Reveal>
           ))}
         </ol>
-        <div className="mt-12 flex items-center gap-4 md:justify-end">
+        <div className="mt-7 flex items-center gap-4 md:mt-12 md:justify-end">
           <Singularity size={40} breathe className="text-paper" />
           <p className="font-display text-lg font-bold">{dict.hero.pointLabel}</p>
         </div>

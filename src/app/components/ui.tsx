@@ -35,7 +35,11 @@ export function SectionTitle({
       >
         {title}
       </h2>
-      {lead && <p className={`mt-4 max-w-prose text-lg leading-relaxed ${paper ? 'text-paper/85' : 'text-ink'} ${align === 'center' ? 'mx-auto' : ''}`}>{lead}</p>}
+      {lead && (
+        <p className={`mt-3 max-w-prose text-base leading-normal sm:text-lg sm:leading-relaxed md:mt-4 ${paper ? 'text-paper/85' : 'text-ink'} ${align === 'center' ? 'mx-auto' : ''}`}>
+          {lead}
+        </p>
+      )}
     </div>
   )
 }
@@ -90,13 +94,13 @@ export function LedgerRow({
 }) {
   const paper = tone === 'paper'
   return (
-    <li className={`border-t-2 py-7 ${paper ? 'border-paper/30' : 'border-navy/20'}`}>
+    <li className={`border-t-2 py-4 md:py-7 ${paper ? 'border-paper/30' : 'border-navy/20'}`}>
       <p className={`font-display leading-tight ${paper ? 'text-paper' : 'text-navy'}`}>
-        <span className="mr-3 align-baseline text-5xl font-black tabular-nums md:text-6xl">{value}</span>
-        <span className="text-xl font-bold md:text-2xl">{label}</span>
+        <span className="mr-3 align-baseline text-4xl font-black tabular-nums sm:text-5xl md:text-6xl">{value}</span>
+        <span className="text-lg font-bold sm:text-xl md:text-2xl">{label}</span>
       </p>
-      {impact && <p className={`mt-3 max-w-[60ch] text-lg leading-relaxed md:text-xl ${paper ? 'text-paper' : 'text-ink'}`}>{impact}</p>}
-      <div className="mt-3">
+      {impact && <p className={`mt-2 max-w-[60ch] text-base leading-normal sm:text-lg md:mt-3 md:text-xl md:leading-relaxed ${paper ? 'text-paper' : 'text-ink'}`}>{impact}</p>}
+      <div className="mt-2 md:mt-3">
         <Source label={source} url={url} tone={tone} />
       </div>
     </li>
