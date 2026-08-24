@@ -1,178 +1,105 @@
-"use client";
-import { useState, useEffect } from "react";
-import { SvgFaq } from './svg/Faq';
-import { Link } from 'react-scroll';
-import Image from 'next/image';
-import Modal from "./modal";
-import LanguageSwitcher from "./language-switcher";
-import { useDict, useLocale } from "../i18n/LocaleProvider";
-import { LOCALE_PATH } from "../i18n/config";
+'use client'
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { dict } from '../i18n/dictionaries'
+import { KEY } from './ui'
 
-const Header = () => {
-  const dict = useDict();
-  const { locale } = useLocale();
-  const menuItems = dict.nav.items;
-  const [showModal, setShowModal] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("Home");
+const t = dict.nav
+
+export default function Header() {
+  const [open, setOpen] = useState(false)
+  const [active, setActive] = useState<string>('')
 
   useEffect(() => {
-    const sections = menuItems
-      .map((m) => document.getElementById(m.id))
-      .filter((el): el is HTMLElement => el !== null);
-
-    const observer = new IntersectionObserver(
+    const els = t.items.map((m) => document.getElementById(m.id)).filter((el): el is HTMLElement => !!el)
+    const io = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActiveSection(visible.target.id);
+        const vis = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (vis) setActive(vis.target.id)
       },
-      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] }
-    );
-
-    sections.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [menuItems]);
+      { rootMargin: '-40% 0px -50% 0px', threshold: [0, 0.2, 0.5] },
+    )
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [])
 
   return (
-    <header className="sticky top-0 z-50 text-gray-900 font-sans bg-white/80 backdrop-blur-md border-b border-gray-100">
-      <div className="container mx-auto py-3 flex flex-row flex-nowrap items-center justify-between gap-3">
-        <a href={LOCALE_PATH[locale]} aria-label={dict.nav.home} className="shrink-0">
-          <Image className="w-24 sm:w-28 md:w-32" src="/logo1.webp" alt="software development company xsingularity logo" width={1174} height={273} priority />
+    <header className="sticky top-0 z-50 border-b-2 border-navy/15 bg-paper/90 backdrop-blur-md">
+      <div className="container flex items-center justify-between gap-3 py-3">
+        <a href="/" aria-label={t.home} className="shrink-0">
+          <Image src="/logo1.webp" alt="XSingularity" width={1174} height={273} priority className="h-7 w-auto md:h-8" />
         </a>
 
-        {/* Desktop inline nav.
-            Every Link carries an explicit `href`: react-scroll renders a bare
-            <a> and injects none, which left the whole nav unfocusable and
-            unannounced. It calls preventDefault on click, so the smooth scroll
-            still runs and the anchor is now also a real, shareable link. */}
-        <nav className="hidden xl:block font-normal min-w-0 xl:mr-auto xl:ml-4 xl:pl-4 xl:border-l xl:border-gray-300">
-          <ul className="flex flex-nowrap items-center gap-x-5 whitespace-nowrap text-sm">
-            {menuItems.map((menu) => {
-              const isActive = activeSection === menu.id;
-              return (
-                <li key={menu.id} className="transition-colors duration-200 hover:text-brand-text">
-                  <Link
-                    className={`relative cursor-pointer font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:bg-brand-text after:transition-all after:duration-300 ${
-                      isActive
-                        ? "text-brand-text after:w-full"
-                        : "text-gray-700 after:w-0"
-                    }`}
-                    href={`#${menu.id}`}
-                    to={menu.id}
-                    smooth={true}
-                    offset={-70}
-                    duration={500}
-                  >
-                    {menu.label}
-                  </Link>
-                </li>
-              );
-            })}
+        <nav aria-label="Secciones" className="hidden lg:block">
+          <ul className="flex items-center gap-6 font-display text-base font-semibold">
+            {t.items.map((m) => (
+              <li key={m.id}>
+                <a
+                  href={`#${m.id}`}
+                  aria-current={active === m.id ? 'location' : undefined}
+                  className={`border-b-3 pb-1 transition-colors ${
+                    active === m.id ? 'border-amber text-navy' : 'border-transparent text-ink hover:border-navy/40 hover:text-navy'
+                  }`}
+                >
+                  {m.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
 
-        {/* Desktop actions */}
-        <div className="hidden xl:flex items-center gap-3 shrink-0">
-          <LanguageSwitcher />
-          <a target="_blank" rel="noopener noreferrer" href="https://calendly.com/xsingularity/meet-us"
-            className="inline-flex text-white bg-brand-text hover:bg-brand-hover transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.97] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-text py-2 px-5 rounded-full text-sm font-semibold shadow-sm shadow-brand-text/30">
-            {dict.nav.bookCall}
+        <div className="flex items-center gap-2">
+          <a href="#Diagnostico" className={`${KEY.outline} hidden px-5 py-2.5 text-sm sm:inline-flex`}>
+            {t.diagnostic}
           </a>
-          <button onClick={() => setShowModal(true)} aria-label={dict.nav.openFaq} className="flex items-center">
-            <SvgFaq />
-          </button>
-        </div>
-
-        {/* Mobile actions.
-            The FAQ lives here too now. It answers the price and payment
-            questions, and it used to exist only in the desktop block — invisible
-            on the device most prospects actually evaluate on. */}
-        <div className="flex xl:hidden items-center gap-2 shrink-0">
-          <LanguageSwitcher />
           <button
             type="button"
-            onClick={() => setShowModal(true)}
-            aria-label={dict.nav.openFaq}
-            className="inline-flex items-center justify-center h-11 w-11 rounded-lg text-gray-700 hover:text-brand-text hover:bg-gray-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? t.closeMenu : t.openMenu}
+            aria-expanded={open}
+            aria-controls="menu-movil"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-navy hover:bg-navy/10 lg:hidden"
           >
-            <SvgFaq className="w-6" />
-          </button>
-          <button
-            type="button"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? dict.nav.closeMenu : dict.nav.openMenu}
-            aria-expanded={menuOpen}
-            className="inline-flex items-center justify-center h-11 w-11 rounded-lg text-gray-700 hover:text-brand-text hover:bg-gray-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
-          >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              {menuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden>
+              {open ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               ) : (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16" />
               )}
             </svg>
           </button>
         </div>
-
-        <Modal isVisible={showModal} onClose={() => setShowModal(false)} />
       </div>
 
-      {/* Mobile dropdown menu */}
       <nav
-        // `max-h-0` hides it visually but leaves all 9 controls focusable;
-        // `inert` takes them out of the tab order and the a11y tree with it.
-        inert={!menuOpen}
-        className={`xl:hidden overflow-hidden border-t border-gray-100 bg-white/95 backdrop-blur-md transition-[max-height,opacity] duration-300 ease-out ${
-          menuOpen ? "max-h-[34rem] opacity-100" : "max-h-0 opacity-0"
+        id="menu-movil"
+        aria-label="Secciones"
+        inert={!open}
+        className={`overflow-hidden border-t-2 border-navy/15 bg-paper transition-[max-height,opacity] duration-300 ease-out lg:hidden ${
+          open ? 'max-h-[30rem] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <ul className="flex flex-col px-4 py-2">
-          {menuItems.map((menu) => {
-            const isActive = activeSection === menu.id;
-            return (
-              <li key={menu.id}>
-                <Link
-                  className={`block cursor-pointer rounded-lg px-3 py-3 text-base font-medium transition-colors ${
-                    isActive ? "text-brand-text bg-brand/10" : "text-gray-700 hover:bg-gray-100"
-                  }`}
-                  href={`#${menu.id}`}
-                  to={menu.id}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {menu.label}
-                </Link>
-              </li>
-            );
-          })}
-          <li>
-            <button
-              type="button"
-              onClick={() => { setMenuOpen(false); setShowModal(true); }}
-              className="block w-full cursor-pointer rounded-lg px-3 py-3 text-left text-base font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
-            >
-              {dict.nav.openFaq}
-            </button>
-          </li>
-          <li className="px-3 pt-2 pb-3">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://calendly.com/xsingularity/meet-us"
-              onClick={() => setMenuOpen(false)}
-              className="block text-center text-white bg-brand-text hover:bg-brand-hover transition-colors py-2.5 rounded-full text-sm font-semibold shadow-sm shadow-brand-text/30"
-            >
-              {dict.nav.bookCall}
+        <ul className="container flex flex-col py-2">
+          {t.items.map((m) => (
+            <li key={m.id}>
+              <a
+                href={`#${m.id}`}
+                onClick={() => setOpen(false)}
+                className={`block rounded-md px-3 py-3 font-display text-lg font-semibold ${
+                  active === m.id ? 'bg-navy/10 text-navy' : 'text-ink hover:bg-navy/5'
+                }`}
+              >
+                {m.label}
+              </a>
+            </li>
+          ))}
+          <li className="px-3 pb-3 pt-2 sm:hidden">
+            <a href="#Diagnostico" onClick={() => setOpen(false)} className={`${KEY.amber} w-full`}>
+              {t.diagnostic}
             </a>
           </li>
         </ul>
       </nav>
     </header>
-  );
-};
-
-export default Header;
+  )
+}

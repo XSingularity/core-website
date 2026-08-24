@@ -1,100 +1,52 @@
-"use client";
-import React from 'react'
-import { Github } from "./svg/Github"
-import { Linkedin } from "./svg/Linkedin"
 import Image from 'next/image'
+import { Github } from './svg/Github'
+import { Linkedin } from './svg/Linkedin'
 import Reveal from './reveal'
-import { useDict } from '../i18n/LocaleProvider'
+import { dict } from '../i18n/dictionaries'
+import { SectionTitle } from './ui'
 
-type Member = {
-  name: string;
-  role: string;
-  img: string;
-  alt: string;
-  github?: string;
-  linkedin?: string;
-};
+const t = dict.equipo
 
-const MEMBERS: Member[] = [
-  {
-    name: "Omar Pérez", role: "CEO", img: "/omar.webp",
-    alt: "Chief Executive Officer (CEO) of software development company xsingularity",
-    github: "https://www.github.com/omarperezr", linkedin: "https://www.linkedin.com/in/omarperezr",
-  },
-  {
-    name: "Douglas Márquez", role: "COO", img: "/doug.webp",
-    alt: "Chief Operating Officer (COO) of software development company xsingularity",
-    github: "https://github.com/Douggsv", linkedin: "https://www.linkedin.com/in/douglasmarquezsvizzero/",
-  },
-  {
-    name: "Daniel Lara", role: "Creative Director", img: "/lara.webp",
-    alt: "Creative Director of software development company xsingularity",
-    github: "https://github.com/dalakrita", linkedin: "https://www.linkedin.com/in/daniellarap26/",
-  },
-  {
-    name: "Samuel Goncalves", role: "IT Support", img: "/samu.webp",
-    alt: "IT support engineer of software development company xsingularity",
-    github: "https://github.com/TheCRIZIZ", linkedin: "https://www.linkedin.com/in/samuel-goncalves-5895b428a/",
-  },
-  {
-    name: "Ricardo Maceiras", role: "CFO", img: "/rick.webp",
-    alt: "Chief Financial Officer (CFO) of software development company xsingularity",
-    github: "https://github.com/Rickanike", linkedin: "https://www.linkedin.com/in/ricardo-maceiras-fernandes-362660118/",
-  },
-];
+const MEMBERS = [
+  { name: 'Omar Pérez', role: 'CEO', img: '/omar.webp', github: 'https://www.github.com/omarperezr', linkedin: 'https://www.linkedin.com/in/omarperezr' },
+  { name: 'Douglas Márquez', role: 'COO', img: '/doug.webp', github: 'https://github.com/Douggsv', linkedin: 'https://www.linkedin.com/in/douglasmarquezsvizzero/' },
+  { name: 'Daniel Lara', role: 'Creative Director', img: '/lara.webp', github: 'https://github.com/dalakrita', linkedin: 'https://www.linkedin.com/in/daniellarap26/' },
+  { name: 'Samuel Goncalves', role: 'IT Support', img: '/samu.webp', github: 'https://github.com/TheCRIZIZ', linkedin: 'https://www.linkedin.com/in/samuel-goncalves-5895b428a/' },
+  { name: 'Ricardo Maceiras', role: 'CFO', img: '/rick.webp', github: 'https://github.com/Rickanike', linkedin: 'https://www.linkedin.com/in/ricardo-maceiras-fernandes-362660118/' },
+]
 
-const Team = () => {
-  const dict = useDict();
+export default function Team() {
   return (
-    <section className="relative py-12 md:py-16 text-gray-600 font-sans">
-      <div className="pointer-events-none absolute inset-0 dots-dark opacity-70" />
-      <div className="relative container m-auto">
-        <Reveal className="flex flex-col text-center w-full mb-12">
-          <span className="text-xs font-semibold tracking-[0.25em] text-brand-text mb-3">{dict.team.eyebrow}</span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">{dict.team.title}</h2>
-          <p className="lg:w-2/3 mx-auto">{dict.team.lead}</p>
+    <section id="Equipo" className="scroll-mt-20 bg-paper-deep py-10 md:py-12">
+      <div className="container">
+        <Reveal>
+          <SectionTitle title={t.title} lead={t.lead} align="center" />
         </Reveal>
-
-        {/* flex-wrap + justify-center keeps the grid symmetric for any number of members */}
-        <div className="flex flex-wrap justify-center gap-x-6 gap-y-12">
+        <ul className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-10 md:mt-14">
           {MEMBERS.map((m, i) => (
-            <Reveal
-              key={m.name}
-              delay={i * 100}
-              className="group w-44 sm:w-48 md:w-56 lg:w-52 text-center space-y-5"
-            >
-              <div className="relative mx-auto w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-48 lg:h-48">
-                <span className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 opacity-0 group-hover:opacity-100 blur-md transition duration-300" />
-                <Image
-                  className="relative mx-auto rounded-full object-cover w-full h-full ring-4 ring-white shadow-md transition duration-300 group-hover:scale-[1.05]"
-                  src={m.img}
-                  alt={m.alt}
-                  width={512}
-                  height={512}
-                  loading="lazy"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg md:text-2xl font-semibold text-gray-800">{m.name}</h3>
-                <span className="block text-sm text-brand-text font-medium">{dict.team.roles[m.role] ?? m.role}</span>
-              </div>
-              <div className="flex justify-center gap-2 text-gray-500">
-                {m.github && (
-                  <a href={m.github} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} ${dict.team.onGithub}`} className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-text">
-                    <Github />
-                  </a>
-                )}
-                {m.linkedin && (
-                  <a href={m.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} ${dict.team.onLinkedin}`} className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-gray-100 hover:text-brand-text focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-text">
-                    <Linkedin />
-                  </a>
-                )}
+            <Reveal key={m.name} as="li" delay={i * 90} className="w-40 text-center sm:w-44 md:w-52">
+              <Image
+                className="mx-auto h-32 w-32 rounded-full border-3 border-navy object-cover sm:h-36 sm:w-36 md:h-44 md:w-44"
+                src={m.img}
+                alt={`${m.name}, ${t.roles[m.role] ?? m.role} de XSingularity`}
+                width={512}
+                height={512}
+                loading="lazy"
+              />
+              <h3 className="mt-4 font-display text-xl font-extrabold leading-tight text-navy">{m.name}</h3>
+              <p className="mt-1 text-base">{t.roles[m.role] ?? m.role}</p>
+              <div className="mt-2 flex justify-center gap-1 text-navy">
+                <a href={m.github} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} ${t.onGithub}`} className="flex h-11 w-11 items-center justify-center rounded-md transition-colors hover:bg-navy/10 focus:outline-none focus-visible:ring-4 focus-visible:ring-amber/40">
+                  <Github />
+                </a>
+                <a href={m.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} ${t.onLinkedin}`} className="flex h-11 w-11 items-center justify-center rounded-md transition-colors hover:bg-navy/10 focus:outline-none focus-visible:ring-4 focus-visible:ring-amber/40">
+                  <Linkedin />
+                </a>
               </div>
             </Reveal>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )
 }
-export default Team

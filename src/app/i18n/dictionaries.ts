@@ -1,616 +1,415 @@
-import type { Locale } from './config';
-
 /**
- * All user-facing copy. Components read from here via `useDict()` so a new
- * locale is a data change, not a component change.
+ * All user-facing copy, Spanish only (decision 2026-08-24: the English locale
+ * is retired). Components import `dict` directly; a copy change is a data
+ * change, not a component change.
  *
- * Structural data that is NOT translated (image paths, links, tech logos,
- * team member names) stays in the components — only prose lives here.
+ * Voice: plain Venezuelan Spanish, tú, "tu negocio", outcomes before
+ * technology, every number with a source and a country. See PRODUCT.md.
  */
-export type Dictionary = {
-  nav: {
-    items: { id: string; label: string }[];
-    bookCall: string;
-    openMenu: string;
-    closeMenu: string;
-    openFaq: string;
-    home: string;
-  };
-  intro: {
-    badge: string;
-    headlineTyped: string;
-    headlineRest: string;
-    lead: string;
-    valueProps: string[];
-    ctaPrimary: string;
-    ctaSecondary: string;
-  };
-  tech: {
-    /** Labels the logo strip so it cannot read as a client logo wall. */
-    eyebrow: string;
-  };
-  workflow: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    stepLabel: string;
-    steps: { title: string; text: string }[];
-  };
-  team: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    onGithub: string;
-    onLinkedin: string;
-    roles: Record<string, string>;
-  };
-  services: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    items: { title: string; text: string }[];
-  };
-  packages: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    /** Prefix shown before the price, e.g. "from". */
-    from: string;
-    cta: string;
-    /** Reassurance line under the grid: milestones + payment methods. */
-    note: string;
-    items: {
-      name: string;
-      /** e.g. "$150" — rendered after `from`. */
-      price: string;
-      timeline: string;
-      features: string[];
-    }[];
-  };
-  transparency: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    points: { title: string; text: string }[];
-    /** Sentence before the repo link. */
-    note: string;
-    sourceLink: string;
-    /** Button that carries the section into the conversation. */
-    cta: string;
-  };
-  portfolio: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    visit: string;
-    viewSource: string;
-    prev: string;
-    next: string;
-    region: string;
-    goTo: string;
-    demoBadge: string;
-    caseStudyBadge: string;
-    openSourceBadge: string;
-  };
-  contact: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    name: string;
-    email: string;
-    message: string;
-    /** Field placeholders — examples, never a restatement of the label. */
-    namePlaceholder: string;
-    emailPlaceholder: string;
-    messagePlaceholder: string;
-    submit: string;
-    sending: string;
-    errorGeneric: string;
-    errorRateLimit: string;
-    errorCaptcha: string;
-    errorUnconfigured: string;
-    successTitle: string;
-    successBody: string;
-    close: string;
-    /** WhatsApp path, offered beside the form rather than as a corner icon. */
-    whatsappTitle: string;
-    whatsappBody: string;
-    whatsappCta: string;
-    or: string;
-  };
-  faq: {
-    title: string;
-    items: { q: string; a: string }[];
-  };
-  langBanner: {
-    message: string;
-    accept: string;
-    dismiss: string;
-  };
-  a11y: {
-    scrollTop: string;
-    languageSwitcher: string;
-    whatsapp: string;
-  };
+
+export type Stat = {
+  value: string;
+  label: string;
+  /** What this number does to a business and to a Venezuelan's day. */
+  impact?: string;
+  /** Source shown under the number — name, place, date. Never omit. */
+  source: string;
+  url: string;
 };
 
-const en: Dictionary = {
-  nav: {
-    // `Home` is gone: the logo is the home affordance, and dropping it keeps the
-    // bar at seven items now that Transparency — the actual differentiator —
-    // finally has an entry.
-    items: [
-      { id: 'Workflow', label: 'Workflow' },
-      { id: 'Team', label: 'Team' },
-      { id: 'Services', label: 'Services' },
-      { id: 'Portfolio', label: 'Portfolio' },
-      { id: 'Transparency', label: 'Transparency' },
-      { id: 'Packages', label: 'Packages' },
-      { id: 'Contact', label: 'Contact' },
-    ],
-    bookCall: 'Book a call',
-    openMenu: 'Open menu',
-    closeMenu: 'Close menu',
-    openFaq: 'Open FAQ',
-    home: 'XSingularity home',
-  },
-  intro: {
-    badge: 'Software studio — taking on new projects',
-    headlineTyped: 'Your product, built right',
-    headlineRest: 'and built to scale.',
-    lead: "Whatever you need built, we build it — web and mobile apps, AI systems, APIs, automations, internal tools. You bring the idea; we handle everything between it and your users.",
-    valueProps: [
-      'Senior engineers on every project — no hand-offs to juniors.',
-      'A clear plan and honest timeline before we write a line of code.',
-      'Total transparency: public prices, a live progress dashboard, and the repository from day one.',
-    ],
-    ctaPrimary: 'Book a free 30-min call',
-    ctaSecondary: 'See our work →',
-  },
-  tech: {
-    eyebrow: 'what we build with',
-  },
-  workflow: {
-    eyebrow: 'how we work',
-    title: 'From idea to launch, without surprises',
-    lead: 'Five clear steps, one accountable team. You see progress every week and know exactly where your project stands — from the first conversation to long after launch.',
-    stepLabel: 'STEP',
-    steps: [
-      {
-        title: 'PLANNING',
-        text: 'We analyze the requirements of your project, making sure we fully understand your needs, goals and constraints before a single line of code is written.',
-      },
-      {
-        title: 'CODE IMPLEMENTATION',
-        text: 'Our engineers turn the requirements into solid, efficient and well-tested code using modern, industry best practices.',
-      },
-      {
-        title: 'TESTING & QA',
-        text: 'Every change goes through automated tests and quality controls before it reaches you, so problems surface here and not in front of your customers.',
-      },
-      {
-        title: 'DEPLOYMENT',
-        text: 'We set up your entire infrastructure — servers, pipelines and configuration — and take it to production ourselves.',
-      },
-      {
-        title: 'SUPPORT',
-        text: 'We provide ongoing monitoring and support so your business keeps running smoothly long after launch.',
-      },
-    ],
-  },
-  team: {
-    eyebrow: 'the people',
-    title: 'The team behind your project',
-    lead: 'No layers, no account managers in between — you talk directly to the engineers and designers building your product.',
-    onGithub: 'on GitHub',
-    onLinkedin: 'on LinkedIn',
-    roles: {
-      CEO: 'CEO',
-      COO: 'COO',
-      'Creative Director': 'Creative Director',
-      'IT Support': 'IT Support',
-      CFO: 'CFO',
-    },
-  },
-  services: {
-    eyebrow: 'what we do',
-    title: 'Everything your product needs, under one roof',
-    lead: 'Strategy, design, engineering, AI and support — one team accountable for the whole result, so nothing falls between vendors.',
-    items: [
-      {
-        title: 'Project management',
-        text: 'One dedicated lead, weekly demos and a roadmap you can actually read. You always know what shipped, what’s next and what it costs.',
-      },
-      {
-        title: 'UX/UI design',
-        text: 'We research your users before we design for them. The result: interfaces people understand in seconds and keep coming back to.',
-      },
-      {
-        title: 'Technical support',
-        text: 'Monitoring, maintenance and a named engineer who answers — long after launch day. Response windows are agreed in writing, not implied.',
-      },
-      {
-        title: 'Web & mobile',
-        text: 'Fast, polished interfaces that turn visitors into customers — web apps and native Android, built to feel instant on any device.',
-      },
-      {
-        title: 'Backend, AI & automation',
-        text: 'Secure, tested APIs and infrastructure that handle your busiest day as smoothly as your slowest — plus LLM assistants, support bots and automations that take the repetitive work off your team.',
-      },
-    ],
-  },
-  packages: {
-    eyebrow: 'packages',
-    title: 'Custom software, fixed price',
-    lead: 'Software built around how your business actually works — not a template. Pick the scale, book a call, and know the price and timeline before we start. A small senior team: you talk directly to the people who build it. These figures are our Venezuela floor; work outside Venezuela is scoped and quoted individually.',
-    from: 'from',
-    cta: 'Book a call',
-    note: 'Milestone payments — never everything up front. Zelle, PayPal, Payoneer, USDT, bank transfer or bolívares. Optional maintenance plan after delivery.',
-    items: [
-      {
-        name: 'Essential system',
-        price: '$500',
-        timeline: '2–3 weeks',
-        features: [
-          'One core process digitized end to end — orders, catalogue, bookings, whatever hurts most',
-          'Designed with you, built from scratch',
-          'Deployed, your data loaded, your staff trained',
-          '30 days of support included',
-        ],
-      },
-      {
-        name: 'Complete system',
-        price: '$1,200',
-        timeline: '4–6 weeks',
-        features: [
-          'Several connected modules — e.g. catalogue, orders, inventory and reports',
-          'User roles and permissions, Excel import/export',
-          'Built for unreliable internet — keeps working offline',
-          'Live progress portal + 60 days of support',
-        ],
-      },
-      {
-        name: 'Product at scale',
-        price: '$3,000',
-        timeline: '8–12 weeks',
-        features: [
-          'A full product: web app, integrations (payments, WhatsApp, external APIs)',
-          'Architecture ready to grow — real users from day one',
-          'Live progress portal, weekly demos',
-          '90 days of priority support',
-        ],
-      },
-    ],
-  },
-  transparency: {
-    eyebrow: 'transparency',
-    title: 'Watch us build it, from day one',
-    lead: 'Most agencies show you a demo at the end. You get a login on day one — and the repository with it.',
-    points: [
-      {
-        title: 'Your own project dashboard',
-        text: 'Live progress, a projected finish date based on our real pace, who is working on what, and how long each task should take. No status meeting needed to find out.',
-      },
-      {
-        title: 'A comment box on every task',
-        text: 'Ask a question on any task and it reaches the engineer doing it — the answer comes back in the same place, and nothing gets lost in a chat thread.',
-      },
-      {
-        title: 'The repository, from day one',
-        text: 'You are added to the project on GitHub or GitLab: every commit, every issue, the full source, while we build it. The code is yours the whole time, not just at handover.',
-      },
-    ],
-    note: 'The dashboard is our own software, and its source is public:',
-    sourceLink: 'see the code →',
-    cta: 'Start a project and get your login',
-  },
-  portfolio: {
-    eyebrow: 'our work',
-    title: 'Portfolio',
-    lead: 'A look at what we build — client engagements, internal products and open source.',
-    visit: 'Open live demo →',
-    viewSource: 'View source →',
-    prev: 'Previous project',
-    next: 'Next project',
-    region: 'Portfolio projects',
-    goTo: 'Go to project',
-    demoBadge: 'Live demo',
-    caseStudyBadge: 'Case study',
-    openSourceBadge: 'Open source',
-  },
-  contact: {
-    eyebrow: 'get in touch',
-    title: "Let's talk about your project",
-    lead: "Tell us what you're building and where you're stuck. We'll reply within one business day with honest advice — even if the answer is that you don't need us yet.",
-    name: 'Name',
-    email: 'Email',
-    message: 'Message',
-    namePlaceholder: 'Jane Smith',
-    emailPlaceholder: 'jane@company.com',
-    messagePlaceholder: 'What are you building?',
-    submit: 'Send message',
-    sending: 'Sending your message…',
-    errorGeneric: "We couldn't send your message. Please try again, or write to us on WhatsApp — it reaches us faster anyway.",
-    errorRateLimit: 'Too many messages sent from here. Please try again in a few minutes, or write to us on WhatsApp.',
-    errorCaptcha: 'Please complete the verification check and try again.',
-    errorUnconfigured: 'The contact form is unavailable right now. Please write to us on WhatsApp.',
-    successTitle: 'Thanks for your message.',
-    successBody: "We'll get back to you within one business day — usually much sooner. Need an answer now? Write to us on WhatsApp.",
-    close: 'Close',
-    whatsappTitle: 'Rather just write to us?',
-    whatsappBody: 'WhatsApp is where we actually answer fastest. No form, no waiting for a reply by email.',
-    whatsappCta: 'Write to us on WhatsApp',
-    or: 'or',
-  },
-  faq: {
-    title: 'FAQ',
-    items: [
-      {
-        q: 'What technologies and programming languages do you utilize in your work?',
-        a: "We specialize in languages like Python, Javascript, Go, Solidity and technologies such as React, Docker, Node JS, AWS. However, if there's any other language that you want to work with, we can totally assist you with that.",
-      },
-      {
-        q: 'What is the minimum budget and the project size you are willing to work with?',
-        a: 'Custom software starts at $500 (see our packages). We build everything from a single digitized process for a small business up to full products for companies. Tell us what you need and we quote it for free — you decide with the number in hand.',
-      },
-      {
-        q: 'How can I pay?',
-        a: 'Whatever is easiest for you: Zelle, PayPal, Payoneer, USDT (crypto), bank transfer or bolívares. For projects we usually split payments into milestones, so you never pay everything up front.',
-      },
-      {
-        q: 'Will you sign an NDA?',
-        a: 'Yes, sure. If you want to sign an NDA, we are always ready to do so.',
-      },
-    ],
-  },
-  langBanner: {
-    message: '¿Prefieres ver este sitio en español?',
-    accept: 'Ver en español',
-    dismiss: 'Stay in English',
-  },
-  a11y: {
-    scrollTop: 'Scroll back to top',
-    languageSwitcher: 'Change language',
-    whatsapp: 'Chat with us on WhatsApp',
-  },
-};
-
-const es: Dictionary = {
+export const dict = {
   nav: {
     items: [
-      { id: 'Workflow', label: 'Proceso' },
-      { id: 'Team', label: 'Equipo' },
-      { id: 'Services', label: 'Servicios' },
-      { id: 'Portfolio', label: 'Portafolio' },
-      { id: 'Transparency', label: 'Transparencia' },
-      { id: 'Packages', label: 'Paquetes' },
-      { id: 'Contact', label: 'Contacto' },
+      { id: 'Sintomas', label: 'Síntomas' },
+      { id: 'Calculadora', label: 'Cuánto pierdes' },
+      { id: 'Como', label: 'Cómo trabajamos' },
+      { id: 'Precios', label: 'Precios' },
+      { id: 'Portafolio', label: 'Portafolio' },
+      { id: 'Contacto', label: 'Contacto' },
     ],
-    bookCall: 'Agendar llamada',
+    diagnostic: 'Diagnóstico gratis',
     openMenu: 'Abrir menú',
     closeMenu: 'Cerrar menú',
-    openFaq: 'Abrir preguntas frecuentes',
     home: 'Inicio de XSingularity',
   },
-  intro: {
-    badge: 'Estudio de software — aceptando nuevos proyectos',
-    headlineTyped: 'Tu producto, bien hecho',
-    headlineRest: 'y listo para escalar.',
-    lead: 'Lo que necesites construir, lo construimos — aplicaciones web y móviles, sistemas de IA, APIs, automatizaciones, herramientas internas. Tú traes la idea; nosotros nos encargamos de todo lo que hay entre ella y tus usuarios.',
-    valueProps: [
-      'Ingenieros senior en cada proyecto — sin delegar a juniors.',
-      'Un plan claro y plazos honestos antes de escribir una línea de código.',
-      'Transparencia total: precios públicos, panel de avance en vivo y el repositorio desde el primer día.',
+
+  hero: {
+    title: 'Que tu negocio no se detenga.',
+    lead:
+      'Somos una consultora venezolana con visión de software: revisamos cómo funciona tu negocio, encontramos dónde se te está yendo el dinero y construimos el sistema que lo recupera. Con luz o sin luz, con internet o sin él, no se te pierde ni una venta; cada cobro queda cuadrado en bolívares o dólares, sea en efectivo, Pago Móvil, Zelle o USDT; y cada noche sabes exactamente cuánto vendiste.',
+    /** What gets pulled into the point — every pain maps to a shipped fix. */
+    pains: ['Se va la luz', 'Cambia la tasa', 'WhatsApp sin responder', 'Inventario en Excel', 'Pagos sin cuadrar', 'Productos que se agotan'],
+    /** What comes out of it. */
+    outcomes: ['No pierdes ventas', 'Sabes cuánto vendes', 'Cobras por todo'],
+    pointLabel: 'Todo lo que necesitas, en un solo punto.',
+    pointTitle: 'La singularidad: todo lo que necesitas, en un solo punto',
+    doors: [
+      {
+        id: 'negocio',
+        title: '¿Ya tienes un negocio?',
+        text: 'Te decimos en 2 minutos qué te está costando dinero y qué arreglar primero.',
+        cta: 'Empezar el diagnóstico',
+        href: '#Diagnostico',
+      },
+      {
+        id: 'idea',
+        title: '¿Tienes una idea?',
+        text: 'La hacemos realidad: precio fijo, fecha fija y el código es tuyo desde el primer día.',
+        cta: 'Cuéntanos tu idea',
+        href: '#Contacto',
+      },
     ],
-    ctaPrimary: 'Agenda una llamada gratis de 30 min',
-    ctaSecondary: 'Ver nuestro trabajo →',
+    ctaPrimary: 'Diagnóstico gratis · 2 min',
+    ctaSecondary: 'Ver lo que construimos',
   },
-  tech: {
-    eyebrow: 'con qué construimos',
+
+  termometro: {
+    title: 'Trabajar en Venezuela tiene reglas que un sistema de afuera no conoce.',
+    lead: 'Un sistema hecho para otro país da por sentado que hay luz, internet y una sola moneda. Aquí no. Estos son los números, medidos por los gremios y el Banco Central, no por nosotros.',
+    stats: [
+      {
+        value: '44%',
+        label: 'de las horas de trabajo sin luz en la industria venezolana',
+        impact: 'Media jornada sin caja ni computadora. Si tu sistema depende del enchufe, con cada apagón las ventas quedan en un cuaderno o se pierden.',
+        source: 'Conindustria, 2.º trimestre 2026',
+        url: 'https://www.infobae.com/venezuela/2026/08/19/el-sector-manufacturero-de-venezuela-se-desacelera-y-pierde-casi-la-mitad-de-sus-horas-laborales-por-falta-de-electricidad/',
+      },
+      {
+        value: '57',
+        label: 'cortes de luz por trimestre en cada empresa: casi cinco por semana',
+        impact: 'Cinco veces por semana se apaga la computadora y la cola espera. Un sistema que registra en el teléfono no espera a que vuelva la luz.',
+        source: 'Conindustria, 2.º trimestre 2026',
+        url: 'https://www.larepublica.co/globoeconomia/los-devastadores-apagones-ponen-en-riesgo-a-la-recuperacion-industrial-de-venezuela-4461201',
+      },
+      {
+        value: '70%',
+        label: 'de los venezolanos compran en negocios sin planta eléctrica',
+        impact: 'La bodega, la farmacia y la ferretería venden a oscuras. La venta solo se pierde si no puedes cobrarla y anotarla.',
+        source: 'Consecomercio, agosto 2026',
+        url: 'https://www.consecomercio.org/blog/noticias-consecomercio-1/consecomercio-propone-un-conjunto-de-medidas-que-evitan-el-cierre-de-negocios-y-protegen-el-empleo-ante-los-cortes-electricos-380',
+      },
+      {
+        value: '73%',
+        label: 'tuvo fallas de internet o de teléfono en el último mes',
+        impact: 'Quedarse sin internet pasa todos los meses. Si tu caja vive en la nube, ese día no trabajas; si vive en tu teléfono y sincroniza después, ni lo notas.',
+        source: 'Cedice Libertad, enero 2025',
+        url: 'https://www.bancaynegocios.com/cedice-72-de-los-usuarios-de-internet-ha-migrado-a-planes-de-operadores-privados',
+      },
+      {
+        value: 'Pago Móvil',
+        label: 'ya superó al punto de venta como forma de cobrar',
+        impact: 'Tus clientes ya pagan desde el teléfono. Cuadrar cada Pago Móvil a mano al cierre cuesta horas y deja pasar errores.',
+        source: 'Banco Central de Venezuela, julio 2025',
+        url: 'https://www.bancaynegocios.com/uso-del-pago-movil-supero-a-los-puntos-de-venta-y-se-convirtio-en-el-canal-mas-usado-del-pais/',
+      },
+      {
+        value: '125%',
+        label: 'creció el comercio electrónico en Venezuela en 2025',
+        impact: 'Cada vez más gente compra sin pisar el local. Un catálogo por WhatsApp o una tienda sencilla te abre esa venta.',
+        source: 'Cavecom-e, enero 2026',
+        url: 'https://www.eluniversal.com/economia/229656/el-comercio-electronico-en-venezuela-se-dispara-un-125-y-apunta-a-la-formalizacion-masiva',
+      },
+    ] as Stat[],
   },
-  workflow: {
-    eyebrow: 'cómo trabajamos',
-    title: 'De la idea al lanzamiento, sin sorpresas',
-    lead: 'Cinco pasos claros, un equipo responsable. Ves el avance cada semana y sabes exactamente en qué punto está tu proyecto — desde la primera conversación hasta mucho después del lanzamiento.',
-    stepLabel: 'PASO',
+
+  sintomas: {
+    title: '¿Tu negocio te está mandando señales?',
+    lead: 'Ocho cosas que pasan todos los días en negocios que todavía no tienen sistema. Marca las tuyas.',
+    items: [
+      'Cuando se va la luz, dejas de vender o anotas en papel.',
+      'Tus precios en bolívares se actualizan a mano cada vez que cambia la tasa.',
+      'No sabes exactamente cuánto ganaste el mes pasado.',
+      'Te enteras de que un producto se agotó cuando un cliente lo pide.',
+      'Respondes los WhatsApp de tus clientes a las 11 de la noche… o no los respondes.',
+      'Cuadras Pago Móvil, Zelle, USDT y efectivo en un cuaderno.',
+      'Tu inventario vive en un Excel que solo una persona entiende.',
+      'Te piden vender por internet y no tienes tienda ni sistema para hacerlo.',
+    ],
+    countLabel: (n: number) =>
+      n === 0 ? 'Ninguna marcada todavía' : n === 1 ? '1 señal marcada' : `${n} señales marcadas`,
+    verdictLow: 'Con 3 o más, ya te está costando dinero. Sigue marcando o mira la calculadora.',
+    verdictHigh: 'Ya te está costando dinero. Escríbenos y en 20 minutos te decimos cuánto y qué arreglar primero.',
+    cta: 'Enviar mis señales por WhatsApp',
+    ctaNoWa: 'Enviar mis señales',
+    ctaAlt: 'Prefiero el diagnóstico de 2 minutos',
+    whatsappIntro: 'Hola, vengo de xsingularity.dev. Estas señales me suenan:',
+  },
+
+  calculadora: {
+    title: 'Pon tus números. Te decimos cuánto se te va cada mes.',
+    lead: 'Una estimación con tus datos, no una promesa. Puedes cambiar cada supuesto.',
+    fields: {
+      hoursNoPower: { label: 'Horas sin luz a la semana', hint: 'Promedio nacional en la industria: 16 h (Conindustria, 2.º trim. 2026)' },
+      salesPerHour: { label: 'Cuánto vendes por hora, en $', hint: 'Un promedio; no hace falta que sea exacto' },
+      unanswered: { label: 'Mensajes de clientes que se quedan sin responder al día', hint: 'WhatsApp, Instagram, Messenger' },
+      ticket: { label: 'Venta promedio, en $', hint: 'Lo que te deja un cliente típico' },
+    },
+    resultLabel: 'Estimación de lo que pierdes al mes',
+    breakdownPower: 'por vender en papel o dejar de vender cuando se va la luz',
+    breakdownWhatsapp: 'por mensajes que no se convierten en ventas',
+    assumptionPower: 'Supuesto: sin sistema, las ventas de esas horas se pierden o se anotan mal. Un sistema que funciona sin conexión las registra igual.',
+    assumptionWhatsapp: 'Supuesto: 1 de cada 5 mensajes sin responder era una venta. Responder en 5 minutos en vez de 30 multiplica por 21 la probabilidad de cerrarla (Lead Response Management Study).',
+    compare: 'Un Sistema esencial cuesta desde $299, una sola vez; empiezas con $150.',
+    cta: 'Quiero recuperar ese dinero',
+    whatsappIntro: 'Hola, vengo de xsingularity.dev. Según la calculadora pierdo aproximadamente',
+    sourcesLabel: 'Fuentes',
+    sources: [
+      { label: 'Conindustria, 2.º trimestre 2026 — 214 de 488 horas sin luz', url: 'https://www.infobae.com/venezuela/2026/08/19/el-sector-manufacturero-de-venezuela-se-desacelera-y-pierde-casi-la-mitad-de-sus-horas-laborales-por-falta-de-electricidad/' },
+      { label: 'Lead Response Management Study — 5 min vs 30 min', url: 'https://www.leadresponsemanagement.org/lrm_study' },
+    ],
+  },
+
+  demo: {
+    title: 'Se fue la luz. Se cayó el internet. No se te pierde ni una venta.',
+    lead: 'Esta es una muestra de xinventory, nuestro punto de venta, con datos de ejemplo. Apaga la luz y sigue cobrando: cada venta se guarda en el teléfono y se sincroniza sola cuando vuelve la conexión.',
+    sampleNote: 'Productos y tasa de ejemplo. El sistema real usa tu inventario y la tasa que elijas.',
+    powerOn: 'Hay luz e internet',
+    powerOff: 'Se fue la luz',
+    sell: 'Cobrar',
+    products: [
+      { name: 'Harina de maíz 1 kg', usd: 1.2 },
+      { name: 'Cemento 42,5 kg', usd: 8.5 },
+      { name: 'Acetaminofén 10 tab.', usd: 1.9 },
+      { name: 'Aceite 1 L', usd: 2.4 },
+    ],
+    rateLabel: 'Tasa de ejemplo',
+    statusOnline: 'Conectado · todo sincronizado',
+    statusOffline: (n: number) => `Sin conexión · ${n} ${n === 1 ? 'venta guardada' : 'ventas guardadas'} en el teléfono`,
+    syncing: (n: number) => `Volvió la luz · sincronizando ${n} ${n === 1 ? 'venta' : 'ventas'}…`,
+    synced: 'Todo sincronizado. No se perdió nada.',
+    todayLabel: 'Vendido hoy',
+    sourceNote: 'xinventory es código abierto:',
+    sourceLink: 'ver el código',
+    sourceUrl: 'https://github.com/omarperezr/xinventory',
+  },
+
+  como: {
+    title: 'Primero revisamos. Después construimos. Y nos quedamos.',
+    lead: 'No vendemos programas: hacemos que tu negocio funcione mejor. Por eso el primer paso es gratis y el último no termina.',
     steps: [
       {
-        title: 'PLANIFICACIÓN',
-        text: 'Analizamos los requisitos de tu proyecto y nos aseguramos de entender por completo tus necesidades, objetivos y limitaciones antes de escribir una sola línea de código.',
+        title: 'Revisamos',
+        text: 'Cómo vendes, cómo cobras, cómo llevas el inventario y dónde se pierde el dinero. En 2 minutos en la web o en una llamada de 30 minutos.',
       },
       {
-        title: 'IMPLEMENTACIÓN',
-        text: 'Nuestros ingenieros convierten los requisitos en código sólido, eficiente y bien probado, siguiendo las mejores prácticas del sector.',
+        title: 'Te decimos qué arreglar primero',
+        text: 'Por escrito, en 2 días hábiles: las 3 cosas que más dinero te hacen perder y cuánto costaría resolverlas. Sin compromiso.',
       },
       {
-        title: 'PRUEBAS Y QA',
-        text: 'Cada cambio pasa por pruebas automatizadas y controles de calidad antes de llegar a ti, para que los problemas salgan aquí y no delante de tus clientes.',
+        title: 'Lo construimos',
+        text: 'Precio fijo, fecha fija. Ves el avance en vivo desde el primer día y el código es tuyo mientras lo hacemos.',
       },
       {
-        title: 'DESPLIEGUE',
-        text: 'Montamos toda tu infraestructura — servidores, pipelines y configuración — y la llevamos a producción nosotros mismos.',
-      },
-      {
-        title: 'SOPORTE',
-        text: 'Ofrecemos monitorización y soporte continuo para que tu negocio siga funcionando mucho después del lanzamiento.',
+        title: 'Nos quedamos',
+        text: 'Cargamos tus datos, entrenamos a tu gente y seguimos atentos: soporte incluido y, si quieres, un aliado mensual.',
       },
     ],
   },
-  team: {
-    eyebrow: 'las personas',
-    title: 'El equipo detrás de tu proyecto',
-    lead: 'Sin capas ni gestores de cuenta de por medio — hablas directamente con los ingenieros y diseñadores que construyen tu producto.',
-    onGithub: 'en GitHub',
-    onLinkedin: 'en LinkedIn',
-    roles: {
-      CEO: 'CEO',
-      COO: 'COO',
-      'Creative Director': 'Director creativo',
-      'IT Support': 'Soporte IT',
-      CFO: 'CFO',
-    },
+
+  diagnostico: {
+    title: 'Dos minutos ahora. Una respuesta escrita en dos días hábiles.',
+    lead: 'Cuatro preguntas y tu nombre, por WhatsApp. Te contestamos por escrito con las tres cosas que más te están costando y qué haríamos primero. Gratis y honesto: incluso si la respuesta es que todavía no nos necesitas.',
+    leadNoWa: 'Cuatro preguntas y tu nombre. Te contestamos por escrito con las tres cosas que más te están costando y qué haríamos primero. Gratis y honesto: incluso si la respuesta es que todavía no nos necesitas.',
+    q1: { label: '¿Qué tipo de negocio tienes?', options: ['Abasto / bodegón / supermercado', 'Ferretería / repuestos', 'Farmacia', 'Restaurante / comida', 'Distribuidora / mayorista', 'Servicios (taller, clínica, salón…)', 'Tienda en línea / redes', 'Tengo una idea nueva'] },
+    q2: { label: '¿Qué te duele más?', options: ['Se va la luz y dejo de vender', 'La tasa y los precios en Bs', 'No sé cuánto gano', 'El inventario', 'Responder a los clientes', 'Cuadrar los pagos', 'Quiero vender por internet'] },
+    q3: { label: '¿Cómo cobras hoy?', options: ['Efectivo $', 'Efectivo Bs', 'Pago Móvil', 'Punto de venta', 'Zelle', 'USDT / Binance'] },
+    q4: { label: '¿Tienes sistema o página hoy?', options: ['Nada, todo en papel o WhatsApp', 'Excel', 'Un sistema que no me sirve', 'Una página que nadie visita'] },
+    name: 'Tu nombre',
+    namePlaceholder: 'María',
+    business: 'Nombre del negocio',
+    businessPlaceholder: 'Ferretería La Esperanza',
+    submit: 'Enviar por WhatsApp',
+    submitNoWa: 'Enviar mis respuestas',
+    submitAlt: 'O usa el formulario',
+    whatsappIntro: 'Hola, vengo de xsingularity.dev y quiero el diagnóstico gratis.',
+    promise: 'Respuesta por escrito en 2 días hábiles. Sin llamadas de venta.',
   },
-  services: {
-    eyebrow: 'qué hacemos',
-    title: 'Todo lo que tu producto necesita, en un solo lugar',
-    lead: 'Estrategia, diseño, ingeniería, IA y soporte — un equipo responsable del resultado completo, para que nada se pierda entre proveedores.',
-    items: [
-      {
-        title: 'Gestión de proyectos',
-        text: 'Un responsable dedicado, demos semanales y una hoja de ruta que de verdad se entiende. Siempre sabes qué se entregó, qué sigue y cuánto cuesta.',
-      },
-      {
-        title: 'Diseño UX/UI',
-        text: 'Investigamos a tus usuarios antes de diseñar para ellos. El resultado: interfaces que se entienden en segundos y a las que la gente vuelve.',
-      },
-      {
-        title: 'Soporte técnico',
-        text: 'Monitorización, mantenimiento y un ingeniero con nombre que responde — mucho después del lanzamiento. Los tiempos de respuesta se acuerdan por escrito, no se insinúan.',
-      },
-      {
-        title: 'Web y móvil',
-        text: 'Interfaces rápidas y cuidadas que convierten visitantes en clientes — aplicaciones web y Android nativo, pensadas para sentirse instantáneas en cualquier dispositivo.',
-      },
-      {
-        title: 'Backend, IA y automatización',
-        text: 'APIs e infraestructura seguras y probadas que soportan tu día más intenso igual de bien que el más tranquilo — más asistentes con IA, bots de atención y automatizaciones que le quitan el trabajo repetitivo a tu equipo.',
-      },
-    ],
-  },
-  packages: {
-    eyebrow: 'paquetes',
-    title: 'Software a medida, precio fijo',
-    lead: 'Software construido alrededor de cómo funciona tu negocio de verdad — no una plantilla. Elige la escala, agenda una llamada y conoce el precio y el plazo antes de empezar. Equipo pequeño y senior: hablas directo con quien lo construye.',
+
+  precios: {
+    title: 'Sabes cuánto cuesta antes de hablar con nosotros.',
+    lead: 'Precio fijo, fecha fija, pagos por partes. Precios para Venezuela; fuera del país cotizamos aparte.',
     from: 'desde',
-    cta: 'Agendar llamada',
-    note: 'Pagos por hitos — nunca todo por adelantado. Zelle, PayPal, Payoneer, USDT, transferencia o bolívares. Plan de mantenimiento opcional después de la entrega.',
-    items: [
+    once: 'una sola vez',
+    monthly: 'al mes',
+    cta: 'Empezar por aquí',
+    note: 'Pagas por hitos, nunca todo por adelantado. Zelle, PayPal, Payoneer, USDT, transferencia o bolívares.',
+    ladder: [
       {
+        id: 'plan',
+        name: 'Diagnóstico + plan',
+        price: '$49',
+        unit: 'una sola vez',
+        timeline: '1 semana',
+        firstPayment: 'Pago único; se descuenta del sistema',
+        features: ['Revisamos tu negocio a fondo, de forma presencial o remota', 'Plan escrito con prioridades, plazos y costos', 'Se descuenta de cualquier sistema que construyamos'],
+        href: 'whatsapp',
+        cta: 'Quiero el plan',
+      },
+      {
+        id: 'esencial',
         name: 'Sistema esencial',
-        price: '$500',
+        price: '$299',
+        unit: 'una sola vez',
         timeline: '2–3 semanas',
-        features: [
-          'Un proceso clave digitalizado de punta a punta — pedidos, catálogo, citas, lo que más duela',
-          'Diseñado contigo, construido desde cero',
-          'Desplegado, con tus datos cargados y tu personal entrenado',
-          '30 días de soporte incluidos',
-        ],
+        firstPayment: 'Empiezas con $150',
+        features: ['Un proceso clave de punta a punta: pedidos, catálogo, citas, caja… lo que más duela', 'Diseñado contigo, hecho desde cero', 'Instalado, con tus datos cargados y tu gente entrenada', '30 días de soporte incluidos'],
+        href: 'whatsapp',
+        cta: 'Empezar por aquí',
       },
       {
+        id: 'completo',
         name: 'Sistema completo',
-        price: '$1,200',
+        price: '$799',
+        unit: 'una sola vez',
         timeline: '4–6 semanas',
-        features: [
-          'Varios módulos conectados — p. ej. catálogo, pedidos, inventario y reportes',
-          'Roles y permisos, importación/exportación de Excel',
-          'Hecho para internet inestable — sigue funcionando sin conexión',
-          'Portal de avance en vivo + 60 días de soporte',
-        ],
+        firstPayment: 'Empiezas con $400',
+        features: ['Varios módulos conectados: catálogo, pedidos, inventario, caja y reportes', 'Bs y $ a la tasa del día; funciona sin conexión', 'Roles y permisos; importa y exporta Excel', 'Portal de avance en vivo + 60 días de soporte'],
+        href: 'whatsapp',
+        cta: 'Empezar por aquí',
+        highlight: true,
       },
       {
+        id: 'escala',
         name: 'Producto a escala',
-        price: '$3,000',
+        price: '$1.890',
+        unit: 'una sola vez',
         timeline: '8–12 semanas',
-        features: [
-          'Un producto completo: aplicación web, integraciones (pagos, WhatsApp, APIs externas)',
-          'Arquitectura lista para crecer — usuarios reales desde el día uno',
-          'Portal de avance en vivo, demos semanales',
-          '90 días de soporte prioritario',
-        ],
+        firstPayment: 'Empiezas con $630',
+        features: ['Un producto completo: web, tienda, integraciones (pagos, WhatsApp, APIs externas)', 'Listo para crecer con usuarios reales desde el día uno', 'Demos semanales y portal de avance', '90 días de soporte prioritario'],
+        href: 'whatsapp',
+        cta: 'Empezar por aquí',
+      },
+      {
+        id: 'aliado',
+        name: 'Aliado mensual',
+        price: '$49',
+        unit: 'al mes',
+        timeline: 'mes a mes',
+        firstPayment: 'Menos que tu plan de internet',
+        features: ['Tu departamento de sistemas sin contratar a nadie', 'Hasta 3 horas de cambios al mes', 'Monitoreo y soporte con tiempos de respuesta acordados por escrito', 'Cancelas cuando quieras'],
+        href: 'whatsapp',
+        cta: 'Quiero un aliado',
+      },
+    ],
+    faq: [
+      {
+        q: '¿Por qué son más baratos que otras empresas?',
+        a: 'Somos un equipo pequeño y senior que trabaja con herramientas de inteligencia artificial para construir más rápido, y no tenemos oficinas ni gerentes de cuenta. Ese ahorro es tuyo. Lo que no recortamos: ingenieros con experiencia en cada proyecto, pruebas antes de entregar y soporte después.',
+      },
+      {
+        q: '¿Cómo pago?',
+        a: 'Como te resulte más fácil: Zelle, PayPal, Payoneer, USDT, transferencia bancaria o bolívares. Dividimos el pago por hitos: la mitad al empezar y la mitad al entregar en proyectos pequeños; en tercios en los grandes. Nunca todo por adelantado.',
+      },
+      {
+        q: '¿Y si mi negocio es muy pequeño?',
+        a: 'Empieza por el diagnóstico gratis. Si la respuesta honesta es que todavía no necesitas un sistema, te lo decimos y te sugerimos qué hacer mientras tanto.',
+      },
+      {
+        q: '¿Firman un acuerdo de confidencialidad?',
+        a: 'Sí, siempre que lo pidas. Lo que vemos de tu negocio se queda entre nosotros.',
       },
     ],
   },
-  transparency: {
-    eyebrow: 'transparencia',
-    title: 'Ves cómo lo construimos, desde el primer día',
-    lead: 'Casi todas las agencias te enseñan una demo al final. Tú recibes un acceso el primer día — y el repositorio con él.',
+
+  longevidad: {
+    title: 'Los negocios no mueren de viejos. Mueren de no saber.',
+    lead: 'En la región, la mayoría de los negocios no llega a los cinco años. Los que sobreviven tienen algo en común: saben cuánto venden, cuánto tienen y cuánto ganan, todos los días.',
+    stats: [
+      {
+        value: '33%',
+        label: 'de los negocios en Colombia siguen abiertos a los 5 años',
+        source: 'Confecámaras, 2023',
+        url: 'https://confecamaras.org.co/segun-estudio-de-confecamaras-el-33-5-de-las-empresas-del-pais-sobreviven-al-termino-de-5-anos/',
+      },
+      {
+        value: '7,7 años',
+        label: 'vive en promedio un negocio en México. Uno de 2 personas dura unos 7 años; uno de 11 a 15 personas, casi 21',
+        source: 'INEGI, esperanza de vida de los negocios',
+        url: 'https://iplaneg.guanajuato.gob.mx/seieg/wp-content/uploads/2022/07/Presentacion_Esperanza_de_vida_de_los_negocios_en_Mexico_1424446285.pdf',
+      },
+      {
+        value: '70%',
+        label: 'de las empresas que cierran se quedaron sin dinero antes de darse cuenta',
+        source: 'CB Insights, 2026',
+        url: 'https://www.cbinsights.com/research/report/startup-failure-reasons-top/',
+      },
+    ] as Stat[],
+    note: 'No existe una cifra oficial para Venezuela; usamos datos de la región y lo decimos.',
+    cta: 'Quiero que el mío dure',
+  },
+
+  transparencia: {
+    title: 'Ves cómo lo construimos, desde el primer día.',
+    lead: 'Casi todas las empresas te enseñan el resultado al final. Tú recibes un acceso el primer día, y el código con él.',
     points: [
-      {
-        title: 'Tu propio panel del proyecto',
-        text: 'Avance en vivo, una fecha estimada de entrega calculada con nuestro ritmo real, quién está haciendo qué y cuánto debería tomar cada tarea. No hace falta una reunión para enterarte.',
-      },
-      {
-        title: 'Un espacio para comentar en cada tarea',
-        text: 'Preguntas sobre cualquier tarea y le llega al ingeniero que la está haciendo — la respuesta vuelve al mismo sitio, sin perderse en un hilo de chat.',
-      },
-      {
-        title: 'El repositorio, desde el primer día',
-        text: 'Te damos acceso al proyecto en GitHub o GitLab: cada commit, cada issue, todo el código fuente, mientras lo construimos. El código es tuyo desde el principio, no solo al entregarlo.',
-      },
+      { title: 'Tu propio panel del proyecto', text: 'Avance en vivo, fecha estimada de entrega calculada con nuestro ritmo real, quién hace qué y cuánto debería tomar. No hace falta una reunión para enterarte.' },
+      { title: 'Un espacio para preguntar en cada tarea', text: 'Preguntas sobre cualquier tarea y le llega a quien la está haciendo. La respuesta vuelve al mismo sitio, sin perderse en un chat.' },
+      { title: 'El código es tuyo mientras lo hacemos', text: 'Te damos acceso al repositorio en GitHub o GitLab: cada cambio, cada tarea, todo el código, en tiempo real. No solo al entregar.' },
     ],
     note: 'El panel es software nuestro y su código es público:',
-    sourceLink: 'ver el código →',
+    sourceLink: 'ver el código',
+    sourceUrl: 'https://github.com/omarperezr/client_progress_xsingularity',
     cta: 'Empieza tu proyecto y recibe tu acceso',
   },
-  portfolio: {
-    eyebrow: 'nuestro trabajo',
-    title: 'Portafolio',
-    lead: 'Una muestra de lo que construimos — proyectos de clientes, productos propios y código abierto.',
-    visit: 'Abrir demo en vivo →',
-    viewSource: 'Ver código →',
+
+  portafolio: {
+    title: 'Sistemas que ya funcionan en negocios venezolanos.',
+    lead: 'Un cliente y cinco productos propios con el código abierto: ábrelos, léelos, pruébalos.',
+    visit: 'Abrir demo',
+    viewSource: 'Ver el código',
     prev: 'Proyecto anterior',
     next: 'Proyecto siguiente',
     region: 'Proyectos del portafolio',
     goTo: 'Ir al proyecto',
     demoBadge: 'Demo en vivo',
-    caseStudyBadge: 'Caso de estudio',
+    caseStudyBadge: 'Cliente',
     openSourceBadge: 'Código abierto',
   },
-  contact: {
-    eyebrow: 'contacto',
-    title: 'Hablemos de tu proyecto',
-    lead: 'Cuéntanos qué estás construyendo y dónde te has atascado. Te respondemos en un día hábil con una opinión honesta — incluso si la respuesta es que todavía no nos necesitas.',
+
+  equipo: {
+    title: 'Hablas directo con quien lo construye.',
+    lead: 'Cinco personas, en Venezuela, con nombre y cara. Sin gerentes de cuenta ni intermediarios.',
+    onGithub: 'en GitHub',
+    onLinkedin: 'en LinkedIn',
+    roles: {
+      CEO: 'Director general',
+      COO: 'Director de operaciones',
+      'Creative Director': 'Director creativo',
+      'IT Support': 'Soporte técnico',
+      CFO: 'Director financiero',
+    } as Record<string, string>,
+  },
+
+  contacto: {
+    title: 'Cuéntanos qué te está costando dinero.',
+    lead: 'O cuéntanos tu idea. Te respondemos en un día hábil con una opinión honesta, incluso si la respuesta es que todavía no nos necesitas.',
     name: 'Nombre',
     email: 'Correo',
     message: 'Mensaje',
     namePlaceholder: 'María González',
-    emailPlaceholder: 'maria@empresa.com',
-    messagePlaceholder: '¿Qué quieres construir?',
+    emailPlaceholder: 'maria@minegocio.com',
+    messagePlaceholder: '¿Qué te está costando dinero? ¿Qué quieres construir?',
     submit: 'Enviar mensaje',
     sending: 'Enviando tu mensaje…',
-    errorGeneric: 'No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos por WhatsApp — por ahí respondemos más rápido.',
-    errorRateLimit: 'Se han enviado demasiados mensajes desde aquí. Inténtalo de nuevo en unos minutos o escríbenos por WhatsApp.',
+    errorGeneric: 'No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos por WhatsApp; por ahí respondemos más rápido.',
+    errorRateLimit: 'Se han enviado demasiados mensajes desde aquí. Inténtalo en unos minutos o escríbenos por WhatsApp.',
     errorCaptcha: 'Completa la verificación e inténtalo de nuevo.',
     errorUnconfigured: 'El formulario no está disponible en este momento. Escríbenos por WhatsApp.',
     successTitle: 'Gracias por tu mensaje.',
-    successBody: 'Te responderemos en un día hábil, normalmente mucho antes. ¿Necesitas respuesta ya? Escríbenos por WhatsApp.',
+    successBody: 'Te respondemos en un día hábil, normalmente mucho antes. ¿Necesitas respuesta ya? Escríbenos por WhatsApp.',
     close: 'Cerrar',
     whatsappTitle: '¿Prefieres escribirnos directo?',
     whatsappBody: 'Por WhatsApp es donde más rápido respondemos. Sin formulario y sin esperar un correo.',
     whatsappCta: 'Escríbenos por WhatsApp',
     or: 'o',
+    bookCall: 'Agenda una llamada de 30 min',
   },
-  faq: {
-    title: 'Preguntas frecuentes',
-    items: [
-      {
-        q: '¿Qué tecnologías y lenguajes de programación utilizan?',
-        a: 'Nos especializamos en lenguajes como Python, Javascript, Go y Solidity, y en tecnologías como React, Docker, Node JS y AWS. Si necesitas trabajar con otro lenguaje, también podemos ayudarte.',
-      },
-      {
-        q: '¿Cuál es el presupuesto mínimo y el tamaño de proyecto con el que trabajan?',
-        a: 'El software a medida empieza en $500 (mira nuestros paquetes). Construimos desde un solo proceso digitalizado para un negocio pequeño hasta productos completos para empresas. Cuéntanos qué necesitas y te cotizamos gratis — decides con el número en la mano.',
-      },
-      {
-        q: '¿Cómo puedo pagar?',
-        a: 'Como te resulte más fácil: Zelle, PayPal, Payoneer, USDT (cripto), transferencia bancaria o bolívares. En los proyectos solemos dividir el pago por hitos, así nunca pagas todo por adelantado.',
-      },
-      {
-        q: '¿Firman un acuerdo de confidencialidad (NDA)?',
-        a: 'Sí, por supuesto. Si quieres firmar un NDA, siempre estamos dispuestos a hacerlo.',
-      },
-    ],
-  },
-  langBanner: {
-    message: 'Would you prefer to view this site in English?',
-    accept: 'View in English',
-    dismiss: 'Seguir en español',
-  },
+
   a11y: {
     scrollTop: 'Volver arriba',
-    languageSwitcher: 'Cambiar idioma',
     whatsapp: 'Escríbenos por WhatsApp',
+    externalSource: 'Abrir fuente en una pestaña nueva',
   },
-};
+} as const;
 
-export const dictionaries: Record<Locale, Dictionary> = { en, es };
+export type Dictionary = typeof dict;
