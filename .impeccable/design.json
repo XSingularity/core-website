@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-24T00:00:00Z",
+  "title": "Design System: XSingularity — «Un solo punto»",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#F5F3EE", "tonalRamp": ["#1C1B18", "#3A3832", "#59564E", "#78746A", "#9A9589", "#BDB8AC", "#DAD6CD", "#F5F3EE"] },
+      "paper-deep": { "role": "neutral", "displayName": "Deep Paper", "canonical": "#ECE8E0", "tonalRamp": ["#1B1915", "#38352E", "#565148", "#756F63", "#958E80", "#B6AFA1", "#D3CDC1", "#ECE8E0"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#14202A", "tonalRamp": ["#14202A", "#26343F", "#3E4E5A", "#586975", "#748592", "#93A2AE", "#B6C2CB", "#DCE3E8"] },
+      "navy": { "role": "primary", "displayName": "Deep Navy", "canonical": "#0B3D4A", "tonalRamp": ["#06222A", "#0B3D4A", "#1A5262", "#2A5A67", "#4E7E8C", "#7AA3AF", "#A9C7D0", "#D6E3E7"] },
+      "navy-soft": { "role": "primary", "displayName": "Soft Navy", "canonical": "#2A5A67", "tonalRamp": ["#06222A", "#0B3D4A", "#1A5262", "#2A5A67", "#4E7E8C", "#7AA3AF", "#A9C7D0", "#D6E3E7"] },
+      "navy-tint": { "role": "primary", "displayName": "Navy Tint", "canonical": "#D6E3E7", "tonalRamp": ["#06222A", "#0B3D4A", "#1A5262", "#2A5A67", "#4E7E8C", "#7AA3AF", "#A9C7D0", "#D6E3E7"] },
+      "amber": { "role": "secondary", "displayName": "Amber Key", "canonical": "#96500B", "tonalRamp": ["#3E2004", "#5C2F07", "#7A400A", "#96500B", "#B56A1F", "#D08C45", "#E5B784", "#F6E3C9"] },
+      "amber-hover": { "role": "secondary", "displayName": "Amber Hover", "canonical": "#7A400A", "tonalRamp": ["#3E2004", "#5C2F07", "#7A400A", "#96500B", "#B56A1F", "#D08C45", "#E5B784", "#F6E3C9"] },
+      "amber-tint": { "role": "secondary", "displayName": "Amber Tint", "canonical": "#F6E3C9", "tonalRamp": ["#3E2004", "#5C2F07", "#7A400A", "#96500B", "#B56A1F", "#D08C45", "#E5B784", "#F6E3C9"] },
+      "green": { "role": "tertiary", "displayName": "Funciona Green", "canonical": "#0B7663", "tonalRamp": ["#03302A", "#064A3F", "#095F50", "#0B7663", "#2F937F", "#5FB3A0", "#98D0C3", "#D2EDE6"] },
+      "green-tint": { "role": "tertiary", "displayName": "Green Tint", "canonical": "#D2EDE6", "tonalRamp": ["#03302A", "#064A3F", "#095F50", "#0B7663", "#2F937F", "#5FB3A0", "#98D0C3", "#D2EDE6"] },
+      "red": { "role": "tertiary", "displayName": "Error Red", "canonical": "#B42318", "tonalRamp": ["#3F0A06", "#6B130C", "#8F1B12", "#B42318", "#CB463B", "#DE7368", "#EDA59D", "#F8D9D5"] },
+      "red-tint": { "role": "tertiary", "displayName": "Red Tint", "canonical": "#F8D9D5", "tonalRamp": ["#3F0A06", "#6B130C", "#8F1B12", "#B42318", "#CB463B", "#DE7368", "#EDA59D", "#F8D9D5"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The hero headline only. Archivo 900, navy." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles via SectionTitle; navy on paper, paper on navy." },
+      "title": { "displayName": "Title", "purpose": "Card and panel headings (h3)." },
+      "figure": { "displayName": "Figure", "purpose": "Ledger values, prices, the verdict count. Tabular numerals." },
+      "lead": { "displayName": "Lead", "purpose": "The paragraph under a section title, max-w-prose." },
+      "body": { "displayName": "Body", "purpose": "List items, features, FAQ answers, field text." },
+      "label": { "displayName": "Label", "purpose": "Buttons and form labels, Archivo 700." },
+      "small": { "displayName": "Small", "purpose": "Sources, units, disclaimers, footer meta." }
+    },
+    "shadows": [
+      { "name": "firm", "value": "0 6px 18px -6px rgba(11, 61, 74, 0.28)", "purpose": "Floating buttons, the submit modal, the transparency screenshot. A cast shadow for things above the page." },
+      { "name": "key", "value": "0 10px 24px -10px rgba(150, 80, 11, 0.55)", "purpose": "The amber key only, so the one lit button lifts off the paper." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.19, 1, 0.22, 1)", "purpose": "Every transition and the draw/settle animations." },
+      { "name": "draw", "value": "draw 1.4s cubic-bezier(0.19, 1, 0.22, 1) both", "purpose": "Convergence lines draw once via stroke-dashoffset, staggered 110ms." },
+      { "name": "settle", "value": "settle 0.9s cubic-bezier(0.19, 1, 0.22, 1) both", "purpose": "The point and outcomes scale from 0.92 and fade in." },
+      { "name": "pulse2", "value": "pulse2 3.2s ease-in-out infinite", "purpose": "Singularity rings breathe 0.35 to 1 opacity; second ring delayed 0.6s." },
+      { "name": "reveal", "value": "opacity/transform 0.8s cubic-bezier(0.19, 1, 0.22, 1)", "purpose": "Scroll-entry reveal from 24px below; hidden state gated on @media (scripting: enabled)." },
+      { "name": "button", "value": "all 200ms cubic-bezier(0.19, 1, 0.22, 1)", "purpose": "Key hover lift of 2px and color shift." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce", "purpose": "All animations off, lines fully drawn, reveals visible, smooth scroll off." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Amber Key",
+      "kind": "button",
+      "refersTo": "button-key",
+      "description": "The one lit action per section. Cast key shadow, 2px hover lift.",
+      "html": "<a class=\"ds-key\" href=\"#\">Diagnóstico gratis · 2 min<svg class=\"ds-arrow\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 10h13M11 5l5 5-5 5\"/></svg></a>",
+      "css": ".ds-key { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 6px; padding: 12px 24px; font-family: Archivo, 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 1rem; font-weight: 700; line-height: 1; text-decoration: none; background: #96500B; color: #F5F3EE; box-shadow: 0 10px 24px -10px rgba(150, 80, 11, 0.55); transition: all 200ms cubic-bezier(0.19, 1, 0.22, 1); } .ds-key:hover { background: #7A400A; transform: translateY(-2px); } .ds-key:active { transform: translateY(0); } .ds-key:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(150, 80, 11, 0.4); } .ds-arrow { width: 1em; height: 1em; }"
+    },
+    {
+      "name": "Green Key",
+      "kind": "button",
+      "refersTo": "button-green",
+      "description": "WhatsApp and 'funciona' actions.",
+      "html": "<button class=\"ds-key-green\" type=\"button\">Escríbenos por WhatsApp</button>",
+      "css": ".ds-key-green { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 6px; padding: 12px 24px; font-family: Archivo, 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 1rem; font-weight: 700; line-height: 1; background: #0B7663; color: #F5F3EE; cursor: pointer; transition: all 200ms cubic-bezier(0.19, 1, 0.22, 1); } .ds-key-green:hover { background: #095f50; transform: translateY(-2px); } .ds-key-green:active { transform: translateY(0); } .ds-key-green:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(150, 80, 11, 0.4); }"
+    },
+    {
+      "name": "Navy Key",
+      "kind": "button",
+      "refersTo": "button-navy",
+      "description": "Solid but unlit action; the second door next to an amber key.",
+      "html": "<button class=\"ds-key-navy\" type=\"button\">Ver cómo trabajamos</button>",
+      "css": ".ds-key-navy { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 6px; padding: 12px 24px; font-family: Archivo, 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 1rem; font-weight: 700; line-height: 1; background: #0B3D4A; color: #F5F3EE; cursor: pointer; transition: all 200ms cubic-bezier(0.19, 1, 0.22, 1); } .ds-key-navy:hover { background: #2A5A67; transform: translateY(-2px); } .ds-key-navy:active { transform: translateY(0); } .ds-key-navy:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(150, 80, 11, 0.4); }"
+    },
+    {
+      "name": "Outline Key",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "3px navy border; fills navy on hover. Header CTA and price cards.",
+      "html": "<a class=\"ds-key-outline\" href=\"#\">Agenda una llamada</a>",
+      "css": ".ds-key-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 3px solid #0B3D4A; border-radius: 6px; padding: 12px 24px; font-family: Archivo, 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 1rem; font-weight: 700; line-height: 1; text-decoration: none; background: transparent; color: #0B3D4A; transition: all 200ms cubic-bezier(0.19, 1, 0.22, 1); } .ds-key-outline:hover { background: #0B3D4A; color: #F5F3EE; } .ds-key-outline:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(150, 80, 11, 0.4); }"
+    },
+    {
+      "name": "Ghost Key",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Underlined navy text link beside a key; hovers amber.",
+      "html": "<a class=\"ds-key-ghost\" href=\"#\">Prefiero el diagnóstico</a>",
+      "css": ".ds-key-ghost { display: inline-flex; align-items: center; gap: 8px; border-radius: 6px; padding: 12px; font-family: Archivo, 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 1rem; font-weight: 700; line-height: 1; color: #0B3D4A; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; transition: color 200ms cubic-bezier(0.19, 1, 0.22, 1); } .ds-key-ghost:hover { color: #96500B; } .ds-key-ghost:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(150, 80, 11, 0.4); }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Paper field with a 2px navy/40 border, amber caret, navy + amber-ring focus.",
+      "html": "<label class=\"ds-label\" for=\"ds-name\">Nombre</label><input class=\"ds-field\" id=\"ds-name\" type=\"text\" placeholder=\"Tu nombre\" />",
+      "css": ".ds-label { display: block; font-family: Archivo, 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 1rem; font-weight: 700; color: #0B3D4A; margin-bottom: 6px; } .ds-field { width: 100%; border: 2px solid rgba(11, 61, 74, 0.4); border-radius: 6px; background: #F5F3EE; color: #14202A; padding: 10px 12px; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 1rem; caret-color: #96500B; } .ds-field::placeholder { color: #2A5A67; } .ds-field:focus { outline: none; border-color: #0B3D4A; } .ds-field:focus-visible { box-shadow: 0 0 0 4px rgba(150, 80, 11, 0.4); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "button-outline",
+      "description": "Sticky paper header; Archivo 600 links with a 3px amber underline on the active section.",
+      "html": "<header class=\"ds-header\"><span class=\"ds-wordmark\">XSingularity</span><nav><a class=\"ds-nav ds-nav-active\" href=\"#\">Síntomas</a><a class=\"ds-nav\" href=\"#\">Cómo</a><a class=\"ds-nav\" href=\"#\">Precios</a></nav><a class=\"ds-nav-cta\" href=\"#\">Diagnóstico gratis</a></header>",
+      "css": ".ds-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 20px; background: rgba(245, 243, 238, 0.9); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(11, 61, 74, 0.15); font-family: Archivo, 'Atkinson Hyperlegible', system-ui, sans-serif; } .ds-wordmark { font-weight: 800; color: #0B3D4A; } .ds-header nav { display: flex; gap: 24px; } .ds-nav { font-size: 15px; font-weight: 600; color: #14202A; text-decoration: none; padding-bottom: 4px; border-bottom: 3px solid transparent; transition: color 200ms, border-color 200ms; } .ds-nav:hover { color: #0B3D4A; border-bottom-color: rgba(11, 61, 74, 0.4); } .ds-nav-active { color: #0B3D4A; border-bottom-color: #96500B; } .ds-nav-cta { display: inline-flex; align-items: center; border: 3px solid #0B3D4A; border-radius: 6px; padding: 10px 20px; font-size: 0.875rem; font-weight: 700; line-height: 1; color: #0B3D4A; text-decoration: none; transition: all 200ms cubic-bezier(0.19, 1, 0.22, 1); } .ds-nav-cta:hover { background: #0B3D4A; color: #F5F3EE; } .ds-nav:focus-visible, .ds-nav-cta:focus-visible { outline: 3px solid #96500B; outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Paper card bounded by a 3px navy border; no shadow. Highlight variant inverts to navy.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Sistema esencial</h3><p class=\"ds-card-price\"><span class=\"ds-card-from\">desde</span> <span class=\"ds-card-figure\">$900</span></p><ul class=\"ds-card-list\"><li><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>Inventario y ventas</li><li><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>Funciona sin internet</li></ul></div>",
+      "css": ".ds-card { display: flex; flex-direction: column; border: 3px solid #0B3D4A; border-radius: 6px; background: #F5F3EE; color: #14202A; padding: 24px; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; } .ds-card-title { margin: 0; font-family: Archivo, 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 1.25rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; color: #0B3D4A; } .ds-card-price { margin: 12px 0 0; display: flex; align-items: baseline; gap: 8px; } .ds-card-from { font-size: 0.875rem; color: #2A5A67; } .ds-card-figure { font-family: Archivo, 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 2.25rem; font-weight: 900; font-variant-numeric: tabular-nums; color: #0B3D4A; } .ds-card-list { list-style: none; margin: 16px 0 0; padding: 16px 0 0; border-top: 2px solid rgba(11, 61, 74, 0.2); display: flex; flex-direction: column; gap: 10px; font-size: 1rem; line-height: 1.375; } .ds-card-list li { display: flex; gap: 10px; } .ds-card-list svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 4px; color: #0B7663; }"
+    },
+    {
+      "name": "Ledger Row",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "A statistic as a ledger line: figure, plain label, and a dated source. Never a tile.",
+      "html": "<ul class=\"ds-ledger\"><li class=\"ds-ledger-row\"><span class=\"ds-ledger-figure\">14 h</span><div><p class=\"ds-ledger-label\">de apagón al mes en promedio en Zulia</p><a class=\"ds-source\" href=\"#\">Fuente: Comité de Afectados por Apagones, Maracaibo, 2025<svg viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M6 3h7v7M13 3 6.5 9.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></div></li></ul>",
+      "css": ".ds-ledger { list-style: none; margin: 0; padding: 0; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #14202A; } .ds-ledger-row { display: grid; grid-template-columns: minmax(7rem, 1fr) 3fr; column-gap: 24px; row-gap: 4px; padding: 20px 0; border-top: 2px solid rgba(11, 61, 74, 0.2); } .ds-ledger-figure { font-family: Archivo, 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 3rem; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; color: #0B3D4A; } .ds-ledger-label { margin: 0; font-size: 1.125rem; line-height: 1.375; } .ds-source { display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; font-size: 0.875rem; color: #2A5A67; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; } .ds-source:hover { color: #96500B; } .ds-source svg { width: 14px; height: 14px; flex-shrink: 0; }"
+    },
+    {
+      "name": "Singularity Mark",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "The brand mark: one solid point, two firm rings, in currentColor. Rings breathe when animated.",
+      "html": "<svg class=\"ds-singularity\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\" role=\"img\" aria-label=\"Un solo punto\"><circle class=\"ds-ring\" cx=\"32\" cy=\"32\" r=\"28\" stroke=\"currentColor\" stroke-width=\"3\"/><circle class=\"ds-ring\" cx=\"32\" cy=\"32\" r=\"17\" stroke=\"currentColor\" stroke-width=\"3.5\"/><circle cx=\"32\" cy=\"32\" r=\"6.5\" fill=\"currentColor\"/></svg>",
+      "css": ".ds-singularity { color: #0B3D4A; } .ds-ring { animation: ds-pulse2 3.2s ease-in-out infinite; } .ds-ring:nth-child(2) { animation-delay: 0.6s; } @keyframes ds-pulse2 { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } } @media (prefers-reduced-motion: reduce) { .ds-ring { animation: none; opacity: 1; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Un solo punto",
+    "overview": "Everything a Venezuelan business needs, condensed into one point. The page is a bright, sturdy sheet of paper: a warm off-white ground, deep navy ink that reads as space without ever going black, and one amber key that is lit at most once per section. Rules are solid and thick (2–3px), corners are barely softened (6px), there are no gradients and no glow. The sole authored moment is the convergence: daily pains drawn along firm navy lines into a solid point with two rings, and green outcomes leaving it.\n\nThe world refuses both the dark-space startup hero and the white SaaS template. Density is moderate and honest: numbers are set as ledger rows with a name, place and date under each one, not as stat tiles. Type is heavy and wide for headlines (Archivo 800–900) and hyperlegible for body (Atkinson Hyperlegible), because the reader is an owner on an Android phone in sunlight. Every text color clears 5:1 on its ground.\n\nMotion is a single drawing gesture, not ambient decoration: the convergence lines draw themselves once, the point settles, the rings breathe slowly, and everything stops under reduced motion. Content paints without JavaScript; reveal animations are gated on `scripting: enabled` and the site is a static export.",
+    "keyCharacteristics": [
+      "Paper ground, navy ink, one amber key, green for \"funciona\"",
+      "Solid 2–3px rules and borders; no gradients, no glow, no halo shadows",
+      "Archivo heavy display over Atkinson Hyperlegible body; tabular numerals everywhere",
+      "Sourced numbers only: LedgerRow + Source (name, place, date)",
+      "The singularity mark reserved for the hero, \"Cómo\" and the footer",
+      "Drawn SVG arrows and icons at one stroke weight; never unicode glyphs",
+      "Light theme only; every text color at 5:1 or better on its ground"
+    ],
+    "rules": [
+      { "name": "The One Amber Key Rule", "body": "Amber is a button at most once per section. A second action in the same section is navy, outline or ghost; never a second amber.", "section": "colors" },
+      { "name": "The Sunlight Rule", "body": "Text is never set below 5:1 on its ground. The only permitted text alphas are paper/80–85 on navy and navy-soft on paper, both of which clear it.", "section": "colors" },
+      { "name": "The Navy-Is-Space Rule", "body": "Dark surfaces are navy, never black or grey. ink is text only, never a ground.", "section": "colors" },
+      { "name": "The Alternating Ground Rule", "body": "Sections alternate paper → deep paper → navy so the scroll has rhythm without shadows or dividers between sections.", "section": "colors" },
+      { "name": "The Heading Carries Its Own Weight Rule", "body": "No eyebrow, kicker or small-caps label above a heading. A section opens with the headline itself.", "section": "typography" },
+      { "name": "The Measure Rule", "body": "Body measure is set per block with max-w-prose (65ch), never globally; titles cap at max-w-3xl.", "section": "typography" },
+      { "name": "The Tabular Number Rule", "body": "Every figure is Archivo black with tabular numerals so ledgers and prices align.", "section": "typography" },
+      { "name": "The Cast-Not-Glow Rule", "body": "A shadow has an offset and a negative spread. No 0 0 Npx glows, no colored halos, no gradients.", "section": "elevation" },
+      { "name": "The Border Is the Edge Rule", "body": "Cards, panels and fields are bounded by 2–3px navy borders (solid or at alpha), never by a shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep every text color at 5:1 or better on its ground; the tokens are already tuned for it.",
+      "Do light exactly one amber key per section; make the second action navy, outline or ghost.",
+      "Do open a section with the headline itself, in Archivo 800 at 1.875–3rem, no label above it.",
+      "Do render every statistic through LedgerRow and Source with name, place and date.",
+      "Do use 2–3px solid navy rules and borders as the edge of things; 6px corners.",
+      "Do use paper-deep and navy section grounds to alternate the scroll rhythm.",
+      "Do draw arrows and icons as inline SVG in currentColor at one stroke weight.",
+      "Do keep numerals tabular and figures in Archivo 900.",
+      "Do keep content painting without JavaScript and stop all motion under prefers-reduced-motion.",
+      "Do write in plain Venezuelan Spanish, informal tú, and keep it Spanish only."
+    ],
+    "donts": [
+      "Don't use gradients, glows, halo shadows or 0 0 Npx box-shadows; only firm and key exist.",
+      "Don't use black or grey as a ground; dark surfaces are navy.",
+      "Don't ship a dark mode; color-scheme: light is the only theme.",
+      "Don't add eyebrows, kickers, small-caps labels or numbered \"01\" markers above headings.",
+      "Don't use the singularity mark as a bullet or decoration; it belongs to the hero, Cómo, the footer and the success moment.",
+      "Don't use unicode arrows, emoji or icon fonts; draw them.",
+      "Don't present a number without a Source, or fabricate testimonials, client names or Venezuelan survival statistics (see PRODUCT.md).",
+      "Don't carry text, links or buttons in the legacy logo blue #2795ff; it fails contrast on paper.",
+      "Don't set a global body measure; use max-w-prose per block."
+    ]
+  }
+}

@@ -1,137 +1,54 @@
 /** @type {import('tailwindcss').Config} */
+// Tokens for the «Un solo punto» world (2026-08-24). Every color here is a
+// role, not a hue name, so a theme swap never touches a component.
+// Contrast on `paper` (#F5F3EE), WCAG 2.1: ink 15.1:1 · navy 10.8:1 ·
+// amber 5.6:1 · green 5.1:1 · red 6.0:1. Text never goes below 5:1 — the
+// owner reads this on an Android in the sun (PRODUCT.md).
 module.exports = {
-  
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
-
+    container: {
+      center: true,
+      padding: '1.25rem',
+      screens: { lg: '1024px', xl: '1200px' },
+    },
     extend: {
-      // Brand blue, split by contrast duty. `DEFAULT` is 3.08:1 on white — it
-      // may fill or carry large display type, never body text or a white label.
-      // `text` is 4.96:1 both on white and as a fill behind white text, so it
-      // is the only value allowed for links, eyebrows, buttons and the footer.
-      // `sm` is redefined to 360px below, which silently redefined Tailwind's
-      // container ladder too: every `.container` was pinned to max-width 360px
-      // for every viewport from 360px to 639px — the header, the hero and the
-      // contact form rendered in a 360px column on a 430px phone. Declaring the
-      // ladder explicitly decouples the two and gives the page one gutter.
-      container: {
-        center: true,
-        padding: '1.5rem',
-        // Only the breakpoints that should actually cap width are listed. A
-        // `100%` entry here is not a no-op — Tailwind emits it verbatim as
-        // `@media (min-width: 100%)`, which is not a valid media query.
-        // Omitting sm/md leaves the container fluid below 1024px, which is the
-        // point; and with no entry above xl it stays at 1280px on wide screens.
-        screens: { lg: '1024px', xl: '1280px' },
-      },
       colors: {
-        brand: {
-          DEFAULT: '#2795ff',
-          text: '#1c6fd0',
-          hover: '#17579f',
-          deep: '#1668c9',
-        },
-      },
-      screens: {
-        'sm': '360px',
-         // => @media (min-width: 640px) { ... }
-         
-        'md': '640px',
-        // => @media (min-width: 640px) { ... }
-  
-        'lg': '1024px',
-        // => @media (min-width: 1024px) { ... }
-  
-        'xl': '1280px',
-        // => @media (min-width: 1280px) { ... }
-        
-      },
-      animation: {
-        ["infinite-slider"]: "infiniteSlider 50s linear infinite",
-        marquee: "marquee 40s linear infinite",
-
-        // Weightless drift for the decorative cubes — transform-only (GPU),
-        // long staggered cycles so they never sync into a visible "bounce".
-        'float-1': 'float1 12s ease-in-out infinite',
-        'float-2': 'float2 13.5s ease-in-out infinite',
-        'float-3': 'float3 11s ease-in-out infinite',
-        'float-4': 'float4 14s ease-in-out infinite',
-        'float-5': 'float5 12.5s ease-in-out infinite',
-        // Light travelling down the mobile workflow timeline.
-        'beam': 'beam 3.4s ease-in-out infinite',
-
-        'fade-up': 'fadeUp 0.7s ease-out both',
-        'pulse-ring': 'pulseRing 2.4s cubic-bezier(0.4,0,0.6,1) infinite',
-        'spin-slow': 'spin 14s linear infinite',
-      },
-      keyframes: {
-        // Each cube keeps its resting tilt and drifts on a unique path.
-        float1: {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0) rotate(44deg)' },
-          '50%': { transform: 'translate3d(6px, -22px, 0) rotate(50deg)' },
-        },
-        float2: {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0) rotate(178deg)' },
-          '50%': { transform: 'translate3d(-8px, -16px, 0) rotate(184deg)' },
-        },
-        float3: {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0) rotate(43deg)' },
-          '50%': { transform: 'translate3d(5px, -15px, 0) rotate(36deg)' },
-        },
-        float4: {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0) rotate(-4deg)' },
-          '50%': { transform: 'translate3d(-6px, -20px, 0) rotate(6deg)' },
-        },
-        float5: {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0) rotate(45deg)' },
-          '50%': { transform: 'translate3d(7px, -18px, 0) rotate(52deg)' },
-        },
-        beam: {
-          '0%': { transform: 'translateY(-100%)', opacity: '0' },
-          '12%, 88%': { opacity: '1' },
-          '100%': { transform: 'translateY(260%)', opacity: '0' },
-        },
-        infiniteSlider: {
-          "0%": { transform: "translateX(0)" },
-          "100%": {
-            transform: "translateX(calc(-250px * 5))",
-          },
-        },
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-        fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(24px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        pulseRing: {
-          '0%': { transform: 'scale(0.9)', opacity: '0.7' },
-          '70%, 100%': { transform: 'scale(1.7)', opacity: '0' },
-        },
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-        'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        paper: { DEFAULT: '#F5F3EE', deep: '#ECE8E0' },
+        ink: '#14202A',
+        navy: { DEFAULT: '#0B3D4A', soft: '#2A5A67' },
+        amber: { DEFAULT: '#96500B', hover: '#7A400A', tint: '#F6E3C9' },
+        green: { DEFAULT: '#0B7663', tint: '#D2EDE6' },
+        red: { DEFAULT: '#B42318', tint: '#F8D9D5' },
       },
       fontFamily: {
-      sans: ['var(--font-outfit)', 'Outfit', 'system-ui', 'sans-serif'],
-      display: ['var(--font-space-grotesk)', 'var(--font-outfit)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-body)', 'system-ui', 'sans-serif'],
       },
-      transitionTimingFunction: {
-        'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
-        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
-      }
-      
-   
+      borderWidth: { 3: '3px' },
+      boxShadow: {
+        // Offset + blur: a real cast shadow, never a halo.
+        firm: '0 6px 18px -6px rgba(11, 61, 74, 0.28)',
+        key: '0 10px 24px -10px rgba(150, 80, 11, 0.55)',
+      },
+      keyframes: {
+        draw: { from: { strokeDashoffset: '1' }, to: { strokeDashoffset: '0' } },
+        settle: {
+          '0%': { transform: 'scale(0.92)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        pulse2: {
+          '0%, 100%': { opacity: '0.35' },
+          '50%': { opacity: '1' },
+        },
+      },
+      animation: {
+        draw: 'draw 1.4s cubic-bezier(0.19, 1, 0.22, 1) both',
+        settle: 'settle 0.9s cubic-bezier(0.19, 1, 0.22, 1) both',
+        pulse2: 'pulse2 3.2s ease-in-out infinite',
+      },
+      transitionTimingFunction: { 'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)' },
     },
   },
   plugins: [],
-  darkMode: "class",
-  mode: 'jit',
 }

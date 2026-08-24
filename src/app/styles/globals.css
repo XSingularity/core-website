@@ -2,111 +2,118 @@
 @tailwind components;
 @tailwind utilities;
 
+/* «Un solo punto» — light paper-glass ground, deep navy ink, one amber key. */
+:root {
+  --paper: #f5f3ee;
+  --ink: #14202a;
+  --navy: #0b3d4a;
+  --amber: #96500b;
+  --green: #0b7663;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  background: var(--paper);
+}
+
 html,
 body {
   overflow-x: hidden;
   max-width: 100%;
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
+/* Directional reveals translate children 32px past the edge before they
+   land; clip at the section so a phone never gets a horizontal pan. */
+section,
+main,
+footer {
+  overflow-x: clip;
 }
 
 body {
-  position: relative;
-  width: 100%;
+  background: var(--paper);
+  color: var(--ink);
   text-rendering: optimizeLegibility;
+  font-variant-numeric: tabular-nums;
+  /* Body measure is set per block (max-w-prose), never globally. */
 }
 
+/* Browser surfaces belong to the palette too. */
 ::selection {
-  background-color: #1c6fd0;
-  color: #ffffff;
+  background: var(--navy);
+  color: var(--paper);
+}
+:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 2px;
+}
+input,
+textarea,
+select {
+  caret-color: var(--amber);
+  accent-color: var(--navy);
+}
+* {
+  scrollbar-color: var(--navy) var(--paper);
+  scrollbar-width: thin;
 }
 
-/* Display headings get the geometric face + tighter optical tracking */
-h1, h2, h3 {
-  font-family: var(--font-display, 'Space Grotesk'), 'Outfit', system-ui, sans-serif;
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
-/* Scroll-entry reveal.
-   The hidden state lives here instead of as an inline style on the element. A
-   static export bakes inline styles into the HTML, so the old version shipped
-   38 elements at `opacity:0` that only became visible once the bundle had
-   downloaded, hydrated and fired IntersectionObserver — a blank page on a slow
-   connection, and a permanently blank one if the JS never arrived.
-
-   `scripting: enabled` is the gate, not a class set by an inline script: adding
-   a class to <html> mutates an attribute React owns and trips a hydration
-   mismatch. Where the media feature is unsupported it simply does not match, so
-   content stays visible and skips the entrance — the safe direction to fail. */
+/* Scroll-entry reveal. Hidden state gated on `scripting: enabled` so the
+   static export paints everything when JS is slow or absent. */
 @media (scripting: enabled) {
   .reveal {
     opacity: 0;
-    transform: var(--reveal-from, translate3d(0, 32px, 0));
+    transform: var(--reveal-from, translate3d(0, 24px, 0));
   }
-
   .reveal-in {
     opacity: 1;
     transform: none;
     transition:
-      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
-      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+      opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) var(--reveal-delay, 0ms),
+      transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) var(--reveal-delay, 0ms);
   }
 }
 
-/* Contact-section code chips. Bobbing uses the independent `translate`
-   property, not `transform`, so each chip keeps the resting `rotate` set
-   inline. */
-.chip {
-  animation-name: chipFloat;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+@keyframes draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes settle {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes pulse2 {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
 }
 
-@keyframes chipFloat {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 0 -12px;
-  }
+/* The one authored moment: the pains are drawn into the point. Lines draw
+   themselves once; the point settles; the rings breathe. */
+.converge-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 1.4s cubic-bezier(0.19, 1, 0.22, 1) both;
 }
-
-/* Paper grain for the two human-facing sections, Team and Contact. Deliberately
-   not page-wide: texture everywhere stops being texture and becomes background.
-   The blue sections carry their gradient alone — a hairline grid over a process
-   stepper and a carousel decorated surfaces that are not canvases. */
-.dots-dark {
-  background-image: radial-gradient(rgba(59, 130, 246, 0.10) 1px, transparent 1px);
-  background-size: 24px 24px;
+.singularity-ring {
+  animation: pulse2 3.2s ease-in-out infinite;
 }
-
-/* Blackhole "accretion" — each ring flashes as an inward wave of light
-   falls toward the center. Per-path animation-delay (set on the SVG paths,
-   ranked outer→inner by radius) makes the pulse travel from the outside in. */
-@keyframes bhCharge {
-  0%, 100% {
-    stroke: #3a414d;
-  }
-  10% {
-    stroke: #2795ff;
-  }
-  32% {
-    stroke: #3a414d;
-  }
-}
-
-/* Fixed, subtle film grain to break digital flatness */
-.grain-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+.singularity-ring:nth-child(2) {
+  animation-delay: 0.6s;
 }
 
 .no-scrollbar {
@@ -117,26 +124,21 @@ h1, h2, h3 {
   display: none;
 }
 
-/* Reduced motion stops the decorative loops and lands entrance reveals
-   immediately. It deliberately leaves hover, focus and open/close transitions
-   alone: a blanket `* { transition-duration: 0.001ms }` also kills the feedback
-   that tells you a control responded, which is exactly the feedback someone
-   sensitive to motion still needs. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-
-  .animate-marquee,
-  .animate-beam,
-  .animate-pulse,
-  .animate-pulse-ring,
-  .animate-spin-slow,
-  .chip,
-  [class*='animate-float'] {
-    animation: none !important;
+  .converge-line {
+    stroke-dashoffset: 0;
+    animation: none;
   }
-
+  .singularity-ring,
+  .animate-settle,
+  .animate-draw,
+  .animate-pulse2 {
+    animation: none !important;
+    opacity: 1;
+  }
   .reveal {
     opacity: 1;
     transform: none;
