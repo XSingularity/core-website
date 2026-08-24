@@ -67,13 +67,13 @@ export default function Portfolio() {
   )
 
   return (
-    <section id="Portafolio" className="scroll-mt-20 py-10 md:py-12">
+    <section id="Portafolio" className="scroll-mt-20 py-8 md:py-12">
       <div className="container">
         <Reveal>
           <SectionTitle title={t.title} lead={t.lead} />
         </Reveal>
         <Reveal delay={120}>
-          <div className="mt-6 flex items-center gap-4">
+          <div className="mt-5 flex items-center gap-4 md:mt-6">
             <NavKey dir="prev" enabled={canPrev} />
             <div ref={trackRef} role="region" aria-label={t.region} className="no-scrollbar flex w-full snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth py-1">
               {PROJECTS.map((p) => (

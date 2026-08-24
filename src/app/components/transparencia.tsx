@@ -7,8 +7,8 @@ const t = dict.transparencia
 
 export default function Transparencia() {
   return (
-    <section id="Transparencia" className="scroll-mt-20 bg-navy py-12 text-paper md:py-16">
-      <div className="container grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+    <section id="Transparencia" className="scroll-mt-20 bg-navy py-8 text-paper md:py-16">
+      <div className="container grid gap-5 lg:grid-cols-2 lg:items-center lg:gap-16">
         <Reveal direction="right">
           <Image
             className="w-full rounded-md border-3 border-paper/40 shadow-firm"
@@ -21,15 +21,15 @@ export default function Transparencia() {
         </Reveal>
         <Reveal direction="left" delay={120}>
           <SectionTitle title={t.title} lead={t.lead} tone="paper" compact />
-          <ul className="mt-6 border-t-2 border-paper/30">
+          <ul className="mt-4 border-t-2 border-paper/30 md:mt-6">
             {t.points.map((p) => (
-              <li key={p.title} className="border-b-2 border-paper/30 py-3">
+              <li key={p.title} className="border-b-2 border-paper/30 py-2.5 md:py-3">
                 <h3 className="font-display text-xl font-extrabold">{p.title}</h3>
                 <p className="mt-1 text-base leading-snug text-paper/85">{p.text}</p>
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-sm text-paper/85">
+          <p className="mt-3 text-sm text-paper/85 md:mt-4">
             {t.note}{' '}
             <a href={t.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-paper underline decoration-2 underline-offset-4 hover:text-amber-tint">
               {t.sourceLink}

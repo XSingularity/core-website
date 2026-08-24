@@ -48,7 +48,6 @@ const Line = ({ d, i }: { d: string; i: number }) => (
  * The one authored moment of the page: six daily pains drawn into the
  * singularity, three outcomes leaving it. Static SVG that draws itself once
  * (CSS), paints without JavaScript, and stops under reduced motion.
- * Horizontal from md up; vertical on phones — the same story, not a summary.
  */
 function ConvergenceWide() {
   const W = 640, cx = 352, cy = 200, painX = 16, painW = 208
@@ -56,7 +55,7 @@ function ConvergenceWide() {
   const outX = cx + 88, outW = W - outX - 8
   const outY = [cy - 82, cy, cy + 82]
   return (
-    <svg viewBox={`0 0 ${W} 400`} className="hidden w-full md:block" role="img" aria-labelledby="conv-title">
+    <svg viewBox={`0 0 ${W} 400`} className="w-full" role="img" aria-labelledby="conv-title">
       <title id="conv-title">{t.pointTitle}</title>
       {painsY.map((y, i) => (
         <Line key={i} i={i} d={`M ${painX + painW} ${y} C ${painX + painW + 70} ${y}, ${cx - 90} ${cy}, ${cx - 42} ${cy}`} />
@@ -72,39 +71,49 @@ function ConvergenceWide() {
   )
 }
 
-function ConvergenceTall() {
-  const W = 360, cx = 180, cy = 310, painW = 166, edge = 14
-  // Two columns of three pains; upper rows route around the outside of the
-  // columns so no line passes behind a box, the bottom row drops straight in.
-  const pains = t.pains.map((p, i) => {
-    const left = i % 2 === 0
-    const row = Math.floor(i / 2)
-    const x = left ? edge : W - edge - painW
-    const y = 26 + row * 54
-    const d =
-      row === 2
-        ? `M ${x + painW / 2} ${y + 19} C ${x + painW / 2} ${y + 70}, ${cx} ${cy - 110}, ${cx} ${cy - 42}`
-        : left
-          ? `M ${x} ${y} C 2 ${y}, 2 ${cy - 30}, ${cx - 42} ${cy}`
-          : `M ${x + painW} ${y} C ${W - 2} ${y}, ${W - 2} ${cy - 30}, ${cx + 42} ${cy}`
-    return { label: p, x, y, d }
-  })
-  const outW = 220, outX = cx - outW / 2
-  const outY = [cy + 92, cy + 146, cy + 200]
+/** Which outcome each pain turns into, in the phone strip. */
+const PAIR = [0, 2, 0, 1, 2, 0]
+const SLOT = 2.2 // seconds a pain stays on screen; the CSS cycle is 6 × SLOT
+
+/**
+ * The same story at phone size: one pain at a time slides in, is pulled into
+ * the point, and its outcome comes out underneath. Pure CSS cycle
+ * (`m-pain` / `m-out` / `m-travel` in globals.css) — no JavaScript, and it
+ * freezes on the first pair under reduced motion. 176 units tall, so the
+ * headline, the strip, the lead and the key all fit in one phone screen.
+ */
+function ConvergenceStrip() {
+  const cx = 252, cy = 92, painW = 200, outW = 202
   return (
-    <svg viewBox={`0 0 ${W} ${cy + 230}`} className="w-full md:hidden" role="img" aria-labelledby="conv-title-m">
+    <svg viewBox="0 0 360 176" className="mt-5 w-full md:hidden" role="img" aria-labelledby="conv-title-m">
       <title id="conv-title-m">{t.pointTitle}</title>
-      {pains.map((p, i) => (
-        <Line key={i} i={i} d={p.d} />
+      {/* Pain → point: one static route, one travelling dash per slot. */}
+      <path d={`M ${8 + painW} 26 C 236 26, ${cx} 40, ${cx} ${cy - 34}`} fill="none" stroke="#0B3D4A" strokeWidth="3" strokeLinecap="round" opacity="0.3" />
+      <path d={`M ${8 + painW} 26 C 236 26, ${cx} 40, ${cx} ${cy - 34}`} fill="none" stroke="#0B3D4A" strokeWidth="3" strokeLinecap="round" pathLength={1} className="m-travel" />
+      {/* Point → outcome. */}
+      <path d={`M ${cx} ${cy + 32} V 134`} fill="none" stroke="#0B7663" strokeWidth="3" strokeLinecap="round" />
+
+      {t.pains.map((p, i) => (
+        <g key={p} className="m-cycle m-pain" data-first={i === 0 ? '' : undefined} style={{ ...settle, animationDelay: `${i * SLOT}s` }}>
+          <Pain x={8} y={26} w={painW} label={p} />
+        </g>
       ))}
-      {pains.map((p) => (
-        <Pain key={p.label} x={p.x} y={p.y} w={painW} label={p.label} size={12.5} />
-      ))}
-      <Point x={cx} y={cy} />
-      {/* One spine from the point to the last outcome; boxes sit on top of it. */}
-      <path d={`M ${cx} ${cy + 44} V ${outY[2] - 19}`} fill="none" stroke="#0B7663" strokeWidth="3" strokeLinecap="round" className="animate-settle" style={{ ...settle, animationDelay: '900ms' }} />
-      {t.outcomes.map((o, i) => (
-        <Outcome key={o} x={outX} y={outY[i]} w={outW} label={o} delay={900 + i * 140} />
+
+      <g transform={`translate(${cx} ${cy})`}>
+        <g className="m-point" style={settle}>
+          <circle r="30" stroke="#0B3D4A" strokeWidth="3" fill="#F5F3EE" className="singularity-ring" />
+          <circle r="18" stroke="#0B3D4A" strokeWidth="3.5" fill="none" className="singularity-ring" />
+          <circle r="6.5" fill="#0B3D4A" />
+        </g>
+      </g>
+
+      {t.pains.map((p, i) => (
+        <g key={p} className="m-cycle m-out" data-first={i === 0 ? '' : undefined} style={{ ...settle, animationDelay: `${i * SLOT}s` }}>
+          <rect x={cx - outW / 2} y={134} width={outW} height={36} rx="6" fill="#0B7663" />
+          <text x={cx - outW / 2 + 14} y={158} fontFamily={FONT} fontWeight="700" fontSize="14.5" fill="#F5F3EE">
+            {t.outcomes[PAIR[i]]}
+          </text>
+        </g>
       ))}
     </svg>
   )
@@ -113,12 +122,13 @@ function ConvergenceTall() {
 export default function Hero() {
   return (
     <section id="Inicio" className="relative overflow-x-clip">
-      <div className="container grid items-center gap-10 py-10 md:grid-cols-2 md:gap-8 md:py-14 lg:py-16">
+      <div className="container grid items-center gap-8 py-7 md:grid-cols-2 md:gap-8 md:py-14 lg:py-16">
         <div className="max-w-2xl">
           <h1 className="font-display text-[2.6rem] font-black leading-[0.98] text-navy sm:text-5xl lg:text-6xl">{t.title}</h1>
-          <p className="mt-6 max-w-prose text-lg leading-relaxed md:text-xl">{t.lead}</p>
+          <ConvergenceStrip />
+          <p className="mt-5 max-w-prose text-base leading-normal sm:text-lg md:mt-6 md:text-xl md:leading-relaxed">{t.lead}</p>
 
-          <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center md:mt-7 md:gap-4">
             <a href="#Diagnostico" className={`${KEY.amber} px-8 py-4 text-lg`}>
               {t.ctaPrimary}
             </a>
@@ -128,27 +138,25 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="mt-7 grid gap-3 sm:grid-cols-2">
+          <div className="mt-6 grid grid-cols-2 gap-3 md:mt-7">
             {t.doors.map((d) => (
               <a
                 key={d.id}
                 href={d.href}
-                className="group rounded-md border-3 border-navy bg-paper p-5 transition-all duration-200 ease-out-expo hover:-translate-y-0.5 hover:bg-navy hover:text-paper focus:outline-none focus-visible:ring-4 focus-visible:ring-amber/40"
+                className="group flex flex-col rounded-md border-3 border-navy bg-paper p-4 transition-all duration-200 ease-out-expo hover:-translate-y-0.5 hover:bg-navy hover:text-paper focus:outline-none focus-visible:ring-4 focus-visible:ring-amber/40 sm:p-5"
               >
-                <span className="block font-display text-xl font-extrabold leading-tight">{d.title}</span>
-                <span className="mt-2 block text-base leading-snug">{d.text}</span>
-                <span className="mt-3 inline-flex items-center gap-1.5 font-display font-bold text-navy group-hover:text-paper">
-                  {d.cta}
-                  <Arrow />
+                <span className="block font-display text-lg font-extrabold leading-tight sm:text-xl">{d.title}</span>
+                <span className="mt-2 block text-sm leading-snug sm:text-base">{d.text}</span>
+                <span className="mt-auto block pt-3 font-display text-sm font-bold leading-snug text-navy group-hover:text-paper sm:text-base">
+                  {d.cta} <Arrow className="inline h-[1em] w-[1em] align-[-0.1em]" />
                 </span>
               </a>
             ))}
           </div>
         </div>
 
-        <div>
+        <div className="hidden md:block">
           <ConvergenceWide />
-          <ConvergenceTall />
           <p className="mt-4 text-center font-display text-lg font-extrabold text-navy">{t.pointLabel}</p>
         </div>
       </div>

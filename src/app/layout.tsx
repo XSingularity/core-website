@@ -110,7 +110,7 @@ const JSON_LD = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${display.variable} ${body.variable}`}>
-      <body className="bg-paper text-ink font-sans antialiased flex min-h-screen flex-col overflow-x-hidden">
+      <body className="bg-paper text-ink font-sans antialiased flex min-h-screen flex-col">
         {/* Direction contract, emitted as a real HTML comment so the build can be audited. */}
         <div hidden data-direction-contract dangerouslySetInnerHTML={{ __html: `<!--
         THESIS: Everything a Venezuelan business needs, condensed into one point — the
