@@ -36,7 +36,7 @@ export const dict = {
   hero: {
     title: 'Que tu negocio no se detenga.',
     lead:
-      'Somos una consultora venezolana con visión de software: revisamos cómo funciona tu negocio, encontramos dónde se te está yendo el dinero y construimos el sistema que lo recupera. Con luz o sin luz, con internet o sin él, no se te pierde ni una venta; cada cobro queda cuadrado en bolívares o dólares, sea en efectivo, Pago Móvil, Zelle o USDT; y cada noche sabes exactamente cuánto vendiste.',
+      'Somos una consultora venezolana con visión de software: revisamos cómo funciona tu negocio, encontramos dónde se te está yendo el dinero y construimos el sistema que lo recupera. Con electricidad o sin electricidad, con internet o sin él, no se te pierde ni una venta; cada cobro queda cuadrado en bolívares o dólares, sea en efectivo, Pago Móvil, Zelle o USDT; y cada noche sabes exactamente cuánto vendiste.',
     /** Phone-only lead: one sentence, so the amber key stays on the first screen (2026-09-03). */
     leadMobile: 'Cada noche sabes exactamente cuánto vendiste, pase lo que pase durante el día.',
     /**
@@ -45,14 +45,14 @@ export const dict = {
      * ones in `caja.phone`. Times and amounts are sample data.
      */
     caja: {
-      title: 'Las ventas del día siguen sumando aunque se vaya la luz, y cada problema del día queda resuelto',
+      title: 'Las ventas del día siguen sumando aunque se vaya la electricidad, y cada problema del día queda resuelto',
       label: 'Ventas de hoy',
       sample: 'ejemplo',
       source: 'Cifras de ejemplo. Así se ve xinventory, el punto de venta que construimos.',
       events: [
         { time: '8:00 a. m.', text: 'Abres la caja.' },
-        { time: '10:14 a. m.', text: 'Se fue la luz. La caja sigue.' },
-        { time: '11:02 a. m.', text: 'Volvió la luz. 2 ventas sincronizadas.' },
+        { time: '10:14 a. m.', text: 'Se fue la electricidad. La caja sigue.' },
+        { time: '11:02 a. m.', text: 'Volvió la electricidad. 2 ventas sincronizadas.' },
         { time: '12:40 p. m.', text: 'Cambió la tasa. Precios al día.' },
         { time: '3:05 p. m.', text: '12 pedidos por WhatsApp. Anotados.' },
         { time: '5:20 p. m.', text: 'Se acabó la harina. Pedido al proveedor.' },
@@ -84,20 +84,20 @@ export const dict = {
 
   termometro: {
     title: 'Trabajar en Venezuela tiene reglas que un sistema de afuera no conoce.',
-    lead: 'Un sistema hecho para otro país da por sentado que hay luz, internet y una sola moneda. Aquí no. Estos son los números, medidos por los gremios y el Banco Central, no por nosotros.',
+    lead: 'Un sistema hecho para otro país da por sentado que hay electricidad, internet y una sola moneda. Aquí no. Estos son los números, medidos por los gremios y el Banco Central, no por nosotros.',
     swipe: 'Desliza para ver los seis',
     stats: [
       {
         value: '44%',
-        label: 'de las horas de trabajo sin luz en la industria venezolana',
+        label: 'de las horas de trabajo sin electricidad en la industria venezolana',
         impact: 'Media jornada sin caja ni computadora. Si tu sistema depende del enchufe, con cada apagón las ventas quedan en un cuaderno o se pierden.',
         source: 'Conindustria, 2.º trimestre 2026',
         url: 'https://www.infobae.com/venezuela/2026/08/19/el-sector-manufacturero-de-venezuela-se-desacelera-y-pierde-casi-la-mitad-de-sus-horas-laborales-por-falta-de-electricidad/',
       },
       {
         value: '57',
-        label: 'cortes de luz por trimestre en cada empresa: casi cinco por semana',
-        impact: 'Cinco veces por semana se apaga la computadora y la cola espera. Un sistema que registra en el teléfono no espera a que vuelva la luz.',
+        label: 'cortes de electricidad por trimestre en cada empresa: casi cinco por semana',
+        impact: 'Cinco veces por semana se apaga la computadora y la cola espera. Un sistema que registra en el teléfono no espera a que vuelva la electricidad.',
         source: 'Conindustria, 2.º trimestre 2026',
         url: 'https://www.larepublica.co/globoeconomia/los-devastadores-apagones-ponen-en-riesgo-a-la-recuperacion-industrial-de-venezuela-4461201',
       },
@@ -136,7 +136,7 @@ export const dict = {
     title: '¿Tu negocio te está mandando señales?',
     lead: 'Ocho cosas que pasan todos los días en negocios que todavía no tienen sistema. Marca las tuyas.',
     items: [
-      'Cuando se va la luz, dejas de vender o anotas en papel.',
+      'Cuando se va la electricidad, dejas de vender o anotas en papel.',
       'Tus precios en bolívares se actualizan a mano cada vez que cambia la tasa.',
       'No sabes exactamente cuánto ganaste el mes pasado.',
       'Te enteras de que un producto se agotó cuando un cliente lo pide.',
@@ -159,13 +159,13 @@ export const dict = {
     title: 'Pon tus números. Te decimos cuánto se te va cada mes.',
     lead: 'Una estimación con tus datos, no una promesa. Puedes cambiar cada supuesto.',
     fields: {
-      hoursNoPower: { label: 'Horas sin luz a la semana', hint: 'Promedio nacional en la industria: 16 h (Conindustria, 2.º trim. 2026)' },
+      hoursNoPower: { label: 'Horas sin electricidad a la semana', hint: 'Promedio nacional en la industria: 16 h (Conindustria, 2.º trim. 2026)' },
       salesPerHour: { label: 'Cuánto vendes por hora, en $', hint: 'Un promedio; no hace falta que sea exacto' },
       unanswered: { label: 'Mensajes de clientes que se quedan sin responder al día', hint: 'WhatsApp, Instagram, Messenger' },
       ticket: { label: 'Venta promedio, en $', hint: 'Lo que te deja un cliente típico' },
     },
     resultLabel: 'Estimación de lo que pierdes al mes',
-    breakdownPower: 'por vender en papel o dejar de vender cuando se va la luz',
+    breakdownPower: 'por vender en papel o dejar de vender cuando se va la electricidad',
     breakdownWhatsapp: 'por mensajes que no se convierten en ventas',
     assumptionPower: 'Supuesto: sin sistema, las ventas de esas horas se pierden o se anotan mal. Un sistema que funciona sin conexión las registra igual.',
     assumptionWhatsapp: 'Supuesto: 1 de cada 5 mensajes sin responder era una venta. Responder en 5 minutos en vez de 30 multiplica por 21 la probabilidad de cerrarla (Lead Response Management Study).',
@@ -177,17 +177,17 @@ export const dict = {
     whatsappIntro: 'Hola, vengo de xsingularity.dev. Según la calculadora pierdo aproximadamente',
     sourcesLabel: 'Fuentes',
     sources: [
-      { label: 'Conindustria, 2.º trimestre 2026 — 214 de 488 horas sin luz', url: 'https://www.infobae.com/venezuela/2026/08/19/el-sector-manufacturero-de-venezuela-se-desacelera-y-pierde-casi-la-mitad-de-sus-horas-laborales-por-falta-de-electricidad/' },
+      { label: 'Conindustria, 2.º trimestre 2026 — 214 de 488 horas sin electricidad', url: 'https://www.infobae.com/venezuela/2026/08/19/el-sector-manufacturero-de-venezuela-se-desacelera-y-pierde-casi-la-mitad-de-sus-horas-laborales-por-falta-de-electricidad/' },
       { label: 'Lead Response Management Study — 5 min vs 30 min', url: 'https://www.leadresponsemanagement.org/lrm_study' },
     ],
   },
 
   demo: {
-    title: 'Se fue la luz. Se cayó el internet. No se te pierde ni una venta.',
-    lead: 'Esta es una muestra de xinventory, nuestro punto de venta, con datos de ejemplo. Apaga la luz y sigue cobrando: cada venta se guarda en el teléfono y se sincroniza sola cuando vuelve la conexión.',
+    title: 'Se fue la electricidad. Se cayó el internet. No se te pierde ni una venta.',
+    lead: 'Esta es una muestra de xinventory, nuestro punto de venta, con datos de ejemplo. Apaga la electricidad y sigue cobrando: cada venta se guarda en el teléfono y se sincroniza sola cuando vuelve la conexión.',
     sampleNote: 'Productos y tasa de ejemplo. El sistema real usa tu inventario y la tasa que elijas.',
-    powerOn: 'Hay luz e internet',
-    powerOff: 'Se fue la luz',
+    powerOn: 'Hay electricidad e internet',
+    powerOff: 'Se fue la electricidad',
     sell: 'Cobrar',
     products: [
       { name: 'Harina de maíz 1 kg', usd: 1.2 },
@@ -198,7 +198,7 @@ export const dict = {
     rateLabel: 'Tasa de ejemplo',
     statusOnline: 'Conectado · todo sincronizado',
     statusOffline: (n: number) => `Sin conexión · ${n} ${n === 1 ? 'venta guardada' : 'ventas guardadas'} en el teléfono`,
-    syncing: (n: number) => `Volvió la luz · sincronizando ${n} ${n === 1 ? 'venta' : 'ventas'}…`,
+    syncing: (n: number) => `Volvió la electricidad · sincronizando ${n} ${n === 1 ? 'venta' : 'ventas'}…`,
     synced: 'Todo sincronizado. No se perdió nada.',
     todayLabel: 'Vendido hoy',
     sourceNote: 'xinventory es código abierto:',
@@ -234,7 +234,7 @@ export const dict = {
     lead: 'Cuatro preguntas y tu nombre, por WhatsApp. Te contestamos por escrito con las tres cosas que más te están costando y qué haríamos primero. Gratis y honesto: incluso si la respuesta es que todavía no nos necesitas.',
     leadNoWa: 'Cuatro preguntas y tu nombre. Te contestamos por escrito con las tres cosas que más te están costando y qué haríamos primero. Gratis y honesto: incluso si la respuesta es que todavía no nos necesitas.',
     q1: { label: '¿Qué tipo de negocio tienes?', options: ['Abasto / bodegón / supermercado', 'Ferretería / repuestos', 'Farmacia', 'Restaurante / comida', 'Distribuidora / mayorista', 'Servicios (taller, clínica, salón…)', 'Tienda en línea / redes', 'Tengo una idea nueva'] },
-    q2: { label: '¿Qué te duele más?', options: ['Se va la luz y dejo de vender', 'La tasa y los precios en Bs', 'No sé cuánto gano', 'El inventario', 'Responder a los clientes', 'Cuadrar los pagos', 'Quiero vender por internet'] },
+    q2: { label: '¿Qué te duele más?', options: ['Se va la electricidad y dejo de vender', 'La tasa y los precios en Bs', 'No sé cuánto gano', 'El inventario', 'Responder a los clientes', 'Cuadrar los pagos', 'Quiero vender por internet'] },
     q3: { label: '¿Cómo cobras hoy?', options: ['Efectivo $', 'Efectivo Bs', 'Pago Móvil', 'Punto de venta', 'Zelle', 'USDT / Binance'] },
     q4: { label: '¿Tienes sistema o página hoy?', options: ['Nada, todo en papel o WhatsApp', 'Excel', 'Un sistema que no me sirve', 'Una página que nadie visita'] },
     more: 'Dos preguntas más, si quieres',

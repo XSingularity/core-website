@@ -112,7 +112,7 @@ as portfolio.
 "síntomas" checklist with a 3-or-more threshold feeding the WhatsApp message;
 loss calculator (hours without power × sales per hour, plus unanswered
 WhatsApp leads); Termómetro Venezuela stat strip with dated sources;
-interactive "se fue la luz" demo built from real product screens; "Tu negocio
+interactive "se fue la electricidad" demo built from real product screens; "Tu negocio
 en 20 años" longevity framing with country-labelled regional data.
 
 **Technical constraints that bind design work:**
@@ -154,7 +154,7 @@ checkout; no invented testimonials, metrics, client counts or logo walls.
   Instagram `@xsingularity.dev`.
 - **Voice (updated 2026-08-24): plain Venezuelan Spanish, informal *tú*,
   "tu negocio", outcomes before technology, numbers with sources.** Say
-  "sistema", "cobrar", "vender", "que siga funcionando cuando se va la luz";
+  "sistema", "cobrar", "vender", "que siga funcionando cuando se va la electricidad";
   reserve "software", "API", stack names for the portfolio cards. Name hard
   realities with empathy and pivot to continuity ("reconstruir", "seguir
   adelante", "que tu negocio no se detenga"); never blame, never politics.

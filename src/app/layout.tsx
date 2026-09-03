@@ -26,7 +26,7 @@ const body = Atkinson_Hyperlegible({
 
 const TITLE = 'XSingularity | Consultoría con visión de software para negocios en Venezuela'
 const DESCRIPTION =
-  'Consultora venezolana con visión de software: encontramos dónde se te está yendo el dinero y construimos el sistema que lo recupera. Con luz o sin luz no se te pierde ni una venta, cada cobro queda cuadrado en bolívares o dólares, y cada noche sabes cuánto vendiste. Diagnóstico gratis en 2 minutos.'
+  'Consultora venezolana con visión de software: encontramos dónde se te está yendo el dinero y construimos el sistema que lo recupera. Con electricidad o sin electricidad no se te pierde ni una venta, cada cobro queda cuadrado en bolívares o dólares, y cada noche sabes cuánto vendiste. Diagnóstico gratis en 2 minutos.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
