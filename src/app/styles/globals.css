@@ -94,26 +94,12 @@ h3 {
   }
 }
 
-@keyframes draw {
-  from { stroke-dashoffset: 1; }
-  to { stroke-dashoffset: 0; }
-}
-@keyframes settle {
-  0% { transform: scale(0.92); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
 @keyframes pulse2 {
   0%, 100% { opacity: 0.35; }
   50% { opacity: 1; }
 }
 
-/* The one authored moment: the pains are drawn into the point. Lines draw
-   themselves once; the point settles; the rings breathe. */
-.converge-line {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: draw 1.4s cubic-bezier(0.19, 1, 0.22, 1) both;
-}
+/* The singularity mark's rings breathe (Cómo, footer, the success moment). */
 .singularity-ring {
   animation: pulse2 3.2s ease-in-out infinite;
 }
@@ -121,46 +107,30 @@ h3 {
   animation-delay: 0.6s;
 }
 
-/* Phone hero: six pains cycle through one slot (2.2s each, 13.2s loop).
-   A pain slides in, is pulled into the point, and its outcome comes out
-   underneath and holds while the next pain arrives. */
-.m-cycle {
-  opacity: 0;
-  animation-duration: 13.2s;
-  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
+/* The hero ledger («Cierre de caja»): each sale bumps the figure, the phone's
+   tape line slides in, and at md+ each log line grows in from zero height so
+   the panel expands smoothly as the day prints. All play once, on mount. */
+@keyframes caja-bump {
+  from { transform: scale(1.035); }
+  to { transform: scale(1); }
 }
-.m-pain { animation-name: m-pain; }
-.m-out { animation-name: m-out; }
-/* One slot: the pain lands (0.3s), the dash runs to the point (1.0s), the
-   outcome comes out (1.3s), both hold, the pain is pulled in (1.75s) and the
-   outcome leaves with it. Pain and its own outcome are always seen together. */
-@keyframes m-pain {
-  0% { opacity: 0; transform: translateX(-14px); }
-  2.3%, 13.3% { opacity: 1; transform: none; }
-  15.9%, 100% { opacity: 0; transform: translateX(30px) scale(0.8); }
+@keyframes caja-ev {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
 }
-@keyframes m-out {
-  0%, 7.6% { opacity: 0; transform: translateY(-6px); }
-  9.8%, 15.5% { opacity: 1; transform: none; }
-  16.6%, 100% { opacity: 0; transform: none; }
+.caja-bump {
+  animation: caja-bump 0.22s cubic-bezier(0.19, 1, 0.22, 1);
 }
-.m-travel {
-  stroke-dasharray: 0.18 1;
-  animation: m-travel 2.2s linear infinite;
+.caja-ev {
+  animation: caja-ev 0.35s cubic-bezier(0.19, 1, 0.22, 1) both;
 }
-@keyframes m-travel {
-  0%, 8% { stroke-dashoffset: 0.18; }
-  46%, 100% { stroke-dashoffset: -1; }
+@keyframes caja-li {
+  from { opacity: 0; max-height: 0; transform: translateY(6px); }
+  to { opacity: 1; max-height: 3rem; transform: none; }
 }
-.m-point {
-  animation: m-point 2.2s ease-in-out infinite;
-}
-@keyframes m-point {
-  0%, 74% { transform: scale(1); }
-  84% { transform: scale(1.12); }
-  96%, 100% { transform: scale(1); }
+.caja-li {
+  overflow: hidden;
+  animation: caja-li 0.45s cubic-bezier(0.19, 1, 0.22, 1) both;
 }
 
 .no-scrollbar {
@@ -175,13 +145,7 @@ h3 {
   html {
     scroll-behavior: auto;
   }
-  .converge-line {
-    stroke-dashoffset: 0;
-    animation: none;
-  }
   .singularity-ring,
-  .animate-settle,
-  .animate-draw,
   .animate-pulse2 {
     animation: none !important;
     opacity: 1;
@@ -191,14 +155,9 @@ h3 {
     transform: none;
     transition: none;
   }
-  .m-cycle,
-  .m-point {
+  .caja-bump,
+  .caja-ev,
+  .caja-li {
     animation: none;
-  }
-  .m-cycle[data-first] {
-    opacity: 1;
-  }
-  .m-travel {
-    display: none;
   }
 }

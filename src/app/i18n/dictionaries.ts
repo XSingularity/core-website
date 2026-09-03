@@ -37,12 +37,31 @@ export const dict = {
     title: 'Que tu negocio no se detenga.',
     lead:
       'Somos una consultora venezolana con visión de software: revisamos cómo funciona tu negocio, encontramos dónde se te está yendo el dinero y construimos el sistema que lo recupera. Con luz o sin luz, con internet o sin él, no se te pierde ni una venta; cada cobro queda cuadrado en bolívares o dólares, sea en efectivo, Pago Móvil, Zelle o USDT; y cada noche sabes exactamente cuánto vendiste.',
-    /** What gets pulled into the point — every pain maps to a shipped fix. */
-    pains: ['Se va la luz', 'Cambia la tasa', 'WhatsApp sin responder', 'Inventario en Excel', 'Pagos sin cuadrar', 'Productos que se agotan'],
-    /** What comes out of it. */
-    outcomes: ['No pierdes ventas', 'Sabes cuánto vendes', 'Cobras por todo'],
+    /** Phone-only lead: one sentence, so the amber key stays on the first screen (2026-09-03). */
+    leadMobile: 'Cada noche sabes exactamente cuánto vendiste, pase lo que pase durante el día.',
+    /**
+     * The hero's moment (chosen 2026-09-03): the day's total keeps counting
+     * through the blackout. Seven events on desktop; the phone shows the
+     * ones in `caja.phone`. Times and amounts are sample data.
+     */
+    caja: {
+      title: 'Las ventas del día siguen sumando aunque se vaya la luz, y cada problema del día queda resuelto',
+      label: 'Ventas de hoy',
+      sample: 'ejemplo',
+      source: 'Cifras de ejemplo. Así se ve xinventory, el punto de venta que construimos.',
+      events: [
+        { time: '8:00 a. m.', text: 'Abres la caja.' },
+        { time: '10:14 a. m.', text: 'Se fue la luz. La caja sigue.' },
+        { time: '11:02 a. m.', text: 'Volvió la luz. 2 ventas sincronizadas.' },
+        { time: '12:40 p. m.', text: 'Cambió la tasa. Precios al día.' },
+        { time: '3:05 p. m.', text: '12 pedidos por WhatsApp. Anotados.' },
+        { time: '5:20 p. m.', text: 'Se acabó la harina. Pedido al proveedor.' },
+        { time: '8:00 p. m.', text: 'Cierre: Pago Móvil, Zelle y efectivo cuadrados.' },
+      ],
+      /** Indexes into `events` that the phone's single tape line shows. */
+      phone: [0, 1, 2, 3, 6],
+    },
     pointLabel: 'Todo lo que necesitas, en un solo punto.',
-    pointTitle: 'La singularidad: todo lo que necesitas, en un solo punto',
     doors: [
       {
         id: 'negocio',

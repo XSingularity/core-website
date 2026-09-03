@@ -123,9 +123,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         leave it.
         STORY: The owner sees their daily pains pulled into one point, reads sourced
         numbers about what those pains cost, and takes a free two-minute step.
-        FIRST VIEWPORT: Left, six pains with lines drawing into the singularity; right,
-        the headline "Que tu negocio no se detenga." and two doors; the single amber key
-        "Diagnóstico gratis · 2 min" below.
+        FIRST VIEWPORT: Left, the headline "Que tu negocio no se detenga." and two doors
+        with the single amber key "Diagnóstico gratis · 2 min"; right (under the headline
+        on phones), the day's ledger: «Ventas de hoy» counting up through a blackout and
+        closing «cuadrado» (2026-09-03, replaces the drawn convergence).
         FORM: user-pinned synthesis 2026-08-24; last seed f5550753 overridden by the
         user's pin.
         FINISH: unreviewed and undocumented is unfinished; this build ends with the

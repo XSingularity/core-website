@@ -7,6 +7,13 @@ export const Arrow = ({ className = 'h-[1em] w-[1em]' }: { className?: string })
   </svg>
 )
 
+/** A drawn checkmark at the icon stroke weight; green for "delivered", navy for "required". */
+export const Check = ({ className }: { className: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <path d="M20 6 9 17l-5-5" />
+  </svg>
+)
+
 /** Section heading: the heading carries its own weight. The mark is reserved for the singularity moments. */
 export function SectionTitle({
   id,
