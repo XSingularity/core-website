@@ -32,19 +32,12 @@ module.exports = {
         key: '0 10px 24px -10px rgba(150, 80, 11, 0.55)',
       },
       keyframes: {
-        draw: { from: { strokeDashoffset: '1' }, to: { strokeDashoffset: '0' } },
-        settle: {
-          '0%': { transform: 'scale(0.92)', opacity: '0' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        },
         pulse2: {
           '0%, 100%': { opacity: '0.35' },
           '50%': { opacity: '1' },
         },
       },
       animation: {
-        draw: 'draw 1.4s cubic-bezier(0.19, 1, 0.22, 1) both',
-        settle: 'settle 0.9s cubic-bezier(0.19, 1, 0.22, 1) both',
         pulse2: 'pulse2 3.2s ease-in-out infinite',
       },
       transitionTimingFunction: { 'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)' },

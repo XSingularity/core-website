@@ -2,16 +2,10 @@
 import { dict } from '../i18n/dictionaries'
 import { openLead } from '../site'
 import Reveal from './reveal'
-import { KEY, SectionTitle } from './ui'
+import { Check, KEY, SectionTitle } from './ui'
 
 const t = dict.precios
 type Tier = (typeof t.ladder)[number]
-
-const Check = ({ className }: { className: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <path d="M20 6 9 17l-5-5" />
-  </svg>
-)
 
 const Plus = ({ className }: { className: string }) => (
   <svg aria-hidden className={`${className} transition-transform duration-200 group-open:rotate-45`} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
