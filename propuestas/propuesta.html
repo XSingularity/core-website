@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="es-VE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Propuesta · XSingularity</title>
+<script>
+/* =====================================================================
+   1. CONFIGURACIÓN. Lo único que hace falta tocar para un cliente nuevo.
+   Lea propuestas/README.md. Las líneas que empiezan con // están apagadas.
+   ===================================================================== */
+const CONFIG = {
+  cliente: 'Angela',
+  titulo: 'Propuesta para Angela: Pink Boutique y Akash',
+  fecha: '11 de septiembre de 2026',
+
+  negocio: 'Pink Boutique',              // sale en la publicación y en el bot
+  locales: ['Hyper Jumbo', 'Unicentro'], // el primero es el principal
+  dominio: 'pinkboutique.com',           // catálogo en línea; se marca como supuesto
+  tasa: 957.79,                          // bolívares por dólar en las pantallas
+  bot_existe: false,                     // true cuando el bot esté construido
+
+  // Simulaciones que se muestran, en este orden. Quite las // para encender una.
+  simulaciones: [
+    'pieza',        // Inventario: cargar una pieza, catálogo, publicación y bot
+    // 'cobrar',    // Vender y Cobrar: dólares y bolívares, IVA incluido, métodos de pago, cambio
+    // 'fiado',     // Fiado: quién debe, abonos parciales
+    // 'sucursales',// Sucursales: existencia por local y traslados
+    // 'envios',    // Envíos: courier, guía y estado con rastro
+    // 'citas',     // Citas: agenda por profesional sin solapes, WhatsApp de confirmación
+    // 'historial', // Historial de ventas con tasa sellada y cierre de caja
+    // 'finanzas',  // Finanzas: utilidad neta y estado de resultados por período
+  ],
+
+  // Datos de ejemplo que usan las simulaciones. Cámbielos por los del cliente.
+  demo: {
+    productos: [
+      { n: 'Vestido largo satinado, talla M', p: 45, c: 24, s: 1 },
+      { n: 'Blusa de seda, talla S',          p: 28, c: 15, s: 3 },
+      { n: 'Cartera de cuero',                p: 60, c: 35, s: 2 },
+      { n: 'Pantalón palazzo, talla L',       p: 35, c: 18, s: 1 },
+    ],
+    servicios: [
+      { n: 'Masaje relajante',  p: 25, min: 60 },
+      { n: 'Lectura de tarot',  p: 15, min: 30 },
+      { n: 'Reiki',             p: 20, min: 45 },
+    ],
+    clientes: ['Carmen Rojas', 'Luis Pérez', 'Ana Torres'],
+    vendedoras: ['Carmen', 'Daniela'],
+    profesionales: ['Rosa', 'Ana'],
+    ciudades: ['Maracay', 'Valencia', 'Caracas'],
+  },
+
+  // Sección «Cuánto cuesta». Los montos son texto: escriba lo que quiera mostrar.
+  precios: {
+    intro: 'Dos cosas distintas: lo que se paga una vez por la puesta en marcha y la suscripción mensual por el sistema y los servidores en la nube.',
+    una_vez: { titulo: 'Puesta en marcha, se paga una vez', monto: '$50', detalle: 'Migración de sus datos actuales al sistema. El manual de uso va incluido sin costo.' },
+    mensual: { titulo: 'xinventory, cada mes', monto: '$60', nota: 'las dos tiendas', detalle: 'Sistema, dos locales de Pink, Akash, servidores, respaldos y actualizaciones.' },
+    incluye_titulo: 'Qué cubren los $60 al mes',
+    incluye_intro: 'Cada tienda tiene su propia base de datos, separada de la otra. Incluye:',
+    incluye: [
+      'Inventario, ventas y usuarios para Pink Boutique (sus dos locales) y Akash.',
+      'Catálogo en línea público, sincronizado con el inventario.',
+      'Módulo Redes: texto de la publicación y retoque de la foto con inteligencia artificial al cargar cada pieza.',
+      'Servidores en la nube, 100 GB de fotos y respaldo diario.',
+      'Soporte directo por WhatsApp.',
+    ],
+    extras: [
+      {
+        titulo: 'Bot conectado al inventario, opcional',
+        intro: 'Responde precio, talla, existencia y local en Instagram, Facebook y WhatsApp leyendo el inventario. No está construido todavía; se hace después de que xinventory esté andando en los dos locales.',
+        una_vez: { titulo: 'Construirlo, se paga una vez', monto: 'Se cotiza aparte', pendiente: true, detalle: 'Cuando decida activarlo. Incluye los permisos de Meta y el número de WhatsApp.' },
+        mensual: { titulo: 'Mantenerlo, cada mes', monto: '$40', nota: 'las dos tiendas', detalle: '$25 si es una sola tienda. Se paga solo desde el mes en que el bot está respondiendo.' },
+        desglose_titulo: 'Qué hay dentro de los $40 del bot',
+        desglose: [
+          { que: 'Inteligencia artificial que redacta las respuestas', detalle: 'entre $3 y $6 al mes, calculado para unas 3.000 conversaciones entre las dos tiendas.', supuesto: true },
+          { que: 'Instagram, Facebook y responder por WhatsApp', detalle: '$0. Meta no cobra por responder a quien escribe. Solo cobra si la tienda inicia mensajes (avisos, promociones); esa tarifa se confirma antes de activarla.' },
+          { que: 'Lo demás es nuestro trabajo', detalle: 'revisar cada semana qué respondió el bot, corregir lo que respondió mal, ajustarlo cuando cambien las piezas o las reglas de Meta, y mantener los permisos al día.' },
+        ],
+      },
+    ],
+    pago: { titulo: 'Cómo se paga', texto: 'La puesta en marcha: 50 % al empezar y 50 % al entregar. La suscripción: cada mes, por adelantado. Aceptamos Zelle, Pago Móvil, bolívares o USDT.' },
+  },
+};
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root { --paper: #F5F3EE; --paper-deep: #ECE8E0; --ink: #14202A; --navy: #0B3D4A; --navy-soft: #2A5A67; --navy-tint: #D6E3E7; --amber: #96500B; --amber-hover: #7A400A; --amber-tint: #F6E3C9; --green: #0B7663; --green-tint: #D2EDE6; --red: #B42318; --red-tint: #F8D9D5; --display: "Archivo","Atkinson Hyperlegible",system-ui,sans-serif; --body: "Atkinson Hyperlegible",system-ui,sans-serif; --ease: cubic-bezier(.16,1,.3,1); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 60px; scrollbar-color: var(--navy-soft) var(--paper-deep); }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 1.0625rem; line-height: 1.55; caret-color: var(--amber); }
+::selection { background: var(--amber-tint); color: var(--ink); }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3, h4 { font-family: var(--display); letter-spacing: -0.02em; line-height: 1.08; margin: 0 0 0.5rem; text-wrap: balance; }
+h1 { font-size: clamp(2.1rem, 7vw, 3.4rem); font-weight: 900; line-height: 1; color: var(--navy); }
+h2 { font-size: clamp(1.6rem, 5vw, 2.3rem); font-weight: 800; color: var(--navy); margin-bottom: 0.8rem; }
+h3 { font-size: 1.25rem; font-weight: 800; color: var(--navy); margin-top: 1.4rem; }
+h4 { font-size: 1.05rem; font-weight: 800; margin: 0 0 0.2rem; }
+p { margin: 0.4rem 0 0.8rem; max-width: 68ch; }
+ul, ol { padding-left: 1.25rem; margin: 0.3rem 0 0.9rem; max-width: 68ch; }
+li { margin: 0.3rem 0; }
+a { color: var(--navy); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { color: var(--amber); }
+b { font-weight: 700; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 1.1rem; }
+.lead { font-size: 1.15rem; line-height: 1.6; }
+.small { font-size: 0.9rem; color: var(--navy-soft); }
+.tag { display: inline-block; font-family: var(--display); font-weight: 700; font-size: 0.78rem; padding: 0.15rem 0.5rem; border-radius: 4px; background: var(--paper-deep); color: var(--navy-soft); vertical-align: middle; margin-left: 0.2rem; }
+.tag.green { background: var(--green-tint); color: var(--green); }
+.tag.amber { background: var(--amber-tint); color: var(--amber); }
+.estado .tag { margin: 0 0.3rem 0 0; }
+.hero { padding: 2.4rem 0 1.6rem; border-bottom: 3px solid var(--navy); }
+.brand { display: flex; align-items: center; gap: 0.6rem; font-family: var(--display); font-weight: 900; color: var(--navy); font-size: 1.05rem; }
+.brand span { display: inline-block; width: 12px; height: 12px; background: var(--amber); border-radius: 999px; }
+.hero .date { font-family: var(--display); font-weight: 700; color: var(--navy-soft); font-size: 0.9rem; margin: 1.4rem 0 0.5rem; }
+.hero .lead { max-width: 60ch; }
+.hero .cta { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1rem; }
+nav.top { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 2px solid var(--navy-tint); }
+nav.top .wrap { display: flex; gap: 0.3rem; overflow-x: auto; padding: 0.5rem 1.1rem; scrollbar-width: none; }
+nav.top a { white-space: nowrap; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 0.93rem; color: var(--navy); padding: 0.4rem 0.7rem; border: 2px solid transparent; border-radius: 6px; }
+nav.top a:hover { border-color: var(--navy); }
+section { padding: 2.6rem 0; }
+section + section { border-top: 2px solid var(--navy-tint); }
+.toggle { display: flex; gap: 0.4rem; margin: 0.6rem 0 1rem; max-width: 520px; }
+.toggle button { flex: 1 1 0; border: 2px solid var(--navy); background: var(--paper); color: var(--navy); font-family: var(--display); font-weight: 800; padding: 0.6rem; border-radius: 6px; cursor: pointer; font-size: 1rem; }
+.toggle button[aria-pressed="true"] { background: var(--amber); border-color: var(--amber); color: var(--paper); }
+.day { display: none; }
+.day.on { display: block; }
+.steps { counter-reset: s; padding: 0; margin: 0.4rem 0; list-style: none; max-width: 68ch; }
+.steps li { counter-increment: s; position: relative; padding: 0.4rem 0 0.4rem 2.4rem; }
+.steps li::before { content: counter(s); position: absolute; left: 0; top: 0.45rem; width: 1.7rem; height: 1.7rem; border-radius: 999px; background: var(--navy); color: var(--paper); font-family: var(--display); font-weight: 800; display: grid; place-items: center; font-size: 0.85rem; }
+.steps.bad li::before { background: var(--red); }
+.steps.good li::before { background: var(--green); }
+.piezas { display: grid; border-top: 2px solid var(--navy-tint); max-width: 68ch; }
+.pieza { display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.8rem; padding: 1.1rem 0; border-bottom: 2px solid var(--navy-tint); }
+.pieza .n { font-family: var(--display); font-weight: 900; font-size: 1.6rem; line-height: 1; color: var(--amber); font-variant-numeric: tabular-nums; }
+.pieza p { margin: 0.2rem 0 0; }
+.pieza .estado { font-family: var(--display); font-weight: 700; font-size: 0.85rem; color: var(--navy-soft); margin-top: 0.4rem; }
+.feat-grid { display: grid; gap: 0.8rem; margin: 1.2rem 0; max-width: 68ch; }
+@media (min-width: 620px) { .feat-grid { grid-template-columns: 1fr 1fr; } }
+.feat-card { background: #fff; border: 2px solid var(--navy-tint); border-radius: 8px; padding: 1rem 1.1rem; }
+.feat-card h4 { font-family: var(--display); font-weight: 800; color: var(--navy); margin: 0 0 0.3rem; font-size: 1.02rem; }
+.feat-card p { margin: 0; font-size: 0.92rem; color: var(--navy-soft); line-height: 1.45; }
+.note { background: var(--amber-tint); border: 2px solid var(--amber); padding: 0.6rem 0.9rem; border-radius: 8px; max-width: 68ch; font-size: 0.95rem; margin: 0.6rem 0 1rem; }
+.simblock + .simblock { margin-top: 2.4rem; padding-top: 2rem; border-top: 2px dashed var(--navy-tint); }
+.simblock h3 { margin-top: 0; }
+.sim { display: grid; gap: 1rem; margin-top: 1rem; }
+@media (min-width: 760px) { .sim { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); align-items: start; } }
+.puntos { background: #fff; border: 2px solid var(--navy-tint); border-radius: 8px; padding: 0.9rem 1rem; }
+.puntos h4 { color: var(--navy); }
+.puntos ul { margin: 0.2rem 0 0; }
+.btn { display: inline-block; border: 0; border-radius: 6px; padding: 0.7rem 1rem; font-family: var(--display); font-weight: 800; font-size: 1rem; cursor: pointer; text-decoration: none; text-align: center; color: var(--paper); transition: transform .25s var(--ease), background .2s; }
+.btn:hover { transform: translateY(-1px); }
+.btn.key { background: var(--amber); box-shadow: rgba(20, 32, 42, 0.45) 0 8px 20px -10px; }
+.btn.key:hover { background: var(--amber-hover); color: var(--paper); }
+.btn.navy { background: var(--navy); }
+.btn.navy:hover { color: var(--paper); }
+.btn.wide { width: 100%; margin-top: 0.8rem; }
+.btn[disabled] { opacity: 0.45; cursor: not-allowed; transform: none; }
+.ctl .log { font-size: 0.92rem; color: var(--navy-soft); margin: 0.6rem 0 0; }
+.ctl .log b { color: var(--green); }
+.out { display: grid; gap: 0.8rem; }
+.panel { background: #fff; border: 2px solid var(--navy-tint); border-radius: 8px; padding: 0.85rem 0.9rem; }
+.panel .bar { font-family: var(--display); font-weight: 800; color: var(--navy); display: flex; flex-wrap: wrap; gap: 0.2rem 0.6rem; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--navy-tint); padding-bottom: 0.45rem; margin-bottom: 0.6rem; font-size: 0.95rem; }
+.panel .bar small { font-family: var(--body); font-weight: 400; color: var(--navy-soft); font-size: 0.8rem; }
+.item { display: flex; gap: 0.7rem; align-items: center; border: 2px solid var(--navy-tint); border-radius: 6px; padding: 0.55rem; margin: 0.4rem 0; background: var(--paper); animation: enter .6s var(--ease); }
+@keyframes enter { from { opacity: 0; transform: translateY(10px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+.item .ph { width: 54px; height: 54px; border-radius: 6px; background: linear-gradient(135deg, #e6b8c8, #b98aa0); flex: 0 0 auto; display: grid; place-items: center; color: #fff; }
+.item .ph svg { width: 24px; height: 24px; }
+.item .t { font-family: var(--display); font-weight: 800; color: var(--navy); }
+.item .p { font-size: 0.88rem; color: var(--navy-soft); }
+.item.sold { opacity: 0.5; transition: opacity 0.4s; }
+.item.sold .t::after { content: " · Vendida"; color: var(--red); }
+.empty { color: var(--navy-soft); font-size: 0.92rem; padding: 0.8rem 0.3rem; text-align: center; margin: 0; }
+.post { white-space: pre-wrap; font-size: 0.93rem; margin: 0; }
+.chat { display: grid; gap: 0.4rem; }
+.msg { max-width: 88%; padding: 0.5rem 0.7rem; border-radius: 12px; font-size: 0.93rem; line-height: 1.4; }
+.msg.c { background: var(--paper-deep); justify-self: start; border-bottom-left-radius: 3px; }
+.msg.b { background: var(--green-tint); justify-self: end; border-bottom-right-radius: 3px; }
+.msg.b b { color: var(--green); }
+.resumen { display: grid; gap: 0.6rem; margin: 1rem 0; }
+@media (min-width: 620px) { .resumen { grid-template-columns: 1fr 1fr; } }
+.resumen > div { background: #fff; border: 2px solid var(--navy-tint); border-radius: 8px; padding: 0.9rem 1rem; }
+.resumen .big { font-family: var(--display); font-weight: 900; font-size: 1.9rem; color: var(--navy); line-height: 1; margin: 0.2rem 0 0.3rem; font-variant-numeric: tabular-nums; }
+.resumen .big span { font-size: 1rem; color: var(--navy-soft); }
+.resumen .big.pend { color: var(--amber); font-size: 1.3rem; }
+.resumen p { margin: 0; font-size: 0.92rem; color: var(--navy-soft); }
+details { background: #fff; border: 2px solid var(--navy-tint); border-radius: 8px; margin: 0.6rem 0; max-width: 68ch; }
+details summary { cursor: pointer; list-style: none; padding: 0.8rem 1rem; font-family: var(--display); font-weight: 800; font-size: 1rem; color: var(--navy); display: flex; gap: 0.6rem; align-items: center; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "+"; display: inline-grid; place-items: center; width: 24px; height: 24px; border: 2px solid var(--navy); border-radius: 6px; font-size: 1rem; flex: 0 0 auto; }
+details[open] summary::before { content: "–"; }
+details .body { padding: 0 1rem 0.9rem; border-top: 2px solid var(--navy-tint); }
+details .body > :first-child { margin-top: 0.8rem; }
+.ruta { display: grid; gap: 0.5rem; max-width: 68ch; }
+.ruta div { display: grid; grid-template-columns: 118px 1fr; gap: 0.6rem; padding: 0.7rem 0.9rem; background: #fff; border: 2px solid var(--navy-tint); border-radius: 8px; }
+.ruta div span { font-family: var(--display); font-weight: 800; color: var(--navy); }
+.ruta div p { margin: 0; }
+@media (max-width: 420px) { .ruta div { grid-template-columns: 1fr; } }
+
+/* ---------- Réplica de xinventory (tokens de src/styles/theme.css) ---------- */
+.xi { --xp: #0f7b4d; --xph: #0c6a42; --xps: #e3f3ea; --xpsf: #0a5c39; --xfg: #182420; --xmut: #55625c; --xcan: #f3f5f4; --xb: #e3e8e6; --xbs: #cfd6d3; --xsec: #eef1f0; --xpend: #8a5a06; --xpends: #fdf2e0; --xdes: #bf2e2e; --xdess: #fceceb; --xr: 0.75rem;
+  position: relative; background: var(--xcan); border-radius: 22px; border: 4px solid #2a3a46; overflow: hidden; color: var(--xfg); box-shadow: rgba(20, 32, 42, 0.6) 0 18px 40px -20px; font-size: 0.95rem; line-height: 1.4; display: flex; flex-direction: column; }
+.xi * { font-family: var(--body); }
+.xi svg { width: 16px; height: 16px; flex: 0 0 auto; }
+.xi .top { display: flex; align-items: center; gap: 0.4rem; padding: 0.6rem 0.7rem; background: #fff; border-bottom: 1px solid var(--xb); }
+.xi .chip { display: inline-flex; align-items: center; gap: 0.3rem; border: 1.5px solid var(--xbs); border-radius: 10px; padding: 0.3rem 0.6rem; font-weight: 700; font-size: 0.85rem; background: #fff; white-space: nowrap; }
+.xi .chip svg { width: 12px; height: 12px; color: var(--xmut); }
+.xi .bell { margin-left: auto; position: relative; display: inline-grid; place-items: center; width: 28px; height: 28px; }
+.xi .bell svg { width: 20px; height: 20px; }
+.xi .bell i { position: absolute; top: -3px; right: -3px; width: 16px; height: 16px; border-radius: 99px; background: var(--xdes); color: #fff; font-style: normal; font-weight: 700; font-size: 0.65rem; display: grid; place-items: center; }
+.xi .scr { padding: 0.6rem 0.55rem 0.8rem; display: grid; gap: 0.6rem; align-content: start; min-height: 420px; }
+.xi .sheet { position: relative; background: #fff; margin: 0.5rem 0.35rem 0; border-radius: 16px 16px 0 0; padding: 0.7rem 0.9rem 0; }
+.xi .grab { width: 56px; height: 5px; border-radius: 99px; background: #d9dde0; margin: 0 auto 0.8rem; }
+.xi .close { position: absolute; top: 1.1rem; right: 0.9rem; }
+.xi .close svg { width: 20px; height: 20px; }
+.xi h4 { font-size: 1.15rem; font-weight: 700; margin: 0 1.6rem 0.2rem 0; color: var(--xfg); letter-spacing: 0; display: flex; align-items: center; gap: 0.4rem; }
+.xi h4 svg { color: var(--xp); width: 18px; height: 18px; }
+.xi .sub { font-size: 0.85rem; color: var(--xmut); margin: 0 0 0.5rem; }
+.xi .card { background: #fff; border: 1px solid var(--xb); border-radius: var(--xr); padding: 0.8rem 0.85rem; box-shadow: 0 1px 2px rgb(24 36 32 / 0.05), 0 4px 12px rgb(24 36 32 / 0.05); }
+.xi .card h5 { font-size: 1rem; font-weight: 700; margin: 0 0 0.1rem; }
+.xi .row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 0.5rem; }
+.xi .between { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.xi .kpis { display: grid; grid-template-columns: 1fr 1fr; background: #fff; border: 1px solid var(--xb); border-radius: var(--xr); overflow: hidden; }
+.xi .kpi { padding: 0.7rem 0.8rem; border-right: 1px solid var(--xb); border-bottom: 1px solid var(--xb); }
+.xi .kpi:nth-child(2n) { border-right: 0; }
+.xi .kpi:nth-last-child(-n+2) { border-bottom: 0; }
+.xi .kpi small { display: block; font-size: 0.8rem; color: var(--xmut); }
+.xi .kpi b { display: block; font-size: 1.3rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.xi .kpi b.warn { color: var(--xpend); }
+.xi .kpi b.ok { color: var(--xp); }
+.xi .kpi i { display: block; font-style: normal; font-size: 0.72rem; color: var(--xmut); }
+.xi .seg { display: flex; background: var(--xsec); border-radius: var(--xr); padding: 3px; gap: 2px; }
+.xi .seg button { flex: 1; border: 0; background: transparent; border-radius: 9px; padding: 0.4rem 0.3rem; font-weight: 700; font-size: 0.85rem; color: var(--xmut); cursor: pointer; }
+.xi .seg button[aria-pressed="true"] { background: #fff; color: var(--xp); box-shadow: 0 1px 2px rgb(24 36 32 / 0.08); }
+.xi table { width: 100%; border-collapse: collapse; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+.xi th { text-align: left; font-size: 0.72rem; color: var(--xmut); font-weight: 600; padding: 0.3rem 0.2rem; border-bottom: 1px solid var(--xb); }
+.xi td { padding: 0.5rem 0.2rem; border-bottom: 1px solid var(--xb); vertical-align: top; }
+.xi tr:last-child td { border-bottom: 0; }
+.xi td.r, .xi th.r { text-align: right; white-space: nowrap; }
+.xi tr.tap { cursor: pointer; }
+.xi tr.tap:hover td { background: var(--xcan); }
+.xi .pill { display: inline-flex; align-items: center; border-radius: 999px; padding: 0.1rem 0.55rem; font-size: 0.75rem; font-weight: 600; background: var(--xsec); color: #2c3833; white-space: nowrap; }
+.xi .pill.ok { background: var(--xps); color: var(--xpsf); }
+.xi .pill.warn { background: var(--xpends); color: var(--xpend); }
+.xi .pill.bad { background: var(--xdess); color: #9c2323; }
+.xi .meta { font-size: 0.72rem; color: var(--xmut); text-transform: uppercase; letter-spacing: 0.03em; font-weight: 600; background: var(--xsec); padding: 0.1rem 0.35rem; border-radius: 4px; }
+.xi .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.82rem; }
+.xi .mut { color: var(--xmut); font-size: 0.85rem; }
+.xi .money { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+.xi .money span { color: var(--xbs); padding: 0 0.15rem; }
+.xi .b { border: 0; border-radius: 10px; padding: 0.6rem 0.9rem; font-weight: 700; font-size: 0.92rem; cursor: pointer; background: var(--xp); color: #fff; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; white-space: nowrap; }
+.xi .b:hover { background: var(--xph); }
+.xi .b.soft { background: var(--xps); color: var(--xpsf); }
+.xi .b.soft:hover { background: #d3ebdc; }
+.xi .b.out { background: #fff; color: var(--xfg); border: 1.5px solid var(--xbs); }
+.xi .b.out:hover { background: var(--xcan); }
+.xi .b.sec { background: var(--xsec); color: #2c3833; }
+.xi .b.bad { background: #fff; color: var(--xdes); border: 1.5px solid var(--xbs); }
+.xi .b.sm { padding: 0.4rem 0.7rem; font-size: 0.85rem; border-radius: 8px; }
+.xi .b.full { width: 100%; padding: 0.85rem; font-size: 1.02rem; border-radius: 12px; }
+.xi .b:disabled { opacity: 0.4; cursor: not-allowed; }
+.xi .btns { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.xi label { display: block; font-weight: 700; font-size: 0.88rem; margin: 0.55rem 0 0.25rem; }
+.xi input, .xi select, .xi textarea, .xi .sel { width: 100%; padding: 0.6rem 0.7rem; border: 1.5px solid var(--xbs); border-radius: 10px; background: #fff; font: inherit; font-size: 0.98rem; color: var(--xfg); }
+.xi textarea { min-height: 3.2rem; resize: none; }
+.xi .sel { display: inline-flex; align-items: center; justify-content: space-between; gap: 0.3rem; white-space: nowrap; }
+.xi .sel svg { width: 12px; height: 12px; color: var(--xmut); }
+.xi input::placeholder, .xi textarea::placeholder { color: #8a949b; }
+.xi .search { position: relative; }
+.xi .search svg { position: absolute; left: 0.7rem; top: 50%; transform: translateY(-50%); color: var(--xmut); width: 18px; height: 18px; }
+.xi .search input { padding-left: 2.3rem; border-radius: 999px; }
+.xi .svc { display: grid; grid-template-columns: 20px 1fr; gap: 0.6rem; align-items: center; border: 1.5px solid var(--xb); border-radius: 12px; padding: 0.7rem 0.8rem; margin: 0 0 0.4rem; font-size: 0.85rem; font-weight: 400; color: #3c4850; box-shadow: rgba(20, 32, 42, 0.06) 0 2px 6px; }
+.xi .svc input { width: 20px; height: 20px; margin: 0; accent-color: var(--xp); }
+.xi .svc b { display: block; font-size: 1rem; color: var(--xfg); }
+.xi .sec { font-weight: 700; margin: 1rem 0 0.2rem; font-size: 1rem; display: flex; align-items: center; gap: 0.45rem; }
+.xi .sec svg { color: var(--xp); }
+.xi .sec svg.r { margin-left: auto; color: var(--xmut); }
+.xi .imgs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.xi .img { width: 64px; height: 64px; border: 1.5px dashed #b8c0c6; border-radius: 10px; background: #fff; color: var(--xmut); font-size: 1.5rem; cursor: pointer; }
+.xi .thumb { width: 64px; height: 64px; border-radius: 10px; background: linear-gradient(135deg, #e6b8c8, #b98aa0); display: grid; place-items: center; color: #fff; animation: enter .6s var(--ease); }
+.xi .thumb svg { width: 26px; height: 26px; }
+.xi .foot { margin: 1rem -0.9rem 0; padding: 0.7rem 0.9rem; border-top: 1px solid var(--xb); background: #fff; }
+.xi .prod { display: grid; grid-template-columns: 4.2rem 1fr auto; gap: 0.6rem; align-items: center; background: #fff; border: 1px solid var(--xb); border-radius: var(--xr); padding: 0.5rem; box-shadow: 0 1px 2px rgb(24 36 32 / 0.05); }
+.xi .prod .ph { width: 4.2rem; height: 4.2rem; border-radius: 10px; background: linear-gradient(135deg, #e6b8c8, #b98aa0); display: grid; place-items: center; color: #fff; }
+.xi .prod .ph svg { width: 22px; height: 22px; }
+.xi .prod b { display: block; font-size: 0.92rem; line-height: 1.2; }
+.xi .prod .mut { font-size: 0.72rem; }
+.xi .stepper { display: inline-flex; align-items: center; gap: 0.3rem; }
+.xi .stepper button { width: 2.1rem; height: 2.1rem; border: 0; border-radius: 8px; background: var(--xsec); font-size: 1.1rem; cursor: pointer; }
+.xi .stepper output { width: 2.2rem; text-align: center; font-weight: 700; }
+.xi .tot { display: grid; gap: 0.3rem; padding: 0.7rem 0.85rem; background: var(--xcan); border-radius: 0 0 var(--xr) var(--xr); margin: 0.6rem -0.85rem -0.8rem; font-size: 0.9rem; }
+.xi .tot div { display: flex; justify-content: space-between; gap: 0.6rem; }
+.xi .tot .big { font-size: 1.1rem; font-weight: 700; border-top: 1px solid var(--xbs); padding-top: 0.4rem; margin-top: 0.2rem; }
+.xi .bar { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; padding: 0.7rem 0.8rem; background: #fff; border-top: 1px solid var(--xb); }
+.xi .bar small { display: block; color: var(--xmut); font-size: 0.78rem; }
+.xi .nav { display: grid; grid-template-columns: repeat(5, 1fr); background: #fff; border-top: 1px solid var(--xb); padding: 0.45rem 0 0.5rem; }
+.xi .nav span { display: grid; justify-items: center; gap: 0.15rem; font-size: 0.7rem; color: #3c4850; }
+.xi .nav span svg { width: 22px; height: 22px; }
+.xi .nav span.on { color: var(--xp); font-weight: 700; }
+.xi .toast { position: absolute; left: 0.6rem; right: 0.6rem; top: 0.6rem; z-index: 5; background: #f1fbf5; border: 1px solid #bfe3cf; color: #0a5c39; border-radius: 12px; padding: 0.6rem 0.8rem; font-weight: 700; font-size: 0.88rem; display: flex; gap: 0.5rem; align-items: center; box-shadow: 0 8px 20px -10px rgba(20, 32, 42, 0.4); animation: enter .4s var(--ease); }
+.xi .toast.warn { background: var(--xpends); border-color: #f0d9a8; color: var(--xpend); }
+.xi .toast.bad { background: var(--xdess); border-color: #f2c4c1; color: #9c2323; }
+.xi .toast svg { width: 18px; height: 18px; }
+.xi .dlgwrap { position: absolute; inset: 0; z-index: 4; background: rgba(24, 36, 32, 0.45); display: flex; align-items: flex-end; }
+.xi .dlg { background: #fff; width: 100%; border-radius: 16px 16px 0 0; padding: 0.9rem 0.9rem 0.8rem; max-height: 92%; overflow: auto; animation: up .35s var(--ease); }
+@keyframes up { from { transform: translateY(30px); opacity: 0; } to { transform: none; opacity: 1; } }
+.xi .dlg h5 { font-size: 1.1rem; font-weight: 700; margin: 0 0 0.15rem; }
+.xi .dlg .sub { margin-bottom: 0.4rem; }
+.xi .dlg .ft { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.9rem; }
+.xi .cur { display: inline-flex; border: 1.5px solid var(--xbs); border-radius: 10px; overflow: hidden; }
+.xi .cur button { border: 0; background: #fff; padding: 0.5rem 0.8rem; font-weight: 700; cursor: pointer; }
+.xi .cur button[aria-pressed="true"] { background: var(--xp); color: #fff; }
+.xi .line { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.9rem; padding: 0.15rem 0; }
+.xi .line.tot { display: flex; background: none; margin: 0.2rem 0 0; padding: 0.4rem 0 0; border-top: 1px solid var(--xb); font-weight: 700; border-radius: 0; }
+.xi .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.xi .chips button { border: 1.5px solid var(--xbs); background: #fff; border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 0.85rem; cursor: pointer; }
+.xi .chips button[aria-pressed="true"] { border-color: var(--xp); background: var(--xps); color: var(--xpsf); font-weight: 700; }
+.xi .chips button:disabled { opacity: 0.45; cursor: not-allowed; }
+.xi .cita { background: #fff; border: 1px solid var(--xb); border-radius: var(--xr); padding: 0.7rem 0.8rem; display: grid; gap: 0.3rem; }
+.xi .cita.off { opacity: 0.75; }
+.xi .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.2rem; }
+.xi .week button { border: 0; background: #fff; border-radius: 10px; padding: 0.4rem 0.1rem; font-size: 0.72rem; cursor: pointer; display: grid; gap: 0.1rem; }
+.xi .week button b { font-size: 0.95rem; }
+.xi .week button[aria-pressed="true"] { background: var(--xps); color: var(--xpsf); }
+.xi .stamp { background: var(--xpends); color: var(--xpend); border-radius: 10px; padding: 0.5rem 0.8rem; font-size: 0.82rem; }
+.xi .wa { background: #e7f8ee; border-radius: 12px; padding: 0.6rem 0.8rem; font-size: 0.85rem; white-space: pre-wrap; }
+.xi .rastro { display: grid; gap: 0.25rem; font-size: 0.85rem; }
+.xi .rastro div { padding-left: 0.9rem; position: relative; }
+.xi .rastro div::before { content: ""; position: absolute; left: 0; top: 0.5rem; width: 7px; height: 7px; border-radius: 99px; background: var(--xp); }
+.xi .hidden { display: none; }
+@media (prefers-reduced-motion: reduce) { .item, .xi .thumb, .xi .toast, .xi .dlg { animation: none; } .btn { transition: none; } }
+@media print { nav.top, .toggle, .cta { display: none; } details { border: 0; } details summary::before { display: none; } .day { display: block !important; } }
+</style>
+</head>
+<body>
+
+<svg id="icons" width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+<symbol id="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7" cy="7" r="1.5"/></symbol>
+<symbol id="bar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5v14M7 5v14M11 5v14M15 5v14M18 5v14M21 5v14"/></symbol>
+<symbol id="usd" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></symbol>
+<symbol id="store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M9 20v-6h6v6"/></symbol>
+<symbol id="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol>
+<symbol id="note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></symbol>
+<symbol id="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></symbol>
+<symbol id="cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+<symbol id="cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 2h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></symbol>
+<symbol id="hist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></symbol>
+<symbol id="boxes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></symbol>
+<symbol id="menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></symbol>
+<symbol id="truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></symbol>
+<symbol id="coins" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.1 9.9A6 6 0 1 1 9.9 18.1M7 6h1v4M16.7 13.3l.7.7-2.8 2.8"/></symbol>
+<symbol id="cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+<symbol id="bank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></symbol>
+<symbol id="calc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></symbol>
+<symbol id="back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+<symbol id="sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></symbol>
+<symbol id="wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.2-4.6A9 9 0 1 1 21 12z"/><path d="M9 10a4 4 0 0 0 5 5l1-1-2-1-1 1a3 3 0 0 1-2-2l1-1-1-2z"/></symbol>
+</svg>
+
+<!-- =====================================================================
+     2. TEXTOS DE LA PROPUESTA. Edite a mano; cada sección está marcada.
+     ===================================================================== -->
+
+<!-- TEXTO: portada -->
+<header class="hero">
+  <div class="wrap">
+    <div class="brand"><span></span>XSingularity</div>
+    <p class="date" id="fecha"></p>
+    <h1>La pieza llega, se fotografía una vez, y de ahí sale todo.</h1>
+    <p class="lead">Un solo sistema para Pink Boutique y Akash. La foto que toma con el teléfono se vuelve la ficha del inventario, la pieza en el catálogo en línea, el texto de la publicación y, si lo quiere, la respuesta del bot cuando alguien pregunta «¿precio?».</p>
+    <p class="small">Los números salen de lo que usted nos dijo, de sus cuentas de Instagram y de las tarifas públicas de cada servicio. Cuando algo es un supuesto nuestro, lo marcamos así: <span class="tag">supuesto</span></p>
+    <div class="cta">
+      <a class="btn key" href="#probar">Pruébelo aquí mismo</a>
+      <a class="btn navy" href="#inversion">Ver cuánto cuesta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top" aria-label="Secciones">
+  <div class="wrap">
+    <a href="#hoy">Hoy y después</a>
+    <a href="#que">Qué incluye</a>
+    <a href="#funciones">Funciones</a>
+    <a href="#probar">Probar</a>
+    <a href="#inversion">Inversión</a>
+    <a href="#ruta">Orden</a>
+  </div>
+</nav>
+
+<!-- TEXTO: hoy y con el sistema -->
+<section id="hoy">
+  <div class="wrap">
+    <h2>Cómo cambia el día en la tienda</h2>
+    <p>Usted nos contó que en Pink Boutique recibir la mercancía, tomarle fotos y publicarla a veces tarda más de lo que la pieza dura en la tienda. Ese mismo camino, con el sistema:</p>
+    <div class="toggle" role="group" aria-label="Hoy o con el sistema">
+      <button type="button" data-day="hoy" aria-pressed="true">Hoy</button>
+      <button type="button" data-day="con" aria-pressed="false">Con el sistema</button>
+    </div>
+    <div class="day on" data-day-panel="hoy">
+      <ol class="steps bad">
+        <li>Llega la mercancía. Se anota en alguna parte, o no.</li>
+        <li>Sesión de fotos cuando hay tiempo. Editar. Pensar el texto. Publicar.</li>
+        <li>Empiezan los «¿precio?» por WhatsApp e Instagram. Cada uno se responde a mano.</li>
+        <li>La pieza se vendió en el local. La publicación sigue viva y siguen preguntando.</li>
+        <li>Un cliente pide una pieza que está en el otro local. Hay que llamar para confirmar.</li>
+      </ol>
+    </div>
+    <div class="day" data-day-panel="con">
+      <ol class="steps good">
+        <li>Llega la mercancía. Foto y ficha desde el teléfono en ese momento, un minuto por pieza.</li>
+        <li>La pieza ya está en el catálogo en línea con precio en dólares y bolívares, talla y local.</li>
+        <li>El texto de la publicación sale listo, escrito al estilo de sus publicaciones anteriores. Se revisa y se publica.</li>
+        <li>Se vendió: desaparece del catálogo sola. Con el bot (opcional), los «¿precio?» se responden solos con precio, local y enlace.</li>
+        <li>Desde su teléfono ve qué hay en cada local y qué vendió cada quien, sin llamar.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- TEXTO: qué incluye -->
+<section id="que">
+  <div class="wrap">
+    <h2>Qué incluye</h2>
+    <p>Cuatro piezas que se alimentan de una sola base de datos. Si la pieza está en el inventario, está en todas partes. Si se vendió, sale de todas partes.</p>
+    <div class="piezas">
+      <div class="pieza"><div class="n">1</div><div>
+        <h4>xinventory: inventario, ventas y los dos locales</h4>
+        <p>Precios en dólares y cobro en bolívares a la tasa del día sin tocar nada. Cada local con su existencia y traslados entre ellos. Envíos con estado (preparando, en camino, entregado). Cada vendedora con su clave. Funciona sin internet y se sincroniza cuando vuelve. Usted ve ventas, caja y ganancia desde el teléfono.</p>
+        <p class="estado"><span class="tag green">Existe hoy</span> Incluido en la suscripción. Se adapta a piezas únicas: una foto y una ficha por pieza, sin cargar «cantidades».</p>
+      </div></div>
+      <div class="pieza"><div class="n">2</div><div>
+        <h4>Catálogo en línea que se actualiza solo</h4>
+        <p>Una página con su nombre donde el cliente ve foto, precio en dólares y bolívares, talla y en qué local está. Se carga la pieza y aparece. Se vende y desaparece. El enlace va en la biografía de Instagram y es la respuesta a todos los «¿precio?».</p>
+        <p class="estado"><span class="tag green">Existe hoy</span> Incluido en la suscripción. Página pública con su nombre que se llena sola desde el inventario.</p>
+      </div></div>
+      <div class="pieza"><div class="n">3</div><div>
+        <h4>Publicaciones listas al llegar la pieza</h4>
+        <p>Al cargar una pieza, el sistema escribe el texto de la publicación con la foto ya montada. Aprende del estilo de sus publicaciones anteriores en cada red (Pink Boutique tiene más de 5.400) para que suene a usted, no a un robot. Queda en una cola: usted revisa, retoca si quiere y publica con un toque, o se publica sola el día y la hora que fijó.</p>
+        <p class="estado"><span class="tag green">Existe hoy</span> Incluido en la suscripción. El módulo Redes ya escribe el texto y retoca la foto con inteligencia artificial. Publicar directo en Instagram y Facebook requiere aprobación de Meta, que tarda de 2 a 4 semanas; mientras llega, texto y foto quedan listos para copiar y pegar.</p>
+      </div></div>
+      <div class="pieza"><div class="n">4</div><div>
+        <h4>Bot que responde desde el inventario</h4>
+        <p>En Instagram, Facebook y WhatsApp. Responde precio, talla, si hay y en qué local, con el enlace del catálogo, las 24 horas. Si la pieza se vendió, lo dice y ofrece parecidas. Lo que no sabe, se lo pasa a una persona con el chat ya armado.</p>
+        <p class="estado"><span class="tag amber">No existe todavía</span> Módulo opcional, se cotiza aparte. Es lo único que falta por construir. Abajo mostramos cómo funcionaría.</p>
+      </div></div>
+    </div>
+    <h3>Lo mismo sirve para Akash</h3>
+    <p>Akash ya tiene un sistema y está ordenada por dentro. Lo que le sobra son los mensajes: entre 10 y 30 al día que responde usted sola. El catálogo, y el bot si lo contrata, resuelven eso igual que en Pink. Si además quiere que la tasa se actualice sola y que las terapias y lecturas se agenden con recordatorio, xinventory lo trae (módulo Citas). Se decide después de ver cómo se lleva hoy la tasa en su sistema actual.</p>
+  </div>
+</section>
+
+<!-- TEXTO: funciones base -->
+<section id="funciones">
+  <div class="wrap">
+    <h2>El motor debajo de sus tiendas</h2>
+    <p>xinventory está hecho para la realidad del comercio en Venezuela. Además de las piezas de arriba, la base del sistema ya incluye todo esto:</p>
+    <div class="feat-grid">
+      <div class="feat-card"><h4>Punto de venta en dólares y bolívares</h4><p>Cobre en dólares o en bolívares (pago móvil, Zelle, efectivo, punto). El sistema calcula el total en las dos monedas al instante y genera una nota de entrega para mandar por WhatsApp.</p></div>
+      <div class="feat-card"><h4>Tasa del día sellada</h4><p>Cada venta guarda la tasa de cambio de ese momento. Si la tasa cambia mañana, los cierres de caja y los reportes de hoy quedan intactos. Nada se descuadra.</p></div>
+      <div class="feat-card"><h4>Funciona sin internet</h4><p>Si se cae el wifi o los datos, la tienda no se detiene. Siga vendiendo; el teléfono guarda todo en una cola y se sincroniza solo al volver la conexión.</p></div>
+      <div class="feat-card"><h4>Vendedoras y comisiones</h4><p>Cada vendedora entra con su clave solo a lo que usted le permita. El sistema calcula sus comisiones según el porcentaje que usted asigne y permite cierres de caja por turno.</p></div>
+      <div class="feat-card"><h4>Avisos en su teléfono</h4><p>Le llegan como notificaciones: mercancía por agotarse, recordatorios de citas o el cierre de caja de un turno, sin estar metida en la aplicación.</p></div>
+      <div class="feat-card"><h4>Servicios y fiado</h4><p>Ventas a crédito con historial exacto de abonos. Y servicios (como las terapias de Akash) con duración en minutos, que se venden y cobran sin descontar inventario.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULACIONES: se arman solas desde CONFIG.simulaciones -->
+<section id="probar">
+  <div class="wrap">
+    <h2>Pruébelo aquí mismo</h2>
+    <p class="note" id="nota-sims">Las pantallas de abajo son réplicas de xinventory tal como existe hoy. Es una simulación: nada se guarda ni se publica.</p>
+    <div id="sims"></div>
+  </div>
+</section>
+
+<!-- INVERSIÓN: se arma sola desde CONFIG.precios -->
+<section id="inversion">
+  <div class="wrap" id="inv"></div>
+</section>
+
+<!-- TEXTO: orden de trabajo -->
+<section id="ruta">
+  <div class="wrap">
+    <h2>En qué orden</h2>
+    <div class="ruta">
+      <div><span>Semana 1</span><p>Una tarde en Pink Boutique: vemos cómo llega la mercancía y cómo se lleva hoy el inventario. Se piden a Meta los permisos para publicar (tardan de 2 a 4 semanas, por eso van primero). Comienza la migración de sus datos actuales.</p></div>
+      <div><span>Semanas 2 a 5</span><p>xinventory funcionando en los dos locales, con el manual de uso de XSingularity. Catálogo en línea con las piezas cargadas. Enlace en la biografía.</p></div>
+      <div><span>Semana 6</span><p>Publicaciones listas al cargar cada pieza, con el estilo de sus publicaciones anteriores. Cola de publicación revisada por usted.</p></div>
+      <div><span>Semanas 7 a 8</span><p>Solo si contrata el bot: se construye y se conecta al inventario en Instagram y Facebook; WhatsApp cuando Meta apruebe el número.</p></div>
+      <div><span>Después</span><p>Akash: mismo catálogo y publicaciones, y el bot si lo contrata. Tasa automática y citas con recordatorio si su sistema actual no lo hace.</p></div>
+    </div>
+    <h3>Lo que no le prometemos</h3>
+    <ul>
+      <li><b>Que la inteligencia artificial venda sola.</b> Escribe y retoca las fotos; el ojo y el trato siguen siendo suyos.</li>
+      <li><b>Publicar directo desde el primer día.</b> Depende de la aprobación de Meta. Mientras tanto, texto y foto listos para copiar y pegar.</li>
+      <li><b>El bot desde el primer día.</b> No existe todavía: se construye después de que xinventory esté andando y se cotiza aparte.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TEXTO: pie -->
+<footer>
+  <div class="wrap">
+    <div class="brand"><span></span>XSingularity</div>
+    <p style="margin:0">Consultoría de software para negocios en Venezuela. WhatsApp <a href="https://wa.me/584244337694">+58 424 433 7694</a> · Instagram <a href="https://instagram.com/xsingularity.dev">@xsingularity.dev</a> · <a href="https://www.xsingularity.dev">xsingularity.dev</a></p>
+    <p class="small">Página privada, no aparece en buscadores.</p>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   3. MOTOR. No hace falta tocarlo para cambiar precios ni simulaciones.
+   Para agregar una simulación nueva: copie una de SIMS y regístrela.
+   ===================================================================== */
+(function () {
+  'use strict';
+  const $ = (sel, root) => (root || document).querySelector(sel);
+  const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const nf = new Intl.NumberFormat('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const f = n => nf.format(Math.round((n + Number.EPSILON) * 100) / 100);
+  const usd = n => '$ ' + f(n);
+  const bs = n => 'Bs ' + f(n * CONFIG.tasa);
+  const money = n => `<span class="money">${usd(n)}<span>·</span>${bs(n)}</span>`;
+  const round2 = n => Math.round((n + Number.EPSILON) * 100) / 100;
+  const IVA = 16;
+  const hoy = new Date();
+  const dd = d => String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0') + '/' + String(d.getFullYear()).slice(2);
+  const hhmm = d => String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+  const ico = id => `<svg><use href="#${id}"/></svg>`;
+  const slug = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const METODOS = ['Efectivo', 'Tarjeta de Crédito', 'Tarjeta de Débito', 'Transferencia', 'Pago Móvil', 'PayPal', 'Zelle', 'Binance', 'Zinli', 'Divisas', 'Otro'];
+
+  // Portada
+  document.title = CONFIG.titulo + ' · XSingularity';
+  $('#fecha').textContent = 'Propuesta para ' + CONFIG.cliente + ' · Actualizada el ' + CONFIG.fecha;
+
+  // Hoy / con el sistema
+  const tg = $('.toggle');
+  $$('button', tg).forEach(b => b.addEventListener('click', () => {
+    $$('button', tg).forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    $$('[data-day-panel]').forEach(p => p.classList.toggle('on', p.dataset.dayPanel === b.dataset.day));
+  }));
+
+  // Inversión
+  (function () {
+    const P = CONFIG.precios;
+    const card = c => `<div><p>${c.titulo}</p><div class="big${c.pendiente ? ' pend' : ''}">${c.monto}${c.nota ? ' <span>' + c.nota + '</span>' : ''}</div><p>${c.detalle || ''}</p></div>`;
+    let h = `<h2>Cuánto cuesta, sin sorpresas</h2><p>${P.intro || ''}</p><div class="resumen">${card(P.una_vez)}${card(P.mensual)}</div>`;
+    if (P.incluye) h += `<h3>${P.incluye_titulo}</h3><p>${P.incluye_intro || ''}</p><ul>${P.incluye.map(li => '<li>' + li + '</li>').join('')}</ul>`;
+    (P.extras || []).forEach(x => {
+      h += `<h3>${x.titulo}</h3><p>${x.intro || ''}</p><div class="resumen">${card(x.una_vez)}${card(x.mensual)}</div>`;
+      if (x.desglose) h += `<details><summary>${x.desglose_titulo}</summary><div class="body"><ul>${x.desglose.map(d => `<li><b>${d.que}:</b> ${d.detalle}${d.supuesto ? ' <span class="tag">supuesto</span>' : ''}</li>`).join('')}</ul></div></details>`;
+    });
+    if (P.pago) h += `<h3>${P.pago.titulo}</h3><p>${P.pago.texto}</p>`;
+    $('#inv').innerHTML = h;
+  })();
+
+  /* ---------- Piezas comunes del teléfono ---------- */
+  const NAV = [['Vender', 'store'], ['Cobrar', 'cart'], ['Historial', 'hist'], ['Inventario', 'boxes'], ['Más', 'menu']];
+  function phone(inner, active, local) {
+    return `<div class="xi"><div class="top"><span class="chip">${esc(local || CONFIG.locales[0])} ${ico('chev')}</span><span class="chip">$1 = Bs ${f(CONFIG.tasa)} ${ico('chev')}</span><span class="bell">${ico('bell')}<i>1</i></span></div><div class="scr">${inner}</div><div class="nav">${NAV.map(n => `<span class="${n[0] === active ? 'on' : ''}">${ico(n[1])}${n[0]}</span>`).join('')}</div></div>`;
+  }
+  // Reciben el contenedor de la simulación: el teléfono se vuelve a dibujar y hay que buscarlo cada vez.
+  function toast(el, msg, kind) {
+    const xi = el.classList.contains('xi') ? el : $('.xi', el);
+    $$('.toast', xi).forEach(t => t.remove());
+    const t = document.createElement('div'); t.className = 'toast ' + (kind || ''); t.innerHTML = ico('check') + '<span>' + esc(msg) + '</span>';
+    xi.appendChild(t); setTimeout(() => t.remove(), 2600);
+  }
+  function dialog(el, h) {
+    const xi = el.classList.contains('xi') ? el : $('.xi', el);
+    $$('.dlgwrap', xi).forEach(d => d.remove());
+    const w = document.createElement('div'); w.className = 'dlgwrap'; w.innerHTML = '<div class="dlg">' + h + '</div>';
+    xi.appendChild(w);
+    w.addEventListener('click', e => { if (e.target === w || e.target.closest('[data-close]')) w.remove(); });
+    return w;
+  }
+  function curToggle(id) { return `<span class="cur" data-cur="${id}"><button type="button" aria-pressed="true">$</button><button type="button" aria-pressed="false">Bs</button></span>`; }
+  function readAmount(dlg, inputSel, curSel) {
+    const raw = ($(inputSel, dlg).value || '').trim().replace(/\./g, '').replace(',', '.');
+    const n = parseFloat(raw); if (isNaN(n) || n <= 0) return NaN;
+    const enBs = $(curSel + ' button[aria-pressed="true"]', dlg).textContent === 'Bs';
+    return enBs ? n / CONFIG.tasa : n;
+  }
+  function wireCur(dlg) {
+    $$('.cur', dlg).forEach(c => c.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; $$('button', c).forEach(x => x.setAttribute('aria-pressed', String(x === b))); c.dispatchEvent(new CustomEvent('cur', { bubbles: true })); }));
+  }
+
+  /* ---------- Registro de simulaciones ---------- */
+  const SIMS = {};
+
+  // ===== pieza: Inventario, catálogo, publicación y bot =====
+  SIMS.pieza = {
+    titulo: 'Cargar una pieza: inventario, catálogo, publicación y bot',
+    nota: CONFIG.bot_existe ? 'Todo lo que se ve aquí existe hoy.' : 'La pantalla de la izquierda es la de xinventory tal como existe hoy. El catálogo en línea y la publicación ya funcionan. Lo único que falta por construir es el bot.',
+    render(root) {
+      const L = CONFIG.locales, dom = CONFIG.dominio, neg = CONFIG.negocio;
+      root.innerHTML = `<div>
+        <div class="xi"><div class="top"><span class="chip">${esc(L[0])} ${ico('chev')}</span><span class="chip">$1 = Bs ${f(CONFIG.tasa)} ${ico('chev')}</span><span class="bell">${ico('bell')}<i>1</i></span></div>
+          <div class="sheet"><div class="grab"></div><span class="close">${ico('x')}</span>
+            <h4>Agregar producto o servicio</h4>
+            <p class="sub">Completa la información. Marca «Es un servicio» si no lleva existencia.</p>
+            <label class="svc"><input type="checkbox"><span><b>Es un servicio</b>No lleva existencia ni precio de compra: venderlo no mueve el inventario.</span></label>
+            <div class="sec">${ico('tag')}Identificación</div>
+            <label>Nombre del producto<input class="s-nombre" placeholder="${esc(CONFIG.demo.productos[0].n)}" autocomplete="off"></label>
+            <div class="sec">${ico('bar')}Código de barras</div>
+            <input class="s-codigo" placeholder="Escanear o ingresar código" autocomplete="off">
+            <div class="sec">${ico('usd')}Precios</div>
+            <label>Precio de compra</label><div class="row"><span class="sel">USD ($) ${ico('chev')}</span><input inputmode="decimal" placeholder="0.00"></div>
+            <label>Precio de venta</label><div class="row"><span class="sel">USD ($) ${ico('chev')}</span><input class="s-precio" inputmode="decimal" placeholder="${CONFIG.demo.productos[0].p}.00" autocomplete="off"></div>
+            <div class="sec">${ico('store')}Sucursal</div>
+            <select class="s-local">${L.map(l => '<option>' + esc(l) + '</option>').join('')}</select>
+            <div class="sec">${ico('img')}Imágenes del producto<svg class="r"><use href="#chev"/></svg></div>
+            <div class="imgs"><button type="button" class="img s-foto" aria-label="Agregar imagen">+</button></div>
+            <div class="sec">${ico('note')}Notas<svg class="r"><use href="#chev"/></svg></div>
+            <div class="foot"><button type="button" class="b full s-cargar">Agregar producto</button></div>
+          </div></div>
+        <div class="ctl"><button type="button" class="btn navy wide s-vender" disabled>Simular: se vendió en el local</button><p class="log s-log">Cargue una pieza y mire el catálogo, la publicación y el bot.</p></div>
+      </div>
+      <div class="out">
+        <div class="panel"><div class="bar">Catálogo en línea <small>existe hoy · ${esc(dom)} <span class="tag">supuesto</span></small></div><div class="s-cat"><p class="empty">Todavía no hay piezas.</p></div></div>
+        <div class="panel"><div class="bar">Publicación lista <small>módulo Redes, existe hoy</small></div><p class="post s-post">Aquí aparece el texto, escrito al estilo de sus publicaciones.</p></div>
+        <div class="panel"><div class="bar">Bot <small>${CONFIG.bot_existe ? 'existe hoy' : 'falta por construir'}</small></div><div class="chat s-chat"><div class="msg c">Hola, ¿precio?</div><div class="msg b">Sin inventario, el bot solo puede decir «escríbenos». Cargue la pieza.</div></div></div>
+      </div>`;
+      const cat = $('.s-cat', root), log = $('.s-log', root), post = $('.s-post', root), chat = $('.s-chat', root), vender = $('.s-vender', root);
+      let item = null, cur = null;
+      const bubble = (c, b) => { chat.innerHTML = '<div class="msg c">' + esc(c) + '</div><div class="msg b">' + b + '</div>'; };
+      $('.s-foto', root).addEventListener('click', () => { const d = document.createElement('div'); d.className = 'thumb'; d.innerHTML = ico('cam'); $('.imgs', root).prepend(d); });
+      $('.s-cargar', root).addEventListener('click', () => {
+        const n = $('.s-nombre', root).value.trim() || CONFIG.demo.productos[0].n;
+        const p = parseFloat(($('.s-precio', root).value.trim() || String(CONFIG.demo.productos[0].p)).replace(',', '.'));
+        const l = $('.s-local', root).value;
+        const precio = isNaN(p) ? 'Precio por poner' : usd(p);
+        cur = { n, l, precio };
+        if (!item) cat.innerHTML = '';
+        item = document.createElement('div'); item.className = 'item';
+        item.innerHTML = '<div class="ph">' + ico('cam') + '</div><div><div class="t">' + esc(n) + '</div><div class="p">' + esc(precio) + ' · Bs a la tasa del día · ' + esc(l) + ' · Pieza única</div></div>';
+        cat.prepend(item); vender.disabled = false;
+        log.innerHTML = '<b>Cargada.</b> Ya está en el inventario de ' + esc(l) + ', en el catálogo y con la publicación lista.';
+        post.textContent = 'Nueva en ' + neg + ': ' + n + '. Pieza única, disponible en ' + l + '. Precio y disponibilidad en el catálogo, enlace en la biografía. Envíos a todo el país.';
+        bubble('Hola, ¿precio de ' + n.toLowerCase() + '?', '<b>' + esc(precio) + '</b>, en bolívares a la tasa del día. Está en ' + esc(l) + '. Aquí la ve con todas las fotos: ' + esc(dom) + '/catalogo/' + esc(slug(n)) + '. ¿Se la apartamos?');
+      });
+      vender.addEventListener('click', () => {
+        if (!item) return;
+        item.classList.add('sold'); const s = item; item = null; vender.disabled = true;
+        log.innerHTML = '<b>Vendida.</b> Se descontó de ' + esc(cur.l) + ', quedó en el historial con la tasa del día y sale del catálogo.';
+        bubble('¿Todavía tienes ' + cur.n.toLowerCase() + '?', 'Se vendió hoy. Le muestro piezas parecidas que sí hay: ' + esc(dom) + '/catalogo/parecidas. ¿Le aviso si entra otra?');
+        setTimeout(() => { s.remove(); if (!cat.children.length) cat.innerHTML = '<p class="empty">Todavía no hay piezas.</p>'; }, 2500);
+      });
+    }
+  };
+
+  // ===== cobrar: Vender y Cobrar =====
+  SIMS.cobrar = {
+    titulo: 'Vender y cobrar en dólares y bolívares',
+    nota: 'Existe hoy. Los precios llevan el IVA adentro; el total sale en las dos monedas a la tasa del día y el cambio se calcula solo.',
+    puntos: ['Toque «Agregar» en una pieza y luego «Cobrar».', 'Elija cómo paga el cliente y escriba el monto en $ o en Bs.', 'Si paga de más, el sistema dice cuánto cambio entregar. Si paga de menos, queda el restante.'],
+    render(root) {
+      const P = CONFIG.demo.productos.map(p => ({ ...p }));
+      let cart = [], view = 'vender', paid = [], q = '';
+      const total = () => round2(cart.reduce((s, c) => s + c.p * c.q, 0));
+      const pagado = () => round2(paid.reduce((s, x) => s + x.m, 0));
+      const codigo = i => '7591001000' + String(100 + i * 33).padStart(3, '0');
+      const draw = () => {
+        let inner;
+        if (view === 'vender') {
+          const list = P.filter(p => p.n.toLowerCase().includes(q.toLowerCase()));
+          inner = `<div class="between"><div class="search" style="flex:1">${ico('search')}<input class="q" placeholder="Busca un producto…" value="${esc(q)}"></div><button class="b out sm">${ico('sliders')}Filtros</button></div>
+            <div class="mut">${list.length} producto${list.length === 1 ? '' : 's'} en ${esc(CONFIG.locales[0])}</div>
+            ${list.map((p, i) => `<div class="prod"><div class="ph">${ico('cam')}</div><div><b>${esc(p.n)}</b><div class="mut">Código ${codigo(i)}</div>${money(p.p)}<div><span class="pill ${p.s === 0 ? 'bad' : p.s < 10 ? 'warn' : 'ok'}">${p.s === 0 ? 'Agotado' : p.s < 10 ? 'Quedan ' + p.s + ' u' : p.s + ' u'}</span></div></div><button class="b sm" data-add="${P.indexOf(p)}" ${p.s === 0 ? 'disabled' : ''}>${ico('plus')}Agregar</button></div>`).join('')}
+            ${cart.length ? `<div class="bar"><div><small>${cart.reduce((s, c) => s + c.q, 0)} artículo${cart.reduce((s, c) => s + c.q, 0) === 1 ? '' : 's'}</small>${money(total())}</div><button class="b" data-go="cobrar">Cobrar</button></div>` : ''}`;
+        } else {
+          const t = total(), base = round2(t / (1 + IVA / 100)), iva = round2(t - base), due = round2(t - pagado());
+          inner = `<div class="card"><div class="between"><h5>${ico('cart')} Lista para cobrar <span class="pill ok">${cart.length}</span></h5></div>
+              <div class="btns" style="margin-top:.4rem"><button class="b bad sm" data-clear>Limpiar</button><button class="b soft sm">Guardar</button><button class="b soft sm">Cotización</button></div>
+              <div class="search" style="margin-top:.5rem">${ico('search')}<input placeholder="Buscar en la lista…"></div></div>
+            ${cart.length ? `<div class="card">${cart.map((c, i) => `<div class="between" style="padding:.35rem 0;border-bottom:1px solid var(--xb)"><div><b>${esc(c.n)}</b><div class="mut">${usd(c.p)} c/u <span class="meta">+IVA</span></div></div><span class="stepper"><button data-dec="${i}">−</button><output>${c.q}</output><button data-inc="${i}">+</button></span></div>`).join('')}
+              <div class="tot"><div><span>Subtotal</span>${money(base)}</div><div><span>IVA (${IVA}%)</span>${money(iva)}</div>${paid.map(x => `<div><span>Pagado (${x.met})</span>${money(x.m)}</div>`).join('')}<div class="big"><span>${paid.length ? 'Restante' : 'Total'}</span>${money(due)}</div></div></div>
+              <button class="b full" data-pay>Cobrar ${usd(due)}</button>`
+            : `<div class="card"><b>Todavía no hay nada que cobrar</b><div class="mut">Busca productos en <b>Vender</b> y agrégalos aquí.</div></div><button class="b out full" data-go="vender">${ico('back')}Vender</button>`}`;
+        }
+        root.innerHTML = phone(inner, view === 'vender' ? 'Vender' : 'Cobrar');
+      };
+      draw();
+      root.addEventListener('input', e => { if (e.target.classList.contains('q')) { q = e.target.value; const pos = e.target.selectionStart; draw(); const i = $('.q', root); i.focus(); i.setSelectionRange(pos, pos); } });
+      root.addEventListener('click', e => {
+        const b = e.target.closest('button'); if (!b) return;
+        if (b.dataset.add !== undefined) { const p = P[+b.dataset.add]; const c = cart.find(x => x.n === p.n); if (c) { if (c.q < p.s) c.q++; else return toast(root, 'Sin stock: solo hay ' + p.s, 'warn'); } else cart.push({ n: p.n, p: p.p, q: 1, s: p.s }); draw(); toast(root, p.n + ' agregado al carrito'); }
+        else if (b.dataset.go) { view = b.dataset.go; draw(); }
+        else if (b.dataset.inc !== undefined) { const c = cart[+b.dataset.inc]; if (c.q < c.s) c.q++; draw(); }
+        else if (b.dataset.dec !== undefined) { const c = cart[+b.dataset.dec]; c.q--; if (c.q <= 0) cart.splice(+b.dataset.dec, 1); draw(); }
+        else if (b.hasAttribute('data-clear')) { cart = []; paid = []; draw(); }
+        else if (b.hasAttribute('data-pay')) {
+          const due = round2(total() - pagado());
+          const d = dialog(root, `<h5>Cobrar</h5><p class="sub">Falta por pagar: ${usd(due)}</p>
+            <label>¿Cómo paga el cliente?</label><select class="met">${METODOS.map(m => '<option>' + m + '</option>').join('')}</select>
+            <div class="between"><label>Monto a recibir</label>${curToggle('m')}</div><div class="mut pend">Pendiente: ${usd(due)}</div><input class="monto" inputmode="decimal" placeholder="0.00">
+            <label>Notas (opcional)</label><input placeholder="Notas de la venta…">
+            <details style="border:0;margin:.5rem 0 0"><summary style="padding:.4rem 0;font-size:.9rem;color:var(--xmut)">Cliente (opcional)</summary></details>
+            <div class="ft"><button class="b out" data-close>Cancelar</button><button class="b" data-confirm>Confirmar pago</button></div>`);
+          wireCur(d);
+          d.addEventListener('cur', () => { const enBs = $('.cur button[aria-pressed="true"]', d).textContent === 'Bs'; $('.pend', d).textContent = 'Pendiente: ' + (enBs ? bs(due) : usd(due)); });
+          d.addEventListener('click', ev => {
+            if (!ev.target.closest('[data-confirm]')) return;
+            const m = readAmount(d, '.monto', '.cur'); if (isNaN(m)) return toast(root, 'Por favor ingrese un monto válido', 'bad');
+            const met = $('.met', d).value; paid.push({ met, m: round2(m) }); d.remove();
+            const rest = round2(total() - pagado());
+            if (rest > 0.01) { toast(root, 'Pago de ' + usd(m) + ' agregado. Restante: ' + usd(rest)); draw(); return; }
+            const cambio = rest < -0.01 ? -rest : 0;
+            cart.forEach(c => { const p = P.find(x => x.n === c.n); p.s -= c.q; }); cart = []; paid = []; view = 'vender'; draw();
+            if (cambio > 0) { const w = dialog(root, `<h5>${ico('bank')} Entrega el cambio</h5><p class="sub">Dale al cliente</p><div style="font-size:1.4rem;font-weight:700">${usd(cambio)}</div><div class="mut">${bs(cambio)}</div><div class="ft"><button class="b" data-close>Cambio entregado, terminar</button></div>`); w.addEventListener('click', () => toast(root, 'Pago exitoso. Inventario actualizado.')); }
+            else toast(root, 'Pago exitoso. Inventario actualizado.');
+          });
+        }
+      });
+    }
+  };
+
+  // ===== fiado: quién debe y abonos =====
+  SIMS.fiado = {
+    titulo: 'Fiado: quién debe y cuánto abona',
+    nota: 'Existe hoy. El saldo nunca se escribe a mano: sale de la venta menos lo pagado y lo abonado.',
+    puntos: ['Toque un cliente para ver sus ventas pendientes.', 'Registre un abono en $ o en Bs; el saldo baja solo.', 'Cada abono queda con fecha, método y quién lo recibió.'],
+    render(root) {
+      const C = CONFIG.demo.clientes, V = CONFIG.demo.vendedoras;
+      const dias = n => { const d = new Date(hoy); d.setDate(d.getDate() - n); return d; };
+      const sales = [
+        { cli: C[0], total: 88, caja: 40, abonos: [{ m: 20, met: 'Pago Móvil', d: dias(6), u: V[0] }], d: dias(12), id: '4F1A2C' },
+        { cli: C[1], total: 45, caja: 0, abonos: [], d: dias(3), id: '9B77E0' },
+        { cli: C[0], total: 60, caja: 30, abonos: [], d: dias(1), id: 'C21D9A' },
+      ];
+      const saldo = s => round2(s.total - s.caja - s.abonos.reduce((a, x) => a + x.m, 0));
+      let sel = null;
+      const draw = () => {
+        const pend = sales.filter(s => saldo(s) > 0.01);
+        const porCli = {}; pend.forEach(s => { (porCli[s.cli] = porCli[s.cli] || { deuda: 0, n: 0, ult: s.d }); porCli[s.cli].deuda += saldo(s); porCli[s.cli].n++; if (s.d > porCli[s.cli].ult) porCli[s.cli].ult = s.d; });
+        const clis = Object.entries(porCli).sort((a, b) => b[1].deuda - a[1].deuda);
+        const totalDeuda = clis.reduce((a, c) => a + c[1].deuda, 0);
+        const masVieja = pend.length ? Math.max(...pend.map(s => (hoy - s.d) / 864e5)) : 0;
+        let inner;
+        if (!sel) {
+          inner = `<div class="card"><h5>${ico('coins')} Fiado</h5><div class="sub">Lo que está por cobrar y quién lo debe.</div></div>
+            <div class="kpis"><div class="kpi"><small>Por cobrar</small><b class="${totalDeuda > 0.01 ? 'warn' : ''}">${usd(totalDeuda)}</b></div><div class="kpi"><small>Clientes</small><b>${clis.length}</b></div><div class="kpi"><small>Deuda más vieja</small><b>${masVieja < 1 ? '<1 día' : Math.round(masVieja) + ' días'}</b></div><div class="kpi"><small>Ventas fiadas</small><b>${pend.length}</b></div></div>
+            <div class="card"><h5>Por cliente</h5><div class="sub">Toca un cliente para ver sus ventas y abonar.</div>
+            ${clis.length ? `<table><thead><tr><th>Cliente</th><th class="r">Deuda $</th><th class="r">Ventas</th><th class="r">Última venta</th></tr></thead><tbody>${clis.map(([n, c]) => `<tr class="tap" data-cli="${esc(n)}"><td><b>${esc(n)}</b></td><td class="r money">${usd(c.deuda)}</td><td class="r">${c.n}</td><td class="r">${dd(c.ult)}</td></tr>`).join('')}</tbody></table>` : '<div class="mut">Nadie debe nada</div>'}</div>`;
+        } else {
+          const mine = sales.filter(s => s.cli === sel && saldo(s) > 0.01);
+          inner = `<button class="b out sm" data-back>${ico('back')}Todos los que deben</button>
+            <div class="card"><h5>${esc(sel)}</h5><div class="sub">Sin teléfono registrado</div></div>
+            <div class="kpis"><div class="kpi"><small>Debe</small><b class="warn">${usd(mine.reduce((a, s) => a + saldo(s), 0))}</b></div><div class="kpi"><small>Ventas</small><b>${mine.length}</b></div></div>
+            <div class="card"><h5>Ventas pendientes</h5><div class="sub">El saldo se deriva de la venta; una devolución lo baja sola.</div>
+            ${mine.length ? mine.map(s => `<div style="border:1px solid var(--xb);border-radius:12px;padding:.6rem .7rem;margin-top:.5rem"><div class="between"><span>${dd(s.d)} ${hhmm(s.d)}</span><span class="mono">#${s.id}</span></div>
+              <div class="line"><span>Total de la venta</span><span>${usd(s.total)}</span></div><div class="line"><span>Pagado en caja</span><span>${usd(s.caja)}</span></div><div class="line"><span>Abonado</span><span>${usd(s.abonos.reduce((a, x) => a + x.m, 0))}</span></div><div class="line tot"><span>Saldo</span><span>${usd(saldo(s))}</span></div>
+              ${s.abonos.map(a => `<div class="mut">${dd(a.d)} · ${a.met} · ${esc(a.u)}</div>`).join('')}
+              <button class="b out full sm" style="margin-top:.5rem" data-abonar="${s.id}">Abonar</button></div>`).join('') : '<div class="mut">Nada pendiente</div>'}</div>`;
+        }
+        root.innerHTML = phone(inner, 'Más');
+      };
+      draw();
+      root.addEventListener('click', e => {
+        const tr = e.target.closest('tr[data-cli]'), b = e.target.closest('button');
+        if (tr) { sel = tr.dataset.cli; draw(); return; }
+        if (!b) return;
+        if (b.hasAttribute('data-back')) { sel = null; draw(); }
+        else if (b.dataset.abonar) {
+          const s = sales.find(x => x.id === b.dataset.abonar), sal = saldo(s);
+          const d = dialog(root, `<h5>Abonar</h5><p class="sub">Saldo de la venta: ${usd(sal)}</p>
+            <label>¿Cómo paga el cliente?</label><select class="met">${METODOS.map(m => '<option>' + m + '</option>').join('')}</select>
+            <div class="between"><label>Monto</label>${curToggle('a')}</div><div class="mut pend">Pendiente: ${usd(sal)}</div><input class="monto" inputmode="decimal" placeholder="0.00">
+            <label>Nota (opcional)</label><input placeholder="Referencia, recibo…">
+            <div class="ft"><button class="b out" data-close>Cancelar</button><button class="b" data-confirm>Registrar abono</button></div>`);
+          wireCur(d);
+          d.addEventListener('cur', () => { const enBs = $('.cur button[aria-pressed="true"]', d).textContent === 'Bs'; $('.pend', d).textContent = 'Pendiente: ' + (enBs ? bs(sal) : usd(sal)); });
+          d.addEventListener('click', ev => {
+            if (!ev.target.closest('[data-confirm]')) return;
+            const m = readAmount(d, '.monto', '.cur'); if (isNaN(m)) return toast(root, 'Por favor ingrese un monto válido', 'bad');
+            if (m > sal + 0.001) return toast(root, 'El saldo de esta venta es ' + usd(sal), 'warn');
+            s.abonos.push({ m: round2(m), met: $('.met', d).value, d: new Date(), u: V[0] }); d.remove(); draw();
+            toast(root, 'Abono de ' + usd(m) + '. Saldo: ' + usd(saldo(s)));
+          });
+        }
+      });
+    }
+  };
+
+  // ===== sucursales: existencia por local y traslados =====
+  SIMS.sucursales = {
+    titulo: 'Sucursales: qué hay en cada local y traslados',
+    nota: 'Existe hoy. Cada local tiene su existencia; un traslado resta en el origen y suma en el destino, y queda en el historial con fecha y nombre.',
+    puntos: ['Mire cuántas unidades tiene cada local.', 'Toque «Traslado», elija origen, destino, pieza y cantidad.', 'Si el origen no tiene existencia, no se mueve nada.'],
+    render(root) {
+      const L = CONFIG.locales, P = CONFIG.demo.productos;
+      const stock = {}; L.forEach((l, i) => { stock[l] = {}; P.forEach((p, j) => { stock[l][p.n] = i === 0 ? p.s + 2 : (j % 2 === 0 ? 1 : 0); }); });
+      const vendido = L.map((l, i) => i === 0 ? 1240 : 380 / (i));
+      const unidades = l => Object.values(stock[l]).reduce((a, b) => a + b, 0);
+      const costo = l => P.reduce((a, p) => a + p.c * stock[l][p.n], 0);
+      const draw = () => {
+        const inner = `<div class="card"><div class="between"><h5>${ico('store')} Sucursales y aliados</h5><button class="b sm" data-tras>Traslado</button></div><div class="sub">Mercancía en consignación y lo que cada uno ha vendido.</div></div>
+          <div class="kpis"><div class="kpi"><small>Sucursales activas</small><b>${L.length - 1}</b><i>sin contar la principal</i></div><div class="kpi"><small>Unidades en consignación</small><b>${L.slice(1).reduce((a, l) => a + unidades(l), 0)}</b></div><div class="kpi"><small>Valor al costo</small><b>${usd(L.slice(1).reduce((a, l) => a + costo(l), 0))}</b></div><div class="kpi"><small>Vendido</small><b>${usd(vendido.reduce((a, b) => a + b, 0))}</b><i>todo el historial, incluye la principal</i></div></div>
+          <div class="stamp">Datos al ${dd(hoy)} ${hhmm(hoy)}. Es lo último que se bajó; con internet se actualiza solo.</div>
+          <div class="card"><h5>Por sucursal</h5><div class="sub">Lo vendido lo suma el servidor, de todo el historial. Toca una para ver su hoja.</div>
+          <table><thead><tr><th>Nombre</th><th class="r">Unidades</th><th class="r">Valor costo $</th><th class="r">Vendido $</th></tr></thead><tbody>${L.map((l, i) => `<tr><td><b>${esc(l)}</b> <span class="meta">${i === 0 ? 'principal' : 'sucursal'}</span></td><td class="r">${unidades(l)}</td><td class="r">${f(costo(l))}</td><td class="r">${f(vendido[i])}</td></tr>`).join('')}</tbody></table></div>
+          <div class="card"><h5>Existencia por pieza</h5><table><thead><tr><th>Producto</th>${L.map(l => `<th class="r">${esc(l)}</th>`).join('')}</tr></thead><tbody>${P.map(p => `<tr><td>${esc(p.n)}</td>${L.map(l => `<td class="r">${stock[l][p.n]}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+        root.innerHTML = phone(inner, 'Más');
+      };
+      draw();
+      root.addEventListener('click', e => {
+        const b = e.target.closest('button'); if (!b || !b.hasAttribute('data-tras')) return;
+        const d = dialog(root, `<h5>Traslado de mercancía</h5><p class="sub">Mueve unidades entre el almacén principal y una sucursal. No es una venta: si no hay existencia en el origen, no se mueve nada.</p>
+          <label>Origen</label><select class="ori">${L.map(l => '<option>' + esc(l) + '</option>').join('')}</select>
+          <label>Destino</label><select class="des">${L.map((l, i) => `<option ${i === 1 ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>
+          <label>Producto</label><select class="pro">${P.map(p => '<option>' + esc(p.n) + '</option>').join('')}</select><div class="mut disp"></div>
+          <label>Cantidad</label><input class="qty" inputmode="numeric" value="1">
+          <label>Nota</label><input placeholder="Opcional">
+          <div class="ft"><button class="b out" data-close>Cancelar</button><button class="b" data-confirm>Trasladar</button></div>`);
+        const disp = () => { const o = $('.ori', d).value, p = $('.pro', d).value; $('.disp', d).textContent = 'Disponible en ' + o + ': ' + stock[o][p]; };
+        disp(); d.addEventListener('change', disp);
+        d.addEventListener('click', ev => {
+          if (!ev.target.closest('[data-confirm]')) return;
+          const o = $('.ori', d).value, de = $('.des', d).value, p = $('.pro', d).value, n = parseInt($('.qty', d).value, 10);
+          if (o === de) return toast(root, 'Origen y destino no pueden ser iguales', 'warn');
+          if (!(n > 0)) return toast(root, 'Escribe un número entero.', 'bad');
+          if (stock[o][p] < n) return toast(root, 'En ' + o + ' solo hay ' + stock[o][p], 'warn');
+          stock[o][p] -= n; stock[de][p] += n; d.remove(); draw(); toast(root, n + ' u. de ' + p + ' a ' + de);
+        });
+      });
+    }
+  };
+
+  // ===== envios: courier, guía y estado =====
+  SIMS.envios = {
+    titulo: 'Envíos: por dónde va cada pedido',
+    nota: 'Existe hoy. Cada envío se cuelga de una venta; el estado se cambia en la misma fila y queda con fecha y nombre.',
+    puntos: ['Cambie el estado de un envío en su fila.', 'Cree uno nuevo con courier, guía y destinatario.', 'Los KPIs de arriba se actualizan solos.'],
+    render(root) {
+      const EST = [['preparando', 'Preparando'], ['despachado', 'Despachado'], ['en_transito', 'En tránsito'], ['entregado', 'Entregado'], ['devuelto', 'Devuelto'], ['cancelado', 'Cancelado']];
+      const C = CONFIG.demo.clientes, CI = CONFIG.demo.ciudades, V = CONFIG.demo.vendedoras;
+      const dias = n => { const d = new Date(hoy); d.setDate(d.getDate() - n); return d; };
+      const rows = [
+        { dest: C[0], ciu: CI[1], cour: 'MRW', guia: '8841 2210', est: 'en_transito', d: dias(2), ev: [['preparando', dias(2)], ['despachado', dias(1)], ['en_transito', dias(1)]] },
+        { dest: C[1], ciu: CI[2], cour: 'Zoom', guia: '', est: 'preparando', d: dias(0), ev: [['preparando', dias(0)]] },
+        { dest: C[2], ciu: CI[0], cour: 'Delivery propio', guia: '', est: 'entregado', d: dias(5), ev: [['preparando', dias(5)], ['despachado', dias(5)], ['entregado', dias(4)]] },
+      ];
+      let filtro = 'Activos', open = null;
+      const activo = r => ['preparando', 'despachado', 'en_transito'].includes(r.est);
+      const lab = k => EST.find(e => e[0] === k)[1];
+      const draw = () => {
+        const list = rows.filter(r => filtro === 'Todos' || (filtro === 'Activos' ? activo(r) : r.est === 'entregado'));
+        let inner = `<div class="card"><div class="between"><h5>${ico('truck')} Envíos</h5><button class="b sm" data-new>${ico('plus')}Nuevo envío</button></div><div class="sub">Qué salió, por dónde va y a quién le llegó.</div></div>
+          <div class="kpis"><div class="kpi"><small>Activos</small><b>${rows.filter(activo).length}</b></div><div class="kpi"><small>Entregados</small><b>${rows.filter(r => r.est === 'entregado').length}</b><i>historial cargado</i></div><div class="kpi"><small>Ciudades servidas</small><b>${new Set(rows.filter(r => r.est !== 'cancelado').map(r => r.ciu)).size}</b></div><div class="kpi"><small>Total</small><b>${rows.length}</b></div></div>
+          <div class="card"><h5>Despachos</h5><div class="sub">Cambia el estado en la misma fila; queda con fecha y con tu nombre.</div>
+          <div class="seg">${['Activos', 'Entregados', 'Todos'].map(s => `<button aria-pressed="${s === filtro}" data-f="${s}">${s}</button>`).join('')}</div>
+          <div class="search" style="margin-top:.5rem">${ico('search')}<input placeholder="Destinatario, guía, ciudad o cliente"></div>
+          ${list.length ? list.map(r => `<div style="border-top:1px solid var(--xb);padding:.55rem 0"><div class="between"><div><b>${esc(r.dest)}</b><div class="mut">${esc(r.ciu)} · ${dd(r.d)}</div><div class="mono">${esc(r.cour)}${r.guia ? ' · ' + r.guia : ''}</div></div><div style="width:9.5rem"><select data-est="${rows.indexOf(r)}">${EST.map(e => `<option value="${e[0]}" ${e[0] === r.est ? 'selected' : ''}>${e[1]}</option>`).join('')}</select><button class="b out sm full" style="margin-top:.3rem" data-ver="${rows.indexOf(r)}">Ver</button></div></div></div>`).join('') : '<div class="mut" style="padding:.6rem 0">No hay envíos en este filtro</div>'}</div>`;
+        root.innerHTML = phone(inner, 'Más');
+      };
+      draw();
+      root.addEventListener('change', e => {
+        const s = e.target.closest('select[data-est]'); if (!s) return;
+        const r = rows[+s.dataset.est]; r.est = s.value; r.ev.push([s.value, new Date()]); draw(); toast(root, 'Envío marcado «' + lab(s.value) + '»');
+      });
+      root.addEventListener('click', e => {
+        const b = e.target.closest('button'); if (!b) return;
+        if (b.dataset.f) { filtro = b.dataset.f; draw(); }
+        else if (b.dataset.ver) {
+          const r = rows[+b.dataset.ver];
+          dialog(root, `<h5>${esc(r.dest)}</h5><p class="sub">${lab(r.est)} · ${esc(r.cour)}${r.guia ? ' · ' + r.guia : ''}</p><div class="line"><span>Ciudad</span><span>${esc(r.ciu)}</span></div><div class="line"><span>Venta</span><span>${dd(r.d)} · ${usd(45)}</span></div><label>Rastro</label><div class="rastro">${r.ev.slice().reverse().map(ev => `<div><b>${lab(ev[0])}</b><div class="mut">${dd(ev[1])} ${hhmm(ev[1])} · ${esc(V[0])}</div></div>`).join('')}</div><div class="ft"><button class="b out" data-close>Cerrar</button></div>`);
+        }
+        else if (b.hasAttribute('data-new')) {
+          const d = dialog(root, `<h5>Nuevo envío</h5><p class="sub">Se cuelga de una venta ya registrada. La guía puedes ponerla después, cuando el courier te la dé.</p>
+            <label>Venta</label><select class="ven">${C.map(c => `<option>${esc(c)} · ${dd(hoy)} · ${usd(45)}</option>`).join('')}</select>
+            <div class="row"><div><label>Courier</label><select class="cour">${['MRW', 'Zoom', 'Tealca', 'Delivery propio', 'Otro'].map(c => '<option>' + c + '</option>').join('')}</select></div><div><label>Guía (opcional)</label><input class="guia" placeholder="Número de rastreo"></div></div>
+            <label>Destinatario</label><input class="dest" placeholder="Quién recibe">
+            <div class="row"><div><label>Teléfono</label><input placeholder="0414-0000000"></div><div><label>Ciudad</label><input class="ciu" placeholder="${esc(CI[0])}"></div></div>
+            <label>Dirección</label><input placeholder="Referencia del punto de entrega, horario…">
+            <div class="ft"><button class="b out" data-close>Cancelar</button><button class="b" data-confirm>Crear envío</button></div>`);
+          d.addEventListener('click', ev => {
+            if (!ev.target.closest('[data-confirm]')) return;
+            const dest = $('.dest', d).value.trim() || $('.ven', d).value.split(' · ')[0];
+            rows.unshift({ dest, ciu: $('.ciu', d).value.trim() || CI[0], cour: $('.cour', d).value, guia: $('.guia', d).value.trim(), est: 'preparando', d: new Date(), ev: [['preparando', new Date()]] });
+            d.remove(); filtro = 'Activos'; draw(); toast(root, 'Envío creado');
+          });
+        }
+      });
+    }
+  };
+
+  // ===== citas: agenda por profesional =====
+  SIMS.citas = {
+    titulo: 'Citas: agenda sin solapes y confirmación por WhatsApp',
+    nota: 'Existe hoy. La duración sale de los servicios; una profesional no puede tener dos citas a la misma hora.',
+    puntos: ['Toque «Nueva cita», elija servicios, profesional y hora.', 'Si la hora choca con otra cita de la misma profesional, el sistema lo dice.', 'Con «WhatsApp» se arma el mensaje de confirmación con los datos de la cita.'],
+    render(root) {
+      const S = CONFIG.demo.servicios, PR = CONFIG.demo.profesionales, C = CONFIG.demo.clientes, neg = CONFIG.negocio;
+      const EST = { pendiente: 'Pendiente', confirmada: 'Confirmada', en_atencion: 'En atención', cobrada: 'Cobrada', cancelada: 'Cancelada', no_asistio: 'No asistió' };
+      const citas = [
+        { cli: C[0], serv: [S[0]], pro: PR[0], h: 9 * 60, est: 'confirmada' },
+        { cli: C[1], serv: [S[1]], pro: PR[1], h: 10 * 60, est: 'pendiente' },
+        { cli: C[2], serv: [S[2], S[1]], pro: PR[0], h: 11 * 60, est: 'pendiente' },
+      ];
+      const dur = c => Math.max(5, c.serv.reduce((a, s) => a + (s.min || 30), 0));
+      const mm = m => String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+      const viva = c => ['pendiente', 'confirmada', 'en_atencion'].includes(c.est);
+      const choca = (pro, h, d, skip) => citas.find(c => c !== skip && c.pro === pro && viva(c) && h < c.h + dur(c) && c.h < h + d);
+      const dias = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
+      const draw = () => {
+        const inner = `<div class="card"><div class="between"><h5>${ico('cal')} Citas</h5><button class="b sm" data-new>${ico('plus')}Nueva cita</button></div><div class="sub">Agenda del negocio</div>
+            <div class="seg" style="margin-top:.4rem"><button aria-pressed="true">Agenda</button><button>Comisiones</button><button>Equipo</button><button>Ajustes</button></div></div>
+          <div class="week">${[0, 1, 2, 3, 4, 5, 6].map(i => { const d = new Date(hoy); d.setDate(d.getDate() - hoy.getDay() + i); const n = i === hoy.getDay() ? citas.filter(viva).length : 0; return `<button aria-pressed="${i === hoy.getDay()}">${dias[i]} <b>${d.getDate()}</b><span class="mut">${n ? n + ' cita' + (n === 1 ? '' : 's') : '·'}</span></button>`; }).join('')}</div>
+          <div class="chips"><button aria-pressed="true">Todas</button>${PR.map(p => '<button>' + esc(p) + '</button>').join('')}</div>
+          ${citas.slice().sort((a, b) => a.h - b.h).map(c => `<div class="cita ${viva(c) ? '' : 'off'}"><div class="between"><b>${mm(c.h)} a ${mm(c.h + dur(c))}</b><span class="pill ${c.est === 'confirmada' ? 'ok' : c.est === 'pendiente' ? 'warn' : c.est === 'cancelada' || c.est === 'no_asistio' ? 'bad' : ''}">${EST[c.est]}</span></div><div>${esc(c.cli)} · ${c.serv.map(s => esc(s.n)).join(', ')}</div><div class="mut">${esc(c.pro)} · ${dur(c)} min · ${usd(c.serv.reduce((a, s) => a + s.p, 0))}</div>
+            ${viva(c) ? `<div class="btns">${c.est === 'pendiente' ? `<button class="b soft sm" data-est="confirmada" data-i="${citas.indexOf(c)}">Confirmar</button>` : ''}${c.est === 'confirmada' ? `<button class="b soft sm" data-est="en_atencion" data-i="${citas.indexOf(c)}">Atender</button>` : ''}${c.est === 'en_atencion' ? `<button class="b sm" data-est="cobrada" data-i="${citas.indexOf(c)}">Cobrar</button>` : ''}<button class="b out sm" data-wa="${citas.indexOf(c)}">${ico('wa')}WhatsApp</button><button class="b out sm" data-est="cancelada" data-i="${citas.indexOf(c)}">Cancelar</button></div>` : ''}</div>`).join('')}`;
+        root.innerHTML = phone(inner, 'Más');
+      };
+      draw();
+      root.addEventListener('click', e => {
+        const b = e.target.closest('button'); if (!b) return;
+        if (b.dataset.est && b.dataset.i !== undefined) { citas[+b.dataset.i].est = b.dataset.est; draw(); toast(root, 'Cita ' + EST[b.dataset.est].toLowerCase()); }
+        else if (b.dataset.wa) {
+          const c = citas[+b.dataset.wa];
+          dialog(root, `<h5>${ico('wa')} Mensaje para ${esc(c.cli)}</h5><div class="wa">Hola ${esc(c.cli.split(' ')[0])}, te agendamos ${c.serv.map(s => esc(s.n)).join(' y ')} con ${esc(c.pro)} el ${dias[hoy.getDay()]} ${hoy.getDate()}/${String(hoy.getMonth() + 1).padStart(2, '0')} a las ${mm(c.h)}. ¿Nos confirmas? Responde SÍ para confirmar. ${esc(neg)}</div><div class="ft"><button class="b out" data-close>Cerrar</button><button class="b" data-close>Abrir WhatsApp</button></div>`);
+        }
+        else if (b.hasAttribute('data-new')) {
+          const horas = []; for (let h = 9 * 60; h <= 17 * 60; h += 30) horas.push(h);
+          const d = dialog(root, `<h5>Nueva cita</h5><p class="sub">Cliente, servicios, profesional y hora.</p>
+            <label>Cliente</label><input class="cli" placeholder="0414… / V12345678 / nombre">
+            <label>Servicios</label><div class="chips serv">${S.map((s, i) => `<button aria-pressed="${i === 0}" data-s="${i}">${esc(s.n)} · ${s.min} min</button>`).join('')}</div>
+            <label>Profesional</label><select class="pro"><option>Cualquier profesional</option>${PR.map(p => '<option>' + esc(p) + '</option>').join('')}</select>
+            <label>Hora</label><div class="chips hora">${horas.map(h => `<button data-h="${h}" aria-pressed="false">${mm(h)}</button>`).join('')}</div><div class="mut fin"></div>
+            <label>Notas (opcional)</label><input placeholder="Notas">
+            <div class="ft"><button class="b out" data-close>Cancelar</button><button class="b" data-confirm>Agendar</button></div>`);
+          const sel = () => ({ serv: $$('.serv button[aria-pressed="true"]', d).map(b => S[+b.dataset.s]), pro: $('.pro', d).value, h: (() => { const x = $('.hora button[aria-pressed="true"]', d); return x ? +x.dataset.h : null; })() });
+          const refresh = () => {
+            const s = sel(), dur2 = Math.max(5, s.serv.reduce((a, x) => a + x.min, 0));
+            $$('.hora button', d).forEach(b => { const ch = s.pro !== 'Cualquier profesional' && choca(s.pro, +b.dataset.h, dur2); b.textContent = mm(+b.dataset.h) + (ch ? ' · ocupada' : ''); });
+            $('.fin', d).textContent = s.h !== null ? 'Termina a las ' + mm(s.h + dur2) : 'Elige la hora';
+          };
+          refresh();
+          d.addEventListener('click', ev => {
+            const bb = ev.target.closest('button');
+            if (bb && bb.dataset.s !== undefined) { bb.setAttribute('aria-pressed', String(bb.getAttribute('aria-pressed') !== 'true')); refresh(); return; }
+            if (bb && bb.dataset.h !== undefined) { $$('.hora button', d).forEach(x => x.setAttribute('aria-pressed', String(x === bb))); refresh(); return; }
+            if (!ev.target.closest('[data-confirm]')) return;
+            const s = sel(), cli = $('.cli', d).value.trim();
+            if (!cli) return toast(root, 'Escribe el nombre o el teléfono del cliente', 'bad');
+            if (!s.serv.length) return toast(root, 'Elige al menos un servicio', 'bad');
+            if (s.h === null) return toast(root, 'Elige el día y la hora', 'bad');
+            const pro = s.pro === 'Cualquier profesional' ? (PR.find(p => !choca(p, s.h, Math.max(5, s.serv.reduce((a, x) => a + x.min, 0)))) || PR[0]) : s.pro;
+            const ch = choca(pro, s.h, Math.max(5, s.serv.reduce((a, x) => a + x.min, 0)));
+            if (ch) return toast(root, pro + ' ya tiene una cita a esa hora', 'warn');
+            citas.push({ cli, serv: s.serv, pro, h: s.h, est: 'pendiente' }); d.remove(); draw(); toast(root, 'Cita agendada');
+          });
+          d.addEventListener('change', refresh);
+        }
+      });
+    }
+  };
+
+  // ===== historial: ventas con tasa sellada y cierre de caja =====
+  SIMS.historial = {
+    titulo: 'Historial con tasa sellada y cierre de caja',
+    nota: 'Existe hoy. Cada venta guarda la tasa del momento; el cierre compara lo contado con lo que el sistema espera.',
+    puntos: ['Toque una venta para ver el detalle con su tasa sellada.', 'Toque «Cerrar caja», cuente el efectivo y vea si cuadra, sobra o falta.'],
+    render(root) {
+      const V = CONFIG.demo.vendedoras, P = CONFIG.demo.productos;
+      const at = (h, m) => { const d = new Date(hoy); d.setHours(h, m, 0, 0); return d; };
+      const tx = [
+        { id: 'A81F02C4', d: at(10, 12), v: V[0], items: [P[0]], pagos: [['Pago Móvil', 'Bs', P[0].p]], tasa: CONFIG.tasa },
+        { id: '5C09D1B7', d: at(12, 40), v: V[1], items: [P[1], P[3]], pagos: [['Efectivo', '$', P[1].p + P[3].p]], tasa: CONFIG.tasa },
+        { id: 'E3B7A9F0', d: at(15, 5), v: V[0], items: [P[2]], pagos: [['Zelle', '$', 40], ['Efectivo', '$', 20]], tasa: round2(CONFIG.tasa - 4.2) },
+      ];
+      const total = t => t.items.reduce((a, p) => a + p.p, 0);
+      const draw = () => {
+        const inner = `<div class="card"><div class="between"><h5>${ico('hist')} Historial de transacciones</h5><button class="b soft sm" data-cierre>${ico('calc')}Cerrar caja</button></div>
+            <div class="search" style="margin-top:.5rem">${ico('search')}<input placeholder="Buscar por ID, producto o vendedor…"></div></div>
+          <div class="card">${tx.map(t => `<div class="between tap" data-tx="${t.id}" style="padding:.5rem 0;border-bottom:1px solid var(--xb);cursor:pointer"><div><span class="mono">#${t.id.slice(-6)}</span> <span class="mut">${dd(t.d)} ${hhmm(t.d)}</span><div>${esc(t.v)} · ${t.items.length} producto${t.items.length === 1 ? '' : 's'} · ${t.items.length} u</div><div class="mut">${t.items.map(p => esc(p.n)).join(', ')}</div></div><b class="money">${usd(total(t))}</b></div>`).join('')}</div>`;
+        root.innerHTML = phone(inner, 'Historial');
+      };
+      draw();
+      root.addEventListener('click', e => {
+        const row = e.target.closest('[data-tx]'), b = e.target.closest('button');
+        if (row) {
+          const t = tx.find(x => x.id === row.dataset.tx), tot = total(t), base = round2(tot / (1 + IVA / 100));
+          dialog(root, `<h5>Detalles de la transacción</h5><p class="sub">ID: #${t.id} · ${dd(t.d)} ${hhmm(t.d)} · ${esc(t.v)}</p>
+            ${t.items.map(p => `<div class="line"><span>${esc(p.n)}</span><span>${usd(p.p)}</span></div>`).join('')}
+            <div class="line" style="margin-top:.4rem"><span>Subtotal:</span><span>${usd(base)}</span></div><div class="line"><span>IVA (${IVA}%):</span><span>${usd(tot - base)}</span></div><div class="line tot"><span>Total pagado:</span><span>${usd(tot)} · Bs ${f(tot * t.tasa)}</span></div>
+            <label>Detalles del pago</label>${t.pagos.map(p => `<div class="line"><span>${p[0]}</span><span>${p[1] === 'Bs' ? 'Bs ' + f(p[2] * t.tasa) : usd(p[2])}</span></div>`).join('')}
+            <div class="stamp" style="margin-top:.5rem">Tasa sellada en esta venta: Bs ${f(t.tasa)} por $1. Los bolívares de arriba van a esa tasa, nunca a la de hoy.</div>
+            <div class="ft"><button class="b out" data-close>Cerrar</button><button class="b soft" data-close>Nota de entrega</button></div>`);
+          return;
+        }
+        if (!b || !b.hasAttribute('data-cierre')) return;
+        const efUsd = tx.flatMap(t => t.pagos).filter(p => p[0] === 'Efectivo' && p[1] === '$').reduce((a, p) => a + p[2], 0);
+        const efBs = tx.flatMap(t => t.pagos).filter(p => p[0] === 'Efectivo' && p[1] === 'Bs').reduce((a, p) => a + p[2] * CONFIG.tasa, 0);
+        const otros = {}; tx.forEach(t => t.pagos.forEach(p => { if (p[0] !== 'Efectivo') { const k = p[0] + ' (' + p[1] + ')'; otros[k] = (otros[k] || 0) + (p[1] === 'Bs' ? p[2] * t.tasa : p[2]); } }));
+        const d = dialog(root, `<h5>${ico('calc')} Cerrar caja</h5><p class="sub">Cuenta lo que hay y compáralo con lo que el sistema espera. Lo que no cuentes no suma diferencia.</p>
+          <div class="between"><label>Día</label><span class="mut">${tx.length} ventas · 0 abonos</span></div><input type="date" value="${hoy.toISOString().slice(0, 10)}">
+          <label>Efectivo</label>
+          <div class="row"><div><b>Dólares</b><div class="mut">Sistema: ${usd(efUsd)}</div></div><input class="cu" inputmode="decimal" placeholder="Sin contar"></div>
+          <div class="row" style="margin-top:.4rem"><div><b>Bolívares</b><div class="mut">Sistema: Bs ${f(efBs)}</div></div><input class="cb" inputmode="decimal" placeholder="Sin contar"></div>
+          <div class="mut" style="margin-top:.4rem">Efectivo neto esperado: ${usd(efUsd + efBs / CONFIG.tasa)}</div>
+          <label>Otros métodos</label>${Object.entries(otros).map(([k, v]) => `<div class="line"><span>${k}</span><span class="mut">Sistema: ${k.includes('Bs') ? 'Bs ' + f(v) : usd(v)}</span></div>`).join('')}
+          <div class="card" style="margin-top:.6rem"><div class="between"><b>Diferencia total</b><b class="diff">Sin contar</b></div></div>
+          <label>Notas</label><input placeholder="Por ejemplo: faltó el vuelto de la venta de las 3">
+          <div class="ft"><button class="b out" data-close>Cancelar</button><button class="b" data-confirm>Registrar cierre</button></div>`);
+        const diff = () => {
+          const cu = parseFloat(($('.cu', d).value || '').replace(',', '.')), cb = parseFloat(($('.cb', d).value || '').replace(/\./g, '').replace(',', '.'));
+          if (isNaN(cu) && isNaN(cb)) return null;
+          const contado = (isNaN(cu) ? efUsd : cu) + (isNaN(cb) ? efBs : cb) / CONFIG.tasa;
+          return round2(contado - (efUsd + efBs / CONFIG.tasa));
+        };
+        const paint = () => { const x = diff(), el = $('.diff', d); if (x === null) { el.textContent = 'Sin contar'; el.style.color = ''; } else if (Math.abs(x) < 0.005) { el.textContent = 'Cuadra'; el.style.color = 'var(--xp)'; } else if (x > 0) { el.textContent = 'Sobra ' + usd(x); el.style.color = 'var(--xpend)'; } else { el.textContent = 'Falta ' + usd(-x); el.style.color = 'var(--xdes)'; } };
+        d.addEventListener('input', paint);
+        d.addEventListener('click', ev => {
+          if (!ev.target.closest('[data-confirm]')) return;
+          const x = diff(); if (x === null) return toast(root, 'Cuenta al menos una línea', 'bad');
+          d.remove(); toast(root, Math.abs(x) < 0.005 ? 'Caja cuadrada' : x > 0 ? 'Cierre registrado: sobran ' + usd(x) : 'Cierre registrado: faltan ' + usd(-x), Math.abs(x) < 0.005 ? '' : 'warn');
+        });
+      });
+    }
+  };
+
+  // ===== finanzas: utilidad y estado de resultados =====
+  SIMS.finanzas = {
+    titulo: 'Finanzas: cuánto queda de verdad',
+    nota: 'Existe hoy. Ventas menos costo de la mercancía, gastos fijos y variables: la utilidad neta del período, en un toque.',
+    puntos: ['Cambie el período: Hoy, 7d, 30d, 90d, 1a, Todo.', 'El estado de resultados baja de ventas a utilidad neta línea por línea.'],
+    render(root) {
+      const R = [['Hoy', 1], ['7d', 7], ['30d', 30], ['90d', 90], ['1a', 365], ['Todo', 540]];
+      const TIT = { Hoy: 'Hoy', '7d': 'Últimos 7 días', '30d': 'Últimos 30 días', '90d': 'Últimos 90 días', '1a': 'Último año', Todo: 'Todo el historial' };
+      let cur = '30d';
+      const draw = () => {
+        const dias = R.find(r => r[0] === cur)[1];
+        const ventas = round2(dias * 118.4), costo = round2(ventas * 0.55), bruta = round2(ventas - costo), fijos = round2(Math.min(dias, 30) / 30 * 420 * Math.max(1, dias / 30)), variables = round2(ventas * 0.06), operativa = round2(bruta - fijos - variables), otros = round2(dias * 1.2), neta = round2(operativa + otros);
+        const desde = new Date(hoy); desde.setDate(desde.getDate() - dias + 1);
+        const inner = `<div class="card"><h5>${ico('bank')} Finanzas</h5><div class="sub">${dd(desde)} a ${dd(hoy)} · ${dias} día${dias === 1 ? '' : 's'} · ${Math.round(dias * 3.4)} movimientos</div>
+            <div class="seg">${R.map(r => `<button aria-pressed="${r[0] === cur}" data-r="${r[0]}">${r[0]}</button>`).join('')}</div>
+            <div class="seg" style="margin-top:.4rem"><button aria-pressed="true">Resumen</button><button>Movimientos</button><button>Obligaciones</button><button>Cuentas</button></div></div>
+          <div class="kpis"><div class="kpi"><small>Utilidad neta</small><b class="${neta >= 0 ? 'ok' : 'warn'}">${usd(neta)}</b><i>${f(neta / ventas * 100)}% de las ventas</i></div><div class="kpi"><small>Gastos del período</small><b>${usd(fijos + variables)}</b><i>${usd(fijos)} fijos</i></div><div class="kpi"><small>Por pagar</small><b>${usd(310)}</b><i>${usd(310)} en 30 días</i></div><div class="kpi"><small>Efectivo disponible</small><b>${usd(1850 + neta)}</b><i>alcanza ${f((1850 + neta) / 420)} meses</i></div></div>
+          <div class="card"><h5>Estado de resultados</h5><div class="sub">${TIT[cur]}</div>
+            <div class="line"><span>Ventas</span><span>${usd(ventas)}</span></div><div class="line"><span>Costo de la mercancía vendida</span><span>${usd(-costo)}</span></div><div class="line tot"><span>Utilidad bruta</span><span>${usd(bruta)}</span></div>
+            <div class="line"><span>Gastos fijos</span><span>${usd(-fijos)}</span></div><div class="line"><span>Gastos variables e impuestos</span><span>${usd(-variables)}</span></div><div class="line tot"><span>Utilidad operativa</span><span>${usd(operativa)}</span></div>
+            <div class="line"><span>Otros ingresos</span><span>${usd(otros)}</span></div><div class="line tot"><span>Utilidad neta</span><span style="color:var(--xp)">${usd(neta)}</span></div></div>`;
+        root.innerHTML = phone(inner, 'Más');
+      };
+      draw();
+      root.addEventListener('click', e => { const b = e.target.closest('button[data-r]'); if (b) { cur = b.dataset.r; draw(); } });
+    }
+  };
+
+  /* ---------- Montaje ---------- */
+  const param = new URLSearchParams(location.search).get('sim');
+  const ids = param ? (param === 'todas' ? Object.keys(SIMS) : param.split(',')) : CONFIG.simulaciones;
+  const host = $('#sims');
+  ids.forEach(id => {
+    const S = SIMS[id]; if (!S) { console.warn('Simulación desconocida:', id); return; }
+    const blk = document.createElement('div'); blk.className = 'simblock'; blk.id = 'sim-' + id;
+    blk.innerHTML = `<h3>${S.titulo}</h3><p class="note">${S.nota} Es una simulación: nada se guarda ni se publica.</p><div class="sim"></div>`;
+    host.appendChild(blk);
+    const sim = $('.sim', blk);
+    if (S.puntos) { const st = document.createElement('div'); st.className = 'stage'; sim.appendChild(st); const pts = document.createElement('div'); pts.className = 'puntos'; pts.innerHTML = '<h4>Qué mirar</h4><ul>' + S.puntos.map(p => '<li>' + p + '</li>').join('') + '</ul>'; sim.appendChild(pts); S.render(st); }
+    else S.render(sim);
+  });
+  if (ids.length === 1 && SIMS[ids[0]]) $('#nota-sims').remove();
+})();
+</script>
+</body>
+</html>
