@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { dict } from '../i18n/dictionaries'
 import Reveal from './reveal'
-import { Arrow, KEY, SectionTitle } from './ui'
+import { KEY, SectionTitle } from './ui'
 
 const t = dict.transparencia
 
@@ -29,13 +29,6 @@ export default function Transparencia() {
               </li>
             ))}
           </ul>
-          <p className="mt-3 text-sm text-paper/85 md:mt-4">
-            {t.note}{' '}
-            <a href={t.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-paper underline decoration-2 underline-offset-4 hover:text-amber-tint">
-              {t.sourceLink}
-              <Arrow />
-            </a>
-          </p>
           <a href="#Diagnostico" className={`${KEY.onPaperInverse} mt-4`}>
             {t.cta}
           </a>

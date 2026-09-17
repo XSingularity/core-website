@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { dict } from '../i18n/dictionaries'
 import Reveal from './reveal'
-import { Arrow, KEY, SectionTitle } from './ui'
+import { KEY, SectionTitle } from './ui'
 
 const t = dict.demo
 // Sample rate, labelled as such on the page; the real product reads BCV / P2P.
@@ -59,13 +59,6 @@ export default function DemoLuz() {
             <span className={`h-3 w-3 rounded-full ${power ? 'bg-green' : 'bg-paper'}`} aria-hidden />
             {power ? t.powerOff : t.powerOn}
           </button>
-          <p className="mt-4 text-sm text-navy-soft md:mt-6">
-            {t.sourceNote}{' '}
-            <a href={t.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-navy underline decoration-2 underline-offset-4 hover:text-amber">
-              {t.sourceLink}
-              <Arrow />
-            </a>
-          </p>
         </Reveal>
 
         <Reveal delay={120}>

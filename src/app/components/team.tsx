@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { Github } from './svg/Github'
 import { Linkedin } from './svg/Linkedin'
 import Reveal from './reveal'
 import { dict } from '../i18n/dictionaries'
@@ -8,11 +7,11 @@ import { SectionTitle } from './ui'
 const t = dict.equipo
 
 const MEMBERS = [
-  { name: 'Omar Pérez', role: 'CEO', img: '/omar.webp', github: 'https://www.github.com/omarperezr', linkedin: 'https://www.linkedin.com/in/omarperezr' },
-  { name: 'Douglas Márquez', role: 'COO', img: '/doug.webp', github: 'https://github.com/Douggsv', linkedin: 'https://www.linkedin.com/in/douglasmarquezsvizzero/' },
-  { name: 'Daniel Lara', role: 'Creative Director', img: '/lara.webp', github: 'https://github.com/dalakrita', linkedin: 'https://www.linkedin.com/in/daniellarap26/' },
-  { name: 'Samuel Goncalves', role: 'IT Support', img: '/samu.webp', github: 'https://github.com/TheCRIZIZ', linkedin: 'https://www.linkedin.com/in/samuel-goncalves-5895b428a/' },
-  { name: 'Ricardo Maceiras', role: 'CFO', img: '/rick.webp', github: 'https://github.com/Rickanike', linkedin: 'https://www.linkedin.com/in/ricardo-maceiras-fernandes-362660118/' },
+  { name: 'Omar Pérez', role: 'CEO', img: '/omar.webp', linkedin: 'https://www.linkedin.com/in/omarperezr' },
+  { name: 'Douglas Márquez', role: 'COO', img: '/doug.webp', linkedin: 'https://www.linkedin.com/in/douglasmarquezsvizzero/' },
+  { name: 'Daniel Lara', role: 'Creative Director', img: '/lara.webp', linkedin: 'https://www.linkedin.com/in/daniellarap26/' },
+  { name: 'Samuel Goncalves', role: 'IT Support', img: '/samu.webp', linkedin: 'https://www.linkedin.com/in/samuel-goncalves-5895b428a/' },
+  { name: 'Ricardo Maceiras', role: 'CFO', img: '/rick.webp', linkedin: 'https://www.linkedin.com/in/ricardo-maceiras-fernandes-362660118/' },
 ]
 type Member = (typeof MEMBERS)[number]
 
@@ -22,9 +21,6 @@ const ICON =
 function Links({ m }: { m: Member }) {
   return (
     <>
-      <a href={m.github} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} ${t.onGithub}`} className={ICON}>
-        <Github />
-      </a>
       <a href={m.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} ${t.onLinkedin}`} className={ICON}>
         <Linkedin />
       </a>
