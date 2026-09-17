@@ -201,9 +201,6 @@ export const dict = {
     syncing: (n: number) => `Volvió la electricidad · sincronizando ${n} ${n === 1 ? 'venta' : 'ventas'}…`,
     synced: 'Todo sincronizado. No se perdió nada.',
     todayLabel: 'Vendido hoy',
-    sourceNote: 'xinventory es código abierto:',
-    sourceLink: 'ver el código',
-    sourceUrl: 'https://github.com/omarperezr/xinventory',
   },
 
   como: {
@@ -371,30 +368,25 @@ export const dict = {
       { title: 'Un espacio para preguntar en cada tarea', text: 'Preguntas sobre cualquier tarea y le llega a quien la está haciendo. La respuesta vuelve al mismo sitio, sin perderse en un chat.' },
       { title: 'El código es tuyo mientras lo hacemos', text: 'Te damos acceso al repositorio en GitHub o GitLab: cada cambio, cada tarea, todo el código, en tiempo real. No solo al entregar.' },
     ],
-    note: 'El panel es software nuestro y su código es público:',
-    sourceLink: 'ver el código',
-    sourceUrl: 'https://github.com/omarperezr/client_progress_xsingularity',
     cta: 'Empieza tu proyecto y recibe tu acceso',
   },
 
   portafolio: {
     title: 'Sistemas que ya funcionan en negocios venezolanos.',
-    lead: 'Un cliente y cinco productos propios con el código abierto: ábrelos, léelos, pruébalos.',
+    lead: 'Un cliente y cinco productos propios, construidos y mantenidos por nosotros.',
     visit: 'Abrir demo',
-    viewSource: 'Ver el código',
     prev: 'Proyecto anterior',
     next: 'Proyecto siguiente',
     region: 'Proyectos del portafolio',
     goTo: 'Ir al proyecto',
     demoBadge: 'Demo en vivo',
     caseStudyBadge: 'Cliente',
-    openSourceBadge: 'Código abierto',
+    openSourceBadge: 'Producto propio',
   },
 
   equipo: {
     title: 'Hablas directo con quien lo construye.',
     lead: 'Cinco personas, en Venezuela, con nombre y cara. Sin gerentes de cuenta ni intermediarios.',
-    onGithub: 'en GitHub',
     onLinkedin: 'en LinkedIn',
     roles: {
       CEO: 'Director general',

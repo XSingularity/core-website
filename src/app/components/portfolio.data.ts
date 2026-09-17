@@ -7,7 +7,7 @@
  * liability (PRODUCT.md).
  *
  *   kind: 'demo'         sanitized standalone build; `url` required.
- *   kind: 'open-source'  public repository; `url` points at the repo.
+ *   kind: 'open-source'  our own product; no public link.
  *   kind: 'case-study'   screenshots + narrative only, no link.
  */
 export type ProjectKind = 'demo' | 'case-study' | 'open-source'
@@ -40,7 +40,6 @@ export const PROJECTS: Project[] = [
   {
     id: 'xinventory',
     kind: 'open-source',
-    url: 'https://github.com/omarperezr/xinventory',
     img: '/portfolio/xinventory.webp',
     alt: 'Punto de venta e inventario que funciona sin conexión, construido por XSingularity',
     tags: ['Punto de venta', 'Bs y $', 'Sin conexión'],
@@ -52,7 +51,6 @@ export const PROJECTS: Project[] = [
   {
     id: 'client-progress',
     kind: 'open-source',
-    url: 'https://github.com/omarperezr/client_progress_xsingularity',
     img: '/portfolio/client-progress.webp',
     alt: 'Portal de clientes con el avance del proyecto en vivo, construido por XSingularity',
     tags: ['Portal', 'Avance en vivo'],
@@ -64,7 +62,6 @@ export const PROJECTS: Project[] = [
   {
     id: 'marketplace-responder',
     kind: 'open-source',
-    url: 'https://github.com/omarperezr/marketplace_responder',
     img: '/portfolio/marketplace-responder.webp',
     alt: 'Bot de atención al cliente para Facebook Messenger, construido por XSingularity',
     tags: ['Messenger', 'Atención 24/7', 'IA'],
@@ -76,7 +73,6 @@ export const PROJECTS: Project[] = [
   {
     id: 'smarttybot',
     kind: 'open-source',
-    url: 'https://github.com/omarperezr/SmarttyBot',
     img: '/portfolio/smarttybot.webp',
     alt: 'Asistente multiplataforma para Discord, Telegram, Slack y correo, construido por XSingularity',
     tags: ['Telegram', 'Discord', 'Correo'],
@@ -88,7 +84,6 @@ export const PROJECTS: Project[] = [
   {
     id: 'xcambio',
     kind: 'open-source',
-    url: 'https://github.com/omarperezr/XCambio',
     img: '/portfolio/xcambio.webp',
     alt: 'Conversor de bolívares y dólares para Android, construido por XSingularity',
     tags: ['Android', 'Tasa BCV', 'Tasa P2P'],

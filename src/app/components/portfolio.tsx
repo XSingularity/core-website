@@ -101,7 +101,7 @@ export default function Portfolio() {
                       ))}
                       {p.url && (
                         <a href={p.url} target="_blank" rel="noopener noreferrer" className="ml-auto inline-flex items-center gap-1 font-display text-sm font-bold text-navy underline decoration-2 underline-offset-4 hover:text-amber">
-                          {p.kind === 'open-source' ? t.viewSource : t.visit}
+                          {t.visit}
                           <Arrow />
                         </a>
                       )}
