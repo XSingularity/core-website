@@ -16,7 +16,7 @@ export default function Termometro() {
         <Reveal>
           <SectionTitle title={t.title} lead={t.lead} tone="paper" />
         </Reveal>
-        <ul className="no-scrollbar -mx-5 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 md:mx-0 md:mt-6 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-4 md:overflow-visible md:px-0 lg:grid-cols-3">
+        <ul className="no-scrollbar -mx-5 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 max-md:overflow-y-hidden md:mx-0 md:mt-6 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-4 md:overflow-visible md:px-0 lg:grid-cols-3">
           {t.stats.map((s, i) => (
             <Reveal key={s.label} as="li" delay={i * 70} className="w-[84%] shrink-0 snap-center border-t-3 border-paper/40 pt-4 md:w-auto md:shrink">
               <p className="font-display text-4xl font-black leading-none tabular-nums md:text-5xl">{s.value}</p>
